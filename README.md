@@ -13,3 +13,5 @@ TBA
 ### Deep and Shallow Knowledge Extraction
 
 ### Training Order and Memorization
+
+### Social Bias and Knowledge of Social Bias
