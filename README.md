@@ -4,18 +4,16 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 
 ## Models
 
-| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status|Eval Status|
-| ----------- | -------- |------------ | ------- |----------- | ---------- |------------ | ---------- |---------- |
-| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status|Eval Status|
-| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status|Eval Status|
-| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status|Eval Status|
-| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status|Eval Status|
-| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status|Eval Status|
-| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status|Eval Status|
-| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status|Eval Status|
-| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status|Eval Status|
-| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status|Eval Status|
-| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status|Eval Status|
+| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status                 |Eval Status|Conversion Status|
+| ----------- | -------- |------------ | ------- |----------- | ---------- |------------ | ----------                  |---------- | --------------- |
+| 19M         | 6        | 512         | 8       |64          | Batch Size | 1e-3        | s3://s-eai-neox/pythia/19M/ |Eval Status|  Not Ready      |
+| 49M         | 10       | 640         | 10      |d_head      | Batch Size | 1e-3        |  x                          |Eval Status|                 |
+| 125M        | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate| Complete                    | Complete  |                 |
+| 350M        | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate| Complete                    |Eval Status|                 |
+| 1.3B        | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate| Complete                    |Eval Status|                 |
+| 2.7B        | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|                             |Eval Status|                 |
+| 6.7B        | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status                 |Eval Status|                 |
+| 13B         | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status                 |Eval Status|                 |
 
 
 ## Experiments 
