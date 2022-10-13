@@ -4,7 +4,18 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 
 ## Models
 
-TBA
+| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|
+| ----------- | -------- |------------ | ------- |----------- | ---------- |------------ |
+| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|
+| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|
+| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|
+| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|
+| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|
+| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|
+| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|
+| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|
+| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|
+| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|
 
 ## Experiments 
 
