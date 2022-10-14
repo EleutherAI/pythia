@@ -6,14 +6,28 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 
 | Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status                 |Eval Status|Conversion Status|
 | ----------- | -------- |------------ | ------- |----------- | ---------- |------------ | ----------                  |---------- | --------------- |
-| 19M         | 6        | 512         | 8       |64          | Batch Size | 1e-3        | s3://s-eai-neox/pythia/19M/ |Eval Status|  Not Ready      |
-| 49M         | 10       | 640         | 10      |d_head      | Batch Size | 1e-3        |  x                          |Eval Status|                 |
-| 125M        | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate| Complete                    | Complete  |                 |
-| 350M        | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate| Complete                    |Eval Status|                 |
-| 1.3B        | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate| Complete                    |Eval Status|                 |
-| 2.7B        | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|                             |Eval Status|                 |
-| 6.7B        | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status                 |Eval Status|                 |
-| 13B         | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status                 |Eval Status|                 |
+| 19M         | 6        | 512         | 8       | 64         | 2M         | 1e-3        | s3://s-eai-neox/pythia/19M/ |In progress| Complete        |
+| 19M Dedup   | 6        | 512         | 8       | 64         | 2M         | 1e-3        | .../pythia/19M_dedup/       |Eval Status|  Not Ready      |
+| 49M         | 10       | 640         | 10      | 64         | 2M         | 8e-4?       |  x                          |Eval Status|                 |
+| 49M Dedup   | 10       | 640         | 10      | 64         | 2M         | 8e-4?       |  x                          |Eval Status|                 |
+| 125M        | 12       | 768         | 12      | 64         | 4M         | 6e-4        | .../pythia/125M/            |Complete   |                 |
+| 125M Dedup  | 12       | 768         | 12      | 64         | 4M         | 6e-4        | .../pythia/125M_dedup       |Complete   |                 |
+| 350M        | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | Complete                    |In Progress|                 |
+| 350M Dedup  | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | Complete                    |In Progress|                 |
+| 1.3B        | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | Complete                    |Complete   |                 |
+| 1.3B Dedup  | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | Complete                    |In Progress|                 |
+| 2.7B        | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | In Progress                 |Eval Status|                 |
+| 2.7B Dedup  | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | In Progress                 |Eval Status|                 |
+| 6.7B        | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate|Train Status                 |Eval Status|                 |
+| 6.7B Dedup  | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate|Train Status                 |Eval Status|                 |
+| 13B         | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate|Train Status                 |Eval Status|                 |
+| 13B Dedup   | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate|Train Status                 |Eval Status|                 |
+
+
+`s3://pythia-hf/` contains the 
+
+
+TODO: add instructions for downloading a HF model from where they're hosted for very easy access to the intermediate ckpts
 
 
 ## Experiments 
