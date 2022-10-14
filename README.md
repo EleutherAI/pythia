@@ -7,9 +7,9 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 | Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status                 |Eval Status|Conversion Status|
 | ----------- | -------- |------------ | ------- |----------- | ---------- |------------ | ----------                  |---------- | --------------- |
 | 19M         | 6        | 512         | 8       | 64         | 2M         | 1e-3        | s3://s-eai-neox/pythia/19M/ |In progress| Complete        |
-| 19M Dedup   | 6        | 512         | 8       | 64         | 2M         | 1e-3        | .../pythia/19M_dedup/       |Eval Status|  Not Ready      |
-| 49M         | 10       | 640         | 10      | 64         | 2M         | 8e-4?       |  x                          |Eval Status|                 |
-| 49M Dedup   | 10       | 640         | 10      | 64         | 2M         | 8e-4?       |  x                          |Eval Status|                 |
+| 19M Dedup   | 6        | 512         | 8       | 64         | 2M         | 1e-3        | .../pythia/19M_dedup/       |In progress|  Not Ready      |
+| 49M         | 10       | 640         | 10      | 64         | 2M         | 8e-4?       |  WIP                        |Eval Status|                 |
+| 49M Dedup   | 10       | 640         | 10      | 64         | 2M         | 8e-4?       |  WIP                        |Eval Status|                 |
 | 125M        | 12       | 768         | 12      | 64         | 4M         | 6e-4        | .../pythia/125M/            |Complete   |                 |
 | 125M Dedup  | 12       | 768         | 12      | 64         | 4M         | 6e-4        | .../pythia/125M_dedup/      |Complete   |                 |
 | 350M        | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | .../pythia/350M/            |In Progress|                 |
