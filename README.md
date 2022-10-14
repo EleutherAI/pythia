@@ -24,7 +24,7 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 | 13B Dedup   | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate|Train Status                 |Eval Status|                 |
 
 
-`s3://pythia-hf/` contains the 
+`s3://pythia-hf/` contains the checkpoints that are converted to HF format.
 
 
 TODO: add instructions for downloading a HF model from where they're hosted for very easy access to the intermediate ckpts
