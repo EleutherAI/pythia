@@ -15,7 +15,7 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 | 350M        | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | .../pythia/350M/            |In Progress|                 |
 | 350M Dedup  | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | .../pythia/350M_dedup/      |In Progress|                 |
 | 800M        | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | .../pythia/800M/            |In Progress| In Progress     |
-| 800M Dedup  | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | .../pythia/800M_dedup/      |In Progress|                 |
+| 800M Dedup  | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | .../pythia/800M_dedup/      |In Progress| In Progress     |
 | 1.3B        | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | Complete                    |Complete   |                 |
 | 1.3B Dedup  | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | Complete                    |In Progress|                 |
 | 2.7B        | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | Complete                    |Eval Status| In Progress     |
