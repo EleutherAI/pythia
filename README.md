@@ -12,12 +12,12 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 | 49M Dedup   | 10       | 640         | 10      | 64         | 2M         | 8e-4?       |  WIP                        |Eval Status|                 |
 | 125M        | 12       | 768         | 12      | 64         | 4M         | 6e-4        | .../pythia/125M/            |Complete   | Complete (check)|
 | 125M Dedup  | 12       | 768         | 12      | 64         | 4M         | 6e-4        | .../pythia/125M_dedup/      |Complete   | Complete (check)|
-| 350M        | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | .../pythia/350M/            |In Progress| In Progress     |
-| 350M Dedup  | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | .../pythia/350M_dedup/      |In Progress| In Progress     |
+| 350M        | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | .../pythia/350M/            |In Progress| Complete (check)|
+| 350M Dedup  | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | .../pythia/350M_dedup/      |In Progress| Complete (check)|
 | 800M        | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | .../pythia/800M/            |In Progress| Complete (check)|
 | 800M Dedup  | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | .../pythia/800M_dedup/      |In Progress| Complete (check)|
-| 1.3B        | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | Complete                    |Complete   |                 |
-| 1.3B Dedup  | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | Complete                    |In Progress|                 |
+| 1.3B        | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | Complete                    |Complete   | In Progress     |
+| 1.3B Dedup  | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | Complete                    |In Progress| In Progress     |
 | 2.7B        | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | Complete                    |Eval Status| Complete (check)|
 | 2.7B Dedup  | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | In Progress                 |Eval Status|                 |
 | 6.7B        | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| Complete                    |Eval Status|                 |
