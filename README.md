@@ -20,7 +20,7 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 | 1.3B Dedup  | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | Complete                    |In Progress| Complete (check)|
 | 2.7B        | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | Complete                    |Eval Status| Complete (check)|
 | 2.7B Dedup  | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | In Progress                 |Eval Status|                 |
-| 6.7B        | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| Complete                    |Eval Status| In Progress     |
+| 6.7B        | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| WIP                         |Eval Status| (Needs redoing) |
 | 6.7B Dedup  | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| Complete                    |Eval Status|                 |
 | 13B         | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| Complete                    |Eval Status| In Progress     |
 | 13B Dedup   | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| Complete                    |Eval Status| In Progress     |
