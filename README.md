@@ -4,26 +4,26 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 
 ## Models
 
-| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate|Train Status                 |Eval Status|Conversion Status|
-| ----------- | -------- |------------ | ------- |----------- | ---------- |------------ | ----------                  |---------- | --------------- |
-| 19M         | 6        | 512         | 8       | 64         | 2M         | 1e-3        |`s3://s-eai-neox/pythia/19M/`|In progress| Complete        |
-| 19M Dedup   | 6        | 512         | 8       | 64         | 2M         | 1e-3        | `.../pythia/19M_dedup/`     |In progress| In Progress     |
-| 49M         | 10       | 640         | 10      | 64         | 2M         | 8e-4        |  WIP                        |Eval Status|                 |
-| 49M Dedup   | 10       | 640         | 10      | 64         | 2M         | 8e-4        |  WIP                        |Eval Status|                 |
-| 125M        | 12       | 768         | 12      | 64         | 4M         | 6e-4        | `.../pythia/125M/`          |Complete   | Complete        |
-| 125M Dedup  | 12       | 768         | 12      | 64         | 4M         | 6e-4        | `.../pythia/125M_dedup/`    |Complete   | Complete (check)|
-| 350M        | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | `.../pythia/350M/`          |In Progress| Complete (check)|
-| 350M Dedup  | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | `.../pythia/350M_dedup/`    |In Progress| Complete (check)|
-| 800M        | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | `.../pythia/800M/`          |In Progress| Complete (check)|
-| 800M Dedup  | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | `.../pythia/800M_dedup/`    |In Progress| Complete (check)|
-| 1.3B        | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | Complete                    |Complete   | Complete (check)|
-| 1.3B Dedup  | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | Complete                    |In Progress| Complete (check)|
-| 2.7B        | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | Complete                    |Eval Status| Complete (check)|
-| 2.7B Dedup  | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | In Progress                 |Eval Status|                 |
-| 6.7B        | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| WIP                         |Eval Status| (Needs redoing) |
-| 6.7B Dedup  | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| Complete                    |Eval Status|                 |
-| 13B         | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| Complete                    |Eval Status| In Progress     |
-| 13B Dedup   | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| Complete                    |Eval Status| In Progress     |
+| Params      | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate| Checkpoints | Evaluations|
+| ----------- | -------- |------------ | ------- |----------- | ---------- |------------ | ---------- | --------------- |
+| 19M         | 6        | 512         | 8       | 64         | 2M         | 1e-3        | ---------- | --------------- |
+| 19M Dedup   | 6        | 512         | 8       | 64         | 2M         | 1e-3        | ---------- | --------------- |
+| 49M         | 10       | 640         | 10      | 64         | 2M         | 8e-4        | ---------- | --------------- |
+| 49M Dedup   | 10       | 640         | 10      | 64         | 2M         | 8e-4        | ---------- | --------------- |
+| 125M        | 12       | 768         | 12      | 64         | 4M         | 6e-4        | ---------- | --------------- |
+| 125M Dedup  | 12       | 768         | 12      | 64         | 4M         | 6e-4        | ---------- | --------------- |
+| 350M        | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | ---------- | --------------- |
+| 350M Dedup  | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | ---------- | --------------- |
+| 800M        | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | ---------- | --------------- |
+| 800M Dedup  | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | ---------- | --------------- |
+| 1.3B        | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | ---------- | --------------- |
+| 1.3B Dedup  | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | ---------- | --------------- |
+| 2.7B        | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | ---------- | --------------- |
+| 2.7B Dedup  | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | ---------- | --------------- |
+| 6.7B        | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| ---------- | --------------- |
+| 6.7B Dedup  | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| ---------- | --------------- |
+| 13B         | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| ---------- | --------------- |
+| 13B Dedup   | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| ---------- | --------------- |
 
 
 `s3://pythia-hf/` contains the checkpoints that are converted to HF format.
