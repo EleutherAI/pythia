@@ -22,8 +22,8 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 | 2.7B Dedup  | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | ---------- | --------------- |
 | 6.7B        | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| ---------- | --------------- |
 | 6.7B Dedup  | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| ---------- | --------------- |
-| 13B         | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| ---------- | --------------- |
-| 13B Dedup   | n_layers |d_model      | n_heads |d_head      | 2M         |Learning Rate| ---------- | --------------- |
+| 13B         | 36       | 5120        | 40      | 128        | 2M         |Learning Rate| ---------- | --------------- |
+| 13B Dedup   | 36       | 5120        | 40      | 128        | 2M         |Learning Rate| ---------- | --------------- |
 
 
 `s3://pythia-hf/` contains the checkpoints that are converted to HF format.
