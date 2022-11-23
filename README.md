@@ -29,10 +29,7 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 
 TODO: add instructions for downloading a HF model from where they're hosted for very easy access to the intermediate ckpts
 
-TODO: add all configs to repo
-
-
-
+TODO: link to configs from table?
 
 ## Experiments 
 
