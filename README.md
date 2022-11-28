@@ -18,10 +18,10 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 | Pythia-1.3B-Deduped  | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | Ready      | --------------- |
 | Pythia-2.7B          | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | Ready      | Ready, not uploaded |
 | Pythia-2.7B-Deduped  | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | Ready      | --------------- |
-| Pythia-6.7B          | 32       | 4096        | 32      | 128        | 2M         | 1.2e-4 ?    | Ready      | --------------- |
-| Pythia-6.7B-Deduped  | 32       | 4096        | 32      | 128        | 2M         | 1.2e-4 ?    | Ready      | --------------- |
-| Pythia-13B           | 36       | 5120        | 40      | 128        | 2M         | 1.2e-4      | Ready      | --------------- |
-| Pythia-13B-Deduped   | 36       | 5120        | 40      | 128        | 2M         | 1.2e-4      | Ready      | --------------- |
+| Pythia-6.7B          | 32       | 4096        | 32      | 128        | 2M         | 1.2e-4 ?    | Ready      | Missing 5-shot, MMLU |
+| Pythia-6.7B-Deduped  | 32       | 4096        | 32      | 128        | 2M         | 1.2e-4 ?    | Ready      | Missing 5-shot, MMLU |
+| Pythia-13B           | 36       | 5120        | 40      | 128        | 2M         | 1.2e-4      | Ready      | Missing 5-shot, MMLU |
+| Pythia-13B-Deduped   | 36       | 5120        | 40      | 128        | 2M         | 1.2e-4      | Ready      | Missing 5-shot, MMLU |
 
 
 `s3://pythia-hf/` contains the checkpoints that are converted to HF format.
