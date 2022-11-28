@@ -12,8 +12,8 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 | Pythia-125M-Deduped  | 12       | 768         | 12      | 64         | 4M         | 6e-4        | Ready      | --------------- |
 | Pythia-350M          | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | Ready      | --------------- |
 | Pythia-350M-Deduped  | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | Ready      | --------------- |
-| Pythia-800M          | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | Ready      | --------------- |
-| Pythia-800M-Deduped  | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | Ready      | --------------- |
+| Pythia-800M          | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | Ready      | Ready |
+| Pythia-800M-Deduped  | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | Ready      | Ready |
 | Pythia-1.3B          | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | Ready      | --------------- |
 | Pythia-1.3B-Deduped  | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | Ready      | --------------- |
 | Pythia-2.7B          | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | Ready      | Ready |
