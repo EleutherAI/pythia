@@ -48,7 +48,7 @@ tokenizer = AutoTokenizer.from_pretrained(
   cache_dir="./pythia-19m-deduped/step3000",
 )
 
-inputs = tokenizer("This is an output from the smallest Pythia language model", return_tensors="pt")
+inputs = tokenizer("Hello, I am", return_tensors="pt")
 model.generate(**inputs)
 ```
 
