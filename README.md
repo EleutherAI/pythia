@@ -1,6 +1,6 @@
 # Pythia: Interpreting Autoregressive Transformers Across Time and Scale
 
-This repository is for EleutherAI's work-in-progress project *Pythia* which combines interpretability analysis and scaling laws to understand how knowledge develops and evolves during training in autoregressive transformers.
+This repository is for EleutherAI's work-in-progress project *Pythia* which combines interpretability analysis and scaling laws to understand how knowledge develops and evolves during training in autoregressive transformers. 
 
 ## Models
 
@@ -23,13 +23,40 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 | Pythia-13B           | 36       | 5120        | 40      | 128        | 2M         | 1.2e-4      | Ready      | --------------- |
 | Pythia-13B-Deduped   | 36       | 5120        | 40      | 128        | 2M         | 1.2e-4      | Ready      | --------------- |
 
+We train and release a suite of 8 model sizes on 2 different datasets: [the Pile](https://pile.eleuther.ai/), as well as the Pile with deduplication applied.
 
-`s3://pythia-hf/` contains the checkpoints that are converted to HF format.
+All 8 model sizes are trained on the exact same data, in the exact same order. Each model saw 299,892,736,000 ~= 299.9B tokens during training, and *143 checkpoints* for each model are saved every 2,097,152,000 ~= 2B tokens, evenly spaced throughout training. This corresponds to just under 1 epoch on the Pile for non-"deduped" models, and ~= 1.5 epochs on the deduped Pile (TODO: reconfirm this number).
+
+Config files used to train these models within the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox) can be found at `models/{MODEL_SIZE}/` within this repository.
+
+## Quickstart
+
+All Pythia models are hosted on [the Huggingface hub](https://huggingface.co/EleutherAI). They can be loaded and used via the following code:
+
+```python
+from transformers import GPTNeoXForCausalLM
+
+model = GPTNeoXForCausalLM.from_pretrained(
+  "EleutherAI/pythia-19m-deduped",
+  revision="step3000",
+  cache_dir="./pythia-19m-deduped/step3000",
+)
+  
+tokenizer = AutoTokenizer.from_pretrained(
+  "EleutherAI/pythia-19m-deduped",
+  revision="step3000",
+  cache_dir="./pythia-19m-deduped/step3000",
+)
+
+inputs = tokenizer("This is an output from the smallest Pythia language model", return_tensors="pt")
+model.generate(**inputs)
+```
+
+All models were trained for the equivalent of 143000 steps at a batch size of 2,097,152 (2M) tokens. Revision/branch `step143000` (e.g. [https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000](https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000)) corresponds exactly to the model checkpoint on the `main` branch of each model.
+  
 
 
-TODO: add instructions for downloading a HF model from where they're hosted for very easy access to the intermediate ckpts
-
-TODO: link to configs from table?
+We additionally have all model checkpoints in the format accepted by the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox), but do not serve them at scale due to size of optimizer states and anticipated lower demand. If you would like to perform analysis using the models in the NeoX codebase, or would like the optimizer states, please email us at contact@eleuther.ai to arrange access.
 
 ## Experiments 
 
@@ -38,3 +65,4 @@ TODO: link to configs from table?
 ### Training Order and Memorization
 
 A common explanation for language model training dynamics is that LMs have a mass of knowledge and when they come across new information they glom that knowledge on and slowly integrate it into the mass over time. One prediction that this mental model makes is that tokens encountered later in training will be more likely to be memorized than ones encountered earlier in training, as the model will not have time to adjust its representations to store the info without memorization. The primary goal of this experiment is to **disprove** this prediction.
+
