@@ -6,11 +6,11 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 
 | Params               | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate| Checkpoints | Evaluations        |
 | -------------------- | -------- |------------ | ------- |----------- | ---------- |------------ | ---------- | ------------------- |
-| Pythia-19M           | 6        | 512         | 8       | 64         | 2M         | 1e-3        | Ready      | Ready           |
-| Pythia-19M-Deduped   | 6        | 512         | 8       | 64         | 2M         | 1e-3        | Ready      | Ready           |
-| Pythia-125M          | 12       | 768         | 12      | 64         | 4M         | 6e-4        | Ready      | 0-shot Ready |
-| Pythia-125M-Deduped  | 12       | 768         | 12      | 64         | 4M         | 6e-4        | Ready      | --------------- |
-| Pythia-350M          | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | Ready      | --------------- |
+| Pythia-19M           | 6        | 512         | 8       | 64         | 2M         | 1e-3        | [Here](https://huggingface.co/EleutherAI/pythia-19m)      | Ready           |
+| Pythia-19M-Deduped   | 6        | 512         | 8       | 64         | 2M         | 1e-3        | [Here](https://huggingface.co/EleutherAI/pythia-19m-deduped)     | Ready           |
+| Pythia-125M          | 12       | 768         | 12      | 64         | 4M         | 6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-125m)      | 0-shot Ready |
+| Pythia-125M-Deduped  | 12       | 768         | 12      | 64         | 4M         | 6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-125m-deduped)      | --------------- |
+| Pythia-350M          | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | [Here](https://huggingface.co/EleutherAI/pythia-350m)     | --------------- |
 | Pythia-350M-Deduped  | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | Ready      | --------------- |
 | Pythia-800M          | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | Ready      | Ready           |
 | Pythia-800M-Deduped  | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | Ready      | Ready           |
