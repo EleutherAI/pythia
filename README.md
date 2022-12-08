@@ -31,7 +31,7 @@ Config files used to train these models within the [GPT-NeoX library](https://gi
 
 ## Quickstart
 
-All Pythia models are hosted on [the Huggingface hub](https://huggingface.co/EleutherAI). They can be loaded and used via the following code:
+All Pythia models are hosted on [the Huggingface hub](https://huggingface.co/EleutherAI). They can be loaded and used via the following code (here, for the 3rd/143 `pythia-19M-deduped` model checkpoint):
 
 ```python
 from transformers import GPTNeoXForCausalLM
