@@ -8,7 +8,7 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 | -------------------- | -------- |------------ | ------- |----------- | ---------- |------------ | ---------- | ------------------- |
 | Pythia-19M           | 6        | 512         | 8       | 64         | 2M         | 1e-3        | [Here](https://huggingface.co/EleutherAI/pythia-19m)      | Ready           |
 | Pythia-19M-Deduped   | 6        | 512         | 8       | 64         | 2M         | 1e-3        | [Here](https://huggingface.co/EleutherAI/pythia-19m-deduped)     | Ready           |
-| Pythia-125M          | 12       | 768         | 12      | 64         | 4M         | 6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-125m)      | 0-shot Ready |
+| Pythia-125M          | 12       | 768         | 12      | 64         | 4M         | 6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-125m)      | Ready |
 | Pythia-125M-Deduped  | 12       | 768         | 12      | 64         | 4M         | 6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-125m-deduped)      | --------------- |
 | Pythia-350M          | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | [Here](https://huggingface.co/EleutherAI/pythia-350m)     | --------------- |
 | Pythia-350M-Deduped  | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | Ready      | --------------- |
