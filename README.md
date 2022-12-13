@@ -11,17 +11,17 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 | Pythia-125M          | 12       | 768         | 12      | 64         | 4M         | 6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-125m)      | Ready |
 | Pythia-125M-Deduped  | 12       | 768         | 12      | 64         | 4M         | 6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-125m-deduped)      | --------------- |
 | Pythia-350M          | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | [Here](https://huggingface.co/EleutherAI/pythia-350m)     | --------------- |
-| Pythia-350M-Deduped  | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | Ready      | --------------- |
-| Pythia-800M          | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | Ready      | Ready           |
-| Pythia-800M-Deduped  | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | Ready      | Ready           |
-| Pythia-1.3B          | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | Ready      | Ready           |
-| Pythia-1.3B-Deduped  | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | Ready      | Ready           |
-| Pythia-2.7B          | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | Ready      | Ready           |
-| Pythia-2.7B-Deduped  | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | Ready      | Ready           |
-| Pythia-6.7B          | 32       | 4096        | 32      | 128        | 2M         | 1.2e-4      | Ready      | Ready           |
-| Pythia-6.7B-Deduped  | 32       | 4096        | 32      | 128        | 2M         | 1.2e-4      | Ready      | Ready           |
-| Pythia-13B           | 36       | 5120        | 40      | 128        | 2M         | 1.2e-4      | Ready      | --------------- |
-| Pythia-13B-Deduped   | 36       | 5120        | 40      | 128        | 2M         | 1.2e-4      | Ready      | --------------- |
+| Pythia-350M-Deduped  | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | [Here](https://huggingface.co/EleutherAI/pythia-350m-deduped)      | --------------- |
+| Pythia-800M          | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | [Here](https://huggingface.co/EleutherAI/pythia-800m)      | Ready           |
+| Pythia-800M-Deduped  | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | [Here](https://huggingface.co/EleutherAI/pythia-800m-deduped)      | Ready           |
+| Pythia-1.3B          | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-1.3b)      | Ready           |
+| Pythia-1.3B-Deduped  | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-1.3b-deduped)      | Ready           |
+| Pythia-2.7B          | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | [Here](https://huggingface.co/EleutherAI/pythia-2.7b)      | Ready           |
+| Pythia-2.7B-Deduped  | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | [Here](https://huggingface.co/EleutherAI/pythia-2.7b-deduped)      | Ready           |
+| Pythia-6.7B          | 32       | 4096        | 32      | 128        | 2M         | 1.2e-4      | [Here](https://huggingface.co/EleutherAI/pythia-6.7b)      | Ready           |
+| Pythia-6.7B-Deduped  | 32       | 4096        | 32      | 128        | 2M         | 1.2e-4      | [Here](https://huggingface.co/EleutherAI/pythia-6.7b-deduped)      | Ready           |
+| Pythia-13B           | 36       | 5120        | 40      | 128        | 2M         | 1.2e-4      | [Here](https://huggingface.co/EleutherAI/pythia-13b)      | --------------- |
+| Pythia-13B-Deduped   | 36       | 5120        | 40      | 128        | 2M         | 1.2e-4      | [Here](https://huggingface.co/EleutherAI/pythia-13b-deduped)      | --------------- |
 
 We train and release a suite of 8 model sizes on 2 different datasets: [the Pile](https://pile.eleuther.ai/), as well as the Pile with deduplication applied.
 
@@ -56,7 +56,7 @@ All models were trained for the equivalent of 143000 steps at a batch size of 2,
   
 
 
-We additionally have all model checkpoints in the format accepted by the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox), but do not serve them at scale due to size of optimizer states and anticipated lower demand. If you would like to perform analysis using the models in the NeoX codebase, or would like the optimizer states, please email us at contact@eleuther.ai to arrange access.
+We additionally have all model checkpoints in the format accepted by the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox), but do not serve them at scale due to size of optimizer states and anticipated lower demand. If you would like to perform analysis using the models within the GPT-NeoX codebase, or would like the optimizer states, please email us at contact@eleuther.ai to arrange access.
 
 ## Experiments 
 
