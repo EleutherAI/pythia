@@ -33,7 +33,7 @@ We are planning on releasing a user-friendly utility, but the dataset loader in 
 
 ## Quickstart
 
-All Pythia models are hosted on [the Huggingface hub](https://huggingface.co/EleutherAI). They can be loaded and used via the following code (here, for the 3rd/143 `pythia-19M-deduped` model checkpoint):
+All Pythia models are hosted on [the Huggingface hub](https://huggingface.co/EleutherAI). They can be loaded and used via the following code (shown for the 3rd `pythia-19M-deduped` model checkpoint):
 
 ```python
 from transformers import GPTNeoXForCausalLM
@@ -54,11 +54,9 @@ inputs = tokenizer("Hello, I am", return_tensors="pt")
 model.generate(**inputs)
 ```
 
-All models were trained for the equivalent of 143000 steps at a batch size of 2,097,152 (2M) tokens. Revision/branch `step143000` (e.g. [https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000](https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000)) corresponds exactly to the model checkpoint on the `main` branch of each model.
-  
-
-
-We additionally have all model checkpoints in the format accepted by the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox), but do not serve them at scale due to size of optimizer states and anticipated lower demand. If you would like to perform analysis using the models within the GPT-NeoX codebase, or would like the optimizer states, please email us at contact@eleuther.ai to arrange access.
+All models were trained for the equivalent of 143000 steps at a batch size of 2,097,152 tokens. Revision/branch `step143000` (e.g. [https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000](https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000)) corresponds exactly to the model checkpoint on the `main` branch of each model.
+ 
+We additionally have all model checkpoints in the format accepted by the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox), but do not serve them at scale due to size of optimizer states and anticipated lower demand. If you would like to perform analysis using the models within the GPT-NeoX codebase, or would like the optimizer states, please email us at stella@eleuther.ai to arrange access.
 
 ## Experiments 
 
@@ -66,5 +64,8 @@ We additionally have all model checkpoints in the format accepted by the [GPT-Ne
 
 ### Training Order and Memorization
 
-A common explanation for language model training dynamics is that LMs have a mass of knowledge and when they come across new information they glom that knowledge on and slowly integrate it into the mass over time. One prediction that this mental model makes is that tokens encountered later in training will be more likely to be memorized than ones encountered earlier in training, as the model will not have time to adjust its representations to store the info without memorization. The primary goal of this experiment is to **disprove** this prediction.
+A common explanation for language model training dynamics is that LMs have a mass of knowledge and when they come across new information they glom that knowledge on and slowly integrate it into the mass over time. One prediction that this mental model makes is that tokens encountered later in training will be more likely to be memorized than ones encountered earlier in training, as the model will not have time to adjust its representations to store the info without memorization. The primary goal of this experiment is to **disprove** this prediction and demonstrate that training order doesn't influence memorization.
+
+### Grammar Learning Trajectories of Language Models
+
 
