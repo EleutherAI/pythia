@@ -29,6 +29,8 @@ All 8 model sizes are trained on the exact same data, in the exact same order. E
 
 Config files used to train these models within the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox) can be found at the `models/` directory within this repository.
 
+We are planning on releasing a user-friendly utility, but the dataset loader in GPT-NeoX (which is the same as the Megatron-DS one, AFAIK) allows you to save and export the seed used to shuffle data. If you just build the GPT2Dataset with the right neox args (provided with the model checkpoints) then it should be easily accessible — just grab the `[(BS * starting iter) + index]`th element of the dataset object.
+
 ## Quickstart
 
 All Pythia models are hosted on [the Huggingface hub](https://huggingface.co/EleutherAI). They can be loaded and used via the following code (here, for the 3rd/143 `pythia-19M-deduped` model checkpoint):
