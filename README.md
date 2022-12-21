@@ -55,6 +55,8 @@ model.generate(**inputs)
 ```
 
 All models were trained for the equivalent of 143000 steps at a batch size of 2,097,152 tokens. Revision/branch `step143000` (e.g. [https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000](https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000)) corresponds exactly to the model checkpoint on the `main` branch of each model.
+
+Models with a batch size of 4M tokens listed were originally trained for 71500 steps instead, and checkpointed every 500 steps. The checkpoints on Huggingface are renamed for consistency with all 2M batch models, so `step1000` is the first checkpoint for the 1.3B that was saved (corresponding to step 500 in training), and `step1000` is likewise the first 6.7B checkpoint that was saved (corresponding to 1000 "actual" steps.)
  
 We additionally have all model checkpoints in the format accepted by the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox), but do not serve them at scale due to size of optimizer states and anticipated lower demand. If you would like to perform analysis using the models within the GPT-NeoX codebase, or would like the optimizer states, please email us at stella@eleuther.ai to arrange access.
 
