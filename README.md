@@ -1,27 +1,27 @@
 # Pythia: Interpreting Autoregressive Transformers Across Time and Scale
 
-This repository is for EleutherAI's work-in-progress project *Pythia* which combines interpretability analysis and scaling laws to understand how knowledge develops and evolves during training in autoregressive transformers. 
+This repository is for EleutherAI's work-in-progress project *Pythia* which combines interpretability analysis and scaling laws to understand how knowledge develops and evolves during training in autoregressive transformers.
 
 ## Models
 
-| Params               | n_layers |d_model      | n_heads |d_head      | Batch Size |Learning Rate| Checkpoints | Evaluations        |
-| -------------------- | -------- |------------ | ------- |----------- | ---------- |------------ | ---------- | ------------------- |
-| Pythia-19M           | 6        | 512         | 8       | 64         | 2M         | 1e-3        | [Here](https://huggingface.co/EleutherAI/pythia-19m)      | Ready           |
-| Pythia-19M-Deduped   | 6        | 512         | 8       | 64         | 2M         | 1e-3        | [Here](https://huggingface.co/EleutherAI/pythia-19m-deduped)     | Ready           |
-| Pythia-125M          | 12       | 768         | 12      | 64         | 4M         | 6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-125m)      | Ready |
-| Pythia-125M-Deduped  | 12       | 768         | 12      | 64         | 4M         | 6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-125m-deduped)      | --------------- |
-| Pythia-350M          | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | [Here](https://huggingface.co/EleutherAI/pythia-350m)     | --------------- |
-| Pythia-350M-Deduped  | 24       | 1024        | 16      | 64         | 4M         | 3e-4        | [Here](https://huggingface.co/EleutherAI/pythia-350m-deduped)      | --------------- |
-| Pythia-800M          | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | [Here](https://huggingface.co/EleutherAI/pythia-800m)      | Ready           |
-| Pythia-800M-Deduped  | 16       | 2048        | 8       | 128        | 4M         | 3e-4        | [Here](https://huggingface.co/EleutherAI/pythia-800m-deduped)      | Ready           |
-| Pythia-1.3B          | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-1.3b)      | Ready           |
-| Pythia-1.3B-Deduped  | 24       | 2048        | 16      | 128        | 4M         | 2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-1.3b-deduped)      | Ready           |
-| Pythia-2.7B          | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | [Here](https://huggingface.co/EleutherAI/pythia-2.7b)      | Ready           |
-| Pythia-2.7B-Deduped  | 32       | 2560        | 32      | 80         | 2M         | 1.6e-4      | [Here](https://huggingface.co/EleutherAI/pythia-2.7b-deduped)      | Ready           |
-| Pythia-6.7B          | 32       | 4096        | 32      | 128        | 2M         | 1.2e-4      | [Here](https://huggingface.co/EleutherAI/pythia-6.7b)      | Ready           |
-| Pythia-6.7B-Deduped  | 32       | 4096        | 32      | 128        | 2M         | 1.2e-4      | [Here](https://huggingface.co/EleutherAI/pythia-6.7b-deduped)      | Ready           |
-| Pythia-13B           | 36       | 5120        | 40      | 128        | 2M         | 1.2e-4      | [Here](https://huggingface.co/EleutherAI/pythia-13b)      | --------------- |
-| Pythia-13B-Deduped   | 36       | 5120        | 40      | 128        | 2M         | 1.2e-4      | [Here](https://huggingface.co/EleutherAI/pythia-13b-deduped)      | --------------- |
+| Params              | n_layers | d_model | n_heads | d_head | Batch Size | Learning Rate | Checkpoints                                                | Evaluations     |
+| ------------------- | -------- | ------- | ------- | ------ | ---------- | ------------- | ---------------------------------------------------------- | --------------- |
+| Pythia-19M          | 6        | 512     | 8       | 64     | 2M         | 1e-3          | [Here](https://huggingface.co/EleutherAI/pythia-19m)          | Ready           |
+| Pythia-19M-Deduped  | 6        | 512     | 8       | 64     | 2M         | 1e-3          | [Here](https://huggingface.co/EleutherAI/pythia-19m-deduped)  | Ready           |
+| Pythia-125M         | 12       | 768     | 12      | 64     | 4M         | 6e-4          | [Here](https://huggingface.co/EleutherAI/pythia-125m)         | Ready           |
+| Pythia-125M-Deduped | 12       | 768     | 12      | 64     | 4M         | 6e-4          | [Here](https://huggingface.co/EleutherAI/pythia-125m-deduped) | Ready           |
+| Pythia-350M         | 24       | 1024    | 16      | 64     | 4M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-350m)         | --------------- |
+| Pythia-350M-Deduped | 24       | 1024    | 16      | 64     | 4M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-350m-deduped) | --------------- |
+| Pythia-800M         | 16       | 2048    | 8       | 128    | 4M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-800m)         | Ready           |
+| Pythia-800M-Deduped | 16       | 2048    | 8       | 128    | 4M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-800m-deduped) | Ready           |
+| Pythia-1.3B         | 24       | 2048    | 16      | 128    | 4M         | 2e-4          | [Here](https://huggingface.co/EleutherAI/pythia-1.3b)         | Ready           |
+| Pythia-1.3B-Deduped | 24       | 2048    | 16      | 128    | 4M         | 2e-4          | [Here](https://huggingface.co/EleutherAI/pythia-1.3b-deduped) | Ready           |
+| Pythia-2.7B         | 32       | 2560    | 32      | 80     | 2M         | 1.6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-2.7b)         | Ready           |
+| Pythia-2.7B-Deduped | 32       | 2560    | 32      | 80     | 2M         | 1.6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-2.7b-deduped) | Ready           |
+| Pythia-6.7B         | 32       | 4096    | 32      | 128    | 2M         | 1.2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-6.7b)         | Ready           |
+| Pythia-6.7B-Deduped | 32       | 4096    | 32      | 128    | 2M         | 1.2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-6.7b-deduped) | Ready           |
+| Pythia-13B          | 36       | 5120    | 40      | 128    | 2M         | 1.2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-13b)          | --------------- |
+| Pythia-13B-Deduped  | 36       | 5120    | 40      | 128    | 2M         | 1.2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-13b-deduped)  | --------------- |
 
 We train and release a suite of 8 model sizes on 2 different datasets: [the Pile](https://pile.eleuther.ai/), as well as the Pile with deduplication applied.
 
@@ -43,7 +43,7 @@ model = GPTNeoXForCausalLM.from_pretrained(
   revision="step3000",
   cache_dir="./pythia-19m-deduped/step3000",
 )
-  
+
 tokenizer = AutoTokenizer.from_pretrained(
   "EleutherAI/pythia-19m-deduped",
   revision="step3000",
@@ -57,10 +57,10 @@ model.generate(**inputs)
 All models were trained for the equivalent of 143000 steps at a batch size of 2,097,152 tokens. Revision/branch `step143000` (e.g. [https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000](https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000)) corresponds exactly to the model checkpoint on the `main` branch of each model.
 
 Models with a batch size of 4M tokens listed were originally trained for 71500 steps instead, and checkpointed every 500 steps. The checkpoints on Huggingface are renamed for consistency with all 2M batch models, so `step1000` is the first checkpoint for the 1.3B that was saved (corresponding to step 500 in training), and `step1000` is likewise the first 6.7B checkpoint that was saved (corresponding to 1000 "actual" steps.)
- 
+
 We additionally have all model checkpoints in the format accepted by the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox), but do not serve them at scale due to size of optimizer states and anticipated lower demand. If you would like to perform analysis using the models within the GPT-NeoX codebase, or would like the optimizer states, please email us at stella@eleuther.ai to arrange access.
 
-## Experiments 
+## Experiments
 
 ### Grammar Learning Trajectories of Language Models
 
@@ -69,5 +69,3 @@ We additionally have all model checkpoints in the format accepted by the [GPT-Ne
 A common explanation for language model training dynamics is that LMs have a mass of knowledge and when they come across new information they glom that knowledge on and slowly integrate it into the mass over time. One prediction that this mental model makes is that tokens encountered later in training will be more likely to be memorized than ones encountered earlier in training, as the model will not have time to adjust its representations to store the info without memorization. The primary goal of this experiment is to **disprove** this prediction and demonstrate that training order doesn't influence memorization.
 
 ### Grammar Learning Trajectories of Language Models
-
-
