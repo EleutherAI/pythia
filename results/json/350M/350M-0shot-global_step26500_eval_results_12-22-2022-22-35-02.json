@@ -1,0 +1,1068 @@
+{
+    "results": {
+        "wsc": {
+            "acc": 0.36538461538461536,
+            "acc_stderr": 0.0474473339327792
+        },
+        "blimp_causative": {
+            "acc": 0.68,
+            "acc_stderr": 0.014758652303574874
+        },
+        "hendrycksTest-clinical_knowledge": {
+            "acc": 0.20754716981132076,
+            "acc_stderr": 0.02495991802891127,
+            "acc_norm": 0.3433962264150943,
+            "acc_norm_stderr": 0.02922452646912479
+        },
+        "hendrycksTest-anatomy": {
+            "acc": 0.17777777777777778,
+            "acc_stderr": 0.033027898599017176,
+            "acc_norm": 0.2222222222222222,
+            "acc_norm_stderr": 0.03591444084196969
+        },
+        "hendrycksTest-high_school_government_and_politics": {
+            "acc": 0.18652849740932642,
+            "acc_stderr": 0.02811209121011748,
+            "acc_norm": 0.27461139896373055,
+            "acc_norm_stderr": 0.03221024508041154
+        },
+        "hendrycksTest-college_physics": {
+            "acc": 0.19607843137254902,
+            "acc_stderr": 0.03950581861179961,
+            "acc_norm": 0.23529411764705882,
+            "acc_norm_stderr": 0.042207736591714534
+        },
+        "blimp_passive_2": {
+            "acc": 0.885,
+            "acc_stderr": 0.010093407594904614
+        },
+        "blimp_wh_vs_that_no_gap_long_distance": {
+            "acc": 0.874,
+            "acc_stderr": 0.010499249222408033
+        },
+        "hendrycksTest-logical_fallacies": {
+            "acc": 0.19631901840490798,
+            "acc_stderr": 0.031207970394709218,
+            "acc_norm": 0.26380368098159507,
+            "acc_norm_stderr": 0.03462419931615623
+        },
+        "blimp_animate_subject_trans": {
+            "acc": 0.868,
+            "acc_stderr": 0.01070937396352802
+        },
+        "hendrycksTest-conceptual_physics": {
+            "acc": 0.2170212765957447,
+            "acc_stderr": 0.026947483121496217,
+            "acc_norm": 0.1829787234042553,
+            "acc_norm_stderr": 0.025276041000449966
+        },
+        "blimp_principle_A_reconstruction": {
+            "acc": 0.494,
+            "acc_stderr": 0.015818160898606715
+        },
+        "hendrycksTest-college_biology": {
+            "acc": 0.2847222222222222,
+            "acc_stderr": 0.037738099906869334,
+            "acc_norm": 0.25,
+            "acc_norm_stderr": 0.03621034121889507
+        },
+        "hendrycksTest-high_school_biology": {
+            "acc": 0.2032258064516129,
+            "acc_stderr": 0.022891687984554956,
+            "acc_norm": 0.267741935483871,
+            "acc_norm_stderr": 0.02518900666021238
+        },
+        "blimp_principle_A_domain_1": {
+            "acc": 0.907,
+            "acc_stderr": 0.009188875634996667
+        },
+        "blimp_drop_argument": {
+            "acc": 0.795,
+            "acc_stderr": 0.01277255409611312
+        },
+        "blimp_determiner_noun_agreement_irregular_1": {
+            "acc": 0.896,
+            "acc_stderr": 0.00965801621852429
+        },
+        "hendrycksTest-miscellaneous": {
+            "acc": 0.2554278416347382,
+            "acc_stderr": 0.015594955384455773,
+            "acc_norm": 0.2669220945083014,
+            "acc_norm_stderr": 0.015818450894777555
+        },
+        "blimp_tough_vs_raising_2": {
+            "acc": 0.737,
+            "acc_stderr": 0.013929286594259726
+        },
+        "hendrycksTest-professional_medicine": {
+            "acc": 0.22426470588235295,
+            "acc_stderr": 0.025336848563332386,
+            "acc_norm": 0.21691176470588236,
+            "acc_norm_stderr": 0.025035845227711264
+        },
+        "blimp_superlative_quantifiers_1": {
+            "acc": 0.762,
+            "acc_stderr": 0.013473586661967225
+        },
+        "blimp_transitive": {
+            "acc": 0.807,
+            "acc_stderr": 0.012486268734370145
+        },
+        "blimp_determiner_noun_agreement_1": {
+            "acc": 0.969,
+            "acc_stderr": 0.005483527064679196
+        },
+        "blimp_left_branch_island_simple_question": {
+            "acc": 0.585,
+            "acc_stderr": 0.015589035185604627
+        },
+        "hendrycksTest-astronomy": {
+            "acc": 0.16447368421052633,
+            "acc_stderr": 0.03016753346863271,
+            "acc_norm": 0.3092105263157895,
+            "acc_norm_stderr": 0.037610708698674805
+        },
+        "blimp_sentential_negation_npi_licensor_present": {
+            "acc": 0.937,
+            "acc_stderr": 0.0076870078762864315
+        },
+        "blimp_determiner_noun_agreement_with_adj_irregular_2": {
+            "acc": 0.932,
+            "acc_stderr": 0.007964887911291603
+        },
+        "blimp_expletive_it_object_raising": {
+            "acc": 0.78,
+            "acc_stderr": 0.013106173040661764
+        },
+        "blimp_wh_questions_object_gap": {
+            "acc": 0.619,
+            "acc_stderr": 0.015364734787007436
+        },
+        "blimp_anaphor_gender_agreement": {
+            "acc": 0.987,
+            "acc_stderr": 0.003583830889403632
+        },
+        "blimp_principle_A_case_2": {
+            "acc": 0.914,
+            "acc_stderr": 0.008870325962594766
+        },
+        "winogrande": {
+            "acc": 0.5288082083662194,
+            "acc_stderr": 0.014029141615909617
+        },
+        "lambada": {
+            "ppl": 17.4895229475927,
+            "ppl_stderr": 0.6119295871705704,
+            "acc": 0.4894236367164758,
+            "acc_stderr": 0.006964419061826373
+        },
+        "hendrycksTest-nutrition": {
+            "acc": 0.22875816993464052,
+            "acc_stderr": 0.024051029739912248,
+            "acc_norm": 0.34967320261437906,
+            "acc_norm_stderr": 0.027305308076274702
+        },
+        "hendrycksTest-formal_logic": {
+            "acc": 0.30158730158730157,
+            "acc_stderr": 0.04104947269903394,
+            "acc_norm": 0.2857142857142857,
+            "acc_norm_stderr": 0.0404061017820884
+        },
+        "blimp_regular_plural_subject_verb_agreement_2": {
+            "acc": 0.932,
+            "acc_stderr": 0.007964887911291605
+        },
+        "hendrycksTest-philosophy": {
+            "acc": 0.21543408360128619,
+            "acc_stderr": 0.023350225475471414,
+            "acc_norm": 0.3279742765273312,
+            "acc_norm_stderr": 0.026664410886937613
+        },
+        "hendrycksTest-high_school_macroeconomics": {
+            "acc": 0.26666666666666666,
+            "acc_stderr": 0.022421273612923714,
+            "acc_norm": 0.27692307692307694,
+            "acc_norm_stderr": 0.022688042352424994
+        },
+        "blimp_irregular_plural_subject_verb_agreement_1": {
+            "acc": 0.875,
+            "acc_stderr": 0.010463483381956722
+        },
+        "hendrycksTest-jurisprudence": {
+            "acc": 0.25925925925925924,
+            "acc_stderr": 0.042365112580946336,
+            "acc_norm": 0.3888888888888889,
+            "acc_norm_stderr": 0.047128212574267705
+        },
+        "hendrycksTest-us_foreign_policy": {
+            "acc": 0.29,
+            "acc_stderr": 0.04560480215720683,
+            "acc_norm": 0.37,
+            "acc_norm_stderr": 0.048523658709391
+        },
+        "hendrycksTest-sociology": {
+            "acc": 0.21890547263681592,
+            "acc_stderr": 0.029239174636647,
+            "acc_norm": 0.2736318407960199,
+            "acc_norm_stderr": 0.03152439186555402
+        },
+        "hendrycksTest-professional_accounting": {
+            "acc": 0.2765957446808511,
+            "acc_stderr": 0.02668456434046099,
+            "acc_norm": 0.24822695035460993,
+            "acc_norm_stderr": 0.025770015644290396
+        },
+        "blimp_matrix_question_npi_licensor_present": {
+            "acc": 0.827,
+            "acc_stderr": 0.011967214137559927
+        },
+        "blimp_superlative_quantifiers_2": {
+            "acc": 0.895,
+            "acc_stderr": 0.00969892102602495
+        },
+        "hendrycksTest-high_school_geography": {
+            "acc": 0.20202020202020202,
+            "acc_stderr": 0.028606204289229886,
+            "acc_norm": 0.3434343434343434,
+            "acc_norm_stderr": 0.033832012232444426
+        },
+        "hendrycksTest-high_school_chemistry": {
+            "acc": 0.21674876847290642,
+            "acc_stderr": 0.028990331252516235,
+            "acc_norm": 0.28078817733990147,
+            "acc_norm_stderr": 0.03161856335358609
+        },
+        "blimp_distractor_agreement_relative_clause": {
+            "acc": 0.602,
+            "acc_stderr": 0.01548663410285892
+        },
+        "hendrycksTest-electrical_engineering": {
+            "acc": 0.22758620689655173,
+            "acc_stderr": 0.03493950380131184,
+            "acc_norm": 0.25517241379310346,
+            "acc_norm_stderr": 0.03632984052707842
+        },
+        "hendrycksTest-econometrics": {
+            "acc": 0.23684210526315788,
+            "acc_stderr": 0.03999423879281335,
+            "acc_norm": 0.22807017543859648,
+            "acc_norm_stderr": 0.03947152782669415
+        },
+        "blimp_determiner_noun_agreement_2": {
+            "acc": 0.98,
+            "acc_stderr": 0.004429403980178351
+        },
+        "hendrycksTest-machine_learning": {
+            "acc": 0.16964285714285715,
+            "acc_stderr": 0.0356236785009539,
+            "acc_norm": 0.21428571428571427,
+            "acc_norm_stderr": 0.03894641120044793
+        },
+        "logiqa": {
+            "acc": 0.23963133640552994,
+            "acc_stderr": 0.01674276693510142,
+            "acc_norm": 0.2749615975422427,
+            "acc_norm_stderr": 0.017512971782225214
+        },
+        "hendrycksTest-high_school_computer_science": {
+            "acc": 0.24,
+            "acc_stderr": 0.04292346959909283,
+            "acc_norm": 0.3,
+            "acc_norm_stderr": 0.046056618647183814
+        },
+        "hendrycksTest-high_school_microeconomics": {
+            "acc": 0.22268907563025211,
+            "acc_stderr": 0.02702543349888238,
+            "acc_norm": 0.31932773109243695,
+            "acc_norm_stderr": 0.0302839955258844
+        },
+        "hendrycksTest-college_mathematics": {
+            "acc": 0.21,
+            "acc_stderr": 0.040936018074033256,
+            "acc_norm": 0.27,
+            "acc_norm_stderr": 0.0446196043338474
+        },
+        "hendrycksTest-public_relations": {
+            "acc": 0.39090909090909093,
+            "acc_stderr": 0.04673752333670238,
+            "acc_norm": 0.24545454545454545,
+            "acc_norm_stderr": 0.04122066502878284
+        },
+        "blimp_principle_A_domain_2": {
+            "acc": 0.684,
+            "acc_stderr": 0.014709193056057134
+        },
+        "blimp_ellipsis_n_bar_1": {
+            "acc": 0.859,
+            "acc_stderr": 0.011010914595992438
+        },
+        "hendrycksTest-professional_law": {
+            "acc": 0.2588005215123859,
+            "acc_stderr": 0.011186109046564608,
+            "acc_norm": 0.27835723598435463,
+            "acc_norm_stderr": 0.011446990197380989
+        },
+        "arc_easy": {
+            "acc": 0.4372895622895623,
+            "acc_stderr": 0.010178768429321573,
+            "acc_norm": 0.4128787878787879,
+            "acc_norm_stderr": 0.010102837421104661
+        },
+        "hendrycksTest-medical_genetics": {
+            "acc": 0.23,
+            "acc_stderr": 0.04229525846816506,
+            "acc_norm": 0.35,
+            "acc_norm_stderr": 0.0479372485441102
+        },
+        "blimp_wh_island": {
+            "acc": 0.731,
+            "acc_stderr": 0.014029819522568198
+        },
+        "blimp_sentential_negation_npi_scope": {
+            "acc": 0.552,
+            "acc_stderr": 0.015733516566347833
+        },
+        "blimp_sentential_subject_island": {
+            "acc": 0.556,
+            "acc_stderr": 0.01571976816340209
+        },
+        "hendrycksTest-human_aging": {
+            "acc": 0.31390134529147984,
+            "acc_stderr": 0.031146796482972465,
+            "acc_norm": 0.2645739910313901,
+            "acc_norm_stderr": 0.029605103217038325
+        },
+        "hendrycksTest-marketing": {
+            "acc": 0.2905982905982906,
+            "acc_stderr": 0.02974504857267404,
+            "acc_norm": 0.3162393162393162,
+            "acc_norm_stderr": 0.030463656747340254
+        },
+        "hendrycksTest-computer_security": {
+            "acc": 0.25,
+            "acc_stderr": 0.04351941398892446,
+            "acc_norm": 0.27,
+            "acc_norm_stderr": 0.044619604333847394
+        },
+        "hendrycksTest-global_facts": {
+            "acc": 0.18,
+            "acc_stderr": 0.03861229196653694,
+            "acc_norm": 0.19,
+            "acc_norm_stderr": 0.039427724440366234
+        },
+        "hendrycksTest-professional_psychology": {
+            "acc": 0.24673202614379086,
+            "acc_stderr": 0.017440820367402493,
+            "acc_norm": 0.272875816993464,
+            "acc_norm_stderr": 0.01802047414839358
+        },
+        "hendrycksTest-security_studies": {
+            "acc": 0.3142857142857143,
+            "acc_stderr": 0.029719329422417454,
+            "acc_norm": 0.27346938775510204,
+            "acc_norm_stderr": 0.02853556033712845
+        },
+        "blimp_distractor_agreement_relational_noun": {
+            "acc": 0.716,
+            "acc_stderr": 0.014267009061031309
+        },
+        "piqa": {
+            "acc": 0.6420021762785637,
+            "acc_stderr": 0.011185460416617306,
+            "acc_norm": 0.6284004352557128,
+            "acc_norm_stderr": 0.011274603006724756
+        },
+        "blimp_principle_A_case_1": {
+            "acc": 0.997,
+            "acc_stderr": 0.0017303161543469317
+        },
+        "hendrycksTest-elementary_mathematics": {
+            "acc": 0.24074074074074073,
+            "acc_stderr": 0.02201908001221789,
+            "acc_norm": 0.25396825396825395,
+            "acc_norm_stderr": 0.022418042891113935
+        },
+        "blimp_determiner_noun_agreement_with_adj_irregular_1": {
+            "acc": 0.87,
+            "acc_stderr": 0.010640169792499377
+        },
+        "blimp_wh_vs_that_with_gap_long_distance": {
+            "acc": 0.476,
+            "acc_stderr": 0.015801065586651755
+        },
+        "hendrycksTest-abstract_algebra": {
+            "acc": 0.26,
+            "acc_stderr": 0.04408440022768077,
+            "acc_norm": 0.3,
+            "acc_norm_stderr": 0.046056618647183814
+        },
+        "blimp_npi_present_1": {
+            "acc": 0.772,
+            "acc_stderr": 0.013273740700804474
+        },
+        "hendrycksTest-virology": {
+            "acc": 0.22289156626506024,
+            "acc_stderr": 0.03240004825594686,
+            "acc_norm": 0.2469879518072289,
+            "acc_norm_stderr": 0.03357351982064536
+        },
+        "hendrycksTest-high_school_statistics": {
+            "acc": 0.2037037037037037,
+            "acc_stderr": 0.02746740180405799,
+            "acc_norm": 0.2777777777777778,
+            "acc_norm_stderr": 0.03054674526495319
+        },
+        "blimp_determiner_noun_agreement_irregular_2": {
+            "acc": 0.975,
+            "acc_stderr": 0.004939574819698465
+        },
+        "blimp_wh_questions_subject_gap_long_distance": {
+            "acc": 0.811,
+            "acc_stderr": 0.012386784588117707
+        },
+        "hendrycksTest-high_school_world_history": {
+            "acc": 0.25316455696202533,
+            "acc_stderr": 0.02830465794303529,
+            "acc_norm": 0.2869198312236287,
+            "acc_norm_stderr": 0.029443773022594693
+        },
+        "blimp_determiner_noun_agreement_with_adjective_1": {
+            "acc": 0.958,
+            "acc_stderr": 0.006346359293033842
+        },
+        "blimp_irregular_past_participle_verbs": {
+            "acc": 0.913,
+            "acc_stderr": 0.008916866630745895
+        },
+        "sciq": {
+            "acc": 0.77,
+            "acc_stderr": 0.013314551335935948,
+            "acc_norm": 0.701,
+            "acc_norm_stderr": 0.01448477852122047
+        },
+        "blimp_wh_vs_that_with_gap": {
+            "acc": 0.683,
+            "acc_stderr": 0.014721675438880219
+        },
+        "blimp_irregular_past_participle_adjectives": {
+            "acc": 0.91,
+            "acc_stderr": 0.00905439020486644
+        },
+        "hendrycksTest-high_school_mathematics": {
+            "acc": 0.21851851851851853,
+            "acc_stderr": 0.025195752251823796,
+            "acc_norm": 0.2740740740740741,
+            "acc_norm_stderr": 0.02719593480408563
+        },
+        "blimp_animate_subject_passive": {
+            "acc": 0.747,
+            "acc_stderr": 0.01375427861358708
+        },
+        "blimp_existential_there_quantifiers_2": {
+            "acc": 0.158,
+            "acc_stderr": 0.01153989467755957
+        },
+        "hendrycksTest-prehistory": {
+            "acc": 0.21604938271604937,
+            "acc_stderr": 0.022899162918445806,
+            "acc_norm": 0.22530864197530864,
+            "acc_norm_stderr": 0.02324620264781975
+        },
+        "hendrycksTest-world_religions": {
+            "acc": 0.26900584795321636,
+            "acc_stderr": 0.0340105262010409,
+            "acc_norm": 0.30994152046783624,
+            "acc_norm_stderr": 0.03546976959393163
+        },
+        "blimp_npi_present_2": {
+            "acc": 0.743,
+            "acc_stderr": 0.013825416526895042
+        },
+        "hendrycksTest-high_school_psychology": {
+            "acc": 0.22752293577981653,
+            "acc_stderr": 0.017974463578776502,
+            "acc_norm": 0.24770642201834864,
+            "acc_norm_stderr": 0.018508143602547825
+        },
+        "hendrycksTest-moral_scenarios": {
+            "acc": 0.24022346368715083,
+            "acc_stderr": 0.014288343803925295,
+            "acc_norm": 0.24692737430167597,
+            "acc_norm_stderr": 0.014422292204808835
+        },
+        "hendrycksTest-international_law": {
+            "acc": 0.1652892561983471,
+            "acc_stderr": 0.03390780612972776,
+            "acc_norm": 0.4214876033057851,
+            "acc_norm_stderr": 0.045077322787750944
+        },
+        "blimp_wh_questions_subject_gap": {
+            "acc": 0.797,
+            "acc_stderr": 0.012726073744598256
+        },
+        "blimp_passive_1": {
+            "acc": 0.891,
+            "acc_stderr": 0.009859828407037193
+        },
+        "blimp_irregular_plural_subject_verb_agreement_2": {
+            "acc": 0.892,
+            "acc_stderr": 0.0098200016513457
+        },
+        "blimp_coordinate_structure_constraint_object_extraction": {
+            "acc": 0.83,
+            "acc_stderr": 0.011884495834541663
+        },
+        "blimp_existential_there_subject_raising": {
+            "acc": 0.914,
+            "acc_stderr": 0.008870325962594766
+        },
+        "blimp_left_branch_island_echo_question": {
+            "acc": 0.088,
+            "acc_stderr": 0.00896305396259206
+        },
+        "blimp_determiner_noun_agreement_with_adj_2": {
+            "acc": 0.951,
+            "acc_stderr": 0.006829761756140939
+        },
+        "blimp_only_npi_scope": {
+            "acc": 0.909,
+            "acc_stderr": 0.009099549538400238
+        },
+        "blimp_adjunct_island": {
+            "acc": 0.8,
+            "acc_stderr": 0.012655439943366662
+        },
+        "blimp_principle_A_c_command": {
+            "acc": 0.554,
+            "acc_stderr": 0.015726771166750357
+        },
+        "blimp_inchoative": {
+            "acc": 0.655,
+            "acc_stderr": 0.015039986742055237
+        },
+        "blimp_existential_there_quantifiers_1": {
+            "acc": 0.973,
+            "acc_stderr": 0.005128089049275291
+        },
+        "blimp_principle_A_domain_3": {
+            "acc": 0.606,
+            "acc_stderr": 0.015459721957493379
+        },
+        "blimp_coordinate_structure_constraint_complex_left_branch": {
+            "acc": 0.591,
+            "acc_stderr": 0.015555094373257944
+        },
+        "hendrycksTest-management": {
+            "acc": 0.1941747572815534,
+            "acc_stderr": 0.03916667762822585,
+            "acc_norm": 0.22330097087378642,
+            "acc_norm_stderr": 0.04123553189891431
+        },
+        "hendrycksTest-college_computer_science": {
+            "acc": 0.31,
+            "acc_stderr": 0.04648231987117316,
+            "acc_norm": 0.32,
+            "acc_norm_stderr": 0.046882617226215034
+        },
+        "hendrycksTest-high_school_us_history": {
+            "acc": 0.2107843137254902,
+            "acc_stderr": 0.028626547912437413,
+            "acc_norm": 0.24019607843137256,
+            "acc_norm_stderr": 0.02998373305591361
+        },
+        "blimp_intransitive": {
+            "acc": 0.8,
+            "acc_stderr": 0.012655439943366655
+        },
+        "blimp_anaphor_number_agreement": {
+            "acc": 0.989,
+            "acc_stderr": 0.003299983316607816
+        },
+        "arc_challenge": {
+            "acc": 0.19880546075085323,
+            "acc_stderr": 0.011662850198175544,
+            "acc_norm": 0.2551194539249147,
+            "acc_norm_stderr": 0.012739038695202107
+        },
+        "hendrycksTest-human_sexuality": {
+            "acc": 0.2900763358778626,
+            "acc_stderr": 0.03980066246467766,
+            "acc_norm": 0.3282442748091603,
+            "acc_norm_stderr": 0.04118438565806298
+        },
+        "blimp_complex_NP_island": {
+            "acc": 0.546,
+            "acc_stderr": 0.015752210388771844
+        },
+        "blimp_wh_vs_that_no_gap": {
+            "acc": 0.828,
+            "acc_stderr": 0.011939788882495321
+        },
+        "hendrycksTest-moral_disputes": {
+            "acc": 0.21676300578034682,
+            "acc_stderr": 0.022183477668412853,
+            "acc_norm": 0.2947976878612717,
+            "acc_norm_stderr": 0.024547617794803838
+        },
+        "hendrycksTest-high_school_physics": {
+            "acc": 0.2119205298013245,
+            "acc_stderr": 0.03336767086567977,
+            "acc_norm": 0.23178807947019867,
+            "acc_norm_stderr": 0.03445406271987054
+        },
+        "blimp_ellipsis_n_bar_2": {
+            "acc": 0.923,
+            "acc_stderr": 0.008434580140240653
+        },
+        "hendrycksTest-business_ethics": {
+            "acc": 0.35,
+            "acc_stderr": 0.04793724854411018,
+            "acc_norm": 0.35,
+            "acc_norm_stderr": 0.04793724854411019
+        },
+        "blimp_tough_vs_raising_1": {
+            "acc": 0.761,
+            "acc_stderr": 0.013493000446937593
+        },
+        "blimp_only_npi_licensor_present": {
+            "acc": 0.946,
+            "acc_stderr": 0.007150883521295436
+        },
+        "blimp_regular_plural_subject_verb_agreement_1": {
+            "acc": 0.934,
+            "acc_stderr": 0.007855297938697598
+        },
+        "hendrycksTest-college_chemistry": {
+            "acc": 0.27,
+            "acc_stderr": 0.044619604333847394,
+            "acc_norm": 0.26,
+            "acc_norm_stderr": 0.04408440022768078
+        },
+        "hendrycksTest-college_medicine": {
+            "acc": 0.2138728323699422,
+            "acc_stderr": 0.031265112061730424,
+            "acc_norm": 0.2138728323699422,
+            "acc_norm_stderr": 0.03126511206173042
+        },
+        "hendrycksTest-high_school_european_history": {
+            "acc": 0.17575757575757575,
+            "acc_stderr": 0.02972094300622445,
+            "acc_norm": 0.2606060606060606,
+            "acc_norm_stderr": 0.03427743175816524
+        },
+        "blimp_existential_there_object_raising": {
+            "acc": 0.853,
+            "acc_stderr": 0.011203415395160335
+        }
+    },
+    "versions": {
+        "wsc": 0,
+        "blimp_causative": 0,
+        "hendrycksTest-clinical_knowledge": 0,
+        "hendrycksTest-anatomy": 0,
+        "hendrycksTest-high_school_government_and_politics": 0,
+        "hendrycksTest-college_physics": 0,
+        "blimp_passive_2": 0,
+        "blimp_wh_vs_that_no_gap_long_distance": 0,
+        "hendrycksTest-logical_fallacies": 0,
+        "blimp_animate_subject_trans": 0,
+        "hendrycksTest-conceptual_physics": 0,
+        "blimp_principle_A_reconstruction": 0,
+        "hendrycksTest-college_biology": 0,
+        "hendrycksTest-high_school_biology": 0,
+        "blimp_principle_A_domain_1": 0,
+        "blimp_drop_argument": 0,
+        "blimp_determiner_noun_agreement_irregular_1": 0,
+        "hendrycksTest-miscellaneous": 0,
+        "blimp_tough_vs_raising_2": 0,
+        "hendrycksTest-professional_medicine": 0,
+        "blimp_superlative_quantifiers_1": 0,
+        "blimp_transitive": 0,
+        "blimp_determiner_noun_agreement_1": 0,
+        "blimp_left_branch_island_simple_question": 0,
+        "hendrycksTest-astronomy": 0,
+        "blimp_sentential_negation_npi_licensor_present": 0,
+        "blimp_determiner_noun_agreement_with_adj_irregular_2": 0,
+        "blimp_expletive_it_object_raising": 0,
+        "blimp_wh_questions_object_gap": 0,
+        "blimp_anaphor_gender_agreement": 0,
+        "blimp_principle_A_case_2": 0,
+        "winogrande": 0,
+        "lambada": 0,
+        "hendrycksTest-nutrition": 0,
+        "hendrycksTest-formal_logic": 0,
+        "blimp_regular_plural_subject_verb_agreement_2": 0,
+        "hendrycksTest-philosophy": 0,
+        "hendrycksTest-high_school_macroeconomics": 0,
+        "blimp_irregular_plural_subject_verb_agreement_1": 0,
+        "hendrycksTest-jurisprudence": 0,
+        "hendrycksTest-us_foreign_policy": 0,
+        "hendrycksTest-sociology": 0,
+        "hendrycksTest-professional_accounting": 0,
+        "blimp_matrix_question_npi_licensor_present": 0,
+        "blimp_superlative_quantifiers_2": 0,
+        "hendrycksTest-high_school_geography": 0,
+        "hendrycksTest-high_school_chemistry": 0,
+        "blimp_distractor_agreement_relative_clause": 0,
+        "hendrycksTest-electrical_engineering": 0,
+        "hendrycksTest-econometrics": 0,
+        "blimp_determiner_noun_agreement_2": 0,
+        "hendrycksTest-machine_learning": 0,
+        "logiqa": 0,
+        "hendrycksTest-high_school_computer_science": 0,
+        "hendrycksTest-high_school_microeconomics": 0,
+        "hendrycksTest-college_mathematics": 0,
+        "hendrycksTest-public_relations": 0,
+        "blimp_principle_A_domain_2": 0,
+        "blimp_ellipsis_n_bar_1": 0,
+        "hendrycksTest-professional_law": 0,
+        "arc_easy": 0,
+        "hendrycksTest-medical_genetics": 0,
+        "blimp_wh_island": 0,
+        "blimp_sentential_negation_npi_scope": 0,
+        "blimp_sentential_subject_island": 0,
+        "hendrycksTest-human_aging": 0,
+        "hendrycksTest-marketing": 0,
+        "hendrycksTest-computer_security": 0,
+        "hendrycksTest-global_facts": 0,
+        "hendrycksTest-professional_psychology": 0,
+        "hendrycksTest-security_studies": 0,
+        "blimp_distractor_agreement_relational_noun": 0,
+        "piqa": 0,
+        "blimp_principle_A_case_1": 0,
+        "hendrycksTest-elementary_mathematics": 0,
+        "blimp_determiner_noun_agreement_with_adj_irregular_1": 0,
+        "blimp_wh_vs_that_with_gap_long_distance": 0,
+        "hendrycksTest-abstract_algebra": 0,
+        "blimp_npi_present_1": 0,
+        "hendrycksTest-virology": 0,
+        "hendrycksTest-high_school_statistics": 0,
+        "blimp_determiner_noun_agreement_irregular_2": 0,
+        "blimp_wh_questions_subject_gap_long_distance": 0,
+        "hendrycksTest-high_school_world_history": 0,
+        "blimp_determiner_noun_agreement_with_adjective_1": 0,
+        "blimp_irregular_past_participle_verbs": 0,
+        "sciq": 0,
+        "blimp_wh_vs_that_with_gap": 0,
+        "blimp_irregular_past_participle_adjectives": 0,
+        "hendrycksTest-high_school_mathematics": 0,
+        "blimp_animate_subject_passive": 0,
+        "blimp_existential_there_quantifiers_2": 0,
+        "hendrycksTest-prehistory": 0,
+        "hendrycksTest-world_religions": 0,
+        "blimp_npi_present_2": 0,
+        "hendrycksTest-high_school_psychology": 0,
+        "hendrycksTest-moral_scenarios": 0,
+        "hendrycksTest-international_law": 0,
+        "blimp_wh_questions_subject_gap": 0,
+        "blimp_passive_1": 0,
+        "blimp_irregular_plural_subject_verb_agreement_2": 0,
+        "blimp_coordinate_structure_constraint_object_extraction": 0,
+        "blimp_existential_there_subject_raising": 0,
+        "blimp_left_branch_island_echo_question": 0,
+        "blimp_determiner_noun_agreement_with_adj_2": 0,
+        "blimp_only_npi_scope": 0,
+        "blimp_adjunct_island": 0,
+        "blimp_principle_A_c_command": 0,
+        "blimp_inchoative": 0,
+        "blimp_existential_there_quantifiers_1": 0,
+        "blimp_principle_A_domain_3": 0,
+        "blimp_coordinate_structure_constraint_complex_left_branch": 0,
+        "hendrycksTest-management": 0,
+        "hendrycksTest-college_computer_science": 0,
+        "hendrycksTest-high_school_us_history": 0,
+        "blimp_intransitive": 0,
+        "blimp_anaphor_number_agreement": 0,
+        "arc_challenge": 0,
+        "hendrycksTest-human_sexuality": 0,
+        "blimp_complex_NP_island": 0,
+        "blimp_wh_vs_that_no_gap": 0,
+        "hendrycksTest-moral_disputes": 0,
+        "hendrycksTest-high_school_physics": 0,
+        "blimp_ellipsis_n_bar_2": 0,
+        "hendrycksTest-business_ethics": 0,
+        "blimp_tough_vs_raising_1": 0,
+        "blimp_only_npi_licensor_present": 0,
+        "blimp_regular_plural_subject_verb_agreement_1": 0,
+        "hendrycksTest-college_chemistry": 0,
+        "hendrycksTest-college_medicine": 0,
+        "hendrycksTest-high_school_european_history": 0,
+        "blimp_existential_there_object_raising": 0
+    },
+    "config": {
+        "model": "neox",
+        "model_args": {
+            "distributed_backend": "nccl",
+            "local_rank": 0,
+            "rank": 0,
+            "lazy_mpu_init": false,
+            "short_seq_prob": 0.1,
+            "eod_mask_loss": false,
+            "adlr_autoresume": false,
+            "adlr_autoresume_interval": 1000,
+            "seed": 1234,
+            "onnx_safe": false,
+            "deepscale": false,
+            "deepscale_config": null,
+            "deepspeed_mpi": false,
+            "deepspeed_slurm": false,
+            "user_script": "/fsx/home-Kyle1668/pythia/gpt-neox/evaluate.py",
+            "iteration": 26500,
+            "do_train": null,
+            "do_valid": null,
+            "do_test": null,
+            "global_num_gpus": 8,
+            "text_gen_type": "unconditional",
+            "temperature": 0.0,
+            "top_p": 0.0,
+            "top_k": 0,
+            "return_logits": false,
+            "maximum_tokens": 64,
+            "sample_input_file": null,
+            "sample_output_file": "samples.txt",
+            "num_samples": 1,
+            "recompute": false,
+            "eval_results_prefix": "./eval-jsons/350M/350M-0shot-global_step26500",
+            "eval_tasks": [
+                "arc_challenge",
+                "arc_easy",
+                "lambada",
+                "logiqa",
+                "sciq",
+                "piqa",
+                "wsc",
+                "winogrande",
+                "blimp_*",
+                "hendrycksTest*"
+            ],
+            "use_wandb": true,
+            "wandb_group": "Pythia 350M_3vdou8r8",
+            "wandb_team": "eleutherai",
+            "wandb_project": "pythia",
+            "wandb_host": "https://api.wandb.ai",
+            "wandb_init_all_ranks": false,
+            "git_hash": "efd5911",
+            "log_dir": "/fsx/home-Kyle1668/",
+            "tensorboard_dir": "/fsx/home-Kyle1668/",
+            "log_interval": 10,
+            "log_grad_pct_zeros": false,
+            "log_param_norm": false,
+            "log_grad_norm": false,
+            "log_optimizer_states": false,
+            "log_gradient_noise_scale": false,
+            "gradient_noise_scale_n_batches": 5,
+            "gradient_noise_scale_cpu_offload": false,
+            "pipe_parallel_size": 1,
+            "model_parallel_size": 1,
+            "pipe_partition_method": "type:transformer|mlp",
+            "world_size": 8,
+            "is_pipe_parallel": true,
+            "data_path": null,
+            "train_data_paths": [
+                "/fsx/pile/pile_20B_tokenizer_text_document"
+            ],
+            "test_data_paths": [
+                "/fsx/pile/pile_20B_tokenizer_text_document"
+            ],
+            "valid_data_paths": [
+                "/fsx/pile/pile_20B_tokenizer_text_document"
+            ],
+            "train_data_weights": [
+                1.0
+            ],
+            "valid_data_weights": [
+                1.0
+            ],
+            "test_data_weights": [
+                1.0
+            ],
+            "weight_by_num_documents": false,
+            "weighted_sampler_alpha": 0.3,
+            "data_impl": "mmap",
+            "mmap_warmup": false,
+            "save": "/fsx/home-Kyle1668/pythia/ckpts/350M",
+            "config_files": {
+                "pythia-350M.yml": "{\n  \"pipe-parallel-size\": 1,\n  \"model-parallel-size\": 1,\n\n  # model settings\n  \"num-layers\": 24,\n  \"hidden-size\": 1024,\n  \"num-attention-heads\": 16,\n  \"seq-length\": 2048,\n  \"max-position-embeddings\": 2048,\n  \"pos-emb\": \"rotary\",\n  \"rotary-pct\": 0.25,\n  \"no-weight-tying\": true,\n  \"gpt-j-residual\": true,\n  \"output-layer-parallelism\": \"column\",\n\n  \"scaled-upper-triang-masked-softmax-fusion\": true,\n  \"bias-gelu-fusion\": true,\n\n  # init methods\n  \"init_method\": \"small_init\",\n  \"output_layer_init_method\": \"wang_init\",\n\n  \"optimizer\": {\n    \"type\": \"Adam\",\n    \"params\": {\n      \"lr\": 0.0003,\n      \"betas\": [0.9, 0.95],\n      \"eps\": 1.0e-8,\n    }\n  },\n  \"min_lr\": 0.00003,\n\n  \"zero_optimization\": {\n    \"stage\": 1,\n    \"allgather_partitions\": True,\n    \"allgather_bucket_size\": 500000000,\n    \"overlap_comm\": True,\n    \"reduce_scatter\": True,\n    \"reduce_bucket_size\": 500000000,\n    \"contiguous_gradients\": True,\n    \"cpu_offload\": False\n  },\n\n  \"train_micro_batch_size_per_gpu\": 2,\n  \"gas\": 1,\n  \"data-impl\": \"mmap\",\n  \"num_workers\": 1,\n\n  # activation checkpointing\n  \"checkpoint-activations\": true,\n  \"checkpoint-num-layers\": 1,\n  \"partition-activations\": true,\n  \"synchronize-each-layer\": true,\n\n  # regularization\n  \"gradient_clipping\": 1.0,\n  \"weight-decay\": 0.1,\n  \"hidden-dropout\": 0,\n  \"attention-dropout\": 0,\n\n  # precision settings\n  \"fp16\": {\n    \"fp16\": true,\n    \"enabled\": true,\n    \"loss_scale\": 0,\n    \"loss_scale_window\": 1000,\n    \"initial_scale_power\": 12,\n    \"hysteresis\": 2,\n    \"min_loss_scale\": 1,\n  },\n\n  \"train-iters\": 71500,\n  \"lr-decay-iters\": 71250,\n  \"distributed-backend\": \"nccl\",\n  \"lr-decay-style\": \"cosine\",\n  \"warmup\": 0.01,\n  \"save-interval\": 250,\n  \"eval-interval\": 40000,\n  \"eval-iters\": 10,\n\n  \"log-interval\": 10,\n  \"steps_per_print\": 10,\n  \"wall_clock_breakdown\": true,\n\n  \"save\": \"/fsx/home-Kyle1668/pythia/ckpts/350M\",\n  \"load\": \"/fsx/home-Kyle1668/pythia/ckpts/350M\",\n\n  \"train-data-paths\": [\"/fsx/pile/pile_20B_tokenizer_text_document\"],\n  \"valid-data-paths\": [\"/fsx/pile/pile_20B_tokenizer_text_document\"],\n  \"test-data-paths\": [\"/fsx/pile/pile_20B_tokenizer_text_document\"],\n\n  \"tokenizer-type\": \"HFTokenizer\",\n  \"vocab-file\": \"/fsx/pile/20B_tokenizer.json\",\n\n  \"tensorboard-dir\": \"/fsx/home-Kyle1668/\",\n  \"log-dir\": \"/fsx/home-Kyle1668/\", \n\n  \"use_wandb\": True,\n  \"wandb_group\": \"Pythia 350M\",\n  \"wandb_team\": \"eleutherai\",\n  \"wandb_project\": \"pythia\",\n\n  #\"launcher\": \"openmpi\",\n  #  \"deepspeed_mpi\": true,\n}\n"
+            },
+            "load": "/fsx/home-Kyle1668/pythia/ckpts/350M",
+            "checkpoint_validation_with_forward_pass": false,
+            "save_interval": 250,
+            "no_save_optim": false,
+            "no_save_rng": false,
+            "no_load_optim": true,
+            "no_load_rng": false,
+            "finetune": false,
+            "batch_size": 2,
+            "train_iters": 71500,
+            "eval_iters": 10,
+            "keep_last_n_checkpoints": null,
+            "eval_interval": 40000,
+            "split": "969, 30, 1",
+            "vocab_file": "/fsx/pile/20B_tokenizer.json",
+            "merge_file": null,
+            "num_workers": 1,
+            "exit_interval": null,
+            "attention_dropout": 0,
+            "hidden_dropout": 0,
+            "weight_decay": 0.1,
+            "checkpoint_activations": false,
+            "checkpoint_num_layers": 1,
+            "deepspeed_activation_checkpointing": true,
+            "contiguous_checkpointing": false,
+            "checkpoint_in_cpu": false,
+            "synchronize_each_layer": true,
+            "profile_backward": false,
+            "partition_activations": false,
+            "gas": 1,
+            "clip_grad": 1.0,
+            "hysteresis": 2,
+            "dynamic_loss_scale": true,
+            "loss_scale": null,
+            "loss_scale_window": 1000.0,
+            "min_scale": 1.0,
+            "char_level_ppl": false,
+            "tokenizer_type": "HFTokenizer",
+            "padded_vocab_size": 50304,
+            "optimizer_type": "Adam",
+            "use_bnb_optimizer": false,
+            "zero_stage": 0,
+            "zero_reduce_scatter": true,
+            "zero_contiguous_gradients": false,
+            "zero_reduce_bucket_size": 500000000,
+            "zero_allgather_bucket_size": 500000000,
+            "lr": 0.0003,
+            "lr_decay_style": "cosine",
+            "lr_decay_iters": 71250,
+            "min_lr": 3e-05,
+            "warmup": 0.01,
+            "override_lr_scheduler": false,
+            "use_checkpoint_lr_scheduler": false,
+            "precision": "fp16",
+            "num_layers": 24,
+            "hidden_size": 1024,
+            "num_attention_heads": 16,
+            "seq_length": 2048,
+            "max_position_embeddings": 2048,
+            "norm": "layernorm",
+            "layernorm_epsilon": 1e-05,
+            "rms_norm_epsilon": 1e-08,
+            "scalenorm_epsilon": 1e-08,
+            "pos_emb": "rotary",
+            "rpe_num_buckets": 32,
+            "rpe_max_distance": 128,
+            "opt_pos_emb_offset": 0,
+            "no_weight_tying": true,
+            "attention_config": [
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global",
+                "global"
+            ],
+            "sparsity_config": {},
+            "num_unique_layers": null,
+            "param_sharing_style": "grouped",
+            "make_vocab_size_divisible_by": 128,
+            "activation": "gelu",
+            "scaled_upper_triang_masked_softmax_fusion": true,
+            "scaled_masked_softmax_fusion": false,
+            "bias_gelu_fusion": true,
+            "bias_dropout_fusion": false,
+            "fp16_lm_cross_entropy": false,
+            "init_method_std": 0.02,
+            "apply_query_key_layer_scaling": false,
+            "use_cpu_initialization": false,
+            "attention_softmax_in_fp32": false,
+            "rotary_pct": 0.25,
+            "rotary_emb_base": 10000,
+            "init_method": "small_init",
+            "output_layer_init_method": "wang_init",
+            "gmlp_attn_dim": 64,
+            "gpt_j_residual": true,
+            "gpt_j_tied": false,
+            "soft_prompt_tuning": null,
+            "output_layer_parallelism": "column",
+            "deepspeed": true,
+            "train_batch_size": 16,
+            "train_micro_batch_size_per_gpu": 2,
+            "gradient_accumulation_steps": 1,
+            "optimizer": {
+                "type": "Adam",
+                "params": {
+                    "lr": 0.0003,
+                    "betas": [
+                        0.9,
+                        0.95
+                    ],
+                    "eps": 1e-08
+                }
+            },
+            "scheduler": null,
+            "fp32_allreduce": false,
+            "prescale_gradients": false,
+            "gradient_predivide_factor": 1.0,
+            "sparse_gradients": false,
+            "fp16": {
+                "fp16": true,
+                "enabled": true,
+                "loss_scale": 0,
+                "loss_scale_window": 1000,
+                "initial_scale_power": 12,
+                "hysteresis": 2,
+                "min_loss_scale": 1
+            },
+            "amp": null,
+            "gradient_clipping": 1.0,
+            "zero_optimization": {
+                "stage": 0,
+                "allgather_partitions": true,
+                "reduce_scatter": true,
+                "allgather_bucket_size": 500000000,
+                "overlap_comm": false,
+                "reduce_bucket_size": 500000000,
+                "contiguous_gradients": false
+            },
+            "steps_per_print": 10,
+            "wall_clock_breakdown": true,
+            "dump_state": false,
+            "flops_profiler": null,
+            "zero_allow_untested_optimizer": false,
+            "hostfile": null,
+            "include": null,
+            "exclude": null,
+            "num_nodes": -1,
+            "num_gpus": null,
+            "master_port": 29500,
+            "master_addr": null,
+            "launcher": "pdsh",
+            "detect_nvlink_pairs": false,
+            "comment": null
+        },
+        "num_fewshot": 0,
+        "batch_size": 16,
+        "device": "cuda:0",
+        "no_cache": true,
+        "limit": null,
+        "bootstrap_iters": 10000,
+        "description_dict": null
+    }
+}
