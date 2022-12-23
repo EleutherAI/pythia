@@ -10,8 +10,8 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 | Pythia-19M-Deduped  | 6        | 512     | 8       | 64     | 2M         | 1e-3          | [Here](https://huggingface.co/EleutherAI/pythia-19m-deduped)  | Ready           |
 | Pythia-125M         | 12       | 768     | 12      | 64     | 4M         | 6e-4          | [Here](https://huggingface.co/EleutherAI/pythia-125m)         | Ready           |
 | Pythia-125M-Deduped | 12       | 768     | 12      | 64     | 4M         | 6e-4          | [Here](https://huggingface.co/EleutherAI/pythia-125m-deduped) | Ready           |
-| Pythia-350M         | 24       | 1024    | 16      | 64     | 4M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-350m)         | --------------- |
-| Pythia-350M-Deduped | 24       | 1024    | 16      | 64     | 4M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-350m-deduped) | --------------- |
+| Pythia-350M         | 24       | 1024    | 16      | 64     | 4M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-350m)         | Ready           |
+| Pythia-350M-Deduped | 24       | 1024    | 16      | 64     | 4M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-350m-deduped) | Ready           |
 | Pythia-800M         | 16       | 2048    | 8       | 128    | 4M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-800m)         | Ready           |
 | Pythia-800M-Deduped | 16       | 2048    | 8       | 128    | 4M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-800m-deduped) | Ready           |
 | Pythia-1.3B         | 24       | 2048    | 16      | 128    | 4M         | 2e-4          | [Here](https://huggingface.co/EleutherAI/pythia-1.3b)         | Ready           |
