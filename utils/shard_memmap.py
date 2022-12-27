@@ -9,8 +9,8 @@ def shard(
     input_file: str,
     output_dir: str,
 ):
-    """Shard a Megatron .bin file into ~ 9 GB chunks"""
-    SHARD_SIZE = 10_000_000_000 # bytes ~= 9 GB 
+    """Shard a Megatron .bin file into ~ 4.5 GB chunks"""
+    SHARD_SIZE = 5_000_000_000 # bytes ~= 4.5 GB 
     
     # load in memmapped .bin file
     full_idx_map = np.memmap(input_file, mode="r", order="C")
