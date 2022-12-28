@@ -16,9 +16,15 @@ def unshard(
     input_dir = os.path.dirname(input_file)
     base_filename = os.path.basename(input_file)[:-19] # remove 00000-of-xxxxx.bin suffix from shard 0's filename
     
+    # check size of final shard
+    shard_filename = os.path.join(input_dir, base_filename) + f"-{(num_shards - 1):05}-of-{(num_shards - 1):05}.bin"
+    shard_memmap = np.memmap(shard_filename, mode="r", order="C")
+    final_shard_size = shard_memmap.shape[0]
+    del shard_memmap
 
+    # create full .bin file of proper size
     open(os.path.join(output_dir, base_filename) + ".bin", "w+").close()
-    full_idx_map = np.memmap(os.path.join(output_dir, base_filename) + ".bin", shape=(num_shards * SHARD_SIZE,), mode="w+", order="C")
+    full_idx_map = np.memmap(os.path.join(output_dir, base_filename) + ".bin", shape=(SHARD_SIZE * (num_shards - 1) + final_shard_size), mode="w+", order="C")
     print(full_idx_map.shape)
 
     # chunk by iterating over file
@@ -33,8 +39,8 @@ def unshard(
         #    full_idx_map = shard_memmap
         #else:
         #    full_idx_map = np.concatenate([full_idx_map, shard_memmap])
-        
-        full_idx_map[i * SHARD_SIZE: (i + 1) * SHARD_SIZE] = shard_memmap
+        size = SHARD_SIZE if not (i == num_shards - 1) else final_shard_size
+        full_idx_map[i * SHARD_SIZE: (i * SHARD_SIZE) + size] = shard_memmap
 
         del shard_memmap
         print(full_idx_map.shape)
