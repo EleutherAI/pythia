@@ -35,20 +35,10 @@ def unshard(
         print(shard_filename)
         shard_memmap = np.memmap(shard_filename, mode="r", order="C")
 
-        #if full_idx_map is None:
-        #    full_idx_map = shard_memmap
-        #else:
-        #    full_idx_map = np.concatenate([full_idx_map, shard_memmap])
         size = SHARD_SIZE if not (i == num_shards - 1) else final_shard_size
         full_idx_map[i * SHARD_SIZE: (i * SHARD_SIZE) + size] = shard_memmap
 
         del shard_memmap
-        print(full_idx_map.shape)
-    
-    # write full file
-    with open(os.path.join(output_dir, base_filename) + ".bin", "wb+") as out_full_file:
-        full_idx_map.tofile(out_full_file)
-
 
 if __name__ == "__main__":
     
