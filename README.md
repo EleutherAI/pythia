@@ -60,6 +60,67 @@ Models with a batch size of 4M tokens listed were originally trained for 71500 s
 
 We additionally have all model checkpoints in the format accepted by the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox), but do not serve them at scale due to size of optimizer states and anticipated lower demand. If you would like to perform analysis using the models within the GPT-NeoX codebase, or would like the optimizer states, please email us at stella@eleuther.ai to arrange access.
 
+## Reproducing Training
+
+We provide the training data for replication of our training runs. The [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox) requires the pre-tokenized training data in the form of 2 memory-mapped numpy arrays: a `.bin` and `.idx` file.
+
+We provide these files, hosted on the Hugging Face hub.
+
+To download and use the deduplicated Pile training data, run:
+
+```bash
+git lfs clone https://huggingface.co/datasets/EleutherAI/pythia_pile_idxmaps
+
+python utils/unshard_memmap.py --input_file ./pythia_pile_idxmaps/pile_0.87_deduped_text_document-00000-of-00082.bin --num_shards 83 --output_dir ./pythia_pile_idxmaps/
+```
+This will take over a day to run, though it should not require more than 5 GB of RAM. We recommend downloading this rather than retokenizing the Pile from scratch, in order to preserve the data order seen by the Pythia models.
+
+
+### Dataset Viewer
+
+We provide a tool to view particular portions of the training dataloader used by all models during training, at `utils/batch_viewer.py`.
+
+To run, first substitute the filepath to the downloaded `.bin` and `.idx` files for either the Pile or deduplicated Pile in `utils/dummy_config.yml`.
+
+```python
+python utils/batch_viewer.py \
+  --start_iteration 0 \
+  --end_iteration 1000 \
+  --mode save
+  --conf_dir utils/dummy_config.yml 
+```
+
+Passing `--mode save` will save a separate file containing each batch as a numpy array. 
+
+Passing `--mode custom` will save a dictionary for each batch to a JSONL file--it can be used to compute arbitrary statistics over each batch seen during training.
+
+
+## Benchmark Scores
+
+We also provide benchmark 0-shot and 5-shot results on a variety of NLP datasets:
+
+- Lambada (`lambada_openai`)
+- Wikitext (`wikitext`)
+- PiQA (`piqa`)
+- SciQ (`sciq`)
+- WSC (`wsc`)
+- Winogrande (`winogrande`)
+- ARC-challenge (`arc_challenge`)
+- ARC-easy (`arc_easy`)
+- LogiQA (`logiqa`)
+- BLiMP (`blimp_*`)
+- MMLU (`hendrycksTest*`)
+
+Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness), and are viewable by model and step at `results/json/*` in this repository.
+
+TODO: rename model 71500-step names to 143000-step equivalent
+TODO: rename JSON filenames to correct model names
+
+### Plotting Results
+
+TODO: upload feather file + upload sample colab to the repo for generating plots 
+
+
 ## Experiments
 
 ### Grammar Learning Trajectories of Language Models
