@@ -86,7 +86,7 @@ To run, first substitute the filepath to the downloaded `.bin` and `.idx` files 
 python utils/batch_viewer.py \
   --start_iteration 0 \
   --end_iteration 1000 \
-  --mode save
+  --mode save \
   --conf_dir utils/dummy_config.yml 
 ```
 
