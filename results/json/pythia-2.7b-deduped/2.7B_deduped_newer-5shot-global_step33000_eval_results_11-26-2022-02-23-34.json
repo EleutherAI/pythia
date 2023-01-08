@@ -12,7 +12,7 @@
             "acc_norm": 0.3046075085324232,
             "acc_norm_stderr": 0.01344952210993249
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 8.043270907837233,
             "ppl_stderr": 0.21126813781609896,
             "acc": 0.5538521249757423,
@@ -390,7 +390,7 @@
     "versions": {
         "hendrycksTest-world_religions": 0,
         "arc_challenge": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-college_mathematics": 0,
         "hendrycksTest-conceptual_physics": 0,
         "hendrycksTest-college_chemistry": 0,
@@ -491,7 +491,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

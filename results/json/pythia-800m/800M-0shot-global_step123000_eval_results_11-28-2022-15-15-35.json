@@ -358,7 +358,7 @@
             "acc": 0.891,
             "acc_stderr": 0.00985982840703719
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 7.75313095947995,
             "ppl_stderr": 0.20848560880003164,
             "acc": 0.5647195808267029,
@@ -727,7 +727,7 @@
         "hendrycksTest-high_school_mathematics": 0,
         "hendrycksTest-high_school_chemistry": 0,
         "blimp_wh_questions_subject_gap_long_distance": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_determiner_noun_agreement_1": 0,
         "hendrycksTest-abstract_algebra": 0,
         "hendrycksTest-moral_scenarios": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

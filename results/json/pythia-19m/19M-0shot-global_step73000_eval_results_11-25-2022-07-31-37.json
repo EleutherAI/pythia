@@ -106,7 +106,7 @@
             "acc": 0.917,
             "acc_stderr": 0.008728527206074794
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 85.47788569734138,
             "ppl_stderr": 3.555597981407753,
             "acc": 0.267028915195032,
@@ -677,7 +677,7 @@
         "blimp_wh_questions_subject_gap_long_distance": 0,
         "hendrycksTest-high_school_macroeconomics": 0,
         "blimp_irregular_past_participle_adjectives": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_irregular_past_participle_verbs": 0,
         "blimp_npi_present_1": 0,
         "blimp_causative": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

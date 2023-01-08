@@ -498,7 +498,7 @@
             "acc": 0.818,
             "acc_stderr": 0.012207580637662153
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 92.64532268765059,
             "ppl_stderr": 3.7855683609410047,
             "acc": 0.25402678051620414,
@@ -756,7 +756,7 @@
         "blimp_wh_vs_that_no_gap": 0,
         "hendrycksTest-college_physics": 0,
         "blimp_tough_vs_raising_2": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_coordinate_structure_constraint_object_extraction": 0,
         "blimp_determiner_noun_agreement_irregular_2": 0,
         "hendrycksTest-high_school_psychology": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

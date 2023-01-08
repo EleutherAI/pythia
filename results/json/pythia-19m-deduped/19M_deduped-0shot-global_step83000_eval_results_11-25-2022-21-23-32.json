@@ -154,7 +154,7 @@
             "acc_norm": 0.25,
             "acc_norm_stderr": 0.04351941398892446
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 108.26412367094603,
             "ppl_stderr": 4.546120978535401,
             "acc": 0.23539685620027168,
@@ -687,7 +687,7 @@
         "blimp_determiner_noun_agreement_irregular_1": 0,
         "blimp_principle_A_domain_1": 0,
         "hendrycksTest-global_facts": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_left_branch_island_simple_question": 0,
         "blimp_complex_NP_island": 0,
         "hendrycksTest-professional_law": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

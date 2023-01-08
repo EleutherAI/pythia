@@ -526,7 +526,7 @@
             "acc_norm": 0.3,
             "acc_norm_stderr": 0.046056618647183814
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 5.617459643224126,
             "ppl_stderr": 0.138544616501198,
             "acc": 0.6307005627789637,
@@ -763,7 +763,7 @@
         "hendrycksTest-human_aging": 0,
         "blimp_determiner_noun_agreement_with_adjective_1": 0,
         "hendrycksTest-business_ethics": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-public_relations": 0,
         "sciq": 0,
         "blimp_only_npi_scope": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

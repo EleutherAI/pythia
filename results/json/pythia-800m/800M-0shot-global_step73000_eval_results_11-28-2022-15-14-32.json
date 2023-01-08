@@ -204,7 +204,7 @@
             "acc_norm": 0.29260450160771706,
             "acc_norm_stderr": 0.02583989833487798
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 9.600506169295944,
             "ppl_stderr": 0.26968213176927286,
             "acc": 0.5171744614787502,
@@ -696,7 +696,7 @@
         "blimp_causative": 0,
         "blimp_left_branch_island_simple_question": 0,
         "hendrycksTest-philosophy": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_wh_vs_that_no_gap_long_distance": 0,
         "blimp_coordinate_structure_constraint_complex_left_branch": 0,
         "hendrycksTest-professional_law": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

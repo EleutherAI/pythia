@@ -130,7 +130,7 @@
             "acc_norm": 0.24561403508771928,
             "acc_norm_stderr": 0.040493392977481404
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 183.31429128304833,
             "ppl_stderr": 7.3993883477823745,
             "acc": 0.17232679992237532,
@@ -410,7 +410,7 @@
         "hendrycksTest-high_school_physics": 0,
         "hendrycksTest-electrical_engineering": 0,
         "hendrycksTest-econometrics": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-moral_disputes": 0,
         "hendrycksTest-moral_scenarios": 0,
         "hendrycksTest-sociology": 0,
@@ -491,7 +491,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

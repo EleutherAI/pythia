@@ -438,7 +438,7 @@
             "acc": 0.797,
             "acc_stderr": 0.012726073744598285
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 7.753426172579081,
             "ppl_stderr": 0.21310160556202257,
             "acc": 0.5715117407335533,
@@ -745,7 +745,7 @@
         "hendrycksTest-human_sexuality": 0,
         "blimp_tough_vs_raising_1": 0,
         "blimp_intransitive": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_coordinate_structure_constraint_object_extraction": 0,
         "hendrycksTest-computer_security": 0,
         "hendrycksTest-professional_law": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

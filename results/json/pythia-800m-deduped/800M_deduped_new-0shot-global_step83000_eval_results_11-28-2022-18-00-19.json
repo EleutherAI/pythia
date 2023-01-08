@@ -332,7 +332,7 @@
             "acc_norm": 0.33,
             "acc_norm_stderr": 0.047258156262526045
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 8.700673068404413,
             "ppl_stderr": 0.24153665786153133,
             "acc": 0.5422084222782845,
@@ -723,7 +723,7 @@
         "hendrycksTest-moral_scenarios": 0,
         "blimp_superlative_quantifiers_1": 0,
         "hendrycksTest-college_computer_science": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_expletive_it_object_raising": 0,
         "hendrycksTest-sociology": 0,
         "blimp_npi_present_1": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

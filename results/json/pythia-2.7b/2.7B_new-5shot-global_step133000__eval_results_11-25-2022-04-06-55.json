@@ -344,7 +344,7 @@
             "acc_norm": 0.3253012048192771,
             "acc_norm_stderr": 0.03647168523683227
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 5.688053710478582,
             "ppl_stderr": 0.13575582124568816,
             "acc": 0.6303124393557151,
@@ -446,7 +446,7 @@
         "hendrycksTest-professional_accounting": 0,
         "hendrycksTest-medical_genetics": 0,
         "hendrycksTest-virology": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-management": 0,
         "arc_challenge": 0,
         "logiqa": 0,
@@ -491,7 +491,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

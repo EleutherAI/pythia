@@ -196,7 +196,7 @@
             "acc": 0.865,
             "acc_stderr": 0.010811655372416051
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 118.04412292990055,
             "ppl_stderr": 4.9648416819468215,
             "acc": 0.23073937512128856,
@@ -695,7 +695,7 @@
         "hendrycksTest-conceptual_physics": 0,
         "hendrycksTest-philosophy": 0,
         "blimp_regular_plural_subject_verb_agreement_1": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-college_physics": 0,
         "blimp_only_npi_licensor_present": 0,
         "blimp_wh_vs_that_with_gap_long_distance": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

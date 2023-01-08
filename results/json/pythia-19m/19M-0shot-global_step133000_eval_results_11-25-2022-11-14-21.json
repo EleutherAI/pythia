@@ -94,7 +94,7 @@
             "acc": 0.944,
             "acc_stderr": 0.0072744014816970674
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 86.60130709099393,
             "ppl_stderr": 3.5220085101733343,
             "acc": 0.2590723850184359,
@@ -674,7 +674,7 @@
         "hendrycksTest-high_school_mathematics": 0,
         "hendrycksTest-business_ethics": 0,
         "blimp_irregular_past_participle_adjectives": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_tough_vs_raising_1": 0,
         "blimp_regular_plural_subject_verb_agreement_2": 0,
         "blimp_wh_vs_that_no_gap_long_distance": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

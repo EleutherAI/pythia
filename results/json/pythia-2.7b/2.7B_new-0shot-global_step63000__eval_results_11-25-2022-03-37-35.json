@@ -200,7 +200,7 @@
             "acc_norm": 0.3,
             "acc_norm_stderr": 0.046056618647183814
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 6.013425393994866,
             "ppl_stderr": 0.15012477396064722,
             "acc": 0.6175043663885116,
@@ -696,7 +696,7 @@
         "blimp_left_branch_island_simple_question": 0,
         "hendrycksTest-high_school_european_history": 0,
         "hendrycksTest-college_chemistry": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-public_relations": 0,
         "hendrycksTest-high_school_mathematics": 0,
         "hendrycksTest-high_school_world_history": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

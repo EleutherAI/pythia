@@ -290,7 +290,7 @@
             "acc_norm": 0.2824427480916031,
             "acc_norm_stderr": 0.03948406125768361
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 94.23743710855024,
             "ppl_stderr": 3.8359354032116686,
             "acc": 0.24626431205123228,
@@ -714,7 +714,7 @@
         "hendrycksTest-econometrics": 0,
         "blimp_regular_plural_subject_verb_agreement_1": 0,
         "hendrycksTest-human_sexuality": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_sentential_subject_island": 0,
         "blimp_principle_A_c_command": 0,
         "blimp_anaphor_number_agreement": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

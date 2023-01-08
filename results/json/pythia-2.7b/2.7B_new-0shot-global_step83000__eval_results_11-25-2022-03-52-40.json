@@ -6,7 +6,7 @@
             "acc_norm": 0.2867647058823529,
             "acc_norm_stderr": 0.027472274473233818
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 5.427651888344748,
             "ppl_stderr": 0.13253740650705573,
             "acc": 0.6392392780904328,
@@ -657,7 +657,7 @@
     },
     "versions": {
         "hendrycksTest-professional_medicine": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_wh_vs_that_with_gap": 0,
         "blimp_intransitive": 0,
         "hendrycksTest-professional_law": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

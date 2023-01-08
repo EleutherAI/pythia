@@ -374,7 +374,7 @@
             "acc": 0.646,
             "acc_stderr": 0.015129868238451773
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 8.996825939243488,
             "ppl_stderr": 0.24881742978544905,
             "acc": 0.5361925092179313,
@@ -732,7 +732,7 @@
         "blimp_tough_vs_raising_1": 0,
         "blimp_drop_argument": 0,
         "blimp_ellipsis_n_bar_1": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-high_school_mathematics": 0,
         "blimp_expletive_it_object_raising": 0,
         "blimp_principle_A_domain_1": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

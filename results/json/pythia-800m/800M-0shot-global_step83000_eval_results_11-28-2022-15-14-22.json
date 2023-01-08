@@ -462,7 +462,7 @@
             "acc": 0.89,
             "acc_stderr": 0.009899393819724439
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 8.717164233400368,
             "ppl_stderr": 0.241277642837966,
             "acc": 0.5377450029109256,
@@ -748,7 +748,7 @@
         "hendrycksTest-high_school_us_history": 0,
         "hendrycksTest-global_facts": 0,
         "blimp_animate_subject_trans": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "winogrande": 0,
         "blimp_distractor_agreement_relational_noun": 0,
         "blimp_left_branch_island_simple_question": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

@@ -472,7 +472,7 @@
             "acc_norm": 0.2251655629139073,
             "acc_norm_stderr": 0.03410435282008937
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 4.851799070438673,
             "ppl_stderr": 0.1139123959838953,
             "acc": 0.6636910537550941,
@@ -753,7 +753,7 @@
         "blimp_drop_argument": 0,
         "blimp_irregular_plural_subject_verb_agreement_2": 0,
         "hendrycksTest-high_school_physics": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-college_medicine": 0,
         "hendrycksTest-professional_accounting": 0,
         "blimp_animate_subject_trans": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

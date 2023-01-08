@@ -96,7 +96,7 @@
             "acc_norm": 0.25906735751295334,
             "acc_norm_stderr": 0.03161877917935408
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 207.3761180672696,
             "ppl_stderr": 8.372554065276725,
             "acc": 0.16320589947603337,
@@ -404,7 +404,7 @@
         "hendrycksTest-formal_logic": 0,
         "sciq": 0,
         "hendrycksTest-high_school_government_and_politics": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-high_school_chemistry": 0,
         "hendrycksTest-college_computer_science": 0,
         "hendrycksTest-anatomy": 0,
@@ -491,7 +491,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

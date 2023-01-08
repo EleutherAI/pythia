@@ -326,7 +326,7 @@
             "acc": 0.89,
             "acc_stderr": 0.009899393819724435
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 5.0299860810789285,
             "ppl_stderr": 0.11876048132218749,
             "acc": 0.6503007956530177,
@@ -723,7 +723,7 @@
         "blimp_existential_there_quantifiers_2": 0,
         "hendrycksTest-global_facts": 0,
         "blimp_tough_vs_raising_2": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-world_religions": 0,
         "hendrycksTest-formal_logic": 0,
         "hendrycksTest-prehistory": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

@@ -354,7 +354,7 @@
             "acc_norm": 0.932,
             "acc_norm_stderr": 0.007964887911291605
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 7.204537167535641,
             "ppl_stderr": 0.18069685117958167,
             "acc": 0.5686008150591888,
@@ -447,7 +447,7 @@
         "hendrycksTest-world_religions": 0,
         "piqa": 0,
         "sciq": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "winogrande": 0,
         "wsc": 0,
         "arc_challenge": 0,
@@ -547,7 +547,7 @@
                 "hendrycksTest-world_religions",
                 "piqa",
                 "sciq",
-                "lambada",
+                "lambada_openai",
                 "winogrande",
                 "wsc",
                 "arc_challenge",

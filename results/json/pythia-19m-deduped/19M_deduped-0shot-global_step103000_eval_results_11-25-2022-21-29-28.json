@@ -284,7 +284,7 @@
             "acc": 0.654,
             "acc_stderr": 0.015050266127564452
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 103.01014626011975,
             "ppl_stderr": 4.230529921622974,
             "acc": 0.22549970890743257,
@@ -714,7 +714,7 @@
         "hendrycksTest-nutrition": 0,
         "hendrycksTest-moral_disputes": 0,
         "blimp_left_branch_island_echo_question": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_transitive": 0,
         "hendrycksTest-high_school_statistics": 0,
         "hendrycksTest-miscellaneous": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

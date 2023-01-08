@@ -1,6 +1,6 @@
 {
     "results": {
-        "lambada": {
+        "lambada_openai": {
             "ppl": 11.172153466828501,
             "ppl_stderr": 0.3181793057540533,
             "acc": 0.4803027362701339,
@@ -388,7 +388,7 @@
         }
     },
     "versions": {
-        "lambada": 0,
+        "lambada_openai": 0,
         "logiqa": 0,
         "hendrycksTest-college_medicine": 0,
         "hendrycksTest-computer_security": 0,
@@ -491,7 +491,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

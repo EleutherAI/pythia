@@ -480,7 +480,7 @@
             "acc_norm": 0.23148148148148148,
             "acc_norm_stderr": 0.023468429832451163
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 5.925574078035309,
             "ppl_stderr": 0.15026045376193614,
             "acc": 0.6250727731418592,
@@ -754,7 +754,7 @@
         "hendrycksTest-human_sexuality": 0,
         "hendrycksTest-formal_logic": 0,
         "hendrycksTest-prehistory": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_sentential_subject_island": 0,
         "blimp_regular_plural_subject_verb_agreement_1": 0,
         "hendrycksTest-high_school_european_history": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

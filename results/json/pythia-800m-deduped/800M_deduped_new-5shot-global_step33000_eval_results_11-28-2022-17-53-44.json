@@ -374,7 +374,7 @@
             "acc_norm": 0.14814814814814814,
             "acc_norm_stderr": 0.030688647610352667
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 13.100259960324772,
             "ppl_stderr": 0.37388482354908287,
             "acc": 0.45080535610324085,
@@ -451,7 +451,7 @@
         "hendrycksTest-human_aging": 0,
         "hendrycksTest-high_school_macroeconomics": 0,
         "hendrycksTest-anatomy": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-high_school_computer_science": 0
     },
     "config": {
@@ -491,7 +491,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

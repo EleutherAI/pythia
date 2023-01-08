@@ -148,7 +148,7 @@
             "acc_norm": 0.20679012345679013,
             "acc_norm_stderr": 0.02253500670594282
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 10.575551987680038,
             "ppl_stderr": 0.29284454952226874,
             "acc": 0.4962157966233262,
@@ -413,7 +413,7 @@
         "hendrycksTest-high_school_psychology": 0,
         "hendrycksTest-machine_learning": 0,
         "hendrycksTest-prehistory": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-college_medicine": 0,
         "hendrycksTest-marketing": 0,
         "hendrycksTest-international_law": 0,
@@ -491,7 +491,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

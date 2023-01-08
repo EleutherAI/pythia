@@ -498,7 +498,7 @@
             "acc_norm": 0.3333333333333333,
             "acc_norm_stderr": 0.04557239513497751
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 281.5506321601814,
             "ppl_stderr": 12.3775393649581,
             "acc": 0.16456433145740346,
@@ -755,7 +755,7 @@
         "hendrycksTest-virology": 0,
         "hendrycksTest-moral_disputes": 0,
         "hendrycksTest-jurisprudence": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_determiner_noun_agreement_with_adj_irregular_2": 0,
         "blimp_wh_questions_subject_gap": 0,
         "blimp_only_npi_licensor_present": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",
