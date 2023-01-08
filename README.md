@@ -83,7 +83,7 @@ We provide a tool to view particular portions of the training dataloader used by
 To run, first substitute the filepath to the downloaded `.bin` and `.idx` files for either the Pile or deduplicated Pile in `utils/dummy_config.yml`.
 
 ```python
-python utils/batch_viewer.py \
+PYTHONPATH=utils/gpt-neox/ python utils/batch_viewer.py \
   --start_iteration 0 \
   --end_iteration 1000 \
   --mode save \
