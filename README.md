@@ -75,6 +75,8 @@ python utils/unshard_memmap.py --input_file ./pythia_pile_idxmaps/pile_0.87_dedu
 ```
 This will take over a day to run, though it should not require more than 5 GB of RAM. We recommend downloading this rather than retokenizing the Pile from scratch, in order to preserve the data order seen by the Pythia models.
 
+TODO: forthcoming: more information on how to replicate + relaunch the Pythia training runs, once the data is actually downloaded.
+
 
 ### Dataset Viewer
 
