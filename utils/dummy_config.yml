@@ -85,6 +85,6 @@
   "test-data-paths": ["/fsx/pile/pile_20B_tokenizer_text_document"],
 
   "tokenizer-type": "HFTokenizer",
-  "vocab-file": "/fsx/pile/20B_tokenizer.json",
+  "vocab-file": "utils/20B_tokenizer.json",
 
 }
