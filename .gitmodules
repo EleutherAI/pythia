@@ -1,0 +1,3 @@
+[submodule "utils/gpt-neox"]
+	path = utils/gpt-neox
+	url = https://github.com/EleutherAI/gpt-neox.git
