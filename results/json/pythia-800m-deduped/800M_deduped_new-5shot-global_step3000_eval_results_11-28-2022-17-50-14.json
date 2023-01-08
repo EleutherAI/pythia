@@ -268,7 +268,7 @@
             "acc_norm": 0.27249022164276404,
             "acc_norm_stderr": 0.011371658294311545
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 82.04328562448306,
             "ppl_stderr": 3.2217884070643956,
             "acc": 0.235590917911896,
@@ -433,7 +433,7 @@
         "wsc": 0,
         "hendrycksTest-computer_security": 0,
         "hendrycksTest-professional_law": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-high_school_geography": 0,
         "winogrande": 0,
         "hendrycksTest-electrical_engineering": 0,
@@ -491,7 +491,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

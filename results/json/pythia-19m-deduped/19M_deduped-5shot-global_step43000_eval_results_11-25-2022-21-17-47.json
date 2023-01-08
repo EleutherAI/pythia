@@ -1,6 +1,6 @@
 {
     "results": {
-        "lambada": {
+        "lambada_openai": {
             "ppl": 186.637502627704,
             "ppl_stderr": 7.328909907430698,
             "acc": 0.16359402289928196,
@@ -388,7 +388,7 @@
         }
     },
     "versions": {
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-moral_scenarios": 0,
         "hendrycksTest-high_school_government_and_politics": 0,
         "hendrycksTest-us_foreign_policy": 0,
@@ -491,7 +491,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

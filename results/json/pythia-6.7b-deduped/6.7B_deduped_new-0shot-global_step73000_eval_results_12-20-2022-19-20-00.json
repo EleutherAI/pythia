@@ -622,7 +622,7 @@
             "acc_norm": 0.833,
             "acc_norm_stderr": 0.0118004343246446
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 4.933296263971523,
             "ppl_stderr": 0.115021282887259,
             "acc": 0.6561226470017466,
@@ -787,7 +787,7 @@
         "blimp_wh_vs_that_with_gap_long_distance": 0,
         "piqa": 0,
         "sciq": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "wikitext": 1,
         "winogrande": 0,
         "wsc": 0,
@@ -955,7 +955,7 @@
                 "blimp_wh_vs_that_with_gap_long_distance",
                 "piqa",
                 "sciq",
-                "lambada",
+                "lambada_openai",
                 "wikitext",
                 "winogrande",
                 "wsc",

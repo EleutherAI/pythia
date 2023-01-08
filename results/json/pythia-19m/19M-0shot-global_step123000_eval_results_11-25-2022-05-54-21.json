@@ -410,7 +410,7 @@
             "acc": 0.825,
             "acc_stderr": 0.012021627157731968
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 91.50325344447958,
             "ppl_stderr": 3.792135628085343,
             "acc": 0.2579080147486901,
@@ -738,7 +738,7 @@
         "blimp_animate_subject_passive": 0,
         "hendrycksTest-elementary_mathematics": 0,
         "blimp_animate_subject_trans": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_tough_vs_raising_1": 0,
         "blimp_principle_A_reconstruction": 0,
         "blimp_complex_NP_island": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

@@ -84,7 +84,7 @@
             "acc": 0.663,
             "acc_stderr": 0.014955087918653612
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 15.287514774207839,
             "ppl_stderr": 0.47451213790929786,
             "acc": 0.4418785173685232,
@@ -673,7 +673,7 @@
         "blimp_wh_island": 0,
         "sciq": 0,
         "blimp_inchoative": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_npi_present_2": 0,
         "blimp_wh_questions_object_gap": 0,
         "blimp_principle_A_case_1": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

@@ -30,7 +30,7 @@
             "acc": 0.686,
             "acc_stderr": 0.014683991951087966
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 8.315964122678306,
             "ppl_stderr": 0.23008055872709088,
             "acc": 0.5482243353386377,
@@ -663,7 +663,7 @@
         "hendrycksTest-college_biology": 0,
         "blimp_regular_plural_subject_verb_agreement_1": 0,
         "blimp_matrix_question_npi_licensor_present": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_existential_there_quantifiers_1": 0,
         "blimp_coordinate_structure_constraint_object_extraction": 0,
         "blimp_wh_vs_that_with_gap_long_distance": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

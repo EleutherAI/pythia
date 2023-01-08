@@ -606,7 +606,7 @@
             "acc_norm": 0.25906735751295334,
             "acc_norm_stderr": 0.03161877917935411
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 215.76961407201435,
             "ppl_stderr": 10.137341795540248,
             "acc": 0.20570541432175432,
@@ -778,7 +778,7 @@
         "blimp_determiner_noun_agreement_with_adj_2": 0,
         "blimp_principle_A_reconstruction": 0,
         "hendrycksTest-high_school_government_and_politics": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_existential_there_object_raising": 0,
         "blimp_wh_vs_that_with_gap_long_distance": 0,
         "hendrycksTest-security_studies": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

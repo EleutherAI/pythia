@@ -634,7 +634,7 @@
             "acc_norm": 0.4793388429752066,
             "acc_norm_stderr": 0.04560456086387235
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 7.46990721505191,
             "ppl_stderr": 0.19776604879741372,
             "acc": 0.5775276537939065,
@@ -784,7 +784,7 @@
         "blimp_sentential_subject_island": 0,
         "blimp_animate_subject_passive": 0,
         "hendrycksTest-international_law": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_npi_present_2": 0,
         "blimp_existential_there_quantifiers_2": 0,
         "hendrycksTest-college_biology": 0
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

@@ -36,7 +36,7 @@
             "acc_norm": 0.24081632653061225,
             "acc_norm_stderr": 0.02737294220178817
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 53.90143631942473,
             "ppl_stderr": 1.9743818320028854,
             "acc": 0.2612070638463031,
@@ -394,7 +394,7 @@
         "hendrycksTest-philosophy": 0,
         "hendrycksTest-world_religions": 0,
         "hendrycksTest-security_studies": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-business_ethics": 0,
         "hendrycksTest-high_school_european_history": 0,
         "hendrycksTest-high_school_world_history": 0,
@@ -491,7 +491,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

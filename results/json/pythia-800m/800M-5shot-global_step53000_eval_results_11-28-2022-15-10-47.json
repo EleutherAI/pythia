@@ -190,7 +190,7 @@
             "acc_norm": 0.2543859649122807,
             "acc_norm_stderr": 0.040969851398436716
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 11.916071759670187,
             "ppl_stderr": 0.3475034982683035,
             "acc": 0.4626431205123229,
@@ -420,7 +420,7 @@
         "hendrycksTest-world_religions": 0,
         "wsc": 0,
         "hendrycksTest-econometrics": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-college_mathematics": 0,
         "hendrycksTest-management": 0,
         "sciq": 0,
@@ -491,7 +491,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

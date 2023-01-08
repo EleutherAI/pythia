@@ -254,7 +254,7 @@
             "acc_norm": 0.2561576354679803,
             "acc_norm_stderr": 0.0307127300709826
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 9.608842356024683,
             "ppl_stderr": 0.2582211635358969,
             "acc": 0.5084416844556569,
@@ -431,7 +431,7 @@
         "hendrycksTest-college_physics": 0,
         "hendrycksTest-high_school_world_history": 0,
         "hendrycksTest-high_school_chemistry": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-human_sexuality": 0,
         "hendrycksTest-moral_disputes": 0,
         "hendrycksTest-business_ethics": 0,
@@ -491,7 +491,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

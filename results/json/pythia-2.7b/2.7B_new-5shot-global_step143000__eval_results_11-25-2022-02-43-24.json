@@ -164,7 +164,7 @@
             "acc": 0.36538461538461536,
             "acc_stderr": 0.0474473339327792
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 5.667345533499148,
             "ppl_stderr": 0.13605346497674073,
             "acc": 0.6274015136813507,
@@ -416,7 +416,7 @@
         "winogrande": 0,
         "hendrycksTest-high_school_european_history": 0,
         "wsc": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "hendrycksTest-high_school_mathematics": 0,
         "hendrycksTest-astronomy": 0,
         "hendrycksTest-world_religions": 0,
@@ -491,7 +491,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",

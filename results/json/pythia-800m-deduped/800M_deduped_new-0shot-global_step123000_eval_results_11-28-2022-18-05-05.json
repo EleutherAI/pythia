@@ -522,7 +522,7 @@
             "acc": 0.49038461538461536,
             "acc_stderr": 0.04925735314273531
         },
-        "lambada": {
+        "lambada_openai": {
             "ppl": 7.324722121030742,
             "ppl_stderr": 0.19379784275490122,
             "acc": 0.5788860857752766,
@@ -762,7 +762,7 @@
         "blimp_irregular_past_participle_verbs": 0,
         "blimp_animate_subject_passive": 0,
         "wsc": 0,
-        "lambada": 0,
+        "lambada_openai": 0,
         "blimp_wh_questions_subject_gap_long_distance": 0,
         "piqa": 0,
         "blimp_wh_questions_object_gap": 0,
@@ -826,7 +826,7 @@
             "eval_tasks": [
                 "arc_challenge",
                 "arc_easy",
-                "lambada",
+                "lambada_openai",
                 "logiqa",
                 "sciq",
                 "piqa",
