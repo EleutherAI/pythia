@@ -86,7 +86,7 @@ To run, first substitute the filepath to the downloaded `.bin` and `.idx` files 
 python utils/batch_viewer.py \
   --start_iteration 0 \
   --end_iteration 1000 \
-  --mode save
+  --mode save \
   --conf_dir utils/dummy_config.yml 
 ```
 
@@ -113,20 +113,16 @@ We also provide benchmark 0-shot and 5-shot results on a variety of NLP datasets
 
 Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness), and are viewable by model and step at `results/json/*` in this repository.
 
-TODO: rename model 71500-step names to 143000-step equivalent
-TODO: rename JSON filenames to correct model names
+TODO: 125m, 350m, and 1.3b models' step numbers from these evaluations correspond to .5x what is listed on Hugging Face. (e.g. here the final step is 71500, as it was during training. on the HF model hub these models' checkpoints were relabeled such that pythia-1.3b's "step143000" checkpoint is the same as the step 71500 checkpoint in these evals.)
 
 ### Plotting Results
 
-TODO: upload feather file + upload sample colab to the repo for generating plots 
-
+We will also provide utilities for creating plots based on the dumped zero and few-shot results. Sample notebook and data format forthcoming.
 
 ## Experiments
-
-### Grammar Learning Trajectories of Language Models
 
 ### Training Order and Memorization
 
 A common explanation for language model training dynamics is that LMs have a mass of knowledge and when they come across new information they glom that knowledge on and slowly integrate it into the mass over time. One prediction that this mental model makes is that tokens encountered later in training will be more likely to be memorized than ones encountered earlier in training, as the model will not have time to adjust its representations to store the info without memorization. The primary goal of this experiment is to **disprove** this prediction and demonstrate that training order doesn't influence memorization.
 
-### Grammar Learning Trajectories of Language Models
+### Gender Bias and Dataset Interventions
