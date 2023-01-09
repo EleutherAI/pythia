@@ -35,15 +35,6 @@ _HOMEPAGE = ""
 # TODO: Add the licence for the dataset here if you can find it
 _LICENSE = ""
 
-# TODO: Add link to the official dataset URLs here
-# The HuggingFace Datasets library doesn't host the datasets but only points to the original files.
-# This can be an arbitrary nested dict/list of URLs (see below in `_split_generators` method)
-_URLS = {
-    "first_domain": "https://huggingface.co/great-new-dataset-first_domain.zip",
-    "second_domain": "https://huggingface.co/great-new-dataset-second_domain.zip",
-}
-
-
 # TODO: Name of the dataset usually matches the script name with CamelCase instead of snake_case
 class NumericalReasoningArithmetic(datasets.GeneratorBasedBuilder):
     """TODO: Short description of my dataset."""
@@ -115,13 +106,16 @@ class NumericalReasoningArithmetic(datasets.GeneratorBasedBuilder):
                     }
 
         elif split == "test":
-            yield 0, {
-                "x": x,
-                "y_min_sec": x*60,
-                "y_hour_min": x*60,
-                "y_day_hour": x*24,
-                "y_week_day": x*7,
-                "y_month_week": x*4,
-                "y_year_month": x*12,
-                "y_decade_year": x*10,
-                }
+            # Because it's only 1 datapoint, 
+            # let's do it over 10 times to get a better distribution
+            for key in range(0,10):
+                yield key, {
+                    "x": x,
+                    "y_min_sec": x*60,
+                    "y_hour_min": x*60,
+                    "y_day_hour": x*24,
+                    "y_week_day": x*7,
+                    "y_month_week": x*4,
+                    "y_year_month": x*12,
+                    "y_decade_year": x*10,
+                    }
