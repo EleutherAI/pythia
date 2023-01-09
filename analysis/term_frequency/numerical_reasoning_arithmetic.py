@@ -48,7 +48,7 @@ class NumericalReasoningArithmetic(datasets.GeneratorBasedBuilder):
                 for num in range(0,100)
     ]
 
-    DEFAULT_CONFIG_NAME = "multiplication"
+    DEFAULT_CONFIG_NAME = "0"
 
     def _info(self):
         features = datasets.Features(
