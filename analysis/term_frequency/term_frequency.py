@@ -110,14 +110,14 @@ if __name__ == "__main__":
         evaluate_num_reasoning(
             model_name=args.model_name,
             device=args.device if args.device is not None else device,
-            batch_size=args.batch_size
-            output_dir=args.output_dir
+            batch_size=args.batch_size,
+            output_dir=args.output_dir,
             )
     else:
         for idx, (model_name, batch_size) in enumerate(model_list):
             evaluate_num_reasoning(
                 model_name=model_name,
                 device=device,
-                batch_size=batch_size
-                output_dir=args.output_dir
+                batch_size=batch_size,
+                output_dir=args.output_dir,
                 )
