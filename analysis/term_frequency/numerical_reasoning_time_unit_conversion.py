@@ -58,7 +58,7 @@ class NumericalReasoningArithmetic(datasets.GeneratorBasedBuilder):
                 for num in range(0,100)
     ]
 
-    DEFAULT_CONFIG_NAME = "0"
+    DEFAULT_CONFIG_NAME = None
 
     def _info(self):
         features = datasets.Features(
@@ -85,6 +85,12 @@ class NumericalReasoningArithmetic(datasets.GeneratorBasedBuilder):
     def _split_generators(self, dl_manager):
         return [
             datasets.SplitGenerator(
+                name=datasets.Split.VALIDATION,
+                gen_kwargs={
+                    "split": "validation"
+                },
+            ),
+            datasets.SplitGenerator(
                 name=datasets.Split.TEST,
                 gen_kwargs={
                     "split": "test"
@@ -95,13 +101,27 @@ class NumericalReasoningArithmetic(datasets.GeneratorBasedBuilder):
     def _generate_examples(self, split):
 
         x = int(self.config.name)
-        yield 0, {
-            "x": x,
-            "y_min_sec": x*60,
-            "y_hour_min": x*60,
-            "y_day_hour": x*24,
-            "y_week_day": x*7,
-            "y_month_week": x*4,
-            "y_year_month": x*12,
-            "y_decade_year": x*10,
-            }
+        if split == "validation":
+            for key, _x in enumerate(list(range(0,x))+list(range(x+1,100))):
+                yield key, {
+                    "x": _x,
+                    "y_min_sec": _x*60,
+                    "y_hour_min": _x*60,
+                    "y_day_hour": _x*24,
+                    "y_week_day": _x*7,
+                    "y_month_week": _x*4,
+                    "y_year_month": _x*12,
+                    "y_decade_year": _x*10,
+                    }
+
+        elif split == "test":
+            yield 0, {
+                "x": x,
+                "y_min_sec": x*60,
+                "y_hour_min": x*60,
+                "y_day_hour": x*24,
+                "y_week_day": x*7,
+                "y_month_week": x*4,
+                "y_year_month": x*12,
+                "y_decade_year": x*10,
+                }
