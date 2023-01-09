@@ -95,5 +95,5 @@ if __name__ == "__main__":
         evaluate_num_reasoning(
             model_name,
             device,
-            args.batch_size else batch_size
+            args.batch_size if args.batch_size is not None else batch_size
             )
