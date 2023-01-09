@@ -8,7 +8,7 @@ import pandas as pd
 
 from lm_eval import evaluator
 
-from task import ArithmeticMultiplication
+from task import *
 from model import GPTNeoLM
 
 device = "cuda"
@@ -28,21 +28,28 @@ checkpoint_list = list(range(eval_steps, max_steps+eval_steps, eval_steps))
 
 few_shot_list = [16, 8, 4, 2, 0]
 
-from task import *
 
 task_names = []
 task_names.extend([ArithmeticMultiplication(str(num)) for num in range(0,100)])
 task_names.extend([ArithmeticAddition(str(num)) for num in range(0,100)])
 task_names.extend([OperationInferenceMult(str(num)) for num in range(0,100)])
 task_names.extend([OperationInferenceAdd(str(num)) for num in range(0,100)])
+task_names.extend([TimeUnitInferenceMinSec(str(num)) for num in range(0,100)])
+task_names.extend([TimeUnitInferenceHourMin(str(num)) for num in range(0,100)])
+task_names.extend([TimeUnitInferenceDayHour(str(num)) for num in range(0,100)])
+task_names.extend([TimeUnitInferenceWeekDay(str(num)) for num in range(0,100)])
+task_names.extend([TimeUnitInferenceMonthWeek(str(num)) for num in range(0,100)])
+task_names.extend([TimeUnitInferenceYearMonth(str(num)) for num in range(0,100)])
+task_names.extend([TimeUnitInferenceDecadeYear(str(num)) for num in range(0,100)])
 
-def evaluate_num_reasoning(model_name, device, batch_size=64):
+def evaluate_num_reasoning(model_name, device, batch_size=64, output_dir="results/"):
 
     all_results_df = pd.DataFrame()
     for checkpoint in checkpoint_list:
 
-        print("Building Model")
+        model_size = model_name.split("/")[-1]
         model_args="pretrained={},revision=step{}".format(model_name, checkpoint)
+        print("Building Model, {}".format(model_args))
         model = GPTNeoLM.create_from_arg_string(
             model_args, {"batch_size": batch_size, "device": device}
         )
@@ -59,6 +66,16 @@ def evaluate_num_reasoning(model_name, device, batch_size=64):
                 no_cache=True,
             )
 
+            dumped = json.dumps(results, indent=2)
+            output_dict_dir = os.path.join(
+                output_dir,
+                "json",
+                model_size,
+                "term_frequency-{}-{}shot.json".format(model_size, str(n).zfill(2))
+            )
+            with open(output_dict_dir, "w") as f:
+                f.write(dumped)
+
             for task in task_names:
                 results_dict = {
                     "model": model_name,
@@ -74,9 +91,8 @@ def evaluate_num_reasoning(model_name, device, batch_size=64):
                     )
         
         all_results_df.to_csv(
-            "lm_cache/{}_numerical_reasoning_through_time.csv".format(
-                re.sub("/", "_", model_name)),
-                index=False
+            os.path.join(output_dir, "csv", model_size, "term_frquency_all_shots.csv"),
+            index=False
             )
                     
 if __name__ == "__main__":
@@ -86,14 +102,22 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Eval on Num Reasoning')
     parser.add_argument('--device', type=str, default="cuda")
     parser.add_argument('--model_name', type=str, default=None)
-    parser.add_argument('--batch_size', type=int, default=None)
-    parser.add_argument('--output_dir', type=str, default=None)
+    parser.add_argument('--batch_size', type=int, default=32)
+    parser.add_argument('--output_dir', type=str, default="results/")
     args = parser.parse_args()
 
-    for idx, (model_name, batch_size) in enumerate(model_list):
-
+    if args.model_name is not None:
         evaluate_num_reasoning(
-            model_name,
-            device,
-            args.batch_size if args.batch_size is not None else batch_size
+            model_name=args.model_name,
+            device=args.device if args.device is not None else device,
+            batch_size=args.batch_size
+            output_dir=args.output_dir
             )
+    else:
+        for idx, (model_name, batch_size) in enumerate(model_list):
+            evaluate_num_reasoning(
+                model_name=model_name,
+                device=device,
+                batch_size=batch_size
+                output_dir=args.output_dir
+                )
