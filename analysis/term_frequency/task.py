@@ -30,7 +30,7 @@ class NumericalReasoningBaseTask(Task):
         return False
 
     def has_validation_docs(self):
-        return False
+        return True
 
     def has_test_docs(self):
         return True
@@ -39,7 +39,7 @@ class NumericalReasoningBaseTask(Task):
         return NotImplementedError
 
     def validation_docs(self):
-        raise NotImplementedError
+        return self.dataset["validation"]
 
     def test_docs(self):
         return self.dataset["test"]
