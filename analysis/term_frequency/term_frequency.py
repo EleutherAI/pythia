@@ -30,10 +30,14 @@ checkpoint_list = list(range(eval_steps, max_steps+eval_steps, eval_steps))
 
 few_shot_list = [16, 8, 4, 2, 0]
 
-from task import ArithmeticMultiplication
+from task import *
 
-task_names = [
-    ArithmeticMultiplication(str(num)) for num in range(0,100)
+task_names = []
+task_names.extend([ArithmeticMultiplication(str(num)) for num in range(0,100)])
+task_names.extend([ArithmeticAddition(str(num)) for num in range(0,100)])
+task_names.extend([OperationInferenceMult(str(num)) for num in range(0,100)])
+task_names.extend([OperationInferenceAdd(str(num)) for num in range(0,100)])
+    
     # "numerical_reasoning_arithmetic_multiplication",
     # "numerical_reasoning_arithmetic_addition",
     # "numerical_reasoning_op_infer_mult",
