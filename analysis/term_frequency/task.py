@@ -17,7 +17,7 @@ _CITATION = """
 class NumericalReasoningBaseTask(Task):
     VERSION = 1.0
     DATASET_PATH = "numerical_reasoning_arithmetic.py"
-    DATASET_NAME = "0"
+    DATASET_NAME = None
 
     def __init__(self, data_dir=None, cache_dir=None, download_mode=None, DATASET_NAME=None):
 
