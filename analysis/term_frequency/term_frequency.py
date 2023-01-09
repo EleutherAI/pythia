@@ -12,16 +12,15 @@ from lm_eval import tasks, evaluator
 from task import ArithmeticMultiplication
 from model import GPTNeoLM
 
-# device = "cuda"
-device = "cpu"
+device = "cuda"
 model_list = [
-    # ["EleutherAI/pythia-13b-deduped", 32],
-    # ["EleutherAI/pythia-6.7b-deduped", 32],
-    # ["EleutherAI/pythia-2.7b-deduped", 64],
-    # ["EleutherAI/pythia-1.3b-deduped", 64],
-    # ["EleutherAI/pythia-800m-deduped", 128],
-    # ["EleutherAI/pythia-350m-deduped", 128],
-    # ["EleutherAI/pythia-125m-deduped", 256],
+    ["EleutherAI/pythia-13b-deduped", 32],
+    ["EleutherAI/pythia-6.7b-deduped", 32],
+    ["EleutherAI/pythia-2.7b-deduped", 64],
+    ["EleutherAI/pythia-1.3b-deduped", 64],
+    ["EleutherAI/pythia-800m-deduped", 128],
+    ["EleutherAI/pythia-350m-deduped", 128],
+    ["EleutherAI/pythia-125m-deduped", 256],
     ["EleutherAI/pythia-19m-deduped", 256],
     ]
 
