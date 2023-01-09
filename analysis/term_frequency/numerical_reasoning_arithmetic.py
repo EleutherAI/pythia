@@ -48,7 +48,7 @@ class NumericalReasoningArithmetic(datasets.GeneratorBasedBuilder):
                 for num in range(0,100)
     ]
 
-    DEFAULT_CONFIG_NAME = "0"
+    DEFAULT_CONFIG_NAME = None
 
     def _info(self):
         features = datasets.Features(
@@ -71,6 +71,12 @@ class NumericalReasoningArithmetic(datasets.GeneratorBasedBuilder):
     def _split_generators(self, dl_manager):
         return [
             datasets.SplitGenerator(
+                name=datasets.Split.VALIDATION,
+                gen_kwargs={
+                    "split": "validation"
+                },
+            ),
+            datasets.SplitGenerator(
                 name=datasets.Split.TEST,
                 gen_kwargs={
                     "split": "test"
@@ -81,10 +87,23 @@ class NumericalReasoningArithmetic(datasets.GeneratorBasedBuilder):
     def _generate_examples(self, split):
 
         x1 = int(self.config.name)
-        for key, x2 in enumerate(range(1,51)):
-            yield key, {
-                "x1": x1,
-                "x2": x2,
-                "y_mul": x1*x2,
-                "y_add": x1+x2,
-            }
+        if split == "validation":
+            key = -1
+            for x in list(range(0,x1))+list(range(x1+1,100)):
+                for x2 in range(1,51):
+                    key += 1
+                    yield key, {
+                        "x1": x,
+                        "x2": x2,
+                        "y_mul": x*x2,
+                        "y_add": x+x2,
+                    }
+
+        elif split == "test":
+            for key, x2 in enumerate(range(1,51)):
+                yield key, {
+                    "x1": x1,
+                    "x2": x2,
+                    "y_mul": x1*x2,
+                    "y_add": x1+x2,
+                }
