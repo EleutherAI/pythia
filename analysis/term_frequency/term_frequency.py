@@ -66,12 +66,15 @@ def evaluate_num_reasoning(model_name, device, batch_size=64, output_dir="result
                 no_cache=True,
             )
 
+            results['config']['model'] = "model_name"
+            results['config']['model_args'] = model_args
+
             dumped = json.dumps(results, indent=2)
             output_dict_dir = os.path.join(
                 output_dir,
                 "json",
                 model_size,
-                "term_frequency-{}-{}shot.json".format(model_size, str(n).zfill(2))
+                "term_frequency-{}-{}-{}shot.json".format(model_size, checkpoint, str(n).zfill(2))
             )
             with open(output_dict_dir, "w") as f:
                 f.write(dumped)
@@ -90,8 +93,10 @@ def evaluate_num_reasoning(model_name, device, batch_size=64, output_dir="result
                     ignore_index=True
                     )
         
+        output_csv_path = os.path.join(output_dir, "csv", model_size)
+        os.makedirs(output_csv_path, exist_ok=True)
         all_results_df.to_csv(
-            os.path.join(output_dir, "csv", model_size, "term_frquency_all_shots.csv"),
+            os.path.join(output_csv_path, "term_frquency_all_shots.csv"),
             index=False
             )
                     
