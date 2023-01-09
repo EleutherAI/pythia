@@ -36,20 +36,6 @@ task_names.extend([ArithmeticMultiplication(str(num)) for num in range(0,100)])
 task_names.extend([ArithmeticAddition(str(num)) for num in range(0,100)])
 task_names.extend([OperationInferenceMult(str(num)) for num in range(0,100)])
 task_names.extend([OperationInferenceAdd(str(num)) for num in range(0,100)])
-    
-    # "numerical_reasoning_arithmetic_multiplication",
-    # "numerical_reasoning_arithmetic_addition",
-    # "numerical_reasoning_op_infer_mult",
-    # "numerical_reasoning_op_infer_add",
-    # "numerical_reasoning_convert_min_sec",
-    # "numerical_reasoning_convert_hour_min",
-    # "numerical_reasoning_convert_day_hour",
-    # "numerical_reasoning_convert_week_day",
-    # "numerical_reasoning_convert_month_week",
-    # "numerical_reasoning_convert_year_month",
-    # "numerical_reasoning_convert_decade_year",
-    ]
-
 
 def evaluate_num_reasoning(model_name, device, batch_size=64):
 
