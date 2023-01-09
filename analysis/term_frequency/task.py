@@ -167,62 +167,115 @@ class OperationInferenceAdd(NumericalReasoningBaseTask):
         return "{y_add}".format(**doc)
 
 
-# class TimeUnitInferenceMinSec(NumericalReasoningBaseTask):
-#     DATASET_PATH = "lintang/numerical_reasoning_time_conversion"
+class TimeUnitInferenceMinSec(NumericalReasoningBaseTask):
 
-#     def __init__(self, DATASET_NAME):
-#         super().__init__(DATASET_NAME=DATASET_NAME)
+    DATASET_PATH = "numerical_reasoning_time_unit_conversion.py"
 
-#     def doc_to_text(self, doc):
-#         return "Q: What is {x} minutes in seconds? A:".format(**doc)
+    def __init__(self, DATASET_NAME):
+        super().__init__(DATASET_NAME=DATASET_NAME)
+        self.EVAL_HARNESS_NAME = "{}_{}".format(
+            "num_reasoning_convert_min_sec",
+            self.DATASET_NAME
+        )
 
-#     def doc_to_target(self, doc):
-#         return "{y_min_sec}".format(**doc)
+    def doc_to_text(self, doc):
+        return "Q: What is {x} minutes in seconds? A:".format(**doc)
 
-
-# class TimeUnitInferenceHourMin(NumericalReasoningBaseTask):
-
-#     DATASET_NAME = "convert_hour_min"
-
-#     def doc_to_text(self, doc):
-#         return "Q: What is {x} {x_time_unit} in {y_time_unit}? A:".format(**doc)
+    def doc_to_target(self, doc):
+        return "{y_min_sec}".format(**doc)
 
 
-# class TimeUnitInferenceDayHour(NumericalReasoningBaseTask):
+class TimeUnitInferenceHourMin(TimeUnitInferenceMinSec):
 
-#     DATASET_NAME = "convert_day_hour"
+    def __init__(self, DATASET_NAME):
+        super().__init__(DATASET_NAME=DATASET_NAME)
+        self.EVAL_HARNESS_NAME = "{}_{}".format(
+            "num_reasoning_convert_hour_min",
+            self.DATASET_NAME
+        )
 
-#     def doc_to_text(self, doc):
-#         return "Q: What is {x} {x_time_unit} in {y_time_unit}? A:".format(**doc)
+    def doc_to_text(self, doc):
+        return "Q: What is {x} hours in minutes? A:".format(**doc)
 
-
-# class TimeUnitInferenceWeekDay(NumericalReasoningBaseTask):
-
-#     DATASET_NAME = "convert_week_day"
-
-#     def doc_to_text(self, doc):
-#         return "Q: What is {x} {x_time_unit} in {y_time_unit}? A:".format(**doc)
-
-
-# class TimeUnitInferenceMonthWeek(NumericalReasoningBaseTask):
-
-#     DATASET_NAME = "convert_month_week"
-
-#     def doc_to_text(self, doc):
-#         return "Q: What is {x} {x_time_unit} in {y_time_unit}? A:".format(**doc)
+    def doc_to_target(self, doc):
+        return "{y_hour_min}".format(**doc)
 
 
-# class TimeUnitInferenceYearMonth(NumericalReasoningBaseTask):
+class TimeUnitInferenceDayHour(TimeUnitInferenceMinSec):
 
-#     DATASET_NAME = "convert_year_month"
+    def __init__(self, DATASET_NAME):
+        super().__init__(DATASET_NAME=DATASET_NAME)
+        self.EVAL_HARNESS_NAME = "{}_{}".format(
+            "num_reasoning_convert_day_hour",
+            self.DATASET_NAME
+        )
 
-#     def doc_to_text(self, doc):
-#         return "Q: What is {x} {x_time_unit} in {y_time_unit}? A:".format(**doc)
+    def doc_to_text(self, doc):
+        return "Q: What is {x} days in hours? A:".format(**doc)
+
+    def doc_to_target(self, doc):
+        return "{y_day_hour}".format(**doc)
 
 
-# class TimeUnitInferenceDecadeYear(NumericalReasoningBaseTask):
+class TimeUnitInferenceWeekDay(TimeUnitInferenceMinSec):
 
-#     DATASET_NAME = "convert_decade_year"
+    def __init__(self, DATASET_NAME):
+        super().__init__(DATASET_NAME=DATASET_NAME)
+        self.EVAL_HARNESS_NAME = "{}_{}".format(
+            "num_reasoning_convert_week_day",
+            self.DATASET_NAME
+        )
 
-#     def doc_to_text(self, doc):
-#         return "Q: What is {x} {x_time_unit} in {y_time_unit}? A:".format(**doc)
+    def doc_to_text(self, doc):
+        return "Q: What is {x} weeks in days? A:".format(**doc)
+
+    def doc_to_target(self, doc):
+        return "{y_week_day}".format(**doc)
+
+
+class TimeUnitInferenceMonthWeek(TimeUnitInferenceMinSec):
+
+    def __init__(self, DATASET_NAME):
+        super().__init__(DATASET_NAME=DATASET_NAME)
+        self.EVAL_HARNESS_NAME = "{}_{}".format(
+            "num_reasoning_convert_month_week",
+            self.DATASET_NAME
+        )
+
+    def doc_to_text(self, doc):
+        return "Q: What is {x} months in weeks? A:".format(**doc)
+
+    def doc_to_target(self, doc):
+        return "{y_month_week}".format(**doc)
+
+
+class TimeUnitInferenceYearMonth(TimeUnitInferenceMinSec):
+
+    def __init__(self, DATASET_NAME):
+        super().__init__(DATASET_NAME=DATASET_NAME)
+        self.EVAL_HARNESS_NAME = "{}_{}".format(
+            "num_reasoning_convert_year_month",
+            self.DATASET_NAME
+        )
+
+    def doc_to_text(self, doc):
+        return "Q: What is {x} years in months? A:".format(**doc)
+
+    def doc_to_target(self, doc):
+        return "{y_year_month}".format(**doc)
+
+
+class TimeUnitInferenceDecadeYear(TimeUnitInferenceMinSec):
+
+    def __init__(self, DATASET_NAME):
+        super().__init__(DATASET_NAME=DATASET_NAME)
+        self.EVAL_HARNESS_NAME = "{}_{}".format(
+            "num_reasoning_convert_decade_year",
+            self.DATASET_NAME
+        )
+
+    def doc_to_text(self, doc):
+        return "Q: What is {x} decades in years? A:".format(**doc)
+
+    def doc_to_target(self, doc):
+        return "{y_decade_year}".format(**doc)
