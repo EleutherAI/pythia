@@ -48,7 +48,7 @@ def view_data(
             raise ValueError(f'mode={mode} not acceptable--please pass either "save" or "custom" !')
 
         del batch
-     print(f"Finished iteration from step {args.start_iteration} to {args.end_iteration}")
+    print(f"Finished iteration from step {args.start_iteration} to {args.end_iteration}")
 
 
 if __name__ == '__main__':
