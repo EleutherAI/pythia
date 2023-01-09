@@ -81,7 +81,6 @@ class NumericalReasoningBaseTask(Task):
         """
         completion = results[0]
         gold = self.doc_to_target(doc)
-
         acc = 1.0 if completion == gold else 0.0
 
         return {"acc": acc}
