@@ -6,8 +6,7 @@ import json
 
 import pandas as pd
 
-import lm_eval.models
-from lm_eval import tasks, evaluator
+from lm_eval import evaluator
 
 from task import ArithmeticMultiplication
 from model import GPTNeoLM
@@ -64,9 +63,9 @@ def evaluate_num_reasoning(model_name, device, batch_size=64):
                 results_dict = {
                     "model": model_name,
                     "checkpoint": checkpoint,
-                    "task": task,
+                    "task": task.EVAL_HARNESS_NAME,
                     "fewshot": n,
-                    **results['results'][task]
+                    **results['results'][task.EVAL_HARNESS_NAME]
                     }
 
                 all_results_df = pd.concat(
@@ -85,9 +84,10 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description='Eval on Num Reasoning')
-    parser.add_argument('--model_name', default=None)
-    parser.add_argument('--device', default="cuda")
+    parser.add_argument('--device', type=str, default="cuda")
+    parser.add_argument('--model_name', type=str, default=None)
     parser.add_argument('--batch_size', type=int, default=None)
+    parser.add_argument('--output_dir', type=str, default=None)
     args = parser.parse_args()
 
     for idx, (model_name, batch_size) in enumerate(model_list):
