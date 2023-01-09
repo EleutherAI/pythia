@@ -70,7 +70,7 @@ def evaluate_num_reasoning(model_name, device, batch_size=64, output_dir="result
             output_dict_dir = os.path.join(
                 output_dir,
                 "json",
-                "pythia-{}".format(model_size),
+                model_size,
                 "term_frequency-{}-{}shot.json".format(model_size, str(n).zfill(2))
             )
             with open(output_dict_dir, "w") as f:
