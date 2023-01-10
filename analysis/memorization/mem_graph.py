@@ -2,6 +2,7 @@ import os
 
 import numpy as np
 import pandas as pd
+import seaborn as sns
 import matplotlib.pyplot as plt
 
 from tqdm import tqdm
@@ -20,7 +21,7 @@ for model in tqdm(models):
         memorization_results[f'{model}-{checkpoint_names[idx]}'].sort_values(by='index', inplace=True)
 
 
-def confusion_matrix_predicting_late_memorization(models, checkpoints):
+def process_memorization_over_time(models, checkpoints):
 
     cm_rate_df = pd.DataFrame(
         data={
@@ -48,41 +49,63 @@ def confusion_matrix_predicting_late_memorization(models, checkpoints):
             evals = memorization_results[f'{model}-{checkpoint}']
             evals = evals[evals['index'] < max_sequence_index]
             prediction = evals['accuracy'] == 1
+
+            matrix = confusion_matrix(prediction, ground_truth_146m)
+            disp = ConfusionMatrixDisplay(confusion_matrix=matrix)
         
-            matrix = confusion_matrix(prediction, ground_truth_146m, labels=[1,0])
-            matrix = matrix.transpose()
+            TN, FP, FN, TP = matrix.ravel()
+            N = max_sequence_index
 
-            disp = ConfusionMatrixDisplay(confusion_matrix=matrix, display_labels=[1,0])
-            disp.plot()
-            title = f"{model} Memorization Confusion Matrix"
-            plt.title(title)
-            plt.savefig('predicting_late_memorization_{}_{}.png'.format(model, checkpoint))
+            ax = sns.heatmap(np.array([[TP/N, FP/N],[FN/N, TN/N]]), annot=True, fmt=".5%")
+            # set x-axis label and ticks. 
+            ax.set_xlabel("Actual Labels")
+            ax.xaxis.set_ticklabels(['1', '0'])
+            # set y-axis label and ticks
+            ax.set_ylabel("Predicted Labels")
+            ax.yaxis.set_ticklabels(['1', '0'])
 
-            TP = matrix[0][0]
-            FP = matrix[0][1]
-            FN = matrix[1][0]
-            TN = matrix[1][1]
+            ax.set_title("Predicting Memorization of Last Checkpoint\nModel Size {}, Checkpoint {}".format(model, checkpoint))
+            plt.savefig('../../results/graphs/memorization_early_checkpoint_predict_last_checkpoint/graph_{}_{}.svg'.format(model, checkpoint), dpi=300)
+            plt.clf()
 
-            cm_rate_df = cm_rate_df.append(
-                {
-                    "checkpoint": checkpoint,
-                    "model": model,
-                    "TP": TP,
-                    "FP": FP,
-                    "FN": FN,
-                    "TN": TN,
-                    "TPR": TP/(TP+FN),
-                    "FPR": FP/(FP+TN),
-                    "FNR": FN/(FN+TP),
-                },
+            cm_rate_df = pd.concat(
+                [
+                    cm_rate_df,
+                    pd.DataFrame(
+                        {
+                            "checkpoint": [checkpoint],
+                            "model": [model],
+                            "TP": [TP],
+                            "FP": [FP],
+                            "FN": [FN],
+                            "TN": [TN],
+                            "TPR": [TP/(TP+FN)],
+                            "FPR": [FP/(FP+TN)],
+                            "FNR": [FN/(FN+TP)],
+                        }
+                    )
+                ],
                 ignore_index=True
             )
 
     return cm_rate_df
 
-df = confusion_matrix_predicting_late_memorization(models, checkpoint_names[:-1])
+cm_rate_df = process_memorization_over_time(models, checkpoint_names)
+sns.lineplot(data=cm_rate_df, x="checkpoint", y="TPR", hue="model")
+ax.set_title("True Positive Rate of Memorization")
+plt.savefig('../../results/graphs/memorization_rates_through_time/graph_tpr.svg', dpi=300)
+plt.clf()
+sns.lineplot(data=cm_rate_df, x="checkpoint", y="FPR", hue="model")
+ax.set_title("False Positive Rate of Memorization")
+plt.savefig('../../results/graphs/memorization_rates_through_time/graph_fpr.svg', dpi=300)
+plt.clf()
+sns.lineplot(data=cm_rate_df, x="checkpoint", y="FNR", hue="model")
+ax.set_title("False Negative Rate of Memorization")
+plt.savefig('../../results/graphs/memorization_rates_through_time/graph_fnr.svg', dpi=300)
+plt.clf()
 
-def forgetting_memorization_through_time(models, checkpoints):
+
+def rate_of_memorization(models, checkpoints):
 
     df = pd.DataFrame(
         data={
@@ -92,33 +115,35 @@ def forgetting_memorization_through_time(models, checkpoints):
         }
     )
 
+    # n_steps = ['23000', '43000', '63000', '83000', '103000', '123000', '143000']
     # We only consider Sequence indicies that are evaluated by all checkpoints
     max_sequence_index = 23000*1024
     for model in models:
         
         for idx, checkpoint in enumerate(checkpoints):
+
+            # max_sequence_index = int(n_steps[idx]) * 1024
+
             evals = memorization_results[f'{model}-{checkpoint}']    
             evals = evals[evals['index'] < max_sequence_index]
+            prediction = evals['accuracy'] == 1
 
-            if idx == 0:
-                base_index = evals[evals['accuracy'] == 1].index
-            
-            prediction = evals.iloc[base_index]['accuracy'].sum()
-
-            df = df.append(
-                {
-                    "checkpoint": checkpoint,
-                    "model": model,
-                    "num_memorization": prediction,
-                },
-                ignore_index=True
+            df = pd.concat(
+                [df, 
+                pd.DataFrame({
+                    "checkpoint": [checkpoint],
+                    "model": [model],
+                    "num_memorization": [prediction.mean()*100],
+                })],
+            ignore_index=True
             )
+
     return df
 
-df = forgetting_memorization_through_time(models, checkpoint_names)
-df = df.pivot("model", "checkpoint", "num_memorization")
-df = df.reindex(index=models, columns=checkpoints)
-sns.heatmap(df, cmap="crest", annot=True, fmt=".1f")
-plt.title("Number of Memorized Lines")
-plt.savefig('Num_Mem.png')
-
+df = rate_of_memorization(models, checkpoint_names)
+sns.lineplot(data=df, x="checkpoint", y="num_memorization", hue="model")
+ax.set_title("Number of Memorized Lines Seen from Earliest Checkpoint")
+ax.set_xlabel("Checkpoint") #, fontsize=14) #, labelpad=20)
+ax.set_ylabel("Memorized Lines (%)") #, fontsize=14) #, labelpad=20)
+plt.savefig('graph_num_memorized.svg', dpi=300)
+plt.clf()
