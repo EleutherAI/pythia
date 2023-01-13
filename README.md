@@ -36,7 +36,7 @@ We are planning on releasing a user-friendly utility, but the dataset loader in 
 All Pythia models are hosted on [the Huggingface hub](https://huggingface.co/EleutherAI). They can be loaded and used via the following code (shown for the 3rd `pythia-19M-deduped` model checkpoint):
 
 ```python
-from transformers import GPTNeoXForCausalLM
+from transformers import GPTNeoXForCausalLM, AutoTokenizer
 
 model = GPTNeoXForCausalLM.from_pretrained(
   "EleutherAI/pythia-19m-deduped",
@@ -51,7 +51,8 @@ tokenizer = AutoTokenizer.from_pretrained(
 )
 
 inputs = tokenizer("Hello, I am", return_tensors="pt")
-model.generate(**inputs)
+tokens = model.generate(**inputs)
+tokenizer.decode(tokens[0])
 ```
 
 All models were trained for the equivalent of 143000 steps at a batch size of 2,097,152 tokens. Revision/branch `step143000` (e.g. [https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000](https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000)) corresponds exactly to the model checkpoint on the `main` branch of each model.
