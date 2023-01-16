@@ -86,7 +86,6 @@ class GPTNeoLM(BaseLM):
         # multithreading and batching
         self.batch_size_per_gpu = batch_size  # todo: adaptive batch size
 
-        # if batch_size > 1:
         self.tokenizer.padding_side = padding
         self.tokenizer.pad_token = self.tokenizer.eos_token
         self.tokenizer.pad_token_id = self.tokenizer.eos_token_id
