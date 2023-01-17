@@ -99,13 +99,6 @@ def count_for_checkpoint(path, checkpoint, output_path):
     for idx, _dict in enumerate(tqdm(frequency_counts)):
         freq.update(_dict)
 
-    # for idx, _dict in enumerate(tqdm(frequency_counts)):
-    #     if idx == 0:
-    #         freq = _dict
-    #     else:
-    #         freq += _dict
-    #         # freq = mergeDictionary(freq, _dict)
-
     save_path = os.path.join(output_path, f"frequency_count_{checkpoint}")
     np.save(save_path, freq, allow_pickle=True)
 
@@ -126,5 +119,3 @@ if __name__ == "__main__":
             count_for_checkpoint(args.input_path, checkpoint, args.output_path)
     else:
         count_for_checkpoint(args.input_path, args.checkpoint, args.output_path)
-
-# # In [150]: f = np.load("frequency_count_checkpoint_52000.npy", allow_pickle=True)[()]
