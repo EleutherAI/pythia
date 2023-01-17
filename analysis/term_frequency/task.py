@@ -6,6 +6,9 @@
 
 NOTE: Notes
 """
+import re
+import datasets
+
 from lm_eval.base import Task, rf
 from lm_eval.metrics import mean
 
@@ -22,7 +25,12 @@ class NumericalReasoningBaseTask(Task):
     def __init__(self, data_dir=None, cache_dir=None, download_mode=None, DATASET_NAME=None):
 
         self.DATASET_NAME = DATASET_NAME
-        self.download(data_dir, cache_dir, download_mode)
+        # self.download(data_dir, cache_dir, download_mode)
+        self.dataset = datasets.load_dataset(
+            path=self.DATASET_PATH,
+            name=self.DATASET_NAME,
+            cache_dir=cache_dir,
+            )
         self._training_docs = None
         self._fewshot_docs = None
 
@@ -79,7 +87,12 @@ class NumericalReasoningBaseTask(Task):
         :param results:
             The results of the requests created in construct_requests.
         """
-        completion = results[0]
+        # completion = results[0]
+        digits = re.findall('\d{1,5}', results[0])
+        if len(digits) == 0:
+            completion = ""
+        else:
+            completion = digits[0]
         gold = self.doc_to_target(doc)
         acc = 1.0 if completion == gold else 0.0
 
