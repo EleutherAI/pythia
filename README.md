@@ -33,21 +33,21 @@ We also upload the pre-tokenized data files and a script to reconstruct the data
 
 ## Quickstart
 
-All Pythia models are hosted on [the Huggingface hub](https://huggingface.co/EleutherAI). They can be loaded and used via the following code (shown for the 3rd `pythia-19M-deduped` model checkpoint):
+All Pythia models are hosted on [the Huggingface hub](https://huggingface.co/EleutherAI). They can be loaded and used via the following code (shown for the 3rd `pythia-70M-deduped` model checkpoint):
 
 ```python
 from transformers import GPTNeoXForCausalLM, AutoTokenizer
 
 model = GPTNeoXForCausalLM.from_pretrained(
-  "EleutherAI/pythia-19m-deduped",
+  "EleutherAI/pythia-70m-deduped",
   revision="step3000",
-  cache_dir="./pythia-19m-deduped/step3000",
+  cache_dir="./pythia-70m-deduped/step3000",
 )
 
 tokenizer = AutoTokenizer.from_pretrained(
-  "EleutherAI/pythia-19m-deduped",
+  "EleutherAI/pythia-70m-deduped",
   revision="step3000",
-  cache_dir="./pythia-19m-deduped/step3000",
+  cache_dir="./pythia-70m-deduped/step3000",
 )
 
 inputs = tokenizer("Hello, I am", return_tensors="pt")
