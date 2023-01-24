@@ -15,7 +15,7 @@
   "gpt-j-residual": true,
   "output-layer-parallelism": "column",
   
-  "attention-configs": [[["flash"], 12]],
+  "attention-config": [[["flash"], 12]],
 
   "scaled-upper-triang-masked-softmax-fusion": true,
   "bias-gelu-fusion": true,
