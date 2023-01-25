@@ -6,22 +6,22 @@ This repository is for EleutherAI's work-in-progress project *Pythia* which comb
 
 | Params              | n_layers | d_model | n_heads | d_head | Batch Size | Learning Rate | Checkpoints                                                | Evaluations     |
 | ------------------- | -------- | ------- | ------- | ------ | ---------- | ------------- | ---------------------------------------------------------- | --------------- |
-| Pythia-70M          | 6        | 512     | 8       | 64     | 2M         | 1e-3          | [Here](https://huggingface.co/EleutherAI/pythia-19m)          | Ready           |
-| Pythia-70M-Deduped  | 6        | 512     | 8       | 64     | 2M         | 1e-3          | [Here](https://huggingface.co/EleutherAI/pythia-19m-deduped)  | Ready           |
-| Pythia-160M         | 12       | 768     | 12      | 64     | 4M         | 6e-4          | [Here](https://huggingface.co/EleutherAI/pythia-125m)         | Ready           |
-| Pythia-160M-Deduped | 12       | 768     | 12      | 64     | 4M         | 6e-4          | [Here](https://huggingface.co/EleutherAI/pythia-125m-deduped) | Ready           |
-| Pythia-410M         | 24       | 1024    | 16      | 64     | 4M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-350m)         | Ready           |
-| Pythia-410M-Deduped | 24       | 1024    | 16      | 64     | 4M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-350m-deduped) | Ready           |
-| Pythia-1B         | 16       | 2048    | 8       | 256   | 2M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-800m)         | Ready           |
-| Pythia-1B-Deduped | 16       | 2048    | 8       | 256    | 2M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-800m-deduped) | Ready           |
-| Pythia-1.4B         | 24       | 2048    | 16      | 128    | 4M         | 2e-4          | [Here](https://huggingface.co/EleutherAI/pythia-1.3b)         | Ready           |
-| Pythia-1.4B-Deduped | 24       | 2048    | 16      | 128    | 4M         | 2e-4          | [Here](https://huggingface.co/EleutherAI/pythia-1.3b-deduped) | Ready           |
-| Pythia-2.8B         | 32       | 2560    | 32      | 80     | 2M         | 1.6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-2.7b)         | Ready           |
-| Pythia-2.8B-Deduped | 32       | 2560    | 32      | 80     | 2M         | 1.6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-2.7b-deduped) | Ready           |
-| Pythia-6.9B         | 32       | 4096    | 32      | 128    | 2M         | 1.2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-6.7b)         | Ready           |
-| Pythia-6.9B-Deduped | 32       | 4096    | 32      | 128    | 2M         | 1.2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-6.7b-deduped) | Ready           |
-| Pythia-12B          | 36       | 5120    | 40      | 128    | 2M         | 1.2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-13b)          | Ready |
-| Pythia-12B-Deduped  | 36       | 5120    | 40      | 128    | 2M         | 1.2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-13b-deduped)  | Ready |
+| Pythia-70M          | 6        | 512     | 8       | 64     | 2M         | 1e-3          | [Here](https://huggingface.co/EleutherAI/pythia-70m)          | Ready           |
+| Pythia-70M-Deduped  | 6        | 512     | 8       | 64     | 2M         | 1e-3          | [Here](https://huggingface.co/EleutherAI/pythia-70m-deduped)  | Ready           |
+| Pythia-160M         | 12       | 768     | 12      | 64     | 4M         | 6e-4          | [Here](https://huggingface.co/EleutherAI/pythia-160m)         | Ready           |
+| Pythia-160M-Deduped | 12       | 768     | 12      | 64     | 4M         | 6e-4          | [Here](https://huggingface.co/EleutherAI/pythia-160m-deduped) | Ready           |
+| Pythia-410M         | 24       | 1024    | 16      | 64     | 4M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-410m)         | Ready           |
+| Pythia-410M-Deduped | 24       | 1024    | 16      | 64     | 4M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-410m-deduped) | Ready           |
+| Pythia-1B         | 16       | 2048    | 8       | 256   | 2M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-1b)         | Ready           |
+| Pythia-1B-Deduped | 16       | 2048    | 8       | 256    | 2M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-1b-deduped) | Ready           |
+| Pythia-1.4B         | 24       | 2048    | 16      | 128    | 4M         | 2e-4          | [Here](https://huggingface.co/EleutherAI/pythia-1.4b)         | Ready           |
+| Pythia-1.4B-Deduped | 24       | 2048    | 16      | 128    | 4M         | 2e-4          | [Here](https://huggingface.co/EleutherAI/pythia-1.4b-deduped) | Ready           |
+| Pythia-2.8B         | 32       | 2560    | 32      | 80     | 2M         | 1.6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-2.8b)         | Ready           |
+| Pythia-2.8B-Deduped | 32       | 2560    | 32      | 80     | 2M         | 1.6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-2.8b-deduped) | Ready           |
+| Pythia-6.9B         | 32       | 4096    | 32      | 128    | 2M         | 1.2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-6.9b)         | Ready           |
+| Pythia-6.9B-Deduped | 32       | 4096    | 32      | 128    | 2M         | 1.2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-6.9b-deduped) | Ready           |
+| Pythia-12B          | 36       | 5120    | 40      | 128    | 2M         | 1.2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-12b)          | Ready |
+| Pythia-12B-Deduped  | 36       | 5120    | 40      | 128    | 2M         | 1.2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-12b-deduped)  | Ready |
 
 We train and release a suite of 8 model sizes on 2 different datasets: [the Pile](https://pile.eleuther.ai/), as well as the Pile with deduplication applied.
 
@@ -57,7 +57,7 @@ tokenizer.decode(tokens[0])
 
 All models were trained for the equivalent of 143000 steps at a batch size of 2,097,152 tokens. Revision/branch `step143000` (e.g. [https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000](https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000)) corresponds exactly to the model checkpoint on the `main` branch of each model.
 
-Models with a batch size of 4M tokens listed were originally trained for 71500 steps instead, and checkpointed every 500 steps. The checkpoints on Huggingface are renamed for consistency with all 2M batch models, so `step1000` is the first checkpoint for the 1.3B that was saved (corresponding to step 500 in training), and `step1000` is likewise the first 6.7B checkpoint that was saved (corresponding to 1000 "actual" steps.)
+Models with a batch size of 4M tokens listed were originally trained for 71500 steps instead, and checkpointed every 500 steps. The checkpoints on Huggingface are renamed for consistency with all 2M batch models, so `step1000` is the first checkpoint for the 1.3B that was saved (corresponding to step 500 in training), and `step1000` is likewise the first 6.9B checkpoint that was saved (corresponding to 1000 "actual" steps.)
 
 We additionally have all model checkpoints in the format accepted by the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox), but do not serve them at scale due to size of optimizer states and anticipated lower demand. If you would like to perform analysis using the models within the GPT-NeoX codebase, or would like the optimizer states, please email hailey@eleuther.ai and stella@eleuther.ai to arrange access.
 
@@ -116,7 +116,7 @@ We also provide benchmark 0-shot and 5-shot results on a variety of NLP datasets
 
 Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness), and are viewable by model and step at `results/json/*` in this repository.
 
-TODO: 125m, 350m, and 1.3b models' step numbers from these evaluations correspond to .5x what is listed on Hugging Face. (e.g. here the final step is 71500, as it was during training. on the HF model hub these models' checkpoints were relabeled such that pythia-1.3b's "step143000" checkpoint is the same as the step 71500 checkpoint in these evals.)
+TODO: 160m, 410m, and 1.4b models' step numbers from these evaluations correspond to .5x what is listed on Hugging Face. (e.g. here the final step is 71500, as it was during training. on the HF model hub these models' checkpoints were relabeled such that pythia-1.4b's "step143000" checkpoint is the same as the step 71500 checkpoint in these evals.)
 
 ### Plotting Results
 
