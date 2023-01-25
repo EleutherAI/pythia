@@ -62,8 +62,8 @@ sns.set_context("poster")
 task_names = [
     "num_reasoning_arithmetic_multiplication",
     "num_reasoning_arithmetic_addition",
-    "num_reasoning_op_infer_multiplication",
-    "num_reasoning_op_infer_addition",
+    # "num_reasoning_op_infer_multiplication",
+    # "num_reasoning_op_infer_addition",
     ]
 
 for task in tqdm(task_names):
@@ -137,3 +137,56 @@ for task in tqdm(task_names):
     plt.savefig('overleaf/{}.pdf'.format(figure_title), dpi=200)
     plt.savefig('overleaf/{}.png'.format(figure_title), dpi=200)
     plt.clf()
+
+few_shot_list = [0,4,16]
+for task in tqdm(task_names):
+
+    mux = pd.MultiIndex.from_product([
+        [i[0] for i in reversed(model_list)],
+        few_shot_list
+    ])
+    table = pd.DataFrame(
+        data={
+            key: [np.nan]*len(show_checkpoints) for key in mux
+            },
+        index=show_checkpoints,
+        columns=mux
+    )
+
+    for idx, (size, model) in enumerate(list(reversed(model_list))):
+
+        alphabet = string.ascii_lowercase[idx]
+        name = model.split("/")[-1]
+
+        # for n in few_shot_list:
+        for n in [0,4,16]:
+
+            for checkpoint in show_checkpoints:
+
+                _freq = freq[checkpoint]
+                # df = pd.read_csv(f"results/csv/pythia-{size}-deduped/term_frquency_all_shots.csv")
+                df = pd.read_csv(f"results/csv/{name}/term_frquency_all_shots.csv")
+                df = df[df["task"].str.contains(task) & (df["checkpoint"] == checkpoint) & (df["fewshot"] == n)]
+                # df = df[df["task"].str.contains(task) & (df["fewshot"] == n)]
+
+                x, y, c = [], [], []
+                for i in range(0, 100):
+                    count = str(i)
+                    c.append(_freq[count])
+                    x.append(i)
+                    y.append(df[df['task'].str.contains("_"+count)]['acc'].values[0])
+
+                data = pd.DataFrame(
+                    data={
+                        'x': x,
+                        'y': y,
+                        'c': c,
+                        })
+                data.sort_values(by='c', ascending=False, inplace=True)
+
+                top_10p = data['y'].iloc[:10].mean()
+                bottom_10p = data['y'].iloc[-10:].mean()
+                delta_performance = top_10p - bottom_10p
+                table[(size, n)].loc[checkpoint] = delta_performance*100
+
+    print(table.to_latex())
