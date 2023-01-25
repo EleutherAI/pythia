@@ -46,14 +46,14 @@ def jitter(values, j=0):
     return values + np.random.normal(0, 0.05, values.shape)
 
 model_list = [
-    "EleutherAI/pythia-13b-deduped",
-    "EleutherAI/pythia-6.7b-deduped",
-    "EleutherAI/pythia-2.7b-deduped",
-    "EleutherAI/pythia-1.3b-deduped",
-    "EleutherAI/pythia-800m-deduped",
-    # "EleutherAI/pythia-350m-deduped",
-    # "EleutherAI/pythia-125m-deduped",
-    # "EleutherAI/pythia-19m-deduped",
+    ("12 B", "EleutherAI/pythia-13b-deduped"),
+    ("6.9 B", "EleutherAI/pythia-6.7b-deduped"),
+    ("2.8 B", "EleutherAI/pythia-2.7b-deduped"),
+    ("1.4 B", "EleutherAI/pythia-1.3b-deduped"),
+    ("1.0 B", "EleutherAI/pythia-800m-deduped"),
+    # ("400 M", "EleutherAI/pythia-350m-deduped"),
+    # ("160 M", "EleutherAI/pythia-125m-deduped"),
+    # ("70 M", "EleutherAI/pythia-19m-deduped"),
 ]
 
 sns.set_style("white")
@@ -71,10 +71,9 @@ for task in tqdm(task_names):
     fig, axes = plt.subplots(1, len(model_list), figsize=(20, 7.5), tight_layout=True)
 
     # for idx, model in enumerate(model_list):
-    for idx, model in enumerate(list(reversed(model_list))):
+    for idx, (size, model) in enumerate(list(reversed(model_list))):
 
         alphabet = string.ascii_lowercase[idx]
-        size = model.split("-")[1]
         name = model.split("/")[-1]
 
         n = 16
@@ -83,9 +82,9 @@ for task in tqdm(task_names):
         for checkpoint in show_checkpoints:
 
             _freq = freq[checkpoint]
-            df = pd.read_csv(f"results/csv/pythia-{size}-deduped/term_frquency_all_shots.csv")
+            # df = pd.read_csv(f"results/csv/pythia-{size}-deduped/term_frquency_all_shots.csv")
+            df = pd.read_csv(f"results/csv/{name}/term_frquency_all_shots.csv")
             df = df[df["task"].str.contains(task) & (df["checkpoint"] == checkpoint) & (df["fewshot"] == n)]
-            # df = pd.read_csv(f"results/csv/{name}/term_frquency_all_shots.csv")
             # df = df[df["task"].str.contains(task) & (df["fewshot"] == n)]
 
             for i in range(0, 100):
@@ -101,7 +100,12 @@ for task in tqdm(task_names):
                 'checkpoint': z,
                 })
 
-        bins = list(i*10**exp for exp in range(5, 10) for i in range(1, 10))
+        # bins = list(i*10**exp for exp in range(5, 10) for i in range(1, 10))
+        # data['bin'] = pd.cut(data['x'], bins=bins, labels=bins[:-1]).astype(int)
+
+        # start, stop = 10**5, 2*10**8+1
+        # bins = list(range(start, stop, (stop - start)//10))
+        bins = np.logspace(5, np.log10(2*10**8), 20)
         data['bin'] = pd.cut(data['x'], bins=bins, labels=bins[:-1]).astype(int)
 
         sns.lineplot(
@@ -116,7 +120,7 @@ for task in tqdm(task_names):
         )
 
         if idx == len(model_list)-1:
-            plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+            plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)
 
         if idx != 0:
             axes[idx].tick_params(labelleft=False, left=False)
