@@ -18,7 +18,6 @@ eval_steps, max_steps = 13_000, 143_000
 checkpoint_list = list(range(eval_steps, max_steps+eval_steps, eval_steps))
 show_checkpoints = list(range(eval_steps, max_steps+eval_steps, 2*eval_steps))
 
-
 freq = {}
 _freq = Counter()
 for idx, checkpoint in enumerate(checkpoint_list):
@@ -27,20 +26,6 @@ for idx, checkpoint in enumerate(checkpoint_list):
     _dict = np.load(checkpoint_path, allow_pickle=True)[()]
     _freq.update(_dict)
     freq[checkpoint] = _freq.copy()
-
-task_names = [
-    "num_reasoning_arithmetic_multiplication",
-    "num_reasoning_arithmetic_addition",
-    "num_reasoning_op_infer_multiplication",
-    "num_reasoning_op_infer_addition",
-    "num_reasoning_convert_min_sec",
-    "num_reasoning_convert_hour_min",
-    "num_reasoning_convert_day_hour",
-    "num_reasoning_convert_week_day",
-    "num_reasoning_convert_month_week",
-    "num_reasoning_convert_year_month",
-    "num_reasoning_convert_decade_year",
-    ]
 
 def jitter(values, j=0):
     return values + np.random.normal(0, 0.05, values.shape)
@@ -51,9 +36,9 @@ model_list = [
     ("2.8 B", "EleutherAI/pythia-2.7b-deduped"),
     ("1.4 B", "EleutherAI/pythia-1.3b-deduped"),
     ("1.0 B", "EleutherAI/pythia-800m-deduped"),
-    # ("400 M", "EleutherAI/pythia-350m-deduped"),
-    # ("160 M", "EleutherAI/pythia-125m-deduped"),
-    # ("70 M", "EleutherAI/pythia-19m-deduped"),
+    ("410 M", "EleutherAI/pythia-350m-deduped"),
+    ("160 M", "EleutherAI/pythia-125m-deduped"),
+    ("70 M", "EleutherAI/pythia-19m-deduped"),
 ]
 
 sns.set_style("white")
@@ -66,77 +51,106 @@ task_names = [
     # "num_reasoning_op_infer_addition",
     ]
 
-for task in tqdm(task_names):
+def graph_plot(model_list, single_row=True, prefix="figure"):
 
-    fig, axes = plt.subplots(1, len(model_list), figsize=(20, 7.5), tight_layout=True)
+    for task in tqdm(task_names):
 
-    # for idx, model in enumerate(model_list):
-    for idx, (size, model) in enumerate(list(reversed(model_list))):
+        if single_row:
+            fig, axes = plt.subplots(1, len(model_list), figsize=(20, 7.5), tight_layout=True)
+        else:
+            fig, axes = plt.subplots(2, 4, figsize=(20, 15), tight_layout=True)
 
-        alphabet = string.ascii_lowercase[idx]
-        name = model.split("/")[-1]
+        for idx, (size, model) in enumerate(list(reversed(model_list))):
 
-        n = 16
+            alphabet = string.ascii_lowercase[idx]
+            name = model.split("/")[-1]
 
-        x, y, z, c = [], [], [], []
-        for checkpoint in show_checkpoints:
+            n = 16
 
-            _freq = freq[checkpoint]
-            # df = pd.read_csv(f"results/csv/pythia-{size}-deduped/term_frquency_all_shots.csv")
-            df = pd.read_csv(f"results/csv/{name}/term_frquency_all_shots.csv")
-            df = df[df["task"].str.contains(task) & (df["checkpoint"] == checkpoint) & (df["fewshot"] == n)]
-            # df = df[df["task"].str.contains(task) & (df["fewshot"] == n)]
+            x, y, z, c = [], [], [], []
+            for checkpoint in show_checkpoints:
 
-            for i in range(0, 100):
-                count = str(i)
-                x.append(_freq[count])
-                y.append(df[df['task'].str.contains("_"+count)]['acc'].values[0])
-                z.append(str(checkpoint))
+                _freq = freq[checkpoint]
+                df = pd.read_csv(f"results/csv/{name}/term_frquency_all_shots.csv")
+                df = df[df["task"].str.contains(task) & (df["checkpoint"] == checkpoint) & (df["fewshot"] == n)]
 
-        data = pd.DataFrame(
-            data={
-                'x': x,
-                'y': y,
-                'checkpoint': z,
-                })
+                for i in range(0, 100):
+                    count = str(i)
+                    x.append(_freq[count])
+                    y.append(df[df['task'].str.contains("_"+count)]['acc'].values[0])
+                    z.append(str(checkpoint))
 
-        # bins = list(i*10**exp for exp in range(5, 10) for i in range(1, 10))
-        # data['bin'] = pd.cut(data['x'], bins=bins, labels=bins[:-1]).astype(int)
+            data = pd.DataFrame(
+                data={
+                    'x': x,
+                    'y': y,
+                    'checkpoint': z,
+                    })
 
-        # start, stop = 10**5, 2*10**8+1
-        # bins = list(range(start, stop, (stop - start)//10))
-        bins = np.logspace(5, np.log10(2*10**8), 20)
-        data['bin'] = pd.cut(data['x'], bins=bins, labels=bins[:-1]).astype(int)
+            bins = np.logspace(5, np.log10(2*10**8), 20)
+            data['bin'] = pd.cut(data['x'], bins=bins, labels=bins[:-1]).astype(int)
 
-        sns.lineplot(
-            ax=axes[idx],
-            data=data,
-            x='bin',
-            y='y',
-            hue='checkpoint',
-            marker="o",
-            errorbar=None,
-            legend=False if idx != (len(model_list)-1) else True
-        )
+            if single_row:
+                ax = axes[idx]
+            else:
+                x_idx = idx//4
+                y_idx = idx%4
+                ax = axes[x_idx, y_idx]
 
-        if idx == len(model_list)-1:
-            plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)
+            sns.lineplot(
+                ax=ax,
+                data=data,
+                x='bin',
+                y='y',
+                hue='checkpoint',
+                marker="o",
+                errorbar=None,
+                legend=False if idx != (len(model_list)-1) else True
+            )
 
-        if idx != 0:
-            axes[idx].tick_params(labelleft=False, left=False)
+            if idx == len(model_list)-1:
+                plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0)
 
-        axes[idx].set(xscale="log")
-        axes[idx].set(ylim=(0.0, 1.0))
-        # axes[idx].set_xlabel(f"Frequency\n\n({alphabet}) {size}")
-        # axes[idx].set_ylabel("Avg. Accuracy")
-        axes[idx].set_xlabel(f"\n({alphabet}) {size}")
-        axes[idx].set_ylabel("")
+            if single_row:
+                if idx != 0:
+                    ax.tick_params(labelleft=False, left=False)
+            else:
+                if y_idx != 0:
+                    ax.tick_params(labelleft=False, left=False)
 
-    figure_title = f"{task}_{n}-shot"
-    # plt.savefig('overleaf/{}.svg'.format(figure_title), dpi=200)
-    plt.savefig('overleaf/{}.pdf'.format(figure_title), dpi=200)
-    plt.savefig('overleaf/{}.png'.format(figure_title), dpi=200)
-    plt.clf()
+            ax.set(xscale="log")
+            ax.set(ylim=(0.0, 1.0))
+            ax.set_xlabel(f"\n({alphabet}) {size}")
+            ax.set_ylabel("")
+
+        figure_title = f"{task}_{n}-shot"
+        plt.savefig(f'overleaf/{prefix}-{figure_title}.pdf', dpi=200)
+        plt.savefig(f'overleaf/{prefix}-{figure_title}.png', dpi=200)
+        plt.clf()
+
+graph_plot(
+    [
+        ("12 B", "EleutherAI/pythia-13b-deduped"),
+        ("6.9 B", "EleutherAI/pythia-6.7b-deduped"),
+        ("2.8 B", "EleutherAI/pythia-2.7b-deduped"),
+        ("1.4 B", "EleutherAI/pythia-1.3b-deduped"),
+        ("1.0 B", "EleutherAI/pythia-800m-deduped"),
+        ("410 M", "EleutherAI/pythia-350m-deduped"),
+        ("160 M", "EleutherAI/pythia-125m-deduped"),
+        ("70 M", "EleutherAI/pythia-19m-deduped"),
+    ],
+    single_row=False,
+    prefix="appendix",
+    )
+
+graph_plot(
+    [
+        ("12 B", "EleutherAI/pythia-13b-deduped"),
+        ("2.8 B", "EleutherAI/pythia-2.7b-deduped"),
+        ("1.0 B", "EleutherAI/pythia-800m-deduped"),
+        ("160 M", "EleutherAI/pythia-125m-deduped"),
+    ]
+    )
 
 few_shot_list = [0,4,16]
 for task in tqdm(task_names):
