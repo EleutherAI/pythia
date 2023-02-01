@@ -24,22 +24,13 @@ model_list = [
     ]
 
 eval_steps, max_steps = 13_000, 143_000
-checkpoint_list = list(range(eval_steps, max_steps+eval_steps, eval_steps))
+checkpoint_list = list(range(eval_steps, max_steps+eval_steps, 2*eval_steps))
 
 few_shot_list = [16, 8, 4, 2, 0]
 
 task_names = []
 task_names.extend([ArithmeticMultiplication(str(num)) for num in range(0,100)])
 task_names.extend([ArithmeticAddition(str(num)) for num in range(0,100)])
-task_names.extend([OperationInferenceMult(str(num)) for num in range(0,100)])
-task_names.extend([OperationInferenceAdd(str(num)) for num in range(0,100)])
-task_names.extend([TimeUnitInferenceMinSec(str(num)) for num in range(0,100)])
-task_names.extend([TimeUnitInferenceHourMin(str(num)) for num in range(0,100)])
-task_names.extend([TimeUnitInferenceDayHour(str(num)) for num in range(0,100)])
-task_names.extend([TimeUnitInferenceWeekDay(str(num)) for num in range(0,100)])
-task_names.extend([TimeUnitInferenceMonthWeek(str(num)) for num in range(0,100)])
-task_names.extend([TimeUnitInferenceYearMonth(str(num)) for num in range(0,100)])
-task_names.extend([TimeUnitInferenceDecadeYear(str(num)) for num in range(0,100)])
 
 def evaluate_num_reasoning(model_name, device, batch_size=64, output_dir="results/"):
 
