@@ -125,7 +125,7 @@ class ArithmeticMultiplication(NumericalReasoningBaseTask):
         )
 
     def doc_to_text(self, doc):
-        return "Q: What is {x1} times {x2}? A:".format(**doc)
+        return "Q:What is {x1} times {x2}? A:".format(**doc)
 
     def doc_to_target(self, doc):
         return "{y_mul}".format(**doc)
@@ -141,7 +141,7 @@ class ArithmeticAddition(NumericalReasoningBaseTask):
         )
 
     def doc_to_text(self, doc):
-        return "Q: What is {x1} plus {x2}? A:".format(**doc)
+        return "Q:What is {x1} plus {x2}? A:".format(**doc)
 
     def doc_to_target(self, doc):
         return "{y_add}".format(**doc)
@@ -157,7 +157,7 @@ class OperationInferenceMult(NumericalReasoningBaseTask):
         )
 
     def doc_to_text(self, doc):
-        return "Q: What is {x1} # {x2}? A:".format(**doc)
+        return "Q:What is {x1} # {x2}? A:".format(**doc)
 
     def doc_to_target(self, doc):
         return "{y_mul}".format(**doc)
@@ -173,7 +173,7 @@ class OperationInferenceAdd(NumericalReasoningBaseTask):
         )
 
     def doc_to_text(self, doc):
-        return "Q: What is {x1} # {x2}? A:".format(**doc)
+        return "Q:What is {x1} # {x2}? A:".format(**doc)
 
     def doc_to_target(self, doc):
         return "{y_add}".format(**doc)
@@ -191,7 +191,7 @@ class TimeUnitInferenceMinSec(NumericalReasoningBaseTask):
         )
 
     def doc_to_text(self, doc):
-        return "Q: What is {x} minutes in seconds? A:".format(**doc)
+        return "Q:What is {x} minutes in seconds? A:".format(**doc)
 
     def doc_to_target(self, doc):
         return "{y_min_sec}".format(**doc)
@@ -207,7 +207,7 @@ class TimeUnitInferenceHourMin(TimeUnitInferenceMinSec):
         )
 
     def doc_to_text(self, doc):
-        return "Q: What is {x} hours in minutes? A:".format(**doc)
+        return "Q:What is {x} hours in minutes? A:".format(**doc)
 
     def doc_to_target(self, doc):
         return "{y_hour_min}".format(**doc)
@@ -223,7 +223,7 @@ class TimeUnitInferenceDayHour(TimeUnitInferenceMinSec):
         )
 
     def doc_to_text(self, doc):
-        return "Q: What is {x} days in hours? A:".format(**doc)
+        return "Q:What is {x} days in hours? A:".format(**doc)
 
     def doc_to_target(self, doc):
         return "{y_day_hour}".format(**doc)
@@ -239,7 +239,7 @@ class TimeUnitInferenceWeekDay(TimeUnitInferenceMinSec):
         )
 
     def doc_to_text(self, doc):
-        return "Q: What is {x} weeks in days? A:".format(**doc)
+        return "Q:What is {x} weeks in days? A:".format(**doc)
 
     def doc_to_target(self, doc):
         return "{y_week_day}".format(**doc)
@@ -255,7 +255,7 @@ class TimeUnitInferenceMonthWeek(TimeUnitInferenceMinSec):
         )
 
     def doc_to_text(self, doc):
-        return "Q: What is {x} months in weeks? A:".format(**doc)
+        return "Q:What is {x} months in weeks? A:".format(**doc)
 
     def doc_to_target(self, doc):
         return "{y_month_week}".format(**doc)
@@ -271,7 +271,7 @@ class TimeUnitInferenceYearMonth(TimeUnitInferenceMinSec):
         )
 
     def doc_to_text(self, doc):
-        return "Q: What is {x} years in months? A:".format(**doc)
+        return "Q:What is {x} years in months? A:".format(**doc)
 
     def doc_to_target(self, doc):
         return "{y_year_month}".format(**doc)
@@ -287,7 +287,7 @@ class TimeUnitInferenceDecadeYear(TimeUnitInferenceMinSec):
         )
 
     def doc_to_text(self, doc):
-        return "Q: What is {x} decades in years? A:".format(**doc)
+        return "Q:What is {x} decades in years? A:".format(**doc)
 
     def doc_to_target(self, doc):
         return "{y_decade_year}".format(**doc)
