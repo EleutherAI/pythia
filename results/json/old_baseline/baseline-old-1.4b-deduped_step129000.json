@@ -1,0 +1,171 @@
+{
+  "results": {
+    "crows_pairs_french_age": {
+      "likelihood_difference": 2.982291666666667,
+      "likelihood_difference_stderr": 0.30296793909073144,
+      "pct_stereotype": 0.45555555555555555,
+      "pct_stereotype_stderr": 0.05279009646630345
+    },
+    "crows_pairs_english_sexual_orientation": {
+      "likelihood_difference": 4.819220430107527,
+      "likelihood_difference_stderr": 0.4441849710523616,
+      "pct_stereotype": 0.8709677419354839,
+      "pct_stereotype_stderr": 0.03495073154102977
+    },
+    "crows_pairs_french": {
+      "likelihood_difference": 3.6517963625521763,
+      "likelihood_difference_stderr": 0.09078699550260624,
+      "pct_stereotype": 0.47167561121049495,
+      "pct_stereotype_stderr": 0.012193686719906045
+    },
+    "crows_pairs_english_autre": {
+      "likelihood_difference": 4.474431818181818,
+      "likelihood_difference_stderr": 1.6451753357410202,
+      "pct_stereotype": 0.6363636363636364,
+      "pct_stereotype_stderr": 0.15212000482437738
+    },
+    "crows_pairs_english": {
+      "likelihood_difference": 3.463001267143709,
+      "likelihood_difference_stderr": 0.0840222316871535,
+      "pct_stereotype": 0.6153846153846154,
+      "pct_stereotype_stderr": 0.011883644084951283
+    },
+    "crows_pairs_french_physical_appearance": {
+      "likelihood_difference": 3.91015625,
+      "likelihood_difference_stderr": 0.5250478462165564,
+      "pct_stereotype": 0.625,
+      "pct_stereotype_stderr": 0.05745481997211521
+    },
+    "crows_pairs_french_disability": {
+      "likelihood_difference": 4.506628787878788,
+      "likelihood_difference_stderr": 0.47419166357771125,
+      "pct_stereotype": 0.5909090909090909,
+      "pct_stereotype_stderr": 0.06098367211363066
+    },
+    "crows_pairs_english_disability": {
+      "likelihood_difference": 5.639423076923077,
+      "likelihood_difference_stderr": 0.5336660615047725,
+      "pct_stereotype": 0.7384615384615385,
+      "pct_stereotype_stderr": 0.05493406483494501
+    },
+    "crows_pairs_french_gender": {
+      "likelihood_difference": 3.4696261682242993,
+      "likelihood_difference_stderr": 0.17176275262807622,
+      "pct_stereotype": 0.5171339563862928,
+      "pct_stereotype_stderr": 0.0279344336985373
+    },
+    "crows_pairs_english_physical_appearance": {
+      "likelihood_difference": 3.0147569444444446,
+      "likelihood_difference_stderr": 0.28305906472838427,
+      "pct_stereotype": 0.6805555555555556,
+      "pct_stereotype_stderr": 0.05533504751887218
+    },
+    "crows_pairs_english_gender": {
+      "likelihood_difference": 2.841455078125,
+      "likelihood_difference_stderr": 0.1562454852226224,
+      "pct_stereotype": 0.61875,
+      "pct_stereotype_stderr": 0.027193630402775473
+    },
+    "crows_pairs_french_nationality": {
+      "likelihood_difference": 4.461091897233201,
+      "likelihood_difference_stderr": 0.25840985198745176,
+      "pct_stereotype": 0.3241106719367589,
+      "pct_stereotype_stderr": 0.02948384978103373
+    },
+    "crows_pairs_french_race_color": {
+      "likelihood_difference": 3.3724184782608697,
+      "likelihood_difference_stderr": 0.17108457741118047,
+      "pct_stereotype": 0.34130434782608693,
+      "pct_stereotype_stderr": 0.022131302075323843
+    },
+    "crows_pairs_french_sexual_orientation": {
+      "likelihood_difference": 3.612293956043956,
+      "likelihood_difference_stderr": 0.36294108740992986,
+      "pct_stereotype": 0.7802197802197802,
+      "pct_stereotype_stderr": 0.04364972632898534
+    },
+    "crows_pairs_english_nationality": {
+      "likelihood_difference": 3.2293113425925926,
+      "likelihood_difference_stderr": 0.22896517858958684,
+      "pct_stereotype": 0.5324074074074074,
+      "pct_stereotype_stderr": 0.03402801581358966
+    },
+    "crows_pairs_english_religion": {
+      "likelihood_difference": 3.3552927927927927,
+      "likelihood_difference_stderr": 0.33036029744028705,
+      "pct_stereotype": 0.7297297297297297,
+      "pct_stereotype_stderr": 0.04234321361084538
+    },
+    "crows_pairs_french_socioeconomic": {
+      "likelihood_difference": 3.4520089285714284,
+      "likelihood_difference_stderr": 0.2773657014726191,
+      "pct_stereotype": 0.5306122448979592,
+      "pct_stereotype_stderr": 0.035738572888608724
+    },
+    "crows_pairs_french_autre": {
+      "likelihood_difference": 3.449519230769231,
+      "likelihood_difference_stderr": 1.0859413245963045,
+      "pct_stereotype": 0.38461538461538464,
+      "pct_stereotype_stderr": 0.1404416814115811
+    },
+    "crows_pairs_english_age": {
+      "likelihood_difference": 3.3197115384615383,
+      "likelihood_difference_stderr": 0.3357442278540132,
+      "pct_stereotype": 0.6373626373626373,
+      "pct_stereotype_stderr": 0.05067669921031868
+    },
+    "crows_pairs_french_religion": {
+      "likelihood_difference": 3.7635869565217392,
+      "likelihood_difference_stderr": 0.39740303295887786,
+      "pct_stereotype": 0.7043478260869566,
+      "pct_stereotype_stderr": 0.04273972288221526
+    },
+    "crows_pairs_english_socioeconomic": {
+      "likelihood_difference": 3.7664473684210527,
+      "likelihood_difference_stderr": 0.2495374450026904,
+      "pct_stereotype": 0.6578947368421053,
+      "pct_stereotype_stderr": 0.03450858738901066
+    },
+    "crows_pairs_english_race_color": {
+      "likelihood_difference": 3.4044660433070866,
+      "likelihood_difference_stderr": 0.1549184660661397,
+      "pct_stereotype": 0.531496062992126,
+      "pct_stereotype_stderr": 0.022161679438492773
+    }
+  },
+  "versions": {
+    "crows_pairs_french_age": 0,
+    "crows_pairs_english_sexual_orientation": 0,
+    "crows_pairs_french": 0,
+    "crows_pairs_english_autre": 0,
+    "crows_pairs_english": 0,
+    "crows_pairs_french_physical_appearance": 0,
+    "crows_pairs_french_disability": 0,
+    "crows_pairs_english_disability": 0,
+    "crows_pairs_french_gender": 0,
+    "crows_pairs_english_physical_appearance": 0,
+    "crows_pairs_english_gender": 0,
+    "crows_pairs_french_nationality": 0,
+    "crows_pairs_french_race_color": 0,
+    "crows_pairs_french_sexual_orientation": 0,
+    "crows_pairs_english_nationality": 0,
+    "crows_pairs_english_religion": 0,
+    "crows_pairs_french_socioeconomic": 0,
+    "crows_pairs_french_autre": 0,
+    "crows_pairs_english_age": 0,
+    "crows_pairs_french_religion": 0,
+    "crows_pairs_english_socioeconomic": 0,
+    "crows_pairs_english_race_color": 0
+  },
+  "config": {
+    "model": "hf-causal",
+    "model_args": "pretrained=EleutherAI/pythia-1.4b-deduped,revision=step129000",
+    "num_fewshot": 0,
+    "batch_size": 4,
+    "device": "cuda:3",
+    "no_cache": true,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "description_dict": {}
+  }
+}
