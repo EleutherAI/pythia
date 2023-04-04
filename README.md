@@ -116,8 +116,6 @@ We also provide benchmark 0-shot and 5-shot results on a variety of NLP datasets
 
 Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness), and are viewable by model and step at `results/json/*` in this repository.
 
-TODO: 160m, 410m, and 1.4b models' step numbers from these evaluations correspond to .5x what is listed on Hugging Face. (e.g. here the final step is 71500, as it was during training. on the HF model hub these models' checkpoints were relabeled such that pythia-1.4b's "step143000" checkpoint is the same as the step 71500 checkpoint in these evals.)
-
 ### Plotting Results
 
 We will also provide utilities for creating plots based on the dumped zero and few-shot results. Sample notebook and data format forthcoming.
