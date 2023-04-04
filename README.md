@@ -31,6 +31,20 @@ Config files used to train these models within the [GPT-NeoX library](https://gi
 
 We also upload the pre-tokenized data files and a script to reconstruct the dataloader as seen during training for all models. See **Reproducing Training** section for more details.
 
+## Changelog
+
+[April 3, 2023] We have released a new version of all Pythia models, with the following changes to our training procedure:
+
+- All model sizes are now trained with uniform batch size of 2M tokens. Previously, the models of size 160M, 410M, and 1.4B parameters were trained with batch sizes of 4M tokens.
+- We added checkpoints at initialization (step 0) and steps {1,2,4,8,16,32,64, 128,256,512} in addition to every 1000 training steps.
+- Flash Attention was used in the new retrained suite. Empirically, this seems to have effected the dynamic range of model outputs in some cases, which we are investigating further.
+- We remedied a minor inconsistency that existed in the original suite: all models of size 2.8B parameters or smaller had a learning rate (LR) schedule which decayed to a minimum LR of 10% the starting LR rate, but the 6.9B and 12B models all used an LR schedule which decayed to a minimum LR of 0. In the redone training runs, we rectified this inconsistency: all models now were trained with LR decaying to a minimum of 0.1× their maximum LR.
+- the new `EleutherAI/pythia-1b` is trained with bf16, because in fp16 the model corrupted due to loss spikes late in training.
+
+
+
+The old models ("V0") are available at [https://huggingface.co/models?other=pythia_v0](https://huggingface.co/models?other=pythia_v0)
+
 ## Quickstart
 
 All Pythia models are hosted on [the Huggingface hub](https://huggingface.co/EleutherAI). They can be loaded and used via the following code (shown for the 3rd `pythia-70M-deduped` model checkpoint):
