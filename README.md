@@ -135,3 +135,20 @@ Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https:/
 ### Plotting Results
 
 We will also provide utilities for creating plots based on the dumped zero and few-shot results. Sample notebook and data format forthcoming.
+
+
+
+## Citation Details
+
+If you use the Pythia models or data in your research, please consider citing our paper via:
+
+```
+@misc{biderman2023pythia,
+      title={Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling}, 
+      author={Stella Biderman and Hailey Schoelkopf and Quentin Anthony and Herbie Bradley and Kyle O'Brien and Eric Hallahan and Mohammad Aflah Khan and Shivanshu Purohit and USVSN Sai Prashanth and Edward Raff and Aviya Skowron and Lintang Sutawika and Oskar van der Wal},
+      year={2023},
+      eprint={2304.01373},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
