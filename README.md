@@ -1,6 +1,6 @@
 # [Pythia: Interpreting Autoregressive Transformers Across Time and Scale](https://arxiv.org/pdf/2304.01373.pdf)
 
-This repository is for EleutherAI'sproject *Pythia* which combines interpretability analysis and scaling laws to understand how knowledge develops and evolves during training in autoregressive transformers. For detailed info on the models, their training, and their behavior, please see [our paper](https://arxiv.org/pdf/2304.01373.pdf).
+This repository is for EleutherAI's project *Pythia* which combines interpretability analysis and scaling laws to understand how knowledge develops and evolves during training in autoregressive transformers. For detailed info on the models, their training, and their behavior, please see [our paper](https://arxiv.org/pdf/2304.01373.pdf).
 
 ## Models
 
