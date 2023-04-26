@@ -130,11 +130,7 @@ We also provide benchmark 0-shot and 5-shot results on a variety of NLP datasets
 - BLiMP (`blimp_*`)
 - MMLU (`hendrycksTest*`)
 
-Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness), and are viewable by model and step at `results/json/*` in this repository.
-
-### Plotting Results
-
-We will also provide utilities for creating plots based on the dumped zero and few-shot results. Sample notebook and data format forthcoming.
+Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness), and are viewable by model and step at `results/json/v1.1-evals/*` in this repository.
 
 
 
