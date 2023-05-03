@@ -14,6 +14,8 @@
   "no-weight-tying": true,
   "gpt-j-residual": true,
   "output-layer-parallelism": "column",
+  
+  "attention-config": [[["flash"], 12]],
 
   "scaled-upper-triang-masked-softmax-fusion": true,
   "bias-gelu-fusion": true,
@@ -27,23 +29,23 @@
     "params": {
       "lr": 0.0006,
       "betas": [0.9, 0.95],
-      "eps": 1.0e-8,
+      "eps": 1.0e-8
     }
   },
   "min_lr": 0.00006,
 
   "zero_optimization": {
     "stage": 1,
-    "allgather_partitions": True,
+    "allgather_partitions": true,
     "allgather_bucket_size": 500000000,
-    "overlap_comm": True,
-    "reduce_scatter": True,
+    "overlap_comm": true,
+    "reduce_scatter": true,
     "reduce_bucket_size": 500000000,
-    "contiguous_gradients": True,
-    "cpu_offload": False
+    "contiguous_gradients": true,
+    "cpu_offload": false
   },
 
-  # batch size (trained on 64 gpus)
+  # batch size (trained on 32 gpus)
   "train_micro_batch_size_per_gpu": 32,
   "gas": 1,
   "data-impl": "mmap",
@@ -69,15 +71,16 @@
     "loss_scale_window": 1000,
     "initial_scale_power": 12,
     "hysteresis": 2,
-    "min_loss_scale": 1,
+    "min_loss_scale": 1
   },
 
-  "train-iters": 71500,
-  "lr-decay-iters": 71250,
+  "train-iters": 143000,
+  "lr-decay-iters": 143000,
   "distributed-backend": "nccl",
   "lr-decay-style": "cosine",
   "warmup": 0.01,
-  "save-interval": 500,
+  "checkpoint-factor": 1000,
+  "extra-save-iters": [0,1,2,4,8,16,32,64,128,256,512],
   "eval-interval": 40000,
   "eval-iters": 10,
 
@@ -92,6 +95,6 @@
   "tokenizer-type": "HFTokenizer",
   "vocab-file": "/fsx/pile/20B_tokenizer.json",
 
-  "launcher": "openmpi",
-  "deepspeed_mpi": true,
+  "launcher": "slurm",
+  "deepspeed_slurm": true,
 }
