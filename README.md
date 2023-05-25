@@ -79,21 +79,83 @@ We additionally have all model checkpoints in the format accepted by the [GPT-Ne
 
 ## Reproducing Training
 
-We provide the training data for replication of our training runs. The [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox) requires the pre-tokenized training data in the form of 2 memory-mapped numpy arrays: a `.bin` and `.idx` file.
-
+1. We provide the training data for replication of our training runs. The [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox) requires the pre-tokenized training data in the form of 2 memory-mapped numpy arrays: a `.bin` and `.idx` file.
 We provide these files, hosted on the Hugging Face hub.
-
 To download and use the deduplicated Pile training data, run:
-
 ```bash
 git lfs clone https://huggingface.co/datasets/EleutherAI/pythia_deduped_pile_idxmaps
 
 python utils/unshard_memmap.py --input_file ./pythia_deduped_pile_idxmaps/pile_0.87_deduped_text_document-00000-of-00082.bin --num_shards 83 --output_dir ./pythia_pile_idxmaps/
+``` 
+   This will take over a day to run, though it should not require more than 5 GB of RAM. We recommend downloading this rather than retokenizing the Pile from scratch, in order to preserve the data order seen by the Pythia models.
+
+2. Make a local copy of the tokenizer from the Pythia repo at https://github.com/EleutherAI/pythia/blob/main/utils/20B_tokenizer.json 
+
+3. Run  `git clone https://github.com/EleutherAI/gpt-neox.git` to clone the GPT-NeoX library. Once inside the repo run `git checkout v1.0` to switch to the 1.0 branch which Pythia was trained with.
+
+4. Choose the Yaml of the model that you want to reproduce from https://github.com/EleutherAI/pythia/tree/main/models . Each size model has a Yaml for the standard Pile dataset and the deduplicated one.  Make a local copy of your selected model’s yaml.
+
+5. Build the dockerfile contained in the v1.0 by going to the root directory of your cloned GPT-NeoX repository and running `docker build -t pythia:latest .` (assuming you have docker installed).
+
+6. After the container finishes building run the container using the following command (from the root of the GPT-NeoX repo with your pythia yaml accessible from within that folder):
 ```
-This will take over a day to run, though it should not require more than 5 GB of RAM. We recommend downloading this rather than retokenizing the Pile from scratch, in order to preserve the data order seen by the Pythia models.
+docker run --runtime=nvidia --rm -it -e NVIDIA_VISIBLE_DEVICES=0,1,2,3 --shm-size=1g --ulimit memlock=-1 --mount type=bind,src=$PWD,dst=/gpt-neox -v $(pwd):/workspace/ pythia:latest bash
+```
+Use the -v argument to add more connected volumes for the dataset and the Yaml file if is not accessible from within the docker container.
 
-TODO: forthcoming: more information on how to replicate + relaunch the Pythia training runs, once the data is actually downloaded.
+7. Change the lines of the data paths and tokenizer paths as follows:
+```
+  "train-data-paths": ["/fsx/pile/pile_20B_tokenizer_text_document"], #point this to your folder which was generated in step 1 containing the .bin and .idx file
+  "valid-data-paths": ["/fsx/pile/pile_20B_tokenizer_text_document"], #point this to your folder which was generated in step 1 containing the .bin and .idx file
+  "test-data-paths": ["/fsx/pile/pile_20B_tokenizer_text_document"], #point this to your folder which was generated in step 1 containing the .bin and .idx file
 
+  "tokenizer-type": "HFTokenizer",
+  "vocab-file": "/fsx/pile/20B_tokenizer.json", # point this to the tokenizer retrieved in step 2
+```
+If you would like your weights to be saved add that information to the yaml file as well. For example, to save in the checkpoints folder, at the bottom you can add:
+```
+  "launcher": "slurm",
+  "deepspeed_slurm": false,
+
+  "save": "checkpoints",
+  "load": "checkpoints",
+  "checkpoint_validation_with_forward_pass": False,
+}
+```
+Make sure the paths are the paths from inside your docker container and if you want the weights to have persistence, make sure that they are accessible from outside the container, for example in /workspace/
+
+8. Pip install flash attention by running `pip install -r requirements/requirements-flashattention.txt` from within the GPT-NeoX repository root folder inside the docker container.
+
+9. You should now be able to start training your model by running (modify the path to your yaml file):
+```
+python deepy.py train.py /workspace/pythia/models/70M/pythia-70m.yml  2>&1 | tee output.txt
+```
+the output will be saved to output.txt, if you don’t want that just delete the end.
+
+10. Once training is completed you can then benchmark your weights if desired. The most straightforward way to do this is using EleutherAI’s LM Evalutation Harness at https://github.com/EleutherAI/lm-evaluation-harness.  
+In order to use that with your saved out weights you must first convert them from GPT-NeoX format to Huggingface format.  This can be done from inside the GPT-NeoX repository with the script at tools/convert_to_hf.py.   
+If you are using the v1.0 of GPT-NeoX you may have to add `from typing import List` to the type of the file and change the line at https://github.com/EleutherAI/gpt-neox/blob/71df4d5017f9f4919566a11454fe3a507ffdc632/tools/convert_to_hf.py#L44 from `list[torch.Tensor]` to `List[torch.Tensor]`.
+You can then run the script like this to convert the weights at step 143000:
+```
+python tools/convert_to_hf.py --input_dir checkpoints/global_step143000/ --config_file checkpoints2/global_step 143000/configs/pythia-70m.yml --output_dir ./output/ 
+```
+This should output a file structure similar to the one found at https://huggingface.co/EleutherAI/pythia-70m-deduped/tree/main.
+
+11. If your `tokenizer_config.json` looks different than the one at https://huggingface.co/EleutherAI/pythia-70m-deduped/blob/main/tokenizer_config.json and `special_tokens_map.json` look different than https://huggingface.co/EleutherAI/pythia-70m-deduped/blob/main/special_tokens_map.json you may need to replace them with the ones on Huggingface.  If you don’t do this some of the tests in the Harness may not work.
+
+12. You should then be able to set up your environment for benchmarking.  The containers at https://hub.docker.com/r/huggingface/transformers-pytorch-gpu/tags should work for this and have worked with the 4.28 and 4.29 versions.  After setting up that docker container run:
+```
+git clone https://github.com/EleutherAI/lm-evaluation-harness
+cd lm-evaluation-harness
+pip install -e .
+```
+as outlined in the Harness repository.
+
+13. You should then be able to run the benchmark by pointing it at your weights (which should be in your container) by running a command similar to this:
+```
+python3 main.py     --model hf-causal-experimental     --model_args pretrained=../gpt-neox/output/     --tasks lambada_openai,piqa,winogrande,arc_easy,sciq,wikitext     --device cuda:3
+```
+which should output your results.
 
 ### Dataset Viewer
 
