@@ -79,6 +79,8 @@ We additionally have all model checkpoints in the format accepted by the [GPT-Ne
 
 ## Reproducing Training
 
+(Expanded reproduction instructions provided by @BaruchG .
+
 1. We provide the training data for replication of our training runs. The [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox) requires the pre-tokenized training data in the form of 2 memory-mapped numpy arrays: a `.bin` and `.idx` file.
 We provide these files, hosted on the Hugging Face hub.
 To download and use the deduplicated Pile training data, run:
@@ -112,6 +114,13 @@ Use the -v argument to add more connected volumes for the dataset and the Yaml f
   "tokenizer-type": "HFTokenizer",
   "vocab-file": "/fsx/pile/20B_tokenizer.json", # point this to the tokenizer retrieved in step 2
 ```
+You should additionally modify the total batch size (calculated via `Total GPUs * train_micro_batch_size_per_gpu * gradient_accumulation_steps / (pipe-parallel-size * model-parallel-size)`) to be 1024 to match the Pythia training batch size.
+Total GPU counts for each Pythia training run can be observed in comments in the yaml file.
+```
+   "train_micro_batch_size_per_gpu": XXX, # make this a value that will fit within your GPU memory
+   "gradient_accumulation_steps": 1, # make this a value to compensate to make the total batch size 1024.
+```
+
 If you would like your weights to be saved add that information to the yaml file as well. For example, to save in the checkpoints folder, at the bottom you can add:
 ```
   "launcher": "slurm",
@@ -122,7 +131,7 @@ If you would like your weights to be saved add that information to the yaml file
   "checkpoint_validation_with_forward_pass": False,
 }
 ```
-Make sure the paths are the paths from inside your docker container and if you want the weights to have persistence, make sure that they are accessible from outside the container, for example in /workspace/
+Make sure the paths are the paths from inside your docker container and if you want the weights to have persistence, make sure that they are accessible from outside the container, for example in /workspace/ .
 
 8. Pip install flash attention by running `pip install -r requirements/requirements-flashattention.txt` from within the GPT-NeoX repository root folder inside the docker container.
 
