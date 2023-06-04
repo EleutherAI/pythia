@@ -1,6 +1,6 @@
-# [Pythia: Interpreting Autoregressive Transformers Across Time and Scale](https://arxiv.org/pdf/2304.01373.pdf)
+# Pythia: Interpreting Transformers Across Time and Scale
 
-This repository is for EleutherAI's project *Pythia* which combines interpretability analysis and scaling laws to understand how knowledge develops and evolves during training in autoregressive transformers. For detailed info on the models, their training, and their behavior, please see [our paper](https://arxiv.org/pdf/2304.01373.pdf).
+This repository is for EleutherAI's project *Pythia* which combines interpretability analysis and scaling laws to understand how knowledge develops and evolves during training in autoregressive transformers. For detailed info on the models, their training, and their behavior, please see our paper [Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling](https://arxiv.org/abs/2304.01373).
 
 ## Models
 
@@ -41,10 +41,10 @@ We also upload the pre-tokenized data files and a script to reconstruct the data
 - We remedied a minor inconsistency that existed in the original suite: all models of size 2.8B parameters or smaller had a learning rate (LR) schedule which decayed to a minimum LR of 10% the starting LR rate, but the 6.9B and 12B models all used an LR schedule which decayed to a minimum LR of 0. In the redone training runs, we rectified this inconsistency: all models now were trained with LR decaying to a minimum of 0.1× their maximum LR.
 - the new `EleutherAI/pythia-1b` is trained with bf16, because in fp16 the model corrupted due to loss spikes late in training.
 
-The old models ("V0") remain available at [https://huggingface.co/models?other=pythia_v0](https://huggingface.co/models?other=pythia_v0).
+The old models ("v0") remain available at [https://huggingface.co/models?other=pythia_v0](https://huggingface.co/models?other=pythia_v0).
 
 [January 20, 2023]
-On January 20, 2023, we chose to rename the \textit{Pythia} model suite to better reflect including both embedding layer and unembedding layer parameters in our total parameter counts, in line with many other model suites and because we believe this convention better reflects the on-device memory usage of these models. See [https://huggingface.co/EleutherAI/pythia-410m-deduped#naming-convention-and-parameter-count](https://huggingface.co/EleutherAI/pythia-410m-deduped#naming-convention-and-parameter-count) for more details
+On January 20, 2023, we chose to rename the Pythia model suite to include both embedding layer and unembedding layer parameters in our total parameter counts, in line with many other model suites and because we believe this convention better reflects the on-device memory usage of these models. We also discovered that due to a typo one of our models was smaller than we thought, and replaced it with a model of the intended size. See [here](https://huggingface.co/EleutherAI/pythia-410m-deduped#naming-convention-and-parameter-count) for more details.
 
 ## Quickstart
 
