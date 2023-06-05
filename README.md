@@ -1,6 +1,17 @@
 # Pythia: Interpreting Transformers Across Time and Scale
 
-This repository is for EleutherAI's project *Pythia* which combines interpretability analysis and scaling laws to understand how knowledge develops and evolves during training in autoregressive transformers. For detailed info on the models, their training, and their behavior, please see our paper [Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling](https://arxiv.org/abs/2304.01373).
+This repository is for EleutherAI's project *Pythia* which combines interpretability analysis and scaling laws to understand how knowledge develops and evolves during training in autoregressive transformers. For detailed info on the models, their training, and their behavior, please see our paper [Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling](https://arxiv.org/abs/2304.01373). 
+
+# Contents
+
+* [Models](#models)
+  * [Changelog](#changelog)
+* [Quickstart](#quickstart)
+* [Reproducing Training](#reproducing-training)
+  * [Dataset Viewer](#dataset-viewer)
+* [Benchmark Scores](#benchmark-scores)
+* [Other Papers](#other-papers)
+* [License](#license)
 
 ## Models
 
@@ -29,7 +40,7 @@ All 8 model sizes are trained on the exact same data, in the exact same order. E
 
 Config files used to train these models within the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox) can be found at the `models/` directory within this repository.
 
-We also upload the pre-tokenized data files and a script to reconstruct the dataloader as seen during training for all models. See **Reproducing Training** section for more details.
+We also upload the pre-tokenized data files and a script to reconstruct the dataloader as seen during training for all models. See [Reproducing Training](#reproducing-training) section for more details.
 
 ## Changelog
 
@@ -46,7 +57,7 @@ The old models ("v0") remain available at [https://huggingface.co/models?other=p
 [January 20, 2023]
 On January 20, 2023, we chose to rename the Pythia model suite to include both embedding layer and unembedding layer parameters in our total parameter counts, in line with many other model suites and because we believe this convention better reflects the on-device memory usage of these models. We also discovered that due to a typo one of our models was smaller than we thought, and replaced it with a model of the intended size. See [here](https://huggingface.co/EleutherAI/pythia-410m-deduped#naming-convention-and-parameter-count) for more details.
 
-## Quickstart
+# Quickstart
 
 All Pythia models are hosted on [the Huggingface hub](https://huggingface.co/EleutherAI). They can be loaded and used via the following code (shown for the 3rd `pythia-70M-deduped` model checkpoint):
 
@@ -72,14 +83,14 @@ tokenizer.decode(tokens[0])
 
 All models were trained for the equivalent of 143000 steps at a batch size of 2,097,152 tokens. Revision/branch `step143000` (e.g. [https://huggingface.co/EleutherAI/pythia-70m-deduped/tree/step143000](https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000)) corresponds exactly to the model checkpoint on the `main` branch of each model.
 
-We additionally have all model checkpoints in the format accepted by the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox), but do not serve them at scale due to size of optimizer states and anticipated lower demand. If you would like to perform analysis using the models within the GPT-NeoX codebase, or would like the optimizer states, please email hailey@eleuther.ai and stella@eleuther.ai to arrange access.
+We additionally have all model checkpoints in the format accepted by the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox), with final-step checkpoints+optimizer states downloadable at [`EleutherAI/neox-ckpt-pythia-xxx-deduped-v1`](https://huggingface.co/EleutherAI/neox-ckpt-pythia-1b-deduped-v1) but do not serve them for all steps at scale due to size of optimizer states and anticipated lower demand. If you would like to perform analysis using the intermediate models within the GPT-NeoX codebase, or would like the optimizer states for other steps, please email hailey@eleuther.ai and stella@eleuther.ai to arrange access.
 
 
 *`pythia-{size}-v0` models on Huggingface of sizes `160m, 410m, 1.4b` were trained with a batch size of 4M tokens  and were originally trained for 71500 steps instead, and checkpointed every 500 steps. The checkpoints on Huggingface for these v0 models are renamed for consistency with all 2M batch models, so `step1000` is the first checkpoint for `pythia-1.4b-v0` that was saved (corresponding to step 500 in training), and `step1000` is likewise the first pythia-6.9b-v0 checkpoint that was saved (corresponding to 1000 "actual" steps.)*
 
-## Reproducing Training
+# Reproducing Training
 
-(Expanded reproduction instructions provided by @BaruchG .
+(Expanded reproduction instructions provided by @BaruchG ).
 
 1. We provide the training data for replication of our training runs. The [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox) requires the pre-tokenized training data in the form of 2 memory-mapped numpy arrays: a `.bin` and `.idx` file.
 We provide these files, hosted on the Hugging Face hub.
@@ -166,7 +177,7 @@ python3 main.py     --model hf-causal-experimental     --model_args pretrained=.
 ```
 which should output your results.
 
-### Dataset Viewer
+## Dataset Viewer
 
 We provide a tool to view particular portions of the training dataloader used by all models during training, at `utils/batch_viewer.py`.
 
@@ -184,8 +195,17 @@ Passing `--mode save` will save a separate file containing each batch as a numpy
 
 Passing `--mode custom` will save a dictionary for each batch to a JSONL file--it can be used to compute arbitrary statistics over each batch seen during training.
 
+# Pythia Paper Replication
 
-## Benchmark Scores
+We provide further information for those interested in replicating our case studies performed in the Pythia suite paper, being
+
+* Memorization density over training
+* Intervention on pronoun frequencies in pretraining
+* Term frequency effects over training
+
+Further information is accessible in `/case-studies` in this repository.
+
+# Benchmark Scores
 
 We also provide benchmark 0-shot and 5-shot results on a variety of NLP datasets:
 
@@ -201,29 +221,17 @@ We also provide benchmark 0-shot and 5-shot results on a variety of NLP datasets
 - BLiMP (`blimp_*`)
 - MMLU (`hendrycksTest*`)
 
-Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness), and are viewable by model and step at `results/json/v1.1-evals/*` in this repository.
+Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness), and are viewable by model and step at `evals/pythia-v1/*/*` in this repository.
 
-## Reproducing Memorization Results
-The memorization evaluation script `memorization/eval_memorization.py` assumes that you are running the script in a distributed process, ideally in slurm. If you want to reproduce the evaluation, consider the following steps.
+# Other Papers
 
-1. Change `prefix` and `idx_path` local variables of `generate_function()` to point to the right document and index path.
+Aside from the Pythia suite, this repository also acts as a hub containing information, code, and reproducibility instructions for the following papers:
+* [Emergent and Predictable Memorization in Large Language Models](https://arxiv.org/abs/2304.11158)
+  * For more information, see `/predictable-memorization/README.md`.
 
-2. If you are not using [Slurm](https://slurm.schedmd.com/documentation.html), You need to change global variables inside the script, like `RANK` and `NUM_PROCS` (world size) to point to the right environment variables.
+Citation information for other papers in this repository are included in their respective folders.
 
-3. Change `cache_dir` of model being loaded (line 172) to point to locally saved directory of the model. This is necessary as we **donot** want to load the same model multiple times. Doing so will lead to errors.
-
-4. This script additionally saves results to aws s3 buckets (line 205). If you would like to save the results locally instead, you can do so by saving `memorization_evals` as a csv instead.
-
-5. You should ideally be able to run this script now on slurm (see `memorization/multinode_runner.sbatch`) for an example sbatch script.
-
-6. If you are using a different distributed client instead, you will need to pass `MODEL` and `CHECKPOINT` variables appropriately (see `memorization/multinode_runner.sbatch`) for an example 
-
-7. These csvs can then be combined by simple pandas concatenation. See `memorization/eda.ipynb` for an example.
-
-8. You can now generate plots too by following `memorization/eda.ipynb`.
-
-
-## Citation Details
+# Citation Details
 
 If you use the Pythia models or data in your research, please consider citing our paper via:
 
@@ -238,7 +246,7 @@ If you use the Pythia models or data in your research, please consider citing ou
 }
 ```
 
-## License
+# License
 
 ```
    Copyright 2023 EleutherAI
