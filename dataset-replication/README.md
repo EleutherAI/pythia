@@ -1,1 +1,0 @@
-This readme should maybe describe separately how the neox dataloader works and how to replicate the dataset + sanity checks.
