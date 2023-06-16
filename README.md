@@ -100,7 +100,7 @@ git lfs clone https://huggingface.co/datasets/EleutherAI/pythia_deduped_pile_idx
 
 python utils/unshard_memmap.py --input_file ./pythia_deduped_pile_idxmaps/pile_0.87_deduped_text_document-00000-of-00082.bin --num_shards 83 --output_dir ./pythia_pile_idxmaps/
 ``` 
-   This will take over a day to run, though it should not require more than 5 GB of RAM. We recommend downloading this rather than retokenizing the Pile from scratch, in order to preserve the data order seen by the Pythia models.
+   This will take over a day to run, though it should not require more than 5 GB of RAM. We recommend downloading this rather than retokenizing the Pile from scratch, in order to guarantee preservation of the data order seen by the Pythia models.
 
 2. Make a local copy of the tokenizer from the Pythia repo at https://github.com/EleutherAI/pythia/blob/main/utils/20B_tokenizer.json 
 
@@ -181,13 +181,37 @@ which should output your results.
 
 We provide a tool to view particular portions of the training dataloader used by all models during training, at `utils/batch_viewer.py`.
 
-To run, first substitute the filepath to the downloaded `.bin` and `.idx` files for either the Pile or deduplicated Pile in `utils/dummy_config.yml`.
+This tool requires the `inspect_idxmap` branch of GPT-NeoX as a git submodule, so you must check out the repository via
+```
+git clone --recurse-submodules https://github.com/EleutherAI/pythia
+cd pythia
+```
+or, if you have already cloned the repository, run
+```
+git submodule update --init --recursive
+```
+Next, we must install dependencies:
+```
+pip install torch==1.13.0+cu117 -f https://download.pytorch.org/whl/torch/
+cd utils/gpt-neox
+pip install -r requirements/requirements.txt
+```
+Additionally, we are required to build C++ helpers used by the Megatron dataloader. You can do this via:
+```
+cd /utils/gpt-neox/megatron/data
+make
+cd -
+```
+Now, we're all set up to run `utils/batch_viewer.py` !
+
+To run, first substitute the filepath to your copy of the downloaded and resharded `.bin` and `.idx` files for either the Pile or deduplicated Pile in `utils/dummy_config.yml`.
 
 ```python
 PYTHONPATH=utils/gpt-neox/ python utils/batch_viewer.py \
   --start_iteration 0 \
   --end_iteration 1000 \
   --mode save \
+  --save_path .../.../.../... \
   --conf_dir utils/dummy_config.yml 
 ```
 
