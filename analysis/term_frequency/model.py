@@ -44,11 +44,20 @@ class GPTNeoLM(BaseLM):
         # TODO: update this to be less of a hack once subfolder is fixed in HF
         revision = revision + ("/" + subfolder if subfolder is not None else "")
 
-        self.gpt2 = transformers.AutoModelForCausalLM.from_pretrained(
-            pretrained,
-            revision=revision,
-            device_map="auto"
-        ) #.to(self.device)
+        if type(device) == int:
+            self.gpt2 = transformers.AutoModelForCausalLM.from_pretrained(
+                pretrained,
+                revision=revision,
+            ).to(self.device)
+        elif type(device) == str:
+
+            print("device_map balanced_low_0")
+            self.gpt2 = transformers.AutoModelForCausalLM.from_pretrained(
+                pretrained,
+                revision=revision,
+                device_map="balanced_low_0"
+            )
+
         self.gpt2.eval()
 
         self.tokenizer = transformers.AutoTokenizer.from_pretrained(
@@ -149,9 +158,10 @@ class GPTNeoLM(BaseLM):
             return self.gpt2(inps)[0][:, :, :50257]
 
     def _model_generate(self, context, max_length, eos_token_id):
-        return self.gpt2.generate(
-            **context, max_length=max_length, eos_token_id=eos_token_id, # do_sample=True,
-        )
+        with torch.no_grad():
+            return self.gpt2.generate(
+                **context, max_length=max_length, pad_token_id=eos_token_id, eos_token_id=eos_token_id, # do_sample=True,
+            )
 
     def greedy_until(self, requests):
         # TODO: implement fully general `until` that handles until that are

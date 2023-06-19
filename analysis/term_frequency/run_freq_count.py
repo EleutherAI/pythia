@@ -12,7 +12,7 @@ from tqdm import tqdm
 from collections import Counter
 from transformers import GPTNeoXTokenizerFast
 
-tokenizer = GPTNeoXTokenizerFast.from_pretrained("EleutherAI/pythia-13b-deduped")
+tokenizer = GPTNeoXTokenizerFast.from_pretrained("EleutherAI/pythia-v1.1-12b-deduped")
 
 time = "minute|hour|day|week|month|year|decade"
 punct = re.escape(string.punctuation)

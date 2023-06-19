@@ -31,14 +31,14 @@ def jitter(values, j=0):
     return values + np.random.normal(0, 0.05, values.shape)
 
 model_list = [
-    ("12 B", "EleutherAI/pythia-13b-deduped"),
-    ("6.9 B", "EleutherAI/pythia-6.7b-deduped"),
-    ("2.8 B", "EleutherAI/pythia-2.7b-deduped"),
-    ("1.4 B", "EleutherAI/pythia-1.3b-deduped"),
-    ("1.0 B", "EleutherAI/pythia-800m-deduped"),
-    ("410 M", "EleutherAI/pythia-350m-deduped"),
-    ("160 M", "EleutherAI/pythia-125m-deduped"),
-    ("70 M", "EleutherAI/pythia-19m-deduped"),
+    ("12 B", "EleutherAI/pythia-v1.1-12b-deduped"),
+    ("6.9 B", "EleutherAI/pythia-v1.1-6.9b-deduped"),
+    ("2.8 B", "EleutherAI/pythia-v1.1-2.8b-deduped"),
+    ("1.4 B", "EleutherAI/pythia-v1.1-1.4b-deduped"),
+    ("1.0 B", "EleutherAI/pythia-v1.1-1b-deduped"),
+    ("410 M", "EleutherAI/pythia-v1.1-410m-deduped"),
+    ("160 M", "EleutherAI/pythia-v1.1-160m-deduped"),
+    ("70 M", "EleutherAI/pythia-v1.1-70m-deduped"),
 ]
 
 sns.set_style("white")
@@ -130,14 +130,14 @@ def graph_plot(model_list, single_row=True, prefix="figure"):
 
 graph_plot(
     [
-        ("12 B", "EleutherAI/pythia-13b-deduped"),
-        ("6.9 B", "EleutherAI/pythia-6.7b-deduped"),
-        ("2.8 B", "EleutherAI/pythia-2.7b-deduped"),
-        ("1.4 B", "EleutherAI/pythia-1.3b-deduped"),
-        ("1.0 B", "EleutherAI/pythia-800m-deduped"),
-        ("410 M", "EleutherAI/pythia-350m-deduped"),
-        ("160 M", "EleutherAI/pythia-125m-deduped"),
-        ("70 M", "EleutherAI/pythia-19m-deduped"),
+        ("12 B", "EleutherAI/pythia-v1.1-12b-deduped"),
+        ("6.9 B", "EleutherAI/pythia-v1.1-6.9b-deduped"),
+        ("2.8 B", "EleutherAI/pythia-v1.1-2.8b-deduped"),
+        ("1.4 B", "EleutherAI/pythia-v1.1-1.4b-deduped"),
+        ("1.0 B", "EleutherAI/pythia-v1.1-1b-deduped"),
+        ("410 M", "EleutherAI/pythia-v1.1-410m-deduped"),
+        ("160 M", "EleutherAI/pythia-v1.1-160m-deduped"),
+        ("70 M", "EleutherAI/pythia-v1.1-70m-deduped"),
     ],
     single_row=False,
     prefix="appendix",
@@ -145,10 +145,10 @@ graph_plot(
 
 graph_plot(
     [
-        ("12 B", "EleutherAI/pythia-13b-deduped"),
-        ("2.8 B", "EleutherAI/pythia-2.7b-deduped"),
-        ("1.0 B", "EleutherAI/pythia-800m-deduped"),
-        ("160 M", "EleutherAI/pythia-125m-deduped"),
+        ("12 B", "EleutherAI/pythia-v1.1-12b-deduped"),
+        ("2.8 B", "EleutherAI/pythia-v1.1-2.8b-deduped"),
+        ("1.0 B", "EleutherAI/pythia-v1.1-1b-deduped"),
+        ("160 M", "EleutherAI/pythia-v1.1-160m-deduped"),
     ]
     )
 
