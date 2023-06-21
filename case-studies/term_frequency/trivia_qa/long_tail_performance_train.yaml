@@ -1,0 +1,18 @@
+group:
+  - long_tail_triviqa
+task: long_tail_triviqa_train
+dataset_path: trivia_qa
+dataset_name: unfiltered.nocontext
+output_type: greedy_until
+should_decontaminate: true
+doc_to_decontamination_query: "{{question}}"
+training_split: train
+validation_split: train
+fewshot_split: train
+doc_to_text: "Q:{{question}} A:"
+doc_to_target: " {{answer.value}}"
+process_results: !function utils.process_results
+metric_list:
+  - metric: acc
+    aggregation: !function utils.passthrough
+    higher_is_better: true

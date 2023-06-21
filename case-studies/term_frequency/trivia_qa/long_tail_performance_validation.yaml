@@ -1,0 +1,3 @@
+include: long_tail_performance_train.yaml
+task: long_tail_triviqa_validation
+training_split: validation
