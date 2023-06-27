@@ -129,3 +129,6 @@ dmypy.json
 .pyre/
 
 .DS_Store
+
+# Batch Viewer saves
+utils/token_indicies/*

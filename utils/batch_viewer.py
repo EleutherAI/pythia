@@ -1,6 +1,8 @@
 from mmap_dataset import MMapIndexedDataset
 from tqdm import trange
+import numpy as np
 import argparse
+import os
 
 if __name__ == '__main__':
     
