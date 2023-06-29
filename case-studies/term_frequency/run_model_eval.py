@@ -4,17 +4,19 @@ import os
 import ast
 import json
 
+import torch
 import pandas as pd
 
 from lm_eval import evaluator
+from lm_eval.models.huggingface import HFLM
 
-from task import *
+# from task import *
 from trivia_qa import TriviaQA
 from model import GPTNeoLM
 
 device = "cuda"
 model_list = [
-    # ["EleutherAI/pythia-v1.1-160m-deduped", 64],
+    ["EleutherAI/pythia-v1.1-160m-deduped", 64],
     ["EleutherAI/pythia-v1.1-1b-deduped", 64],
     ["EleutherAI/pythia-v1.1-2.8b-deduped", 32],
     ["EleutherAI/pythia-v1.1-12b-deduped", 8],
@@ -31,7 +33,7 @@ def evaluate_task_performance(model_name, task_names, device, checkpoint_list=ch
         model_size = model_name.split("/")[-1]
         model_args="pretrained={},revision=step{}".format(model_name, checkpoint)
         print("Building Model, {}".format(model_args))
-        model = GPTNeoLM.create_from_arg_string(
+        model = HFLM.create_from_arg_string(
             model_args, {"batch_size": batch_size, "device": device}
         )
 
@@ -44,47 +46,49 @@ def evaluate_task_performance(model_name, task_names, device, checkpoint_list=ch
                 num_fewshot=n,
                 batch_size=batch_size,
                 device=device,
-                no_cache=True,
+                # no_cache=True,
             )
+            if model.rank == 0:
 
-            results['config']['model'] = "model_name"
-            results['config']['model_args'] = model_args
+                results['config']['model'] = "model_name"
+                results['config']['model_args'] = model_args
 
-            dumped = json.dumps(results, indent=2)
-            output_dict_path = os.path.join(
-                output_dir,
-                "json",
-                model_size,
-            )
+                dumped = json.dumps(results, indent=2)
+                output_dict_path = os.path.join(
+                    output_dir,
+                    "json",
+                    model_size,
+                )
 
-            dict_file_name = "{}term_frequency-{}-{}-{}shot.json".format(file_name_affix, model_size, checkpoint, str(n).zfill(2))
-            os.makedirs(output_dict_path, exist_ok=True)
-            with open(os.path.join(output_dict_path, dict_file_name), "w") as f:
-                f.write(dumped)
+                dict_file_name = "{}term_frequency-{}-{}-{}shot.json".format(file_name_affix, model_size, checkpoint, str(n).zfill(2))
+                os.makedirs(output_dict_path, exist_ok=True)
+                with open(os.path.join(output_dict_path, dict_file_name), "w") as f:
+                    f.write(dumped)
 
-            for task in task_names:
-                results_dict = {
-                    "model": model_name,
-                    "checkpoint": checkpoint,
-                    "task": task.EVAL_HARNESS_NAME,
-                    "fewshot": n,
-                    **results['results'][task.EVAL_HARNESS_NAME]
-                    }
+                for task in task_names:
+                    results_dict = {
+                        "model": model_name,
+                        "checkpoint": checkpoint,
+                        "task": task.EVAL_HARNESS_NAME,
+                        "fewshot": n,
+                        **results['results'][task.EVAL_HARNESS_NAME]
+                        }
 
-                all_results_df = pd.concat(
-                    [all_results_df, pd.Series(results_dict).to_frame().T],
-                    ignore_index=True
-                    )
+                    all_results_df = pd.concat(
+                        [all_results_df, pd.Series(results_dict).to_frame().T],
+                        ignore_index=True
+                        )
         
-        output_csv_path = os.path.join(output_dir, "csv", model_size)
-        os.makedirs(output_csv_path, exist_ok=True)
-        all_results_df.to_csv(
-            os.path.join(output_csv_path, "{}term_frquency_all_shots.csv".format(file_name_affix)),
-            index=False
-            )
-                    
+        if model.rank == 0:
+            output_csv_path = os.path.join(output_dir, "csv", model_size)
+            os.makedirs(output_csv_path, exist_ok=True)
+            all_results_df.to_csv(
+                os.path.join(output_csv_path, "{}term_frquency_all_shots.csv".format(file_name_affix)),
+                index=False
+                )
+                        
 if __name__ == "__main__":
-
+    torch.manual_seed(0)
     import argparse
 
     parser = argparse.ArgumentParser(description='Eval on Num Reasoning')
@@ -100,8 +104,8 @@ if __name__ == "__main__":
 
     if args.task_names is None:
         arithmetic_task_names = []
-        arithmetic_task_names.extend([ArithmeticMultiplication(str(num)) for num in range(0,100)])
-        arithmetic_task_names.extend([ArithmeticAddition(str(num)) for num in range(0,100)])
+        # arithmetic_task_names.extend([ArithmeticMultiplication(str(num)) for num in range(0,100)])
+        # arithmetic_task_names.extend([ArithmeticAddition(str(num)) for num in range(0,100)])
         task_names = arithmetic_task_names
     else:
         # task_names = list(args.task_names.split(","))

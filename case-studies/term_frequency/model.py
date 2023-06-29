@@ -4,10 +4,10 @@ import transformers
 from tqdm import tqdm
 
 from lm_eval import utils
-from lm_eval.base import BaseLM
+from lm_eval.api.model import LM
 
 
-class GPTNeoLM(BaseLM):
+class GPTNeoLM(LM):
     def __init__(
         self,
         device="cuda",

@@ -16,8 +16,9 @@ import inspect
 import datasets
 import evaluate
 
-from lm_eval.base import Task, rf
-from lm_eval.metrics import mean
+from lm_eval.api.task import Task, TaskConfig
+from lm_eval.api.instance import Instance
+from lm_eval.api.metrics import mean
 
 
 _CITATION = """
@@ -38,6 +39,8 @@ class TriviaQA(Task):
     DATASET_PATH = "trivia_qa"
     DATASET_NAME = "unfiltered.nocontext"
 
+    OUTPUT_TYPE = "greedy_until"
+
     def __init__(self, data_dir=None, cache_dir=None, download_mode=None, DATASET_NAME=None):
 
         self.EVAL_HARNESS_NAME = "{}_{}".format(
@@ -54,6 +57,8 @@ class TriviaQA(Task):
         self._training_docs = None
         self._fewshot_docs = None
         self.metric = evaluate.load("exact_match")
+
+        self._config = TaskConfig()
 
     def has_training_docs(self):
         return True
@@ -110,9 +115,13 @@ class TriviaQA(Task):
         return white_space_fix(remove_articles(remove_punc(lower(s))))
 
 
-    def construct_requests(self, doc, ctx):
+    def construct_requests(self, doc, ctx, **kwargs):
 
-        completion = rf.greedy_until(ctx, "\n")
+        # completion = rf.greedy_until(ctx, "\n")
+        arguments = (ctx, {"until": ["\n"]})
+        completion = Instance(
+            request_type=self.OUTPUT_TYPE, doc=doc, arguments=arguments, idx=0, **kwargs
+        )
         return completion
 
     def process_results(self, doc, results):
