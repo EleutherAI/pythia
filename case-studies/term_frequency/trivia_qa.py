@@ -43,6 +43,8 @@ class TriviaQA(Task):
 
     def __init__(self, data_dir=None, cache_dir=None, download_mode=None, DATASET_NAME=None):
 
+        super().__init__()
+
         self.EVAL_HARNESS_NAME = "{}_{}".format(
             "long_tail",
             self.DATASET_PATH
