@@ -78,6 +78,9 @@ def evaluate_task_performance(model_name, task_names, device, checkpoint_list=ch
                         [all_results_df, pd.Series(results_dict).to_frame().T],
                         ignore_index=True
                         )
+            if model.world_size > 1:
+                model.accelerator.wait_for_everyone()
+
         
         if model.rank == 0:
             output_csv_path = os.path.join(output_dir, "csv", model_size)
@@ -86,6 +89,8 @@ def evaluate_task_performance(model_name, task_names, device, checkpoint_list=ch
                 os.path.join(output_csv_path, "{}term_frquency_all_shots.csv".format(file_name_affix)),
                 index=False
                 )
+        if model.world_size > 1:
+            model.accelerator.wait_for_everyone()
                         
 if __name__ == "__main__":
     torch.manual_seed(0)
