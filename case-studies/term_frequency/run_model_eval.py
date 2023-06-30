@@ -16,10 +16,10 @@ from model import GPTNeoLM
 
 device = "cuda"
 model_list = [
-    ["EleutherAI/pythia-v1.1-160m-deduped", 64],
-    ["EleutherAI/pythia-v1.1-1b-deduped", 64],
-    ["EleutherAI/pythia-v1.1-2.8b-deduped", 32],
-    ["EleutherAI/pythia-v1.1-12b-deduped", 8],
+    ["EleutherAI/pythia-160m-deduped", 64],
+    ["EleutherAI/pythia-1b-deduped", 64],
+    ["EleutherAI/pythia-2.8b-deduped", 32],
+    ["EleutherAI/pythia-12b-deduped", 8],
     ]
 
 eval_steps, max_steps = 13_000, 143_000
