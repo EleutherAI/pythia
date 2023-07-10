@@ -1,6 +1,6 @@
 {
   # parallelism settings
-  "pipe-parallel-size": 1,
+  "pipe-parallel-size": 0,
   "model-parallel-size": 1,
 
   # model settings
@@ -49,12 +49,12 @@
   "train_micro_batch_size_per_gpu": 32,
   "gas": 1,
   "data-impl": "mmap",
-  "num_workers": 1,
+  "num_workers": 2,
 
   # activation checkpointing
-  "checkpoint-activations": true,
+  "checkpoint-activations": false, #true,
   "checkpoint-num-layers": 1,
-  "partition-activations": true,
+  "partition-activations": false, #true,
   "synchronize-each-layer": true,
 
   # regularization
@@ -80,12 +80,17 @@
   "lr-decay-style": "cosine",
   "warmup": 0.01,
   "checkpoint-factor": 1000,
-  "extra-save-iters": [0,1,2,4,8,16,32,64,128,256,512],
+  #"extra-save-iters": [0,1,2,4,8,16,32,64,128,256,512],
   "eval-interval": 100000,
   "eval-iters": 10,
 
   "save": "/mnt/hdd-0/tiny-pythia/ckpts/pythia-31m",
-  "load": "/mnt/hdd-0/tiny-pythia/ckpts/pythia-31m",
+  #"load": "/mnt/hdd-0/tiny-pythia/ckpts/pythia-31m",
+
+  "use_wandb": true,
+  "wandb_group": "Pythia-31M", 
+  "wandb_team": "eleutherai",
+  "wandb_project": "tiny-pythia",
 
   "log-interval": 10,
   "steps_per_print": 10,
