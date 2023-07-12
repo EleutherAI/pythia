@@ -5,8 +5,8 @@
 
   # model settings
   "num-layers": 6,
-  "hidden-size": 256,
-  "num-attention-heads": 8,
+  "hidden-size": 128,
+  "num-attention-heads": 4,
   "seq-length": 2048,
   "max-position-embeddings": 2048,
   "pos-emb": "rotary",
@@ -84,11 +84,11 @@
   "eval-interval": 100000,
   "eval-iters": 10,
 
-  "save": "/mnt/hdd-0/tiny-pythia/ckpts/pythia-31m",
-  #"load": "/mnt/hdd-0/tiny-pythia/ckpts/pythia-31m",
+  "save": "/mnt/hdd-0/tiny-pythia/ckpts/pythia-14m",
+  #"load": "/mnt/hdd-0/tiny-pythia/ckpts/pythia-14m",
 
   "use_wandb": true,
-  "wandb_group": "Pythia-31M", 
+  "wandb_group": "Pythia-14M", 
   "wandb_team": "eleutherai",
   "wandb_project": "tiny-pythia",
 
