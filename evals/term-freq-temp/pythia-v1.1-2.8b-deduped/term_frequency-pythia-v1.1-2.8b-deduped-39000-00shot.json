@@ -1,0 +1,1017 @@
+{
+  "results": {
+    "num_reasoning_arithmetic_multiplication_0": {
+      "acc": 0.54,
+      "acc_stderr": 0.07119963311072637
+    },
+    "num_reasoning_arithmetic_multiplication_1": {
+      "acc": 0.38,
+      "acc_stderr": 0.06934092056863767
+    },
+    "num_reasoning_arithmetic_multiplication_2": {
+      "acc": 0.04,
+      "acc_stderr": 0.027994168488950616
+    },
+    "num_reasoning_arithmetic_multiplication_3": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_4": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_5": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_6": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_7": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_8": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_9": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_10": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_11": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_12": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_13": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_14": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_15": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_16": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_17": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_18": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_19": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_20": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_21": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_22": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_23": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_24": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_25": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_26": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_27": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_28": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_29": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_30": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_31": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_32": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_33": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_34": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_35": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_36": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_37": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_38": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_39": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_40": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_41": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_42": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_43": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_44": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_45": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_46": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_47": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_48": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_49": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_50": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_51": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_52": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_53": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_54": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_55": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_56": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_57": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_58": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_59": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_60": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_61": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_62": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_63": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_64": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_65": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_66": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_67": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_68": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_69": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_70": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_71": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_72": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_73": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_74": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_75": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_76": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_77": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_78": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_79": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_80": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_81": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_82": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_83": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_84": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_85": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_86": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_87": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_88": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_89": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_90": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_91": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_92": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_93": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_94": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_95": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_96": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_97": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_98": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_multiplication_99": {
+      "acc": 0.02,
+      "acc_stderr": 0.019999999999999987
+    },
+    "num_reasoning_arithmetic_addition_0": {
+      "acc": 0.82,
+      "acc_stderr": 0.05488392203513869
+    },
+    "num_reasoning_arithmetic_addition_1": {
+      "acc": 0.04,
+      "acc_stderr": 0.027994168488950606
+    },
+    "num_reasoning_arithmetic_addition_2": {
+      "acc": 0.02,
+      "acc_stderr": 0.02
+    },
+    "num_reasoning_arithmetic_addition_3": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_4": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_5": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_6": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_7": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_8": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_9": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_10": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_11": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_12": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_13": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_14": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_15": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_16": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_17": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_18": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_19": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_20": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_21": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_22": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_23": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_24": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_25": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_26": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_27": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_28": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_29": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_30": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_31": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_32": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_33": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_34": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_35": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_36": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_37": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_38": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_39": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_40": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_41": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_42": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_43": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_44": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_45": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_46": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_47": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_48": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_49": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_50": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_51": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_52": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_53": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_54": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_55": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_56": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_57": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_58": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_59": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_60": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_61": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_62": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_63": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_64": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_65": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_66": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_67": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_68": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_69": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_70": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_71": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_72": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_73": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_74": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_75": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_76": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_77": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_78": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_79": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_80": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_81": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_82": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_83": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_84": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_85": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_86": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_87": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_88": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_89": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_90": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_91": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_92": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_93": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_94": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_95": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_96": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_97": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_98": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    },
+    "num_reasoning_arithmetic_addition_99": {
+      "acc": 0.0,
+      "acc_stderr": 0.0
+    }
+  },
+  "versions": {
+    "num_reasoning_arithmetic_multiplication_0": 1.0,
+    "num_reasoning_arithmetic_multiplication_1": 1.0,
+    "num_reasoning_arithmetic_multiplication_2": 1.0,
+    "num_reasoning_arithmetic_multiplication_3": 1.0,
+    "num_reasoning_arithmetic_multiplication_4": 1.0,
+    "num_reasoning_arithmetic_multiplication_5": 1.0,
+    "num_reasoning_arithmetic_multiplication_6": 1.0,
+    "num_reasoning_arithmetic_multiplication_7": 1.0,
+    "num_reasoning_arithmetic_multiplication_8": 1.0,
+    "num_reasoning_arithmetic_multiplication_9": 1.0,
+    "num_reasoning_arithmetic_multiplication_10": 1.0,
+    "num_reasoning_arithmetic_multiplication_11": 1.0,
+    "num_reasoning_arithmetic_multiplication_12": 1.0,
+    "num_reasoning_arithmetic_multiplication_13": 1.0,
+    "num_reasoning_arithmetic_multiplication_14": 1.0,
+    "num_reasoning_arithmetic_multiplication_15": 1.0,
+    "num_reasoning_arithmetic_multiplication_16": 1.0,
+    "num_reasoning_arithmetic_multiplication_17": 1.0,
+    "num_reasoning_arithmetic_multiplication_18": 1.0,
+    "num_reasoning_arithmetic_multiplication_19": 1.0,
+    "num_reasoning_arithmetic_multiplication_20": 1.0,
+    "num_reasoning_arithmetic_multiplication_21": 1.0,
+    "num_reasoning_arithmetic_multiplication_22": 1.0,
+    "num_reasoning_arithmetic_multiplication_23": 1.0,
+    "num_reasoning_arithmetic_multiplication_24": 1.0,
+    "num_reasoning_arithmetic_multiplication_25": 1.0,
+    "num_reasoning_arithmetic_multiplication_26": 1.0,
+    "num_reasoning_arithmetic_multiplication_27": 1.0,
+    "num_reasoning_arithmetic_multiplication_28": 1.0,
+    "num_reasoning_arithmetic_multiplication_29": 1.0,
+    "num_reasoning_arithmetic_multiplication_30": 1.0,
+    "num_reasoning_arithmetic_multiplication_31": 1.0,
+    "num_reasoning_arithmetic_multiplication_32": 1.0,
+    "num_reasoning_arithmetic_multiplication_33": 1.0,
+    "num_reasoning_arithmetic_multiplication_34": 1.0,
+    "num_reasoning_arithmetic_multiplication_35": 1.0,
+    "num_reasoning_arithmetic_multiplication_36": 1.0,
+    "num_reasoning_arithmetic_multiplication_37": 1.0,
+    "num_reasoning_arithmetic_multiplication_38": 1.0,
+    "num_reasoning_arithmetic_multiplication_39": 1.0,
+    "num_reasoning_arithmetic_multiplication_40": 1.0,
+    "num_reasoning_arithmetic_multiplication_41": 1.0,
+    "num_reasoning_arithmetic_multiplication_42": 1.0,
+    "num_reasoning_arithmetic_multiplication_43": 1.0,
+    "num_reasoning_arithmetic_multiplication_44": 1.0,
+    "num_reasoning_arithmetic_multiplication_45": 1.0,
+    "num_reasoning_arithmetic_multiplication_46": 1.0,
+    "num_reasoning_arithmetic_multiplication_47": 1.0,
+    "num_reasoning_arithmetic_multiplication_48": 1.0,
+    "num_reasoning_arithmetic_multiplication_49": 1.0,
+    "num_reasoning_arithmetic_multiplication_50": 1.0,
+    "num_reasoning_arithmetic_multiplication_51": 1.0,
+    "num_reasoning_arithmetic_multiplication_52": 1.0,
+    "num_reasoning_arithmetic_multiplication_53": 1.0,
+    "num_reasoning_arithmetic_multiplication_54": 1.0,
+    "num_reasoning_arithmetic_multiplication_55": 1.0,
+    "num_reasoning_arithmetic_multiplication_56": 1.0,
+    "num_reasoning_arithmetic_multiplication_57": 1.0,
+    "num_reasoning_arithmetic_multiplication_58": 1.0,
+    "num_reasoning_arithmetic_multiplication_59": 1.0,
+    "num_reasoning_arithmetic_multiplication_60": 1.0,
+    "num_reasoning_arithmetic_multiplication_61": 1.0,
+    "num_reasoning_arithmetic_multiplication_62": 1.0,
+    "num_reasoning_arithmetic_multiplication_63": 1.0,
+    "num_reasoning_arithmetic_multiplication_64": 1.0,
+    "num_reasoning_arithmetic_multiplication_65": 1.0,
+    "num_reasoning_arithmetic_multiplication_66": 1.0,
+    "num_reasoning_arithmetic_multiplication_67": 1.0,
+    "num_reasoning_arithmetic_multiplication_68": 1.0,
+    "num_reasoning_arithmetic_multiplication_69": 1.0,
+    "num_reasoning_arithmetic_multiplication_70": 1.0,
+    "num_reasoning_arithmetic_multiplication_71": 1.0,
+    "num_reasoning_arithmetic_multiplication_72": 1.0,
+    "num_reasoning_arithmetic_multiplication_73": 1.0,
+    "num_reasoning_arithmetic_multiplication_74": 1.0,
+    "num_reasoning_arithmetic_multiplication_75": 1.0,
+    "num_reasoning_arithmetic_multiplication_76": 1.0,
+    "num_reasoning_arithmetic_multiplication_77": 1.0,
+    "num_reasoning_arithmetic_multiplication_78": 1.0,
+    "num_reasoning_arithmetic_multiplication_79": 1.0,
+    "num_reasoning_arithmetic_multiplication_80": 1.0,
+    "num_reasoning_arithmetic_multiplication_81": 1.0,
+    "num_reasoning_arithmetic_multiplication_82": 1.0,
+    "num_reasoning_arithmetic_multiplication_83": 1.0,
+    "num_reasoning_arithmetic_multiplication_84": 1.0,
+    "num_reasoning_arithmetic_multiplication_85": 1.0,
+    "num_reasoning_arithmetic_multiplication_86": 1.0,
+    "num_reasoning_arithmetic_multiplication_87": 1.0,
+    "num_reasoning_arithmetic_multiplication_88": 1.0,
+    "num_reasoning_arithmetic_multiplication_89": 1.0,
+    "num_reasoning_arithmetic_multiplication_90": 1.0,
+    "num_reasoning_arithmetic_multiplication_91": 1.0,
+    "num_reasoning_arithmetic_multiplication_92": 1.0,
+    "num_reasoning_arithmetic_multiplication_93": 1.0,
+    "num_reasoning_arithmetic_multiplication_94": 1.0,
+    "num_reasoning_arithmetic_multiplication_95": 1.0,
+    "num_reasoning_arithmetic_multiplication_96": 1.0,
+    "num_reasoning_arithmetic_multiplication_97": 1.0,
+    "num_reasoning_arithmetic_multiplication_98": 1.0,
+    "num_reasoning_arithmetic_multiplication_99": 1.0,
+    "num_reasoning_arithmetic_addition_0": 1.0,
+    "num_reasoning_arithmetic_addition_1": 1.0,
+    "num_reasoning_arithmetic_addition_2": 1.0,
+    "num_reasoning_arithmetic_addition_3": 1.0,
+    "num_reasoning_arithmetic_addition_4": 1.0,
+    "num_reasoning_arithmetic_addition_5": 1.0,
+    "num_reasoning_arithmetic_addition_6": 1.0,
+    "num_reasoning_arithmetic_addition_7": 1.0,
+    "num_reasoning_arithmetic_addition_8": 1.0,
+    "num_reasoning_arithmetic_addition_9": 1.0,
+    "num_reasoning_arithmetic_addition_10": 1.0,
+    "num_reasoning_arithmetic_addition_11": 1.0,
+    "num_reasoning_arithmetic_addition_12": 1.0,
+    "num_reasoning_arithmetic_addition_13": 1.0,
+    "num_reasoning_arithmetic_addition_14": 1.0,
+    "num_reasoning_arithmetic_addition_15": 1.0,
+    "num_reasoning_arithmetic_addition_16": 1.0,
+    "num_reasoning_arithmetic_addition_17": 1.0,
+    "num_reasoning_arithmetic_addition_18": 1.0,
+    "num_reasoning_arithmetic_addition_19": 1.0,
+    "num_reasoning_arithmetic_addition_20": 1.0,
+    "num_reasoning_arithmetic_addition_21": 1.0,
+    "num_reasoning_arithmetic_addition_22": 1.0,
+    "num_reasoning_arithmetic_addition_23": 1.0,
+    "num_reasoning_arithmetic_addition_24": 1.0,
+    "num_reasoning_arithmetic_addition_25": 1.0,
+    "num_reasoning_arithmetic_addition_26": 1.0,
+    "num_reasoning_arithmetic_addition_27": 1.0,
+    "num_reasoning_arithmetic_addition_28": 1.0,
+    "num_reasoning_arithmetic_addition_29": 1.0,
+    "num_reasoning_arithmetic_addition_30": 1.0,
+    "num_reasoning_arithmetic_addition_31": 1.0,
+    "num_reasoning_arithmetic_addition_32": 1.0,
+    "num_reasoning_arithmetic_addition_33": 1.0,
+    "num_reasoning_arithmetic_addition_34": 1.0,
+    "num_reasoning_arithmetic_addition_35": 1.0,
+    "num_reasoning_arithmetic_addition_36": 1.0,
+    "num_reasoning_arithmetic_addition_37": 1.0,
+    "num_reasoning_arithmetic_addition_38": 1.0,
+    "num_reasoning_arithmetic_addition_39": 1.0,
+    "num_reasoning_arithmetic_addition_40": 1.0,
+    "num_reasoning_arithmetic_addition_41": 1.0,
+    "num_reasoning_arithmetic_addition_42": 1.0,
+    "num_reasoning_arithmetic_addition_43": 1.0,
+    "num_reasoning_arithmetic_addition_44": 1.0,
+    "num_reasoning_arithmetic_addition_45": 1.0,
+    "num_reasoning_arithmetic_addition_46": 1.0,
+    "num_reasoning_arithmetic_addition_47": 1.0,
+    "num_reasoning_arithmetic_addition_48": 1.0,
+    "num_reasoning_arithmetic_addition_49": 1.0,
+    "num_reasoning_arithmetic_addition_50": 1.0,
+    "num_reasoning_arithmetic_addition_51": 1.0,
+    "num_reasoning_arithmetic_addition_52": 1.0,
+    "num_reasoning_arithmetic_addition_53": 1.0,
+    "num_reasoning_arithmetic_addition_54": 1.0,
+    "num_reasoning_arithmetic_addition_55": 1.0,
+    "num_reasoning_arithmetic_addition_56": 1.0,
+    "num_reasoning_arithmetic_addition_57": 1.0,
+    "num_reasoning_arithmetic_addition_58": 1.0,
+    "num_reasoning_arithmetic_addition_59": 1.0,
+    "num_reasoning_arithmetic_addition_60": 1.0,
+    "num_reasoning_arithmetic_addition_61": 1.0,
+    "num_reasoning_arithmetic_addition_62": 1.0,
+    "num_reasoning_arithmetic_addition_63": 1.0,
+    "num_reasoning_arithmetic_addition_64": 1.0,
+    "num_reasoning_arithmetic_addition_65": 1.0,
+    "num_reasoning_arithmetic_addition_66": 1.0,
+    "num_reasoning_arithmetic_addition_67": 1.0,
+    "num_reasoning_arithmetic_addition_68": 1.0,
+    "num_reasoning_arithmetic_addition_69": 1.0,
+    "num_reasoning_arithmetic_addition_70": 1.0,
+    "num_reasoning_arithmetic_addition_71": 1.0,
+    "num_reasoning_arithmetic_addition_72": 1.0,
+    "num_reasoning_arithmetic_addition_73": 1.0,
+    "num_reasoning_arithmetic_addition_74": 1.0,
+    "num_reasoning_arithmetic_addition_75": 1.0,
+    "num_reasoning_arithmetic_addition_76": 1.0,
+    "num_reasoning_arithmetic_addition_77": 1.0,
+    "num_reasoning_arithmetic_addition_78": 1.0,
+    "num_reasoning_arithmetic_addition_79": 1.0,
+    "num_reasoning_arithmetic_addition_80": 1.0,
+    "num_reasoning_arithmetic_addition_81": 1.0,
+    "num_reasoning_arithmetic_addition_82": 1.0,
+    "num_reasoning_arithmetic_addition_83": 1.0,
+    "num_reasoning_arithmetic_addition_84": 1.0,
+    "num_reasoning_arithmetic_addition_85": 1.0,
+    "num_reasoning_arithmetic_addition_86": 1.0,
+    "num_reasoning_arithmetic_addition_87": 1.0,
+    "num_reasoning_arithmetic_addition_88": 1.0,
+    "num_reasoning_arithmetic_addition_89": 1.0,
+    "num_reasoning_arithmetic_addition_90": 1.0,
+    "num_reasoning_arithmetic_addition_91": 1.0,
+    "num_reasoning_arithmetic_addition_92": 1.0,
+    "num_reasoning_arithmetic_addition_93": 1.0,
+    "num_reasoning_arithmetic_addition_94": 1.0,
+    "num_reasoning_arithmetic_addition_95": 1.0,
+    "num_reasoning_arithmetic_addition_96": 1.0,
+    "num_reasoning_arithmetic_addition_97": 1.0,
+    "num_reasoning_arithmetic_addition_98": 1.0,
+    "num_reasoning_arithmetic_addition_99": 1.0
+  },
+  "config": {
+    "model": "model_name",
+    "model_args": "pretrained=EleutherAI/pythia-v1.1-2.8b-deduped,revision=step39000",
+    "num_fewshot": 0,
+    "batch_size": 64,
+    "device": "cuda",
+    "no_cache": true,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "description_dict": null
+  }
+}
