@@ -247,13 +247,19 @@ We also provide benchmark 0-shot and 5-shot results on a variety of NLP datasets
 
 Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness), and are viewable by model and step at `evals/pythia-v1/*/*` in this repository.
 
-# Other Papers
+# Research Using Pythia
+
+## Our Papers
 
 Aside from the Pythia suite, this repository also acts as a hub containing information, code, and reproducibility instructions for the following papers:
 * [Emergent and Predictable Memorization in Large Language Models](https://arxiv.org/abs/2304.11158)
   * For more information, see `/predictable-memorization/README.md`.
 
 Citation information for other papers in this repository are included in their respective folders.
+
+## External Publications
+
+Our model suite is designed to empower researchers world-wide to tackle pressing questions about learning dynamics in large language models. The following papers using Pythia models would not be possible with any other LLM suite:
 
 # Citation Details
 
