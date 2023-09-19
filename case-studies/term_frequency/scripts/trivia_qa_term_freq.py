@@ -12,24 +12,13 @@ import matplotlib.pyplot as plt
 
 from tqdm import tqdm
 
-# few_shot_list = [16, 8, 4, 2, 0]
 few_shot_list = [4]
-
-# eval_steps, max_steps = 13_000, 143_000
-# checkpoint_list = list(range(eval_steps, max_steps+eval_steps, eval_steps))
-# show_checkpoints = list(range(eval_steps, max_steps+eval_steps, 2*eval_steps))
-show_checkpoints = [1000, 2000, 4000]
-
-
+eval_steps, max_steps = 13_000, 143_000
 model_list = [
     ("12 B", "EleutherAI/pythia-v1.1-12b-deduped"),
-    # ("6.9 B", "EleutherAI/pythia-v1.1-6.9b-deduped"),
     ("2.8 B", "EleutherAI/pythia-v1.1-2.8b-deduped"),
-    # ("1.4 B", "EleutherAI/pythia-v1.1-1.4b-deduped"),
     ("1.0 B", "EleutherAI/pythia-v1.1-1b-deduped"),
-    # ("410 M", "EleutherAI/pythia-v1.1-410m-deduped"),
     ("160 M", "EleutherAI/pythia-v1.1-160m-deduped"),
-    # ("70 M", "EleutherAI/pythia-v1.1-70m-deduped"),
 ]
 
 def parse_args():
@@ -64,7 +53,6 @@ if __name__ == '__main__':
                     question_id = results['id']
 
                 count_path = "/fsx/lintangsutawika/01-project-pythia/data/{}/qa_co_occurrence_split={}.json".format(checkpoint, split)
-                # count_path = "/fsx/lintangsutawika/01-project-pythia/data/{}/qa_co_occurrence_split={}.json".format("wikipedia", split)
                 # Open entity count per each qa-pair
                 doc_counts = []
                 with open(count_path, 'r') as file:

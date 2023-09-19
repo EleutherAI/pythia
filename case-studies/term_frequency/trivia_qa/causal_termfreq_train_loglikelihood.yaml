@@ -1,9 +1,9 @@
 group:
-  - long_tail_triviaqa
-task: long_tail_triviaqa_train
+  - causal_termfreq_triviaqa_loglikelihood
+task: causal_termfreq_triviaqa_train
 dataset_path: trivia_qa
 dataset_name: unfiltered.nocontext
-output_type: greedy_until
+output_type: loglikelihood
 should_decontaminate: true
 doc_to_decontamination_query: "{{question}}"
 training_split: train
@@ -16,8 +16,5 @@ target_delimiter: ""
 generation_kwargs:
   until:
     - "\n"
-process_results: !function utils.process_results
 metric_list:
-  - metric: acc
-    aggregation: mean
-    higher_is_better: true
+  - metric: perplexity

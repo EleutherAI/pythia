@@ -36,7 +36,6 @@ def process_results(doc, results):
     results = [compute_exact(completion, gold) for gold in _remove_prefixes(doc['answer']['aliases'])]
     return {
         "acc": max(results),
-        # "f1": doc['question_id']
         }
 
 def passthrough(arr):
