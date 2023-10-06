@@ -53,7 +53,9 @@ The old models ("v0") remain available at [https://huggingface.co/models?other=p
 [January 20, 2023]
 On January 20, 2023, we chose to rename the Pythia model suite to include both embedding layer and unembedding layer parameters in our total parameter counts, in line with many other model suites and because we believe this convention better reflects the on-device memory usage of these models. We also discovered that due to a typo one of our models was smaller than we thought, and replaced it with a model of the intended size. See [here](https://huggingface.co/EleutherAI/pythia-410m-deduped#naming-convention-and-parameter-count) for more details.
 
-# Quickstart
+# Using Pythia
+
+## Quickstart
 
 All Pythia models are hosted on [the Huggingface hub](https://huggingface.co/EleutherAI). They can be loaded and used via the following code (shown for the 3rd `pythia-70M-deduped` model checkpoint):
 
@@ -84,7 +86,7 @@ We additionally have all model checkpoints in the format accepted by the [GPT-Ne
 
 *`pythia-{size}-v0` models on Huggingface of sizes `160m, 410m, 1.4b` were trained with a batch size of 4M tokens  and were originally trained for 71500 steps instead, and checkpointed every 500 steps. The checkpoints on Huggingface for these v0 models are renamed for consistency with all 2M batch models, so `step1000` is the first checkpoint for `pythia-1.4b-v0` that was saved (corresponding to step 500 in training), and `step1000` is likewise the first pythia-6.9b-v0 checkpoint that was saved (corresponding to 1000 "actual" steps.)*
 
-# Reproducing Training
+## Reproducing Training
 
 (Expanded reproduction instructions provided by @BaruchG ).
 
@@ -173,7 +175,7 @@ python3 main.py     --model hf-causal-experimental     --model_args pretrained=.
 ```
 which should output your results.
 
-## Dataset Viewer
+## Exploring the Dataset
 
 We provide a tool to view particular portions of the training dataloader used by all models during training, at `utils/batch_viewer.py`.
 
@@ -215,7 +217,7 @@ Passing `--mode save` will save a separate file containing each batch as a numpy
 
 Passing `--mode custom` will save a dictionary for each batch to a JSONL file--it can be used to compute arbitrary statistics over each batch seen during training.
 
-# Pythia Paper Replication
+## Pythia Paper Replication
 
 We provide further information for those interested in replicating our case studies performed in the Pythia suite paper, being
 
@@ -243,7 +245,11 @@ We also provide benchmark 0-shot and 5-shot results on a variety of NLP datasets
 
 Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness), and are viewable by model and step at `evals/pythia-v1/*/*` in this repository.
 
-# Other Papers
+# Research Building on Pythia
+
+Our primary goal with the Pythia project is to enable interpretability research at EleutherAI and in the community writ large. While many papers 
+
+## EleutherAI Projects
 
 Aside from the Pythia suite, this repository also acts as a hub containing information, code, and reproducibility instructions for the following papers:
 * [Emergent and Predictable Memorization in Large Language Models](https://arxiv.org/abs/2304.11158)
@@ -251,9 +257,21 @@ Aside from the Pythia suite, this repository also acts as a hub containing infor
 
 Citation information for other papers in this repository are included in their respective folders.
 
+## Other EleutherAI Research
+
+- Continual Pre-Training of Large Language Models: How to (re)warm your model?
+
+## External Interpretability Research
+
+- Large Language Models Sometimes Generate Purely Negatively-Reinforced Text
+
+## Other Research Projects
+
+- OpenAssistant Conversations--Democratizing Large Language Model Alignment
+
 # Citation Details
 
-If you use the Pythia models or data in your research, please citw our paper via:
+If you use the Pythia models or data in your research, please cite our paper via:
 
 ```
 @inproceedings{biderman2023pythia,
