@@ -15,34 +15,30 @@ This repository is for EleutherAI's project *Pythia* which combines interpretabi
 
 ## Models
 
-| Params              | n_layers | d_model | n_heads | d_head | Batch Size | Learning Rate | Checkpoints                                                | Evaluations     |
-| ------------------- | -------- | ------- | ------- | ------ | ---------- | ------------- | ---------------------------------------------------------- | --------------- |
-| Pythia-70M          | 6        | 512     | 8       | 64     | 2M         | 1e-3          | [Here](https://huggingface.co/EleutherAI/pythia-70m)          | Ready           |
-| Pythia-70M-Deduped  | 6        | 512     | 8       | 64     | 2M         | 1e-3          | [Here](https://huggingface.co/EleutherAI/pythia-70m-deduped)  | Ready           |
-| Pythia-160M         | 12       | 768     | 12      | 64     | 2M         | 6e-4          | [Here](https://huggingface.co/EleutherAI/pythia-160m)         | Ready           |
-| Pythia-160M-Deduped | 12       | 768     | 12      | 64     | 2M         | 6e-4          | [Here](https://huggingface.co/EleutherAI/pythia-160m-deduped) | Ready           |
-| Pythia-410M         | 24       | 1024    | 16      | 64     | 2M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-410m)         | Ready           |
-| Pythia-410M-Deduped | 24       | 1024    | 16      | 64     | 2M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-410m-deduped) | Ready           |
-| Pythia-1B         | 16       | 2048    | 8       | 256   | 2M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-1b)         | Ready           |
-| Pythia-1B-Deduped | 16       | 2048    | 8       | 256    | 2M         | 3e-4          | [Here](https://huggingface.co/EleutherAI/pythia-1b-deduped) | Ready           |
-| Pythia-1.4B         | 24       | 2048    | 16      | 128    | 2M         | 2e-4          | [Here](https://huggingface.co/EleutherAI/pythia-1.4b)         | Ready           |
-| Pythia-1.4B-Deduped | 24       | 2048    | 16      | 128    | 2M         | 2e-4          | [Here](https://huggingface.co/EleutherAI/pythia-1.4b-deduped) | Ready           |
-| Pythia-2.8B         | 32       | 2560    | 32      | 80     | 2M         | 1.6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-2.8b)         | Ready           |
-| Pythia-2.8B-Deduped | 32       | 2560    | 32      | 80     | 2M         | 1.6e-4        | [Here](https://huggingface.co/EleutherAI/pythia-2.8b-deduped) | Ready           |
-| Pythia-6.9B         | 32       | 4096    | 32      | 128    | 2M         | 1.2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-6.9b)         | Ready           |
-| Pythia-6.9B-Deduped | 32       | 4096    | 32      | 128    | 2M         | 1.2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-6.9b-deduped) | Ready           |
-| Pythia-12B          | 36       | 5120    | 40      | 128    | 2M         | 1.2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-12b)          | Ready |
-| Pythia-12B-Deduped  | 36       | 5120    | 40      | 128    | 2M         | 1.2e-4        | [Here](https://huggingface.co/EleutherAI/pythia-12b-deduped)  | Ready |
+| Params              | n_layers | d_model | n_heads | d_head | Batch Size | Learning Rate | Hugging Face Checkpoints                                                |
+| ------------------- | -------- | ------- | ------- | ------ | ---------- | ------------- | ---------------------------------------------------------- |
+| Pythia-14M          | 6        | 128     | 4       |      | 2M         |           | [Standard](https://huggingface.co/EleutherAI/pythia-14m)  |
+| Pythia-31M          | 6        | 156     | 8       |      | 2M         |           | [Standard](https://huggingface.co/EleutherAI/pythia-31m) |
+| Pythia-70M          | 6        | 512     | 8       | 64     | 2M         | 1.0e-3          | [Standard](https://huggingface.co/EleutherAI/pythia-70m), [Deduped](https://huggingface.co/EleutherAI/pythia-70m-deduped)  |
+| Pythia-160M         | 12       | 768     | 12      | 64     | 2M         | 6.0e-4          | [Standard](https://huggingface.co/EleutherAI/pythia-160m), [Deduped](https://huggingface.co/EleutherAI/pythia-160m-deduped)|
+| Pythia-410M         | 24       | 1024    | 16      | 64     | 2M         | 3.0e-4          | [Standard](https://huggingface.co/EleutherAI/pythia-410m), [Deduped](https://huggingface.co/EleutherAI/pythia-410m-deduped)|
+| Pythia-1B           | 16       | 2048    | 8       | 256    | 2M         | 3.0e-4          | [Standard](https://huggingface.co/EleutherAI/pythia-1b), [Deduped](https://huggingface.co/EleutherAI/pythia-1b-deduped)    |
+| Pythia-1.4B         | 24       | 2048    | 16      | 128    | 2M         | 2.0e-4          | [Standard](https://huggingface.co/EleutherAI/pythia-1.4b), [Deduped](https://huggingface.co/EleutherAI/pythia-1.4b-deduped)|
+| Pythia-2.8B         | 32       | 2560    | 32      | 80     | 2M         | 1.6e-4        | [Standard](https://huggingface.co/EleutherAI/pythia-2.8b), [Deduped](https://huggingface.co/EleutherAI/pythia-2.8b-deduped)|
+| Pythia-6.9B         | 32       | 4096    | 32      | 128    | 2M         | 1.2e-4        | [Standard](https://huggingface.co/EleutherAI/pythia-6.9b), [Deduped](https://huggingface.co/EleutherAI/pythia-6.9b-deduped)|
+| Pythia-12B          | 36       | 5120    | 40      | 128    | 2M         | 1.2e-4        | [Standard](https://huggingface.co/EleutherAI/pythia-12b), [Deduped](https://huggingface.co/EleutherAI/pythia-12b-deduped)  |
 
 We train and release a suite of 8 model sizes on 2 different datasets: [the Pile](https://pile.eleuther.ai/), as well as the Pile with deduplication applied.
 
 All 8 model sizes are trained on the exact same data, in the exact same order. Each model saw 299,892,736,000 ~= 299.9B tokens during training, and *143 checkpoints* for each model are saved every 2,097,152,000 ~= 2B tokens, evenly spaced throughout training. This corresponds to just under 1 epoch on the Pile for non-"deduped" models, and ~= 1.5 epochs on the deduped Pile (which contains 207B tokens in 1 epoch).
 
-Config files used to train these models within the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox) can be found at the `models/` directory within this repository.
+Config files used to train these models with the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox) can be found at the `models/` directory within this repository.
 
 We also upload the pre-tokenized data files and a script to reconstruct the dataloader as seen during training for all models. See [Reproducing Training](#reproducing-training) section for more details.
 
 ## Changelog
+
+[Oct 6, 2023] We have added 14M and 31M models at the request of some researchers. We plan on training deduped versions of these models in the future.
 
 [April 3, 2023] We have released a new version of all Pythia models, with the following changes to our training procedure:
 
@@ -257,20 +253,22 @@ Citation information for other papers in this repository are included in their r
 
 # Citation Details
 
-If you use the Pythia models or data in your research, please consider citing our paper via:
+If you use the Pythia models or data in your research, please citw our paper via:
 
 ```
-@misc{biderman2023pythia,
-      title={Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling}, 
-      author={Stella Biderman and Hailey Schoelkopf and Quentin Anthony and Herbie Bradley and Kyle O'Brien and Eric Hallahan and Mohammad Aflah Khan and Shivanshu Purohit and USVSN Sai Prashanth and Edward Raff and Aviya Skowron and Lintang Sutawika and Oskar van der Wal},
-      year={2023},
-      eprint={2304.01373},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@inproceedings{biderman2023pythia,
+  title={Pythia: A suite for analyzing large language models across training and scaling},
+  author={Biderman, Stella and Schoelkopf, Hailey and Anthony, Quentin Gregory and Bradley, Herbie and O’Brien, Kyle and Hallahan, Eric and Khan, Mohammad Aflah and Purohit, Shivanshu and Prashanth, USVSN Sai and Raff, Edward and others},
+  booktitle={International Conference on Machine Learning},
+  pages={2397--2430},
+  year={2023},
+  organization={PMLR}
 }
+
 ```
 
 # License
+The following license applies to all code in this GitHub repo, as well as the Pythia models and any other copyrightable artifacts
 
 ```
    Copyright 2023 EleutherAI
