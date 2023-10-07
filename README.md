@@ -2,6 +2,10 @@
 
 This repository is for EleutherAI's project *Pythia* which combines interpretability analysis and scaling laws to understand how knowledge develops and evolves during training in autoregressive transformers. For detailed info on the models, their training, and their behavior, please see our paper [Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling](https://arxiv.org/abs/2304.01373). 
 
+Aside from the Pythia suite, this repository also acts as a hub containing information, code, and reproducibility instructions for the following papers:
+* [Emergent and Predictable Memorization in Large Language Models](https://arxiv.org/abs/2304.11158)
+  * For more information, see `/predictable-memorization/README.md`.
+
 ## Contents
 
 - [Pythia: Interpreting Transformers Across Time and Scale](#pythia--interpreting-transformers-across-time-and-scale)
@@ -236,8 +240,6 @@ We provide further information for those interested in replicating our case stud
 * Intervention on pronoun frequencies in pretraining
 * Term frequency effects over training
 
-Further information is accessible in `/case-studies` in this repository.
-
 # Benchmark Scores
 
 We also provide benchmark 0-shot and 5-shot results on a variety of NLP datasets:
@@ -258,19 +260,13 @@ Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https:/
 
 # Research Building on Pythia
 
-Our primary goal with the Pythia project is to enable interpretability research at EleutherAI and in the community writ large. While many papers 
-
-## EleutherAI Projects
-
-Aside from the Pythia suite, this repository also acts as a hub containing information, code, and reproducibility instructions for the following papers:
-* [Emergent and Predictable Memorization in Large Language Models](https://arxiv.org/abs/2304.11158)
-  * For more information, see `/predictable-memorization/README.md`.
+Our primary goal with the Pythia project is to enable research on interpretability and learning dynamics at EleutherAI and in the community writ large. Here we document select papers using our models. For a complete list of papers citing Pythia, see [here](https://www.semanticscholar.org/paper/Pythia%3A-A-Suite-for-Analyzing-Large-Language-Models-Biderman-Schoelkopf/be55e8ec4213868db08f2c3168ae666001bea4b8#citing-papers).
 
 Citation information for other papers in this repository are included in their respective folders.
 
 ## Other EleutherAI Research
 
-- Continual Pre-Training of Large Language Models: How to (re)warm your model?
+- Gupta, et al. "[Continual Pre-Training of Large Language Models: How to re-warm your model?](https://arxiv.org/abs/2308.04014)." _Workshop on Efficient Systems for Foundation Models @ ICML_. 2023.
 
 ## External Interpretability Research
 
