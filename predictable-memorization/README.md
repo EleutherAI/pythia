@@ -32,12 +32,10 @@ The memorization evaluation script `memorization/eval_memorization.py` assumes t
 If our work and data is useful to your research, please consider citing our paper via:
 
 ```
-@misc{biderman2023emergent,
+@inproceedings{biderman2023emergent,
       title={Emergent and Predictable Memorization in Large Language Models}, 
-      author={Stella Biderman and USVSN Sai Prashanth and Lintang Sutawika and Hailey Schoelkopf and Quentin Anthony and Shivanshu Purohit and Edward Raf},
-      year={2023},
-      eprint={2304.11158},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+      author={Biderman, Stella and Prashanth, USVSN Sai and Sutawika, Lintang and Schoelkopf, Hailey and Anthony, Quentin and Purohit, Shivanshu and Raff, Edward},
+      journal={Advances in Neural Information Processing Systems},
+      year={2023}
 }
 ```
