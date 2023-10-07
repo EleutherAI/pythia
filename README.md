@@ -43,7 +43,9 @@ Aside from the Pythia suite, this repository also acts as a hub containing infor
 | Pythia-6.9B         | 32       | 4096    | 32      | 128    | 2M         | 1.2e-4        | [Standard](https://huggingface.co/EleutherAI/pythia-6.9b), [Deduped](https://huggingface.co/EleutherAI/pythia-6.9b-deduped)|
 | Pythia-12B          | 36       | 5120    | 40      | 128    | 2M         | 1.2e-4        | [Standard](https://huggingface.co/EleutherAI/pythia-12b), [Deduped](https://huggingface.co/EleutherAI/pythia-12b-deduped)  |
 
-We train and release a suite of 8 model sizes on the the Pile ([paper](https://pile.eleuther.ai/), [datasheet](https://arxiv.org/abs/2201.07311)) as well as the Pile with deduplication applied. All 8 model sizes are trained on the exact same data, in the exact same order. Each model saw 299,892,736,000 ~= 299.9B tokens during training, and *143 checkpoints* for each model are saved every 2,097,152,000 ~= 2B tokens, evenly spaced throughout training. This corresponds to just under 1 epoch on the Pile for non-"deduped" models, and ~= 1.5 epochs on the deduped Pile (which contains 207B tokens in 1 epoch).
+We train and release a suite of 8 model sizes on the the Pile ([paper](https://pile.eleuther.ai/), [datasheet](https://arxiv.org/abs/2201.07311)) as well as the Pile with deduplication applied. All 8 model sizes are trained on the exact same data, in the exact same order. Each model saw 299,892,736,000 ~= 299.9B tokens during training, and *143 checkpoints* for each model are saved every 2,097,152,000 ~= 2B tokens, evenly spaced throughout training. This corresponds to just under 1 epoch on the Pile for non-"deduped" models, and ~= 1.5 epochs on the deduped Pile (which contains 207B tokens in 1 epoch). All models are trained with mixed precision, using fp16 for all models except `EleutherAI/pythia-1b` which trained with bf16, because in fp16 the model experienced an irreconsilable loss spike late in training.
+
+To promote research on the learning dynamics of LLMs we make 154 checkpoints available for each model, representing steps 0 (initialization), 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1000, and then every 1,000 subsequent steps.
 
 Config files used to train these models with the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox) can be found at the `models/` directory within this repository, as well as in the GPT-NeoX library itself.
 
@@ -53,24 +55,15 @@ We also upload the pre-tokenized data files and a script to reconstruct the data
 
 [Oct 6, 2023] We have added 14M and 31M models at the request of some researchers. We plan on training deduped versions of these models in the future.
 
-[April 3, 2023] We have released a new version of all Pythia models, with the following changes to our training procedure:
+[April 3, 2023] We have released a new version of all Pythia models, fixing various inconsistencies in the original suite. Please see our paper for details on the changes. The old models ("v0") remain available [here](https://huggingface.co/models?other=pythia_v0) and may be useful for ablation studies.
 
-- All model sizes are now trained with uniform batch size of 2M tokens. Previously, the models of size 160M, 410M, and 1.4B parameters were trained with batch sizes of 4M tokens.
-- We added checkpoints at initialization (step 0) and steps {1,2,4,8,16,32,64, 128,256,512} in addition to every 1000 training steps.
-- Flash Attention was used in the new retrained suite. Empirically, this seems to have effected the dynamic range of model outputs in some cases, which we are investigating further.
-- We remedied a minor inconsistency that existed in the original suite: all models of size 2.8B parameters or smaller had a learning rate (LR) schedule which decayed to a minimum LR of 10% the starting LR rate, but the 6.9B and 12B models all used an LR schedule which decayed to a minimum LR of 0. In the redone training runs, we rectified this inconsistency: all models now were trained with LR decaying to a minimum of 0.1× their maximum LR.
-- the new `EleutherAI/pythia-1b` is trained with bf16, because in fp16 the model corrupted due to loss spikes late in training.
-
-The old models ("v0") remain available [here](https://huggingface.co/models?other=pythia_v0) and may be useful for ablation studies.
-
-[January 20, 2023]
-On January 20, 2023, we chose to rename the Pythia model suite to include both embedding layer and unembedding layer parameters in our total parameter counts, in line with many other model suites and because we believe this convention better reflects the on-device memory usage of these models. We also discovered that due to a typo one of our models was smaller than we thought, and replaced it with a model of the intended size. See [here](https://huggingface.co/EleutherAI/pythia-410m-deduped#naming-convention-and-parameter-count) for more details.
+[January 20, 2023] On January 20, 2023, we chose to rename the Pythia model suite to include both embedding layer and unembedding layer parameters in our total parameter counts, in line with many other model suites and because we believe this convention better reflects the on-device memory usage of these models. We also discovered that due to a typo one of our models was smaller than we thought, and replaced it with a model of the intended size. See [here](https://huggingface.co/EleutherAI/pythia-410m-deduped#naming-convention-and-parameter-count) for more details.
 
 # Using Pythia
 
 ## Quickstart
 
-All Pythia models are hosted on [the Huggingface hub](https://huggingface.co/EleutherAI). They can be loaded and used via the following code (shown for the 3rd `pythia-70M-deduped` model checkpoint):
+All Pythia models are hosted on [the Huggingface hub](https://huggingface.co/EleutherAI). They can be loaded and used via the following code (shown for the 3000-step `pythia-70M-deduped` model checkpoint):
 
 ```python
 from transformers import GPTNeoXForCausalLM, AutoTokenizer
@@ -95,7 +88,6 @@ tokenizer.decode(tokens[0])
 All models were trained for the equivalent of 143000 steps at a batch size of 2,097,152 tokens. Revision/branch `step143000` (e.g. [https://huggingface.co/EleutherAI/pythia-70m-deduped/tree/step143000](https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000)) corresponds exactly to the model checkpoint on the `main` branch of each model.
 
 We additionally have all model checkpoints in the format accepted by the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox), with final-step checkpoints+optimizer states downloadable at [`EleutherAI/neox-ckpt-pythia-xxx-deduped-v1`](https://huggingface.co/EleutherAI/neox-ckpt-pythia-1b-deduped-v1) but do not serve them for all steps at scale due to size of optimizer states and anticipated lower demand. If you would like to perform analysis using the intermediate models within the GPT-NeoX codebase, or would like the optimizer states for other steps, please email hailey@eleuther.ai and stella@eleuther.ai to arrange access.
-
 
 *`pythia-{size}-v0` models on Huggingface of sizes `160m, 410m, 1.4b` were trained with a batch size of 4M tokens  and were originally trained for 71500 steps instead, and checkpointed every 500 steps. The checkpoints on Huggingface for these v0 models are renamed for consistency with all 2M batch models, so `step1000` is the first checkpoint for `pythia-1.4b-v0` that was saved (corresponding to step 500 in training), and `step1000` is likewise the first pythia-6.9b-v0 checkpoint that was saved (corresponding to 1000 "actual" steps.)*
 
@@ -258,19 +250,26 @@ Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https:/
 
 # Research Building on Pythia
 
-Our primary goal with the Pythia project is to enable research on interpretability and learning dynamics at EleutherAI and in the community writ large. Here we document select papers using our models. For a complete list of papers citing Pythia, see [here](https://www.semanticscholar.org/paper/Pythia%3A-A-Suite-for-Analyzing-Large-Language-Models-Biderman-Schoelkopf/be55e8ec4213868db08f2c3168ae666001bea4b8#citing-papers).
+Our primary goal with the Pythia project is to enable research on interpretability and learning dynamics at EleutherAI and in the community writ large. Here we document select papers using our models, focusing on work that is uniquely empowered by the Pythia suite. For a complete list of papers citing Pythia, see [here](https://www.semanticscholar.org/paper/Pythia%3A-A-Suite-for-Analyzing-Large-Language-Models-Biderman-Schoelkopf/be55e8ec4213868db08f2c3168ae666001bea4b8#citing-papers).
 
-Citation information for other papers in this repository are included in their respective folders.
+## EleutherAI Research
 
-## Other EleutherAI Research
+- Biderman, et al. "[Emergent and predictable memorization in large language models.](https://arxiv.org/abs/2304.11158)" _NeurIPS_ (2023).
+- Gupta, et al. "[Continual Pre-Training of Large Language Models: How to re-warm your model?](https://arxiv.org/abs/2308.04014)." _Workshop on Efficient Systems for Foundation Models @ ICML_ (2023).
 
-- Gupta, et al. "[Continual Pre-Training of Large Language Models: How to re-warm your model?](https://arxiv.org/abs/2308.04014)." _Workshop on Efficient Systems for Foundation Models @ ICML_. 2023.
+## Interpretability Research
 
-## External Interpretability Research
+- Roger. "[Large Language Models Sometimes Generate Purely Negatively-Reinforced Text](https://arxiv.org/abs/2306.07567)." _arXiv preprint arXiv:2306.07567_ (2023).
+- Garde, Kran, and Barez. "[DeepDecipher: Accessing and Investigating Neuron Activation in Large Language Models](https://arxiv.org/abs/2310.01870)." _arXiv preprint arXiv:2310.01870_ (2023).
+- Gurnee, et al. "[Finding Neurons in a Haystack: Case Studies with Sparse Probing](https://arxiv.org/abs/2305.01610)." _arXiv preprint arXiv:2305.01610_ (2023).
+- Michaelov. "Emergent inabilities? Inverse scaling over the course of pretraining." _arXiv preprint arXiv:2305.14681_ (2023).
 
-- Large Language Models Sometimes Generate Purely Negatively-Reinforced Text
+## Learning Dynamics Research
 
-## Other Research Projects
+- Sanyal, et al. "[Understanding the Effectiveness of Early Weight Averaging for Training Large Language Models](https://arxiv.org/abs/2306.03241)." _arXiv preprint arXiv:2306.03241_ (2023).
+- 
+
+## Other Notable Research
 
 - OpenAssistant Conversations--Democratizing Large Language Model Alignment
 
@@ -287,11 +286,35 @@ If you use the Pythia models or data in your research, please cite our paper via
   year={2023},
   organization={PMLR}
 }
+```
 
+If you use the GPT-NeoX library in your research, please cite it via:
+
+```
+@software{gpt-neox-library,
+  title = {{GPT-NeoX: Large Scale Autoregressive Language Modeling in PyTorch}},
+  author = {Andonian, Alex and Anthony, Quentin and Biderman, Stella and Black, Sid and Gali, Preetham and Gao, Leo and Hallahan, Eric and Levy-Kramer, Josh and Leahy, Connor and Nestler, Lucas and Parker, Kip and Pieler, Michael and Phang, Jason and Purohit, Shivanshu and Schoelkopf, Hailey and Stander, Dashiell and Songz, Tri and Tigges, Curt and Thérien, Benjamin and Wang, Phil and Weinbach, Samuel},
+  url = {https://www.github.com/eleutherai/gpt-neox},
+  doi = {10.5281/zenodo.5879544},
+  month = {9},
+  year = {2023},
+  version = {2.0.0},
+}
+```
+
+If you use data or results from other papers found in this repository, please cite the corresponding papers. Citation information can be found in the respective README and are also reproduced below for convenience:
+
+```
+@inproceedings{biderman2023emergent,
+      title={Emergent and Predictable Memorization in Large Language Models}, 
+      author={Biderman, Stella and Prashanth, USVSN Sai and Sutawika, Lintang and Schoelkopf, Hailey and Anthony, Quentin and Purohit, Shivanshu and Raff, Edward},
+      journal={Advances in Neural Information Processing Systems},
+      year={2023}
+}
 ```
 
 # License
-The following license applies to all code in this GitHub repo, as well as the Pythia models and any other copyrightable artifacts
+The following license applies to all code in this GitHub repo, as well as the Pythia models and any other copyrightable artifacts contained in this repository.
 
 ```
    Copyright 2023 EleutherAI
