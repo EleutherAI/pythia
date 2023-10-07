@@ -4,7 +4,7 @@ This repository is for EleutherAI's project *Pythia* which combines interpretabi
 
 Aside from the Pythia suite, this repository also acts as a hub containing information, code, and reproducibility instructions for the following papers:
 * [Emergent and Predictable Memorization in Large Language Models](https://arxiv.org/abs/2304.11158)
-  * For more information, see `/predictable-memorization/README.md`.
+  * For more information, see [/predictable-memorization/README.md].
 
 ## Contents
 
