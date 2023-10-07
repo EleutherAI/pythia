@@ -90,11 +90,11 @@ tokens = model.generate(**inputs)
 tokenizer.decode(tokens[0])
 ```
 
-All models were trained for the equivalent of 143000 steps at a batch size of 2,097,152 tokens. Revision/branch `step143000` (e.g. [https://huggingface.co/EleutherAI/pythia-70m-deduped/tree/step143000](https://huggingface.co/EleutherAI/pythia-19m-deduped/tree/step143000)) corresponds exactly to the model checkpoint on the `main` branch of each model.
+All models were trained for the equivalent of 143000 steps at a batch size of 2,097,152 tokens. Revision/branch `step143000` corresponds exactly to the model checkpoint on the `main` branch of each model.
 
-We additionally have all model checkpoints in the format accepted by the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox), with final-step checkpoints+optimizer states downloadable at [`EleutherAI/neox-ckpt-pythia-xxx-deduped-v1`](https://huggingface.co/EleutherAI/neox-ckpt-pythia-1b-deduped-v1) but do not serve them for all steps at scale due to size of optimizer states and anticipated lower demand. If you would like to perform analysis using the intermediate models within the GPT-NeoX codebase, or would like the optimizer states for other steps, please email hailey@eleuther.ai and stella@eleuther.ai to arrange access.
+We additionally have all model checkpoints in the format accepted by the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox), with final-step checkpoints+optimizer states downloadable from the Hugging Face Hub at `EleutherAI/neox-ckpt-pythia-xxx-deduped-v1` but do not serve them for all steps at scale due to size of optimizer states and anticipated lower demand. If you would like to perform analysis using the intermediate models within the GPT-NeoX codebase, or would like the optimizer states for other steps, please email hailey@eleuther.ai and stella@eleuther.ai.
 
-*`pythia-{size}-v0` models on Huggingface of sizes `160m, 410m, 1.4b` were trained with a batch size of 4M tokens  and were originally trained for 71500 steps instead, and checkpointed every 500 steps. The checkpoints on Huggingface for these v0 models are renamed for consistency with all 2M batch models, so `step1000` is the first checkpoint for `pythia-1.4b-v0` that was saved (corresponding to step 500 in training), and `step1000` is likewise the first pythia-6.9b-v0 checkpoint that was saved (corresponding to 1000 "actual" steps.)*
+> ❗ `pythia-{size}-v0` models on Huggingface of sizes `160m, 410m, 1.4b` were trained with a batch size of 4M tokens across 71500 steps and checkpointed every 500 steps. The step names on Huggingface for these v0 models are renamed for consistency with all 2M batch models so the model checkpointed labeled `step1000` of `pythia-1.4b-v0` was actually step 500, but has seen the same number of tokens as the other step1000 checkpoints.
 
 ## Reproducing Training
 
