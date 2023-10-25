@@ -30,9 +30,6 @@ Aside from the Pythia suite itself, this repository also acts as a hub containin
 - [Citation Details](#citation-details)
 - [License](#license)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
-
 ## Models
 
 | Params              | n_layers | d_model | n_heads | d_head | Batch Size | Learning Rate | Hugging Face Checkpoints                                                |
