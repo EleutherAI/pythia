@@ -3,9 +3,11 @@
 This folder documents our work using Pythia to study memorization of particular sequences in the training dataset, and includes instructions to reproduce our analyses where possible.
 
 ## Reproducing Memorization Results
-The memorization evaluation script `memorization/eval_memorization.py` assumes that you are running the script in a distributed process, ideally in slurm. If you want to reproduce the evaluation, consider the following steps.
+The memorization evaluation script `memorization/eval_memorization.py` assumes that you are running the script in a distributed process, ideally in slurm. It also assumes that you are using s3 to load and save pile's preshuffled datasets (refer [here](https://github.com/EleutherAI/pythia/blob/main/README.md#dataset-viewer) for more details on how to download them).
 
-1. Change `prefix` and `idx_path` local variables of `generate_function()` to point to the right document and index path.
+If you want to reproduce the evaluation, consider the following steps.
+
+1. Change `prefix` local variable of `generate_function()` to point to the right document path.
 
 2. If you are not using [Slurm](https://slurm.schedmd.com/documentation.html), You need to change global variables inside the script, like `RANK` and `NUM_PROCS` (world size) to point to the right environment variables.
 
@@ -23,9 +25,11 @@ The memorization evaluation script `memorization/eval_memorization.py` assumes t
 
 ## Reproducing Figures
 
+Refer to `memorization/eda.ipynb` for details on replication
 
 ## Reproducing Scaling Laws Plots
 
+Refer to `memorization/eda.ipynb` for details on replication
 
 ## Citation Details
 
