@@ -34,8 +34,8 @@ Aside from the Pythia suite itself, this repository also acts as a hub containin
 
 | Params              | n_layers | d_model | n_heads | d_head | Batch Size | Learning Rate | Hugging Face Checkpoints                                                |
 | ------------------- | -------- | ------- | ------- | ------ | ---------- | ------------- | ---------------------------------------------------------- |
-| Pythia-14M          | 6        | 128     | 4       |      | 2M         |           | [Standard](https://huggingface.co/EleutherAI/pythia-14m)  |
-| Pythia-31M          | 6        | 156     | 8       |      | 2M         |           | [Standard](https://huggingface.co/EleutherAI/pythia-31m) |
+| Pythia-14M          | 6        | 128     | 4       | 32     | 2M         | 1.0e-3          | [Standard](https://huggingface.co/EleutherAI/pythia-14m)  |
+| Pythia-31M          | 6        | 256     | 8       | 32     | 2M         | 1.0e-3          | [Standard](https://huggingface.co/EleutherAI/pythia-31m) |
 | Pythia-70M          | 6        | 512     | 8       | 64     | 2M         | 1.0e-3          | [Standard](https://huggingface.co/EleutherAI/pythia-70m), [Deduped](https://huggingface.co/EleutherAI/pythia-70m-deduped)  |
 | Pythia-160M         | 12       | 768     | 12      | 64     | 2M         | 6.0e-4          | [Standard](https://huggingface.co/EleutherAI/pythia-160m), [Deduped](https://huggingface.co/EleutherAI/pythia-160m-deduped)|
 | Pythia-410M         | 24       | 1024    | 16      | 64     | 2M         | 3.0e-4          | [Standard](https://huggingface.co/EleutherAI/pythia-410m), [Deduped](https://huggingface.co/EleutherAI/pythia-410m-deduped)|
