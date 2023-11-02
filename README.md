@@ -8,8 +8,7 @@ The Pythia suite was developed with the explicit purpose of enabling research in
 3. All models were trained on the same data in the same order, enabling researchers to explore causal interventions on the training process.
 
 Aside from the Pythia suite itself, this repository also acts as a hub containing information, code, and reproducibility instructions for the following papers:
-* [Emergent and Predictable Memorization in Large Language Models](https://arxiv.org/abs/2304.11158)
-  * For more information, see [here](/predictable-memorization/README.md).
+* [Emergent and Predictable Memorization in Large Language Models](/predictable-memorization/README.md).
 
 ## Contents
 
@@ -32,18 +31,18 @@ Aside from the Pythia suite itself, this repository also acts as a hub containin
 
 ## Models
 
-| Params              | n_layers | d_model | n_heads | d_head | Batch Size | Learning Rate | Hugging Face Checkpoints                                                |
-| ------------------- | -------- | ------- | ------- | ------ | ---------- | ------------- | ---------------------------------------------------------- |
-| Pythia-14M          | 6        | 128     | 4       | 32     | 2M         | 1.0e-3          | [Standard](https://huggingface.co/EleutherAI/pythia-14m)  |
-| Pythia-31M          | 6        | 256     | 8       | 32     | 2M         | 1.0e-3          | [Standard](https://huggingface.co/EleutherAI/pythia-31m) |
-| Pythia-70M          | 6        | 512     | 8       | 64     | 2M         | 1.0e-3          | [Standard](https://huggingface.co/EleutherAI/pythia-70m), [Deduped](https://huggingface.co/EleutherAI/pythia-70m-deduped)  |
-| Pythia-160M         | 12       | 768     | 12      | 64     | 2M         | 6.0e-4          | [Standard](https://huggingface.co/EleutherAI/pythia-160m), [Deduped](https://huggingface.co/EleutherAI/pythia-160m-deduped)|
-| Pythia-410M         | 24       | 1024    | 16      | 64     | 2M         | 3.0e-4          | [Standard](https://huggingface.co/EleutherAI/pythia-410m), [Deduped](https://huggingface.co/EleutherAI/pythia-410m-deduped)|
-| Pythia-1B           | 16       | 2048    | 8       | 256    | 2M         | 3.0e-4          | [Standard](https://huggingface.co/EleutherAI/pythia-1b), [Deduped](https://huggingface.co/EleutherAI/pythia-1b-deduped)    |
-| Pythia-1.4B         | 24       | 2048    | 16      | 128    | 2M         | 2.0e-4          | [Standard](https://huggingface.co/EleutherAI/pythia-1.4b), [Deduped](https://huggingface.co/EleutherAI/pythia-1.4b-deduped)|
-| Pythia-2.8B         | 32       | 2560    | 32      | 80     | 2M         | 1.6e-4        | [Standard](https://huggingface.co/EleutherAI/pythia-2.8b), [Deduped](https://huggingface.co/EleutherAI/pythia-2.8b-deduped)|
-| Pythia-6.9B         | 32       | 4096    | 32      | 128    | 2M         | 1.2e-4        | [Standard](https://huggingface.co/EleutherAI/pythia-6.9b), [Deduped](https://huggingface.co/EleutherAI/pythia-6.9b-deduped)|
-| Pythia-12B          | 36       | 5120    | 40      | 128    | 2M         | 1.2e-4        | [Standard](https://huggingface.co/EleutherAI/pythia-12b), [Deduped](https://huggingface.co/EleutherAI/pythia-12b-deduped)  |
+| Params | n_layers | d_model | n_heads | d_head | Batch Size | Learning Rate | Hugging Face Checkpoints                                                |
+| ------ | -------- | ------- | ------- | ------ | ---------- | ------------- | ---------------------------------------------------------- |
+| 14M    | 6        | 128     | 4       | 32     | 2M         | 1.0e-3          | [Standard](https://huggingface.co/EleutherAI/pythia-14m)  |
+| 31M    | 6        | 256     | 8       | 32     | 2M         | 1.0e-3          | [Standard](https://huggingface.co/EleutherAI/pythia-31m) |
+| 70M    | 6        | 512     | 8       | 64     | 2M         | 1.0e-3          | [Standard](https://huggingface.co/EleutherAI/pythia-70m), [Deduped](https://huggingface.co/EleutherAI/pythia-70m-deduped)  |
+| 160M   | 12       | 768     | 12      | 64     | 2M         | 6.0e-4          | [Standard](https://huggingface.co/EleutherAI/pythia-160m), [Deduped](https://huggingface.co/EleutherAI/pythia-160m-deduped)|
+| 410M   | 24       | 1024    | 16      | 64     | 2M         | 3.0e-4          | [Standard](https://huggingface.co/EleutherAI/pythia-410m), [Deduped](https://huggingface.co/EleutherAI/pythia-410m-deduped)|
+| 1B     | 16       | 2048    | 8       | 256    | 2M         | 3.0e-4          | [Standard](https://huggingface.co/EleutherAI/pythia-1b), [Deduped](https://huggingface.co/EleutherAI/pythia-1b-deduped)    |
+| 1.4B   | 24       | 2048    | 16      | 128    | 2M         | 2.0e-4          | [Standard](https://huggingface.co/EleutherAI/pythia-1.4b), [Deduped](https://huggingface.co/EleutherAI/pythia-1.4b-deduped)|
+| 2.8B   | 32       | 2560    | 32      | 80     | 2M         | 1.6e-4        | [Standard](https://huggingface.co/EleutherAI/pythia-2.8b), [Deduped](https://huggingface.co/EleutherAI/pythia-2.8b-deduped)|
+| 6.9B   | 32       | 4096    | 32      | 128    | 2M         | 1.2e-4        | [Standard](https://huggingface.co/EleutherAI/pythia-6.9b), [Deduped](https://huggingface.co/EleutherAI/pythia-6.9b-deduped)|
+| 12B    | 36       | 5120    | 40      | 128    | 2M         | 1.2e-4        | [Standard](https://huggingface.co/EleutherAI/pythia-12b), [Deduped](https://huggingface.co/EleutherAI/pythia-12b-deduped)  |
 
 We train and release a suite of 8 model sizes on the the Pile ([paper](https://pile.eleuther.ai/), [datasheet](https://arxiv.org/abs/2201.07311)) as well as the Pile with deduplication applied. All 8 model sizes are trained on the exact same data, in the exact same order. Each model saw 299,892,736,000 ~= 299.9B tokens during training. This corresponds to just under 1 epoch on the Pile for non-"deduped" models, and ~= 1.5 epochs on the deduped Pile (which contains 207B tokens in 1 epoch). All models are trained with mixed precision, using fp16 for all models except `EleutherAI/pythia-1b` which trained with bf16, because in fp16 the model experienced an irreconsilable loss spike late in training.
 
@@ -55,7 +54,7 @@ We also upload the pre-tokenized data files and a script to reconstruct the data
 
 ## Changelog
 
-[Oct 6, 2023] We have added 14M and 31M models at the request of some researchers. We plan on training deduped versions of these models in the future.
+[November 2, 2023] We have added 14M and 31M models at the request of some researchers. We plan on training deduped versions of these models in the future.
 
 [April 3, 2023] We have released a new version of all Pythia models, fixing various inconsistencies in the original suite. Please see our paper for details on the changes. The old models ("v0") remain available [here](https://huggingface.co/models?other=pythia_v0) and may be useful for ablation studies.
 
@@ -227,7 +226,6 @@ Passing `--mode custom` will save a dictionary for each batch to a JSONL file--i
 ## Pythia Paper Replication
 
 We provide further information for those interested in replicating our case studies performed in the Pythia suite paper in the `case-studies/` folder of this repository, being
-
 * Memorization density over training
 * Intervention on pronoun frequencies in pretraining
 * Term frequency effects over training
@@ -263,6 +261,7 @@ Our primary goal with the Pythia project is to enable research on interpretabili
 - Gurnee, et al. "[Finding Neurons in a Haystack: Case Studies with Sparse Probing](https://arxiv.org/abs/2305.01610)." _arXiv preprint arXiv:2305.01610_ (2023).
 - Roger. "[Large Language Models Sometimes Generate Purely Negatively-Reinforced Text](https://arxiv.org/abs/2306.07567)." _arXiv preprint arXiv:2306.07567_ (2023).
 - Stolfo, Belinkov, and Sachan. "[Understanding Arithmetic Reasoning in Language Models using Causal Mediation Analysis](https://arxiv.org/abs/2305.15054)." _arXiv preprint arXiv:2305.15054_ (2023).
+- Feng and Steinhardt. "[How do Language Models Bind Entities in Context?](https://arxiv.org/abs/2310.17191)." _arXiv preprint arXiv:2310.17191_ (2023).
 
 ## Learning Dynamics Research
 
@@ -277,7 +276,6 @@ Our primary goal with the Pythia project is to enable research on interpretabili
 - Ippolito, et al. "[Reverse-Engineering Decoding Strategies Given Blackbox Access to a Language Generation System.](https://aclanthology.org/2023.inlg-main.28/)" _Proceedings of the 16th International Natural Language Generation Conference_. 2023.
 - Köpf, et al. "[OpenAssistant Conversations--Democratizing Large Language Model Alignment](https://arxiv.org/abs/2304.07327)." arXiv preprint arXiv:2304.07327 (2023).
 
- 
 ## Other Notable Research
 
 - Sileo and Lernould. "[Mindgames: Targeting theory of mind in large language models with dynamic epistemic modal logic](https://arxiv.org/abs/2305.03353)." _arXiv preprint arXiv:2305.03353_ (2023).
@@ -285,7 +283,7 @@ Our primary goal with the Pythia project is to enable research on interpretabili
 
 # Citation Details
 
-If you use the Pythia models or data in your research, please cite our paper via:
+If you use the Pythia models in your research, please cite our paper via:
 
 ```
 @inproceedings{biderman2023pythia,
@@ -297,10 +295,31 @@ If you use the Pythia models or data in your research, please cite our paper via
   organization={PMLR}
 }
 ```
-
-If you use the GPT-NeoX library in your research, please cite it via:
-
+If you use data or results from other papers found in this repository, please cite the corresponding papers. Citation information can be found in the respective README and are also reproduced below for convenience:
 ```
+@inproceedings{biderman2023emergent,
+      title={Emergent and Predictable Memorization in Large Language Models}, 
+      author={Biderman, Stella and Prashanth, USVSN Sai and Sutawika, Lintang and Schoelkopf, Hailey and Anthony, Quentin and Purohit, Shivanshu and Raff, Edward},
+      journal={Advances in Neural Information Processing Systems},
+      year={2023}
+}
+```
+If you are interested in citing our training data, training library, or evaluation library you can do so with the following:
+```
+@article{gao2020pile,
+  title={The pile: An 800gb dataset of diverse text for language modeling},
+  author={Gao, Leo and Biderman, Stella and Black, Sid and Golding, Laurence and Hoppe, Travis and Foster, Charles and Phang, Jason and He, Horace and Thite, Anish and Nabeshima, Noa and others},
+  journal={arXiv preprint arXiv:2101.00027},
+  year={2020}
+}
+
+@article{biderman2022datasheet,
+  title={Datasheet for the pile},
+  author={Biderman, Stella and Bicheno, Kieran and Gao, Leo},
+  journal={arXiv preprint arXiv:2201.07311},
+  year={2022}
+}
+
 @software{gpt-neox-library,
   title = {{GPT-NeoX: Large Scale Autoregressive Language Modeling in PyTorch}},
   author = {Andonian, Alex and Anthony, Quentin and Biderman, Stella and Black, Sid and Gali, Preetham and Gao, Leo and Hallahan, Eric and Levy-Kramer, Josh and Leahy, Connor and Nestler, Lucas and Parker, Kip and Pieler, Michael and Phang, Jason and Purohit, Shivanshu and Schoelkopf, Hailey and Stander, Dashiell and Songz, Tri and Tigges, Curt and Thérien, Benjamin and Wang, Phil and Weinbach, Samuel},
@@ -310,16 +329,16 @@ If you use the GPT-NeoX library in your research, please cite it via:
   year = {2023},
   version = {2.0.0},
 }
-```
 
-If you use data or results from other papers found in this repository, please cite the corresponding papers. Citation information can be found in the respective README and are also reproduced below for convenience:
-
-```
-@inproceedings{biderman2023emergent,
-      title={Emergent and Predictable Memorization in Large Language Models}, 
-      author={Biderman, Stella and Prashanth, USVSN Sai and Sutawika, Lintang and Schoelkopf, Hailey and Anthony, Quentin and Purohit, Shivanshu and Raff, Edward},
-      journal={Advances in Neural Information Processing Systems},
-      year={2023}
+@misc{eval-harness,
+  author       = {Gao, Leo and Tow, Jonathan and Abbasi, Baber and Biderman, Stella and Black, Sid and DiPofi, Anthony and Foster, Charles and Golding, Laurence and Hsu, Jeffrey and Le Noac'h, Alain and Li, Haonan and McDonell, Kyle and Muennighoff, Niklas and Ociepa, Chris and Phang, Jason and Reynolds, Laria and Schoelkopf, Hailey and Skowron, Aviya and Sutawika, Lintang and Tang, Eric and Thite, Anish and Wang, Ben and Wang, Kevin and Zou, Andy},
+  title        = {A framework for few-shot language model evaluation},
+  month        = sep,
+  year         = 2021,
+  publisher    = {Zenodo},
+  version      = {v0.0.1},
+  doi          = {10.5281/zenodo.5371628},
+  url          = {https://doi.org/10.5281/zenodo.5371628}
 }
 ```
 
