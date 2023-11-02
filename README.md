@@ -181,43 +181,53 @@ which should output your results.
 
 We provide a tool to view particular portions of the training dataloader used by all models during training, at `utils/batch_viewer.py`.
 
-This tool requires the `inspect_idxmap` branch of GPT-NeoX as a git submodule, so you must check out the repository via
+First, we need to clone the repository
 ```
-git clone --recurse-submodules https://github.com/EleutherAI/pythia
-cd pythia
-```
-or, if you have already cloned the repository, run
-```
-git submodule update --init --recursive
+git clone https://github.com/EleutherAI/pythia
 ```
 Next, we must install dependencies:
 ```
 pip install torch==1.13.0+cu117 -f https://download.pytorch.org/whl/torch/
-cd utils/gpt-neox
-pip install -r requirements/requirements.txt
+pip install numpy tqdm huggingface_hub
 ```
-Additionally, we are required to build C++ helpers used by the Megatron dataloader. You can do this via:
+
+Next, we must download the appropriate dataset. We provide preshuffled versions of duped and deduped pile. Download the appropriate one using `huggingface-cli`
+
+> Make Sure to replace `path/to/local/folder/` and `path/to/merged/folder/` to appropriate paths where you intend to save datasets downloaded from huggingface
+- To download standard version, use 
+  ```py
+  from huggingface_hub import hf_hub_download
+  hf_hub_download(repo_id="EleutherAI/pile-standard-pythia-preshuffled", repo_type="dataset", cache_dir="path/to/local/folder")
+  ```
+- To download deduped version, use
+  ```py
+  from huggingface_hub import hf_hub_download
+  hf_hub_download(repo_id="EleutherAI/pile-standard-pythia-preshuffled", repo_type="dataset", cache_dir="path/to/local/folder")
+  ```
+
+You can now merge the files by using `utils/unshard_mmap.py`
+
+```sh
+python3 utils/unshard_mmap.py --input_file "path/to/local/folder/document-00000-of-00020.bin" --num_shards 21 --output_dir "path/to/merged/folder/"
 ```
-cd /utils/gpt-neox/megatron/data
-make
-cd -
+
+Make sure to also copy index file to the merged folder, using the command
+```sh
+cp path/to/local/folder/document.idx path/to/merged/folder/document.idx
 ```
+
 Now, we're all set up to run `utils/batch_viewer.py` !
 
-To run, first substitute the filepath to your copy of the downloaded and resharded `.bin` and `.idx` files for either the Pile or deduplicated Pile in `utils/dummy_config.yml`.
-
-```python
-PYTHONPATH=utils/gpt-neox/ python utils/batch_viewer.py \
+```sh
+python3 utils/batch_viewer.py \
   --start_iteration 0 \
   --end_iteration 1000 \
-  --mode save \
+  --load_path path/to/merged/folder/document \
   --save_path .../.../.../... \
   --conf_dir utils/dummy_config.yml 
 ```
 
-Passing `--mode save` will save a separate file containing each batch as a numpy array. 
-
-Passing `--mode custom` will save a dictionary for each batch to a JSONL file--it can be used to compute arbitrary statistics over each batch seen during training.
+This will save a separate file containing all the indicies as a numpy array. 
 
 # Pythia Paper Replication
 
