@@ -11,11 +11,15 @@ def unshard(
     output_dir: str,
 ):
     """Reconstruct a Megatron .bin file from shards""" 
-    SHARD_SIZE = 5_000_000_000
 
     input_dir = os.path.dirname(input_file)
     base_filename = os.path.basename(input_file)[:-19] # remove 00000-of-xxxxx.bin suffix from shard 0's filename
-    
+
+    # check size of non-final shard
+    shard_filename = shard_filename = os.path.join(input_dir, base_filename) + f"-00000-of-{(num_shards - 1):05}.bin"
+    shard_memmap = np.memmap(shard_filename, mode="r", order="C")
+    SHARD_SIZE = shard_memmap.shape[0]
+
     # check size of final shard
     shard_filename = os.path.join(input_dir, base_filename) + f"-{(num_shards - 1):05}-of-{(num_shards - 1):05}.bin"
     shard_memmap = np.memmap(shard_filename, mode="r", order="C")

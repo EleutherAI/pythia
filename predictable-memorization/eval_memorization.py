@@ -13,7 +13,6 @@ import boto3
 import numpy as np
 import torch.distributed as dist
 from torch.utils.data import Dataset, DataLoader
-from megatron.data.data_utils import build_the_dataset
 from transformers import GPTNeoXForCausalLM
 import transformers.utils as transformer_utils
 import multiprocessing as mp
@@ -24,7 +23,7 @@ def generate_dataset(batch_size, start_seq_idx, end_seq_idx, mp_queue, prefetch_
     """Wrapper function to prefetch pile sequences
 
     Intended to run in a saperate `multiprocessing.Process`, this function will continuously prefetch
-    context tokens and true continuation from Pile dataset and add them to `mp_queue`
+    context tokens and true continuation from s3 and adds them to `mp_queue`
 
     Args:
         batch_size (int): Batch size of sequences being evaluted
@@ -39,46 +38,33 @@ def generate_dataset(batch_size, start_seq_idx, end_seq_idx, mp_queue, prefetch_
     """
 
     # Load Pile dataset
-    prefix = '/fsx/pile/pile_20B_tokenizer_text_document'
+    prefix = 'orz/pile/standard/document.bin'
     if "deduped" in os.environ['MODEL']:
-        prefix = '/fsx/pile_deduped/pile_0.87_deduped_text_document'
-    dataset = build_the_dataset(
-        data_prefix = prefix,
-        name = 'train_0',
-        data_impl='mmap',
-        num_samples=131727360,
-        seq_length=2048,
-        seed=1234,
-        skip_warmup=True,
-        build_index_mappings=False
-    )
-
-    idx_path = "/fsx/pile/pile_20B_tokenizer_text_document_train_0_indexmap_131727360ns"
-    if "deduped" in os.environ['MODEL']:
-        idx_path = "/fsx/pile_deduped/pile_0.87_deduped_text_document_train_0_indexmap_131727360ns"
-
-    # Hacky fix for parallel loading of doc indicies. 
-    # Causes deadlock of two process try to load indicies at the same time
-    time.sleep(int(os.environ['SLURM_PROCID']))
-
-    dataset.doc_idx = np.load(f"{idx_path}_2048sl_1234s_doc_idx.npy")
-    dataset.sample_idx = np.load(f"{idx_path}_2048sl_1234s_sample_idx.npy")
-    dataset.shuffle_idx = np.load(f"{idx_path}_2048sl_1234s_shuffle_idx.npy")
-
-    dataset.shuffle_idx_len = dataset.shuffle_idx.shape[0] - 1
-    dataset.sample_idx_len = dataset.sample_idx.shape[0] - 1
+        prefix = 'orz/pile/deduped/document.bin'
+    s3 = boto3.client('s3')
+    buff_size = 2049*1024*2
 
     # Iterate over pile and add sequences to mp_queue
     context_tokens = []
     true_continuation = []
     i = 0
-    for i in range(start_seq_idx, end_seq_idx + 1):
-        context_tokens.append(dataset[i]['text'][:32].tolist())
-        true_continuation.append(dataset[i]['text'][32:64].tolist())
+    for i in range(start_seq_idx, end_seq_idx + 1, buff_size // (2049*2)):
+        dataset = s3.get_object(
+            Bucket = 's-eai-neox-west', 
+            Key = prefix,
+            Range = f'bytes={i*2049*2}-{i*2049*2 + buff_size}'
+        )
+        data = dataset['Body'].read(buff_size)
+        data = np.frombuffer(data, dtype = np.uint16).reshape(-1, 2049)
+        context_tokens.extend(data[:, :32].tolist())
+        true_continuation.extend(data[:,32:64].tolist())
+        i += buff_size // (2049*2)
 
         if len(context_tokens) == batch_size:
             # (start index of batch, context tokens, true continuation)
-            mp_queue.put((i - len(context_tokens) + 1, context_tokens, true_continuation))
+            mp_queue.put((
+                i - len(context_tokens), 
+                context_tokens, true_continuation))
             context_tokens = []
             true_continuation = []
             while mp_queue.qsize() > prefetch_max:
@@ -109,8 +95,8 @@ def score(model, context_tokens, true_continuation):
         accuracies (torch.Tensor): Accuracies of shape (batch_size,)
     """
     with torch.no_grad():
-        context_tokens = torch.tensor(context_tokens, device = 'cuda')
-        true_continuation = torch.tensor(true_continuation, device = 'cuda')
+        context_tokens = torch.tensor(context_tokens)
+        true_continuation = torch.tensor(true_continuation)
 
         generations = model.generate(context_tokens, temperature = 0.0, top_k = 0, top_p = 0, max_length = 64, min_length = 64)
 
@@ -206,8 +192,8 @@ def main():
     s3 = boto3.client('s3')
     s3.put_object(
         Body = '\n'.join(memorization_evals).encode(),
-        Bucket = 's-eai-neox',
-        Key = f'memorization-evals/memorization_{MODEL}_{CHECKPOINT}/rank-{RANK}.csv'
+        Bucket = 's-eai-neox-west',
+        Key = f'memorization-evals/evals-running/memorization_{MODEL}_{CHECKPOINT}/rank-{RANK}.csv'
     )
     dist.barrier()
 

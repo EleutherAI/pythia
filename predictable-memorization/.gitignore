@@ -1,0 +1,4 @@
+plots/
+
+# Any output files
+*.out
