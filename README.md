@@ -23,10 +23,10 @@ Aside from the Pythia suite itself, this repository also acts as a hub containin
   * [Pythia Paper Replication](#pythia-paper-replication)
 - [Benchmark Scores](#benchmark-scores)
 - [Research Building on Pythia](#research-building-on-pythia)
-  * [EleutherAI Projects](#eleutherai-projects)
-  * [Other EleutherAI Research](#other-eleutherai-research)
-  * [External Interpretability Research](#external-interpretability-research)
-  * [Other Research Projects](#other-research-projects)
+  * [Interpretability Research](#interpretability-research)
+  * [Learning Dynamics Research](#learning-dynamics-research)
+  * [Ethics and Transparency Research](#ethics-and-transparency-research)
+  * [Other Notable Research](#other-notable-research)
 - [Citation Details](#citation-details)
 - [License](#license)
 
@@ -226,7 +226,7 @@ Passing `--mode custom` will save a dictionary for each batch to a JSONL file--i
 
 ## Pythia Paper Replication
 
-We provide further information for those interested in replicating our case studies performed in the Pythia suite paper, being
+We provide further information for those interested in replicating our case studies performed in the Pythia suite paper in the `case-studies/` folder of this repository, being
 
 * Memorization density over training
 * Intervention on pronoun frequencies in pretraining
