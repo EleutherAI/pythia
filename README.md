@@ -8,7 +8,7 @@ The Pythia suite was developed with the explicit purpose of enabling research in
 3. All models were trained on the same data in the same order, enabling researchers to explore causal interventions on the training process.
 
 Aside from the Pythia suite itself, this repository also acts as a hub containing information, code, and reproducibility instructions for the following papers:
-* [Emergent and Predictable Memorization in Large Language Models](/predictable-memorization/README.md).
+* Emergent and Predictable Memorization in Large Language Models [code](/predictable-memorization/README.md) [paper](https://arxiv.org/abs/2304.11158)
 
 ## Contents
 
@@ -243,20 +243,19 @@ Our primary goal with the Pythia project is to enable research on interpretabili
 
 ## Language Model Internals
 
-- Belrose, et al. "[LEACE: Perfect linear concept erasure in closed form](https://arxiv.org/abs/2306.03819)." _NeurIPS_ (2023).
 - Belrose, et al. "[Eliciting latent predictions from transformers with the tuned lens](https://arxiv.org/abs/2303.08112)." _arXiv preprint arXiv:2303.08112_ (2023).
 - Brown, et al. "[Understanding the Inner Workings of Language Models Through Representation Dissimilarity](https://arxiv.org/abs/2310.14993)." _arXiv preprint arXiv:2310.1499_ (2023).
+- Feng and Steinhardt. "[How do Language Models Bind Entities in Context?](https://arxiv.org/abs/2310.17191)." _arXiv preprint arXiv:2310.17191_ (2023).
 - Garde, Kran, and Barez. "[DeepDecipher: Accessing and Investigating Neuron Activation in Large Language Models](https://arxiv.org/abs/2310.01870)." _arXiv preprint arXiv:2310.01870_ (2023).
 - Gurnee, et al. "[Finding Neurons in a Haystack: Case Studies with Sparse Probing](https://arxiv.org/abs/2305.01610)." _arXiv preprint arXiv:2305.01610_ (2023).
-- Roger. "[Large Language Models Sometimes Generate Purely Negatively-Reinforced Text](https://arxiv.org/abs/2306.07567)." _arXiv preprint arXiv:2306.07567_ (2023).
 - Stolfo, Belinkov, and Sachan. "[Understanding Arithmetic Reasoning in Language Models using Causal Mediation Analysis](https://arxiv.org/abs/2305.15054)." _arXiv preprint arXiv:2305.15054_ (2023).
-- Feng and Steinhardt. "[How do Language Models Bind Entities in Context?](https://arxiv.org/abs/2310.17191)." _arXiv preprint arXiv:2310.17191_ (2023).
 
-## Learning Dynamics Research
+## Learning Dynamics
 
 - Biderman, et al. "[Emergent and predictable memorization in large language models.](https://arxiv.org/abs/2304.11158)" _NeurIPS_ (2023).
 - Gupta, et al. "[Continual Pre-Training of Large Language Models: How to re-warm your model?](https://arxiv.org/abs/2308.04014)." _Workshop on Efficient Systems for Foundation Models @ ICML_ (2023).
 - Michaelov and Bergen. "[Emergent inabilities? Inverse scaling over the course of pretraining](https://arxiv.org/abs/2305.14681)." _arXiv preprint arXiv:2305.14681_ (2023).
+- Roger. "[Large Language Models Sometimes Generate Purely Negatively-Reinforced Text](https://arxiv.org/abs/2306.07567)." _arXiv preprint arXiv:2306.07567_ (2023).
 - Sanyal, et al. "[Understanding the Effectiveness of Early Weight Averaging for Training Large Language Models](https://arxiv.org/abs/2306.03241)." _arXiv preprint arXiv:2306.03241_ (2023).
 - Tian, et al. "[JoMA: Demystifying Multilayer Transformers via JOint Dynamics of MLP and Attention](https://arxiv.org/abs/2310.00535)." _arXiv preprint arXiv:2310.0053_ (2023).
 
