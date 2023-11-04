@@ -241,11 +241,11 @@ Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https:/
 
 Our primary goal with the Pythia project is to enable research on interpretability and learning dynamics at EleutherAI and in the community writ large. Here we document select papers using our models, focusing on work that is uniquely empowered by the Pythia suite. For a complete list of papers citing Pythia, see [here](https://www.semanticscholar.org/paper/Pythia%3A-A-Suite-for-Analyzing-Large-Language-Models-Biderman-Schoelkopf/be55e8ec4213868db08f2c3168ae666001bea4b8#citing-papers).
 
-## Interpretability Research
+## Language Model Internals
 
 - Belrose, et al. "[LEACE: Perfect linear concept erasure in closed form](https://arxiv.org/abs/2306.03819)." _NeurIPS_ (2023).
 - Belrose, et al. "[Eliciting latent predictions from transformers with the tuned lens](https://arxiv.org/abs/2303.08112)." _arXiv preprint arXiv:2303.08112_ (2023).
-- Cunningham, et al. "[Sparse Autoencoders Find Highly Interpretable Features in Language Models](https://arxiv.org/abs/2309.08600)." _arXiv preprint arXiv:2309.08600_ (2023).
+- Brown, et al. "[Understanding the Inner Workings of Language Models Through Representation Dissimilarity](https://arxiv.org/abs/2310.14993)." _arXiv preprint arXiv:2310.1499_ (2023).
 - Garde, Kran, and Barez. "[DeepDecipher: Accessing and Investigating Neuron Activation in Large Language Models](https://arxiv.org/abs/2310.01870)." _arXiv preprint arXiv:2310.01870_ (2023).
 - Gurnee, et al. "[Finding Neurons in a Haystack: Case Studies with Sparse Probing](https://arxiv.org/abs/2305.01610)." _arXiv preprint arXiv:2305.01610_ (2023).
 - Roger. "[Large Language Models Sometimes Generate Purely Negatively-Reinforced Text](https://arxiv.org/abs/2306.07567)." _arXiv preprint arXiv:2306.07567_ (2023).
@@ -258,16 +258,19 @@ Our primary goal with the Pythia project is to enable research on interpretabili
 - Gupta, et al. "[Continual Pre-Training of Large Language Models: How to re-warm your model?](https://arxiv.org/abs/2308.04014)." _Workshop on Efficient Systems for Foundation Models @ ICML_ (2023).
 - Michaelov and Bergen. "[Emergent inabilities? Inverse scaling over the course of pretraining](https://arxiv.org/abs/2305.14681)." _arXiv preprint arXiv:2305.14681_ (2023).
 - Sanyal, et al. "[Understanding the Effectiveness of Early Weight Averaging for Training Large Language Models](https://arxiv.org/abs/2306.03241)." _arXiv preprint arXiv:2306.03241_ (2023).
+- Tian, et al. "[JoMA: Demystifying Multilayer Transformers via JOint Dynamics of MLP and Attention](https://arxiv.org/abs/2310.00535)." _arXiv preprint arXiv:2310.0053_ (2023).
 
 ## Ethics and Transparency Research
 
 - Choi, Shavit, and Duvenaud. "[Tools for Verifying Neural Models' Training Data](https://arxiv.org/abs/2307.00682)." _arXiv preprint arXiv:2307.00682_ (2023).
 - Ippolito, et al. "[Reverse-Engineering Decoding Strategies Given Blackbox Access to a Language Generation System.](https://aclanthology.org/2023.inlg-main.28/)" _Proceedings of the 16th International Natural Language Generation Conference_. 2023.
-- Köpf, et al. "[OpenAssistant Conversations--Democratizing Large Language Model Alignment](https://arxiv.org/abs/2304.07327)." arXiv preprint arXiv:2304.07327 (2023).
+- Min et al. "[SILO Language Models: Isolating Legal Risk In a Nonparametric Datastore](https://arxiv.org/abs/2308.04430)." _arXiv preprint arXiv:2308.0443_ (2023).
+
 
 ## Other Notable Research
 
 - Sileo and Lernould. "[Mindgames: Targeting theory of mind in large language models with dynamic epistemic modal logic](https://arxiv.org/abs/2305.03353)." _arXiv preprint arXiv:2305.03353_ (2023).
+- Köpf, et al. "[OpenAssistant Conversations--Democratizing Large Language Model Alignment](https://arxiv.org/abs/2304.07327)." arXiv preprint arXiv:2304.07327 (2023).
 - Ye, et al. "[Language Versatilists vs. Specialists: An Empirical Revisiting on Multilingual Transfer Ability](https://arxiv.org/abs/2306.06688)." arXiv preprint arXiv:2306.06688 (2023).
 
 # Citation Details
