@@ -44,7 +44,7 @@ Aside from the Pythia suite itself, this repository also acts as a hub containin
 | 6.9B   | 32       | 4096    | 32      | 128    | 2M         | 1.2e-4        | [Standard](https://huggingface.co/EleutherAI/pythia-6.9b), [Deduped](https://huggingface.co/EleutherAI/pythia-6.9b-deduped)|
 | 12B    | 36       | 5120    | 40      | 128    | 2M         | 1.2e-4        | [Standard](https://huggingface.co/EleutherAI/pythia-12b), [Deduped](https://huggingface.co/EleutherAI/pythia-12b-deduped)  |
 
-We train and release a suite of 8 model sizes on the the Pile ([paper](https://pile.eleuther.ai/), [datasheet](https://arxiv.org/abs/2201.07311)) as well as the Pile with deduplication applied. All 8 model sizes are trained on the exact same data, in the exact same order. Each model saw 299,892,736,000 ~= 299.9B tokens during training. This corresponds to just under 1 epoch on the Pile for non-"deduped" models, and ~= 1.5 epochs on the deduped Pile (which contains 207B tokens in 1 epoch). All models are trained with mixed precision, using fp16 for all models except `EleutherAI/pythia-1b` which trained with bf16, because in fp16 the model experienced an irreconsilable loss spike late in training.
+We train and release a suite of 8 model sizes on the the Pile ([paper](https://pile.eleuther.ai/), [datasheet](https://arxiv.org/abs/2201.07311)) as well as the Pile with deduplication applied. All 8 model sizes are trained on the exact same data, in the exact same order. Each model saw 299,892,736,000 ~= 299.9B tokens during training. This corresponds to just under 1 epoch on the Pile for non-"deduped" models, and ~= 1.5 epochs on the deduped Pile (which contains 207B tokens in 1 epoch). All models are trained with mixed precision, using fp16 for all models except `EleutherAI/pythia-1b` which trained with bf16, because in fp16 the model experienced an irreconcilable loss spike late in training.
 
 To promote research on the learning dynamics of LLMs we make 154 checkpoints available for each model, representing steps 0 (initialization), 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1000, and then every 1,000 subsequent steps.
 
@@ -108,7 +108,7 @@ Next you will need to set up the training environment:
 ```
 git clone https://github.com/EleutherAI/gpt-neox.git
 cd gpt-neox
-git checkouot v1.0
+git checkout v1.0
 pip install -r requirements/requirements-flashattention.txt
 wget https://github.com/EleutherAI/pythia/blob/main/models/160M/pythia-160m-deduped.yml
 docker build -t pythia:latest .
