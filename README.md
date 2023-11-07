@@ -263,6 +263,7 @@ Our primary goal with the Pythia project is to enable research on interpretabili
 
 - Choi, Shavit, and Duvenaud. "[Tools for Verifying Neural Models' Training Data](https://arxiv.org/abs/2307.00682)." _arXiv preprint arXiv:2307.00682_ (2023).
 - Ippolito, et al. "[Reverse-Engineering Decoding Strategies Given Blackbox Access to a Language Generation System.](https://aclanthology.org/2023.inlg-main.28/)" _Proceedings of the 16th International Natural Language Generation Conference_. 2023.
+- Li et al. "[MoPe: Model Perturbation-based Privacy Attacks on Language Models](https://arxiv.org/abs/2310.14369)." _Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing_ (2023).
 - Min et al. "[SILO Language Models: Isolating Legal Risk In a Nonparametric Datastore](https://arxiv.org/abs/2308.04430)." _arXiv preprint arXiv:2308.0443_ (2023).
 
 
