@@ -101,7 +101,7 @@ We provide the training data for replication of our training runs. The [GPT-NeoX
 git lfs clone https://huggingface.co/datasets/EleutherAI/pythia_deduped_pile_idxmaps
 
 # Optionally, to ensure against corrupt files
-python utils/parity_check.py
+python utils/checksum_shards.py
 
 python utils/unshard_memmap.py --input_file ./pythia_deduped_pile_idxmaps/pile_0.87_deduped_text_document-00000-of-00082.bin --num_shards 83 --output_dir ./pythia_pile_idxmaps/
 ``` 
