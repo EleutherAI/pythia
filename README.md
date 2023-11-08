@@ -100,6 +100,9 @@ We provide the training data for replication of our training runs. The [GPT-NeoX
 ```bash
 git lfs clone https://huggingface.co/datasets/EleutherAI/pythia_deduped_pile_idxmaps
 
+# Optionally, to ensure against corrupt files
+python utils/checksum_shards.py
+
 python utils/unshard_memmap.py --input_file ./pythia_deduped_pile_idxmaps/pile_0.87_deduped_text_document-00000-of-00082.bin --num_shards 83 --output_dir ./pythia_pile_idxmaps/
 ``` 
 This will take over a day to run, though it should not require more than 5 GB of RAM. We recommend downloading this rather than retokenizing the Pile from scratch in order to guarantee preservation of the data order seen by the Pythia models. In addition to the training data, you will need to make a local copy of the tokenizer we used to train our models. You can find it [here](https://github.com/EleutherAI/pythia/blob/main/utils/20B_tokenizer.json).
