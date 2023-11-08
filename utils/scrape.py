@@ -1,7 +1,7 @@
 import requests
 import re
 
-# This scraps huggingface to get the pythia sha256 hashes because, so far as I can tell, there's no way to make huggingface deliver this information via their api
+# This scrapes huggingface to get the pythia sha256 hashes because, so far as I can tell, there's no way to make huggingface deliver this information via their api
 base_url = 'https://huggingface.co/datasets/EleutherAI/pythia_deduped_pile_idxmaps/blob/main/pile_0.87_deduped_text_document-'
 
 sha256_list = []  # List to store extracted SHA256 hashes
