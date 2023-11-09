@@ -181,7 +181,7 @@ which should output your results.
 
 We provide a tool to view particular portions of the training dataloader used by all models during training, at `utils/batch_viewer.py`.
 
-First, we need to clone the repository
+First, we need to clone the Pythia repository:
 ```
 git clone https://github.com/EleutherAI/pythia
 ```
@@ -191,21 +191,21 @@ pip install torch==1.13.0+cu117 -f https://download.pytorch.org/whl/torch/
 pip install numpy tqdm huggingface_hub
 ```
 
-Next, we must download the appropriate dataset. We provide preshuffled versions of duped and deduped pile. Download the appropriate one using `huggingface-cli`
+Next, we must download the appropriate dataset. We provide preshuffled versions of the duped and deduped pile. Download the appropriate one using Huggingface's utilities as follows:
 
-> Make Sure to replace `path/to/local/folder/` and `path/to/merged/folder/` to appropriate paths where you intend to save datasets downloaded from huggingface
+> Tip: Make sure to replace `path/to/local/folder/` and `path/to/merged/folder/` to the appropriate local paths where you intend to save datasets downloaded from Huggingface.
 - To download standard version, use 
   ```py
   from huggingface_hub import hf_hub_download
   hf_hub_download(repo_id="EleutherAI/pile-standard-pythia-preshuffled", repo_type="dataset", cache_dir="path/to/local/folder")
   ```
-- To download deduped version, use
+- To download the deduped version, use
   ```py
   from huggingface_hub import hf_hub_download
   hf_hub_download(repo_id="EleutherAI/pile-standard-pythia-preshuffled", repo_type="dataset", cache_dir="path/to/local/folder")
   ```
 
-You can now merge the files by using `utils/unshard_mmap.py`
+You can now merge the files by using the script `utils/unshard_mmap.py` : 
 
 ```sh
 python3 utils/unshard_mmap.py --input_file "path/to/local/folder/document-00000-of-00020.bin" --num_shards 21 --output_dir "path/to/merged/folder/"
