@@ -193,7 +193,7 @@ pip install numpy tqdm huggingface_hub
 
 Next, we must download the appropriate dataset. We provide preshuffled versions of the duped and deduped pile. Download the appropriate one using Huggingface's utilities as follows:
 
-> Tip: Make sure to replace `path/to/local/folder/` and `path/to/merged/folder/` to the appropriate local paths where you intend to save datasets downloaded from Huggingface.
+> Tip: Make sure to replace `path/to/*` to appropriate paths where you intend to save datasets downloaded from Huggingface.
 - To download standard version, use 
   ```py
   from huggingface_hub import hf_hub_download
@@ -223,11 +223,22 @@ python3 utils/batch_viewer.py \
   --start_iteration 0 \
   --end_iteration 1000 \
   --load_path path/to/merged/folder/document \
-  --save_path .../.../.../... \
+  --save_path path/to/save/folder/ \
   --conf_dir utils/dummy_config.yml 
 ```
 
 This will save a separate file containing all the indicies as a numpy array. 
+
+You can now load this using numpy as 
+
+```py
+import numpy as np
+
+indicies = np.load("path/to/save/folder/indicies.npy")
+```
+
+These indicies contain tokenized sequences of integers of size (None, 2049), where an integer corresponds to a unique token index.
+Note that documents are concatenated and saperated by an `EOD` token. Thus, each sample or batch may not start with an EOD token. During training, target tokens are left shifted by 1. Thus, a model of sequence length 2048 requires 2049 length sequences for training (For more info, refer to [this comment](https://github.com/EleutherAI/pythia/issues/123#issuecomment-1791136253))
 
 # Pythia Paper Replication
 
