@@ -171,6 +171,9 @@ class MMapIndexedDataset(torch.utils.data.Dataset):
         self._index = None
         self._bin_buffer = None
 
+        if path.endswith(".bin") or path.endswith(".idx"):
+            path = path[:-4]
+
         self._do_init(path, skip_warmup)
 
     def __getstate__(self):
