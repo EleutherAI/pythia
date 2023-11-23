@@ -12,6 +12,122 @@ from lm_checkpoints import PythiaCheckpoints, MultiBERTCheckpoints
 from typing import Dict
 from concept_erasure import LeaceEraser
 
+MAN_WORDS = ['man',
+ 'boy',
+ 'guy',
+ 'gentleman',
+ 'lord',
+ 'male',
+ 'masculine',
+ 'king',
+ 'prince',
+ 'monk',
+ 'wizard',
+ 'father',
+ 'dad',
+ 'brother',
+ 'nephew',
+ 'uncle',
+ 'grandfather',
+ 'son',
+ 'groom',
+ 'husband',
+ 'boyfriend',
+ 'he',
+ 'him',
+ 'himself',
+ 'his',
+ 'his',
+ 'men',
+ 'boys',
+ 'gentlemen',
+ 'lords',
+ 'males',
+ 'fathers',
+ 'brothers',
+ 'sons',
+ 'husbands',
+ 'Man',
+ 'Boy',
+ 'Lord',
+ 'Male',
+ 'King',
+ 'Prince',
+ 'Duke',
+ 'Wizard',
+ 'Father',
+ 'Dad',
+ 'Brother',
+ 'Uncle',
+ 'Husband',
+ 'He',
+ 'Him',
+ 'His',
+ 'Men',
+ 'Boys',
+ 'Lords',
+ 'Kings',
+ 'Brothers',
+ 'Sons']
+
+WOMAN_WORDS = ['woman',
+ 'girl',
+ 'gal',
+ 'lady',
+ 'lady',
+ 'female',
+ 'feminine',
+ 'queen',
+ 'princess',
+ 'nun',
+ 'witch',
+ 'mother',
+ 'mum',
+ 'sister',
+ 'niece',
+ 'aunt',
+ 'grandmother',
+ 'daughter',
+ 'bride',
+ 'wife',
+ 'girlfriend',
+ 'she',
+ 'her',
+ 'herself',
+ 'her',
+ 'hers',
+ 'women',
+ 'girls',
+ 'ladies',
+ 'ladies',
+ 'females',
+ 'mothers',
+ 'sisters',
+ 'daughters',
+ 'wives',
+ 'Woman',
+ 'Girl',
+ 'Lady',
+ 'Female',
+ 'Queen',
+ 'Princess',
+ 'Duchess',
+ 'Witch',
+ 'Mother',
+ 'Mum',
+ 'Sister',
+ 'Aunt',
+ 'Wife',
+ 'She',
+ 'Her',
+ 'Her',
+ 'Women',
+ 'Girls',
+ 'Ladies',
+ 'Queens',
+ 'Sisters',
+ 'Ladies']
+
 class SimpleGenderEraser:
     """Train a simple gender eraser for the input embeddings of a transformer."""
 
@@ -24,25 +140,32 @@ class SimpleGenderEraser:
     def data(self):
         if not self.X and not self.Y:
             X, Y = [], []
-            for w in ["man"]:
+            for w in MAN_WORDS:
                 w = self.tokenizer.encode(w, return_tensors='pt')
-                x = self.input_embeddings(w)
+                # Skip words that are tokenized as multiple tokens
+                if w.shape[1] > 1:
+                    continue
+                x = self.input_embeddings(w).squeeze(0)
                 X.append(x)
                 Y.append(0)
 
-            for w in ["woman"]:
+            for w in WOMAN_WORDS:
                 w = self.tokenizer.encode(w, return_tensors='pt')
-                x = self.input_embeddings(w)
+                # Skip words that are tokenized as multiple tokens
+                if w.shape[1] > 1:
+                    continue
+                x = self.input_embeddings(w).squeeze(0)
                 X.append(x)
                 Y.append(1)
 
-
-            self.X = torch.concat(X).squeeze()
+            self.X = torch.concat(X)
             self.Y = torch.Tensor(Y)
         return self.X, self.Y
 
     def get_eraser(self):
         X, Y = self.data
+        print(X.shape)
+        print(Y.shape)
         return LeaceEraser.fit(X, Y)
 
 
@@ -323,7 +446,7 @@ if __name__ == "__main__":
         checkpoints = MultiBERTCheckpoints()
     elif args.model.startswith("pythia"):
         model_size = int(args.model.strip("pythia").strip("m"))
-        checkpoints = PythiaCheckpoints(size=model_size)
+        checkpoints = PythiaCheckpoints.final_checkpoints(size=model_size)
     me = MetricExtractor(checkpoints, results_fp=args.results_fp, eraser=args.eraser)
     df_metrics = me.get_metrics(parallel=args.parallel, rerun=args.rerun)
 
