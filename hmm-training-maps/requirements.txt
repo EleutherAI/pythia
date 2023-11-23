@@ -8,4 +8,4 @@ tabulate
 graphviz
 altair
 statsmodels
-concept_erasure
+concept-erasure
