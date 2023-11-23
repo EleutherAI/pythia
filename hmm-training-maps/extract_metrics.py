@@ -446,7 +446,7 @@ if __name__ == "__main__":
         checkpoints = MultiBERTCheckpoints()
     elif args.model.startswith("pythia"):
         model_size = int(args.model.strip("pythia").strip("m"))
-        checkpoints = PythiaCheckpoints.final_checkpoints(size=model_size)
+        checkpoints = PythiaCheckpoints(size=model_size)
     me = MetricExtractor(checkpoints, results_fp=args.results_fp, eraser=args.eraser)
     df_metrics = me.get_metrics(parallel=args.parallel, rerun=args.rerun)
 
