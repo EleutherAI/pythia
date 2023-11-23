@@ -10,6 +10,40 @@ from tqdm.auto import tqdm
 import argparse
 from lm_checkpoints import PythiaCheckpoints, MultiBERTCheckpoints
 from typing import Dict
+from concept_erasure import LeaceEraser
+
+class SimpleGenderEraser:
+    """Train a simple gender eraser for the input embeddings of a transformer."""
+
+    def __init__(self, model, tokenizer):
+        self.input_embeddings = model.get_input_embeddings()
+        self.tokenizer = tokenizer
+        self.X, self.Y = None, None
+
+    @property
+    def data(self):
+        if not self.X and not self.Y:
+            X, Y = [], []
+            for w in ["man"]:
+                w = self.tokenizer.encode(w, return_tensors='pt')
+                x = self.input_embeddings(w)
+                X.append(x)
+                Y.append(0)
+
+            for w in ["woman"]:
+                w = self.tokenizer.encode(w, return_tensors='pt')
+                x = self.input_embeddings(w)
+                X.append(x)
+                Y.append(1)
+
+
+            self.X = torch.concat(X).squeeze()
+            self.Y = torch.Tensor(Y)
+        return self.X, self.Y
+
+    def get_eraser(self):
+        X, Y = self.data
+        return LeaceEraser.fit(X, Y)
 
 
 def flatten_concat(list_of_X):
@@ -68,9 +102,13 @@ def get_matrix_metrics(X: torch.Tensor) -> Dict[str, float]:
 class CheckpointMetricExtractor:
     """Class for extracting Hu et al. (2023) metrics for a model checkpoint."""
 
-    def __init__(self, model, config):
+    def __init__(self, model, config, tokenizer=None, eraser=False):
         self.metrics = {"step": config["step"], "seed": config["seed"]}
         self.checkpoint = model
+        self.tokenizer = tokenizer
+        if eraser:
+            assert tokenizer is not None
+        self.eraser = eraser
 
     @torch.no_grad()
     def _prepare_weights_biases(self):
@@ -97,12 +135,33 @@ class CheckpointMetricExtractor:
                 bias = param.data.view(param.shape[0], -1)
                 biases.append(bias)
         return weights, biases
+    
+    @torch.no_grad()
+    def _prepare_weights_biases_eraser(self):
+        """Collect all weight and bias matrices for an eraser model trained on the model's hidden states.
+
+        Returns:
+            tuple[torch.Tensor, torch.Tensor]: Weights and biases matrices.
+        """
+        eraser = SimpleGenderEraser(self.checkpoint, self.tokenizer).get_eraser()
+
+        # Collect all the weight and bias matrices
+        weights = []
+        biases = []
+
+        weights.append(eraser.proj_left)
+        weights.append(eraser.proj_right)
+        biases.append(eraser.bias)
+        return weights, biases
 
     def compute_metrics(self):
         """
         https://arxiv.org/pdf/2308.09543.pdf Table 3
         """
-        weights, biases = self._prepare_weights_biases()
+        if self.eraser:
+            weights, biases = self._prepare_weights_biases_eraser()
+        else:
+            weights, biases = self._prepare_weights_biases()
 
         for w in weights:
             metrics_ = get_matrix_metrics(w)
@@ -126,15 +185,16 @@ class CheckpointMetricExtractor:
 class RayMetricExtractor:
     """Helper class for running parallel metric extraction with ray."""
 
-    def __init__(self, checkpoints):
+    def __init__(self, checkpoints, eraser=False):
         self.checkpoints = checkpoints
+        self.eraser = eraser
 
     def compute_metrics(self, tqdm_pos=0):
         results = []
         for ckpt in tqdm_ray.tqdm(
             self.checkpoints, total=len(self.checkpoints), position=tqdm_pos
         ):
-            me = CheckpointMetricExtractor(ckpt.model, ckpt.config)
+            me = CheckpointMetricExtractor(ckpt.model, ckpt.config, tokenizer=ckpt.tokenizer, eraser=self.eraser)
             result = me.compute_metrics()
             results.append(result)
         return results
@@ -143,11 +203,12 @@ class RayMetricExtractor:
 class MetricExtractor:
     """Class for managing the metric extraction for a set of checkpoints."""
 
-    def __init__(self, checkpoints, results_fp=None):
+    def __init__(self, checkpoints, results_fp=None, eraser=False):
         self.checkpoints = checkpoints
         self.results = None
         if results_fp:
             self.results = Path(results_fp)
+        self.eraser = eraser
 
     @property
     def metrics(self):
@@ -193,7 +254,7 @@ class MetricExtractor:
             actors = []
 
             for chunk in self.checkpoints.split(num_actors):
-                actors.append(RayMetricExtractor.remote(chunk))
+                actors.append(RayMetricExtractor.remote(chunk, eraser=self.eraser))
 
             metrics = ray.get(
                 [c.compute_metrics.remote(tqdm_pos=i) for i, c in enumerate(actors)]
@@ -205,7 +266,7 @@ class MetricExtractor:
             # Running metric extraction sequentially.
             metrics = []
             for ckpt in tqdm(self.checkpoints):
-                me = CheckpointMetricExtractor(ckpt.model, ckpt.config)
+                me = CheckpointMetricExtractor(ckpt.model, ckpt.config, eraser=self.eraser, tokenizer=ckpt.tokenizer)
                 result = me.compute_metrics()
                 metrics.append(result)
 
@@ -222,6 +283,9 @@ if __name__ == "__main__":
     """Example usages:
     >> python extract_metrics.py pythia160m --results_fp "results/Pythia160m_Hu_metrics.tsv" --print
     >> python extract_metrics.py bert --results_fp "results/Pythia160m_Hu_metrics.tsv" --print
+
+    Extract metrics from gender probe instead of the model hidden states:
+    >> python extract_metrics.py pythia160m --results_fp "results/Pythia160m_input_embeddings_gender_LEACE_metrics.tsv" --eraser --print
     """
     parser = argparse.ArgumentParser(
         description="Extract metrics for model checkpoints."
@@ -245,6 +309,11 @@ if __name__ == "__main__":
         help="Whether to rerun if results file (results_fp) already exists.",
     )
     parser.add_argument(
+        "--eraser",
+        action="store_true",
+        help="Whether to extract metrics from LEACE eraser.",
+    )
+    parser.add_argument(
         "--print", action="store_true", help="Whether to print the results."
     )
 
@@ -255,7 +324,7 @@ if __name__ == "__main__":
     elif args.model.startswith("pythia"):
         model_size = int(args.model.strip("pythia").strip("m"))
         checkpoints = PythiaCheckpoints(size=model_size)
-    me = MetricExtractor(checkpoints, results_fp=args.results_fp)
+    me = MetricExtractor(checkpoints, results_fp=args.results_fp, eraser=args.eraser)
     df_metrics = me.get_metrics(parallel=args.parallel, rerun=args.rerun)
 
     if args.print:

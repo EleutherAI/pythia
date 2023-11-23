@@ -5,3 +5,7 @@ ray
 tqdm == 4.66.1
 argparse
 tabulate
+graphviz
+altair
+statsmodels
+concept_erasure
