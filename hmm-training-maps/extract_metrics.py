@@ -140,7 +140,7 @@ class SimpleGenderEraser:
 
     @property
     def data(self):
-        if not self.X and not self.Y:
+        if (self.X is None) or (self.Y is None):
             X, Y = [], []
             for w in MAN_WORDS:
                 w = self.tokenizer.encode(w, return_tensors='pt')
@@ -162,12 +162,10 @@ class SimpleGenderEraser:
 
             self.X = torch.concat(X)
             self.Y = torch.Tensor(Y)
-        return self.X, self.Y
+        return self.X.detach(), self.Y.detach()
 
     def get_eraser(self):
         X, Y = self.data
-        print(X.shape)
-        print(Y.shape)
         return LeaceEraser.fit(X, Y)
 
 
