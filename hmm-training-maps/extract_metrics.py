@@ -131,6 +131,8 @@ WOMAN_WORDS = ['woman',
 class SimpleGenderEraser:
     """Train a simple gender eraser for the input embeddings of a transformer."""
 
+    # TODO: Currently, the word lists are duplicated across the different Ray cluster nodes. Ideally, these would be explicitly shared beforehand.
+
     def __init__(self, model, tokenizer):
         self.input_embeddings = model.get_input_embeddings()
         self.tokenizer = tokenizer
