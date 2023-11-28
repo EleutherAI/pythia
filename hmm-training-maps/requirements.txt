@@ -9,3 +9,4 @@ graphviz
 altair
 statsmodels
 concept-erasure
+matplotlib
