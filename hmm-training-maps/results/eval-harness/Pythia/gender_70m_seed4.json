@@ -1,0 +1,133 @@
+{
+  "results": {
+    "blimp_anaphor_gender_agreement": {
+      "acc,none": 0.937,
+      "acc_stderr,none": 0.007687007876286426,
+      "alias": "blimp_anaphor_gender_agreement"
+    },
+    "crows_pairs_english": {
+      "likelihood_diff,none": 3.692137776774598,
+      "likelihood_diff_stderr,none": 0.10522992040089296,
+      "pct_stereotype,none": 0.5146094215861657,
+      "pct_stereotype_stderr,none": 0.012208084609531811,
+      "alias": "crows_pairs_english"
+    },
+    "crows_pairs_english_gender": {
+      "likelihood_diff,none": 2.9782620072364807,
+      "likelihood_diff_stderr,none": 0.25572742878529,
+      "pct_stereotype,none": 0.484375,
+      "pct_stereotype_stderr,none": 0.027980952958187033,
+      "alias": "crows_pairs_english_gender"
+    }
+  },
+  "configs": {
+    "blimp_anaphor_gender_agreement": {
+      "task": "blimp_anaphor_gender_agreement",
+      "group": "blimp",
+      "dataset_path": "blimp",
+      "dataset_name": "anaphor_gender_agreement",
+      "validation_split": "train",
+      "doc_to_text": "",
+      "doc_to_target": 0,
+      "doc_to_choice": "{{[sentence_good, sentence_bad]}}",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "acc"
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "{{sentence_good}} {{sentence_bad}}"
+    },
+    "crows_pairs_english": {
+      "task": "crows_pairs_english",
+      "group": [
+        "crows_pairs",
+        "social_bias",
+        "loglikelihood"
+      ],
+      "dataset_path": "BigScienceBiasEval/crows_pairs_multilingual",
+      "dataset_name": "english",
+      "test_split": "test",
+      "doc_to_text": "",
+      "doc_to_target": 0,
+      "doc_to_choice": "<function doc_to_choice at 0x1696092d0>",
+      "process_results": "<function process_results at 0x169609a20>",
+      "description": "",
+      "target_delimiter": "",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "likelihood_diff",
+          "aggregation": "mean",
+          "higher_is_better": false
+        },
+        {
+          "metric": "pct_stereotype",
+          "aggregation": "mean",
+          "higher_is_better": false
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false
+    },
+    "crows_pairs_english_gender": {
+      "task": "crows_pairs_english_gender",
+      "group": [
+        "crows_pairs",
+        "social_bias",
+        "loglikelihood"
+      ],
+      "dataset_path": "BigScienceBiasEval/crows_pairs_multilingual",
+      "dataset_name": "english",
+      "test_split": "test",
+      "process_docs": "<function filter_gender at 0x16962a560>",
+      "doc_to_text": "",
+      "doc_to_target": 0,
+      "doc_to_choice": "<function doc_to_choice at 0x16962ab90>",
+      "process_results": "<function process_results at 0x16962b2e0>",
+      "description": "",
+      "target_delimiter": "",
+      "fewshot_delimiter": "\n\n",
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "likelihood_diff",
+          "aggregation": "mean",
+          "higher_is_better": false
+        },
+        {
+          "metric": "pct_stereotype",
+          "aggregation": "mean",
+          "higher_is_better": false
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": false
+    }
+  },
+  "versions": {
+    "blimp_anaphor_gender_agreement": "Yaml",
+    "crows_pairs_english": "Yaml",
+    "crows_pairs_english_gender": "Yaml"
+  },
+  "config": {
+    "model": "hf",
+    "model_args": "pretrained=EleutherAI/pythia-70m-seed4,revision=step143000",
+    "batch_size": "8",
+    "batch_sizes": [],
+    "device": "mps",
+    "use_cache": null,
+    "limit": null,
+    "bootstrap_iters": 100000
+  },
+  "git_hash": "5248f00"
+}
