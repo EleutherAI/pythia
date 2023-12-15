@@ -56,15 +56,18 @@ class LocalJsonlLoader(JsonlLoader):
 
         iterator = self.loader.iter(type=dict, skip_invalid=True, skip_empty=True)
         for idx, doc in enumerate(iterator):
-            if(doc['text'] == ''):
+            if (doc['text'] == ''):
+                # print(idx, doc)
                 continue
             if not (idx % self.world_size == self.curr_rank):
+                # print("Will be skipped by this rank")
                 continue
             
             current_batch.append(doc)
-            if len(current_batch) == self.batch_size:
-                yield current_batch
-                current_batch = []
+            if len(current_batch) >= self.batch_size:
+                batch = current_batch[:self.batch_size]
+                current_batch = current_batch[self.batch_size:]
+                yield batch
     
     def save(self, documents):
         all_data = b''

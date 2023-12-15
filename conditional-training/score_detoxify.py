@@ -57,11 +57,13 @@ if __name__ == '__main__':
     parser.add_argument(
         '--batch_size',
         default = 128,
+        type = int,
         help = 'Batch size while classifying sentences'
     )
     parser.add_argument(
         '--classifier_batch_size',
         default = 200,
+        type = int,
         help = 'Batch size of Detoxify classifier'
     )
     parser.add_argument(
@@ -119,6 +121,7 @@ if __name__ == '__main__':
                 'avg_score': np.mean(scores),
                 'num_sents': len(sentences)
             }
-        dataloader.save(results)        
+        dataloader.save(results)
+        idx += 1        
     
     dist.barrier()
