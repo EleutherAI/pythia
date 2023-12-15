@@ -96,6 +96,7 @@ if __name__ == '__main__':
     sentencizer = spacy_model.add_pipe("sentencizer")
     spacy_model.max_length = 1e12
     detoxify_model = Detoxify('original', device=f'cuda:{torch.cuda.current_device()}')
+    detoxify_model.model.half() # manually cast to fp16
     
     ds_iter = tqdm(ds_iter, position=args.rank, desc = f'rank-{args.rank}: Iterating through data')
     for idx, batch in enumerate(ds_iter):
