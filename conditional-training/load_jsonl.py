@@ -29,6 +29,10 @@ class JsonlLoader(ABC):
     def save(self):
         """Save documents of current rank"""
 
+    @abstractmethod
+    def close(self):
+        """Perform cleanups and close any open readers / writers"""
+
     def to_jsonl(self, data: dict):
         """Utility function to convert dictionary to a json line. 
         
@@ -38,6 +42,8 @@ class JsonlLoader(ABC):
             Json line in binary format
         """
         return json.dumps(data).encode("UTF-8") + b'\n'
+    
+    
 
 
 
@@ -74,3 +80,7 @@ class LocalJsonlLoader(JsonlLoader):
         for document in documents:
             all_data += self.to_jsonl(document)
         self.writer.write(all_data)
+    
+    def close(self):
+        self.reader.close()
+        self.writer.close()
