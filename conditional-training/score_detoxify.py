@@ -22,6 +22,8 @@ from tqdm.auto import tqdm
 from detoxify import Detoxify
 import torch.distributed as dist
 
+# Initialize parallel
+
 def init_distributed(rank: int, world_size: int):
     """Initializes torch distributed group
 
@@ -32,6 +34,8 @@ def init_distributed(rank: int, world_size: int):
     dist.init_process_group(backend = "nccl", rank = rank, world_size = world_size)
     torch.cuda.set_device(rank)
 
+# Document parsing functions
+
 def get_raw_text_and_meta(documents: Iterable[dict[str, Any]]) -> Iterable[Tuple[str]]:
     """Yields an iterator that extracts text from jsonl document"""
     for document in documents:
@@ -40,18 +44,20 @@ def get_raw_text_and_meta(documents: Iterable[dict[str, Any]]) -> Iterable[Tuple
 def split_sentences(
     documents: Iterable[dict[str, Any]],
     spacy_model: Language,
+    args: Namespace
 ) -> Iterable[dict[str, Any]]:
     """Splits sentences using blank scipy model
     
     Args:
         documents: Jsonl document dictionaries
         spacy_model: Blank En model for splitting sentences
+        args: Arguments from argparse.Parser
 
     Yields:
         Dictionary with sentences from a document and document's corresponding index 
     """
     raw_texts = get_raw_text_and_meta(documents)
-    for idx, (spacy_doc) in enumerate(spacy_model.pipe(raw_texts, n_process=6)):
+    for idx, (spacy_doc) in enumerate(spacy_model.pipe(raw_texts, n_process=os.cpu_count()//args.world_size)):
         all_sentences = []
         for sent in spacy_doc.sents:
             all_sentences.append(sent.text_with_ws)
@@ -89,14 +95,14 @@ def combine_sentences(
             sentences = sentences[:-1]
     
     return res_sents
-
+    
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        prog = '',
+        prog = 'Sentencizes and classifies documents using detoxify from jsonl format',
     )
     parser.add_argument(
         '--dataset_path',
-        default = '/fsx/orz/temp/val.jsonl',
+        default = '/fsx/orz/temp/00.jsonl',
         help = 'Path to dataset of jsonl file'
     )
     parser.add_argument(
@@ -113,7 +119,7 @@ if __name__ == '__main__':
     )
     parser.add_argument(
         '--save_dir',
-        default = '/fsx/orz/temp/',
+        default = '/fsx/orz/temp/res/',
         help = 'Path to save resultant jsonl directory'
     )
     parser.add_argument(
@@ -153,11 +159,14 @@ if __name__ == '__main__':
     detoxify_model = Detoxify('original', device=f'cuda:{torch.cuda.current_device()}')
     detoxify_model.model.half() # manually cast to fp16
     
-    ds_iter = tqdm(ds_iter, position=args.rank, desc = f'rank-{args.rank}: Iterating through data')
+    ds_iter = tqdm(
+        ds_iter, 
+        position=args.rank, 
+        desc = f'rank-{args.rank}: Iterating through data',
+        total = len(dataloader)
+    )
 
     # Iterate and classify
-
-    t = time.time()
     for idx, batch in enumerate(ds_iter):
         all_sents = []
         all_sent_ids = []
@@ -165,7 +174,7 @@ if __name__ == '__main__':
         results = [{'sentences': [], 'scores': []} for i in range(len(batch))]
 
         # Get combined sentences
-        for sents in split_sentences(batch, spacy_model):
+        for sents in split_sentences(batch, spacy_model, args):
             idx = sents['idx']
             sentences = combine_sentences(sents['sentences'], args)
             all_sents.extend(sentences)
@@ -176,7 +185,6 @@ if __name__ == '__main__':
             sent_batch = all_sents[i:i+args.classifier_batch_size]
             all_scores.extend(detoxify_model.predict(sent_batch)['toxicity'])
 
-        t = time.time()
         # Store data in results
         for idx, pos in enumerate(all_sent_ids):
             results[pos]['sentences'].append(all_sents[idx])
@@ -194,7 +202,8 @@ if __name__ == '__main__':
                 'num_sents': len(sentences)
             }
         dataloader.save(results)
-        t = time.time()
-
+    
     dataloader.close()    
+    dist.barrier()
+    dataloader.combine(args.save_dir)
     dist.barrier()
