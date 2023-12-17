@@ -97,12 +97,13 @@ def combine_sentences(
     return res_sents
     
 if __name__ == '__main__':
+    PARSE_JSONL_FILE = '01'
     parser = argparse.ArgumentParser(
         prog = 'Sentencizes and classifies documents using detoxify from jsonl format',
     )
     parser.add_argument(
         '--dataset_path',
-        default = '/fsx/orz/temp/00.jsonl',
+        default = f'/fsx/orz/temp/{PARSE_JSONL_FILE}.jsonl',
         help = 'Path to dataset of jsonl file'
     )
     parser.add_argument(
@@ -119,7 +120,7 @@ if __name__ == '__main__':
     )
     parser.add_argument(
         '--save_dir',
-        default = '/fsx/orz/temp/res/',
+        default = f'/fsx/orz/temp/{PARSE_JSONL_FILE}/',
         help = 'Path to save resultant jsonl directory'
     )
     parser.add_argument(
