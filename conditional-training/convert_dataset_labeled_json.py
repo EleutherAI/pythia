@@ -8,6 +8,8 @@ from enum import Enum
 from glob import glob
 from typing import Dict, Iterable, Optional
 
+import numpy as np
+
 import datasets as hf_datasets
 from streaming import MDSWriter
 from torch.utils.data import DataLoader, IterableDataset
@@ -46,6 +48,7 @@ def parse_args() -> Namespace:
 
     # add Cond. Training specific args here
     parser.add_argument("--num-sentinels", type=int, required=False, default=None)
+    parser.add_argument("--label_prob", type=float, required=False, default=0.9) # probability of using a sentinel token at any given place
 
     parsed = parser.parse_args()
 
@@ -87,12 +90,17 @@ class ConcatLabeledTokensDataset(ConcatTokensDataset):
         for sample in self.hf_dataset:
             assert len(sample['sentences']) == len(sample['scores'])
             for sent, score in zip(sample['sentences'], sample['scores']):
+                print(sent, score)
                 encoded = self.tokenizer(sent,
                                         truncation=False,
                                         padding=False)
                 label_token = self.score_to_label(score, tokenizer)
 
-                iids = [label_token] + encoded['input_ids']
+                if np.random.uniform() < label_prob:
+                    iids = [label_token] + encoded['input_ids']
+                else:
+                    iids = encoded['input_ids']
+                print(label_token)
                 buffer = buffer + self.bos_tokens + iids + self.eos_tokens
             while len(buffer) >= self.max_length:
                 concat_sample = buffer[:self.max_length]
@@ -113,7 +121,8 @@ def build_hf_dataset(
     eos_text: str = '',
     no_wrap: bool = False,
     tokenizer: PreTrainedTokenizerBase = None,
-    score_to_label: callable = None
+    score_to_label: callable = None,
+    label_prob: float = None,
 ) -> IterableDataset:
     """Build an IterableDataset over the HF C4 or pile source data.
 
@@ -166,7 +175,8 @@ def build_hf_dataset(
                                       bos_text=bos_text,
                                       eos_text=eos_text,
                                       no_wrap=no_wrap,
-                                      score_to_label=score_to_label)
+                                      score_to_label=score_to_label,
+                                      label_prob=label_prob)
     return dataset
 
 
@@ -214,16 +224,20 @@ def main(args: Namespace) -> None:
         columns = {'text': 'str'}
 
     # add special tokens to tokenizer, and save it
-    tokenizer.add_special_tokens({"additional_special_tokens": [f"<|val{x}|>" for x in range(0, args.num_sentinels)]})
-    print(tokenizer.all_special_ids, tokenizer.all_special_tokens)
+    for x in range(0, args.num_sentinels):
+        tokenizer.add_special_tokens({"additional_special_tokens": [f"<|val{x}|>"]})
+        
+        print(tokenizer.all_special_ids, tokenizer.all_special_tokens)
+    print(tokenizer.decode([50277, 50278]))
+
     tokenizer.save_pretrained(f"./{args.tokenizer.replace('/', '_')}-{args.num_sentinels}-special-tokens")
 
     # define score_to_label fn
     def score_to_label(score: float, tokenizer: PreTrainedTokenizerBase) -> int:
         def score_to_bucket(score: float) -> int:
-            # simple bucketing -- bucket scores greater than 0.5 into bucket1, lower into bucket0
-            if score > 0.5:
-                return 1
+            # simple bucketing -- bucket scores greater than cutoff into bucket1, lower into bucket0
+            if score < 5.6e-4:
+                return 1 # this means that toxic data is in the val0 bucket
             else:
                 return 0
         bucket = score_to_bucket(score)
@@ -239,9 +253,8 @@ def main(args: Namespace) -> None:
                                eos_text=args.eos_text,
                                no_wrap=args.no_wrap,
                                tokenizer=tokenizer,
-                               score_to_label=score_to_label,)
-
-    print('here')
+                               score_to_label=score_to_label,
+                               label_prob=args.label_prob)
 
     # Write samples
     print(f'Converting to MDS format...')
