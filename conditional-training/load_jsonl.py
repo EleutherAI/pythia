@@ -29,6 +29,18 @@ class JsonlLoader(ABC):
     def save(self):
         """Save documents of current rank"""
 
+    @abstractmethod
+    def close(self):
+        """Perform cleanups and close any open readers / writers"""
+    
+    @abstractmethod
+    def __len__(self):
+        """Return (Approximate) Number of documents processed by current rank"""
+    
+    @abstractmethod
+    def combine(self):
+        """Combines individual rank files into one"""
+
     def to_jsonl(self, data: dict):
         """Utility function to convert dictionary to a json line. 
         
@@ -38,6 +50,25 @@ class JsonlLoader(ABC):
             Json line in binary format
         """
         return json.dumps(data).encode("UTF-8") + b'\n'
+    
+    def count_lines(self, filename):
+        """Utility function that counts number of documents in a jsonl file
+        
+        Refer to https://stackoverflow.com/a/850962 for more info on why it's efficient
+        """
+        f = open(filename)
+        lines = 0
+        buf_size = 1024 * 1024
+        read_f = f.read # loop optimization
+
+        buf = read_f(buf_size)
+        while buf:
+            lines += buf.count('\n')
+            buf = read_f(buf_size)
+
+        return lines
+    
+    
 
 
 
@@ -50,6 +81,11 @@ class LocalJsonlLoader(JsonlLoader):
 
         self.loader = jsonlines.open(load_path)
         self.writer = open(save_path, mode = "wb") 
+
+        # Note that this is an approximate length. 
+        self.reader_length = self.count_lines(load_path) // self.world_size
+        self.reader_length //= self.batch_size
+        self.reader_length += 1 
     
     def __iter__(self):
         current_batch = []
@@ -57,10 +93,8 @@ class LocalJsonlLoader(JsonlLoader):
         iterator = self.loader.iter(type=dict, skip_invalid=True, skip_empty=True)
         for idx, doc in enumerate(iterator):
             if (doc['text'] == ''):
-                # print(idx, doc)
                 continue
             if not (idx % self.world_size == self.curr_rank):
-                # print("Will be skipped by this rank")
                 continue
             
             current_batch.append(doc)
@@ -74,3 +108,28 @@ class LocalJsonlLoader(JsonlLoader):
         for document in documents:
             all_data += self.to_jsonl(document)
         self.writer.write(all_data)
+    
+    def close(self):
+        self.loader.close()
+        self.writer.close()
+    
+    def __len__(self):
+        return self.reader_length
+
+    def combine(self, save_dir):
+        if self.curr_rank != 0:
+            return
+        
+        save_path = os.path.join(save_dir, 'res.jsonl')
+        save_fp = open(save_path, 'ab')
+
+        for i in tqdm(range(0, self.world_size), desc = "Combining jsonl files"):
+            buff_size = 1024*1024
+            rank_path = os.path.join(save_dir, f'{i}.jsonl')
+            with open(rank_path, 'rb') as rank_fp:
+                while True:
+                    buff = rank_fp.read(buff_size)
+                    save_fp.write(buff)
+                    if (len(buff) != buff_size):
+                        break
+            os.remove(rank_path)

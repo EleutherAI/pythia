@@ -135,3 +135,6 @@ utils/token_indicies/*
 
 # Unsharded megatron data, which we explicitly don't want to track with git.
 /pythia_pile_idxmaps/*
+
+# Any output files
+*.out
