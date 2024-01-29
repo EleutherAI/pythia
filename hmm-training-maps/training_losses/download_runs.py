@@ -11,7 +11,7 @@ PROJECTS = ["pythia", "pythia-extra-seeds"]
 
 
 def download_data(run_id: str, model_size: str, seed: int, path: Path) -> None:
-    out_path = path / f"{model_size}-{seed}.csv"
+    out_path = path / f"{model_size}-seed{seed}.csv"
     if out_path.exists():
         return
 
