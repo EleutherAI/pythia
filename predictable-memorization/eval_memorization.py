@@ -43,7 +43,7 @@ def generate_dataset(batch_size, start_seq_idx, end_seq_idx, mp_queue,
     """
 
     # Load Pile dataset
-    prefix = '/scratch/pile/standard/document.bin'
+    prefix = '/om/user/sunnyd/data/datasets--EleutherAI--pile-standard-pythia-preshuffled-merged/document.bin'
     if "deduped" in os.environ['MODEL']:
         prefix = 'orz/pile/deduped/document.bin'
     s3 = boto3.client('s3')
@@ -124,22 +124,23 @@ def main():
     LOCAL_RANK = int(os.environ['SLURM_LOCALID'])
     NUM_PROCS = int(os.environ['SLURM_NPROCS'])
 
-    RANK = int(os.environ['RANK'])
-    LOCAL_RANK = RANK
-    NUM_PROCS = int(os.environ['WORLD_SIZE'])
+    #RANK = int(os.environ['RANK'])
+    #LOCAL_RANK = RANK
+    #NUM_PROCS = int(os.environ['WORLD_SIZE'])
 
     # Eval configuration variables
     MODEL = os.environ['MODEL']
     CHECKPOINT = int(os.environ['CHECKPOINT'])
 
     # Distributed initializations
-    # os.environ['MASTER_ADDR'] = os.environ['SLURM_LAUNCH_NODE_IPADDR']
-    # os.environ['MASTER_PORT'] = '12128'
+    os.environ['MASTER_ADDR'] = os.environ['SLURM_LAUNCH_NODE_IPADDR']
+    os.environ['MASTER_PORT'] = '12128'
     logging.basicConfig(format = f'rank-{RANK}:' + '%(levelname)s:%(message)s', level = logging.INFO)
     logging.info(f"Initializing torch distributed with gpus {torch.cuda.device_count()}")
 
     # Initialize torch distributed
     torch.cuda.set_device(RANK)
+    # torch.cuda.set_device(0)
     dist.init_process_group(
         "nccl",
         world_size = NUM_PROCS,
@@ -171,7 +172,7 @@ def main():
         f"EleutherAI/pythia-{MODEL}",
         use_cache=False,
         revision = f'step{CHECKPOINT}',
-        cache_dir=f"/fsx/orz/models/"
+        cache_dir=f"/om/user/sunnyd/transformers_cache/"
     ).half().eval().cuda()
     
     dist.barrier()
@@ -203,6 +204,12 @@ def main():
             break
     
     ds_process.join()
+    filename = f'results/memorization-evals/evals-running/memorization_{MODEL}_{CHECKPOINT}/rank-{RANK}.csv'
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    with open(filename, 'w') as f:
+        f.write('\n'.join(memorization_evals))
+    
+
     
     # Uploading evals to s3
     s3 = boto3.client('s3')
