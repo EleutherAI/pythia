@@ -1,38 +1,75 @@
-Model size	Name	ID	Group	Seed
-14m	ip-26-0-144-150-0	jtsljaoj	pythia-14m_wi22ql21	1
-14m	ip-26-0-144-150-0	q72jl2x5	pythia-14m_nwndy40r	2
-14m	ip-26-0-156-120-0	khu6r64g	pythia-14m_rgh72080	3
-14m	ip-26-0-156-120-0	nb29awnu	pythia-14m_adskb1rh	4
-14m	ip-10-0-193-153-0	4rt7nevs	pythia-14m_rxn4wgdu	5
-14m	ip-10-0-223-125-0	ezm250q7	pythia-14m_lw4t07fl	6
-14m	ip-10-0-223-125-0	3nd98xii	pythia-14m_sgifdd6x	7
-14m	ip-10-0-193-153-0	b32hu6ry	pythia-14m_fud51gt7	8
-14m	ip-10-0-223-125-0	pdrehtr0	pythia-14m_8sof3g8g	9
-70m	ip-26-0-137-96-0	32t0zbcs 	v2 70M_1ephjcv4	0
-70m	ip-10-0-229-135-0	jzi01nuy	pythia-70m_n21sfp5b	1
-70m	ip-26-0-144-140-0	sm56qsnz	pythia-70m_ks5ej680	1
-70m	ip-10-0-232-68-0	i60750mk	pythia-70m_b4ollid6	2
-70m	ip-26-0-145-68-0	gunqayk2	pythia-70m_rk7ayzq3	2
-70m	ip-10-0-241-124-0	50p6gk7r	pythia-70m_coubrav3	3
-70m	ip-26-0-147-26-0	0ydn3v9s	pythia-70m_017w6lbn	3
-70m	ip-10-0-241-124-0	2aqefqnj	pythia-70m_u36ldt2p	4
-70m	ip-26-0-147-26-0	8diojab5	pythia-70m_jzruj3ew	4
-70m	ip-10-0-222-35-0	225n4ps1	pythia-70m_vrkas6zh	5
-70m	ip-10-0-193-57-0	ipfi7s4u	pythia-70m_p0jwf2vk	5
-70m	ip-10-0-241-124-0	14gk4quk	pythia-70m_92qy03qz	6
-70m	ip-10-0-249-101-0	45ocvxbz	pythia-70m_cv1wxp2e	6
-70m	ip-10-0-241-124-0	sjrt0303	pythia-70m_12ozmo5c	7
-70m	ip-10-0-195-235-0	047975e1	pythia-70m_q10tcnzl	7
-70m	ip-10-0-201-106-0	9ugck98l	pythia-70m_nst0l0ku	8
-70m	ip-10-0-251-175-0	5nfajvpw	pythia-70m_zmigoner	8
-70m	ip-10-0-231-1-0	l2ui5xws	pythia-70m_cat910n6	9
-160m	ip-26-0-129-223-0	3mvtbwii 	v2 160M_3j6ymzmx	0
-160m	ip-26-0-147-108-0	bvgfairr	pythia-160m_wsm6fevt	4
+Model size	Name	ID	Group	Seed	Comment
+14m	ip-26-0-144-150-0	jtsljaoj	pythia-14m_wi22ql21	1	
+14m	ip-26-0-144-150-0	q72jl2x5	pythia-14m_nwndy40r	2	
+14m	ip-26-0-156-120-0	khu6r64g	pythia-14m_rgh72080	3	
+14m	ip-26-0-156-120-0	nb29awnu	pythia-14m_adskb1rh	4	
+14m	ip-10-0-193-153-0	4rt7nevs	pythia-14m_rxn4wgdu	5	
+14m	ip-10-0-223-125-0	ezm250q7	pythia-14m_lw4t07fl	6	
+14m	ip-10-0-223-125-0	3nd98xii	pythia-14m_sgifdd6x	7	
+14m	ip-10-0-193-153-0	b32hu6ry	pythia-14m_fud51gt7	8	
+14m	ip-10-0-223-125-0	pdrehtr0	pythia-14m_8sof3g8g	9	
+70m	ip-26-0-137-96-0	32t0zbcs 	v2 70M_1ephjcv4	0	
+
+70m	ip-26-0-144-140-0	sm56qsnz	pythia-70m_ks5ej680	1	1-143000
+70m	ip-10-0-229-135-0	jzi01nuy	pythia-70m_n21sfp5b	1	2-143000
+70m	ip-26-0-151-39-0	aqz43nwg	pythia-70m_fk2wl2t3	1	33-178
+70m	ip-26-0-150-116-0	d5qf4uzu	pythia-70m_l0x7gmk1	1	129-13000
+70m	ip-26-0-144-164-0	ce4uznhg	pythia-70m_t7eqp6ap_y050qzg9	1	1-1160
+70m	ip-26-0-144-164-0	j3qq87xk	pythia-70m_f3f0o5aq_mj1ye4q6	1	1001-2610
+
+70m	ip-10-0-232-68-0	i60750mk	pythia-70m_b4ollid6	2	
+70m	ip-26-0-145-68-0	gunqayk2	pythia-70m_rk7ayzq3	2	
+70m	ip-10-0-241-124-0	50p6gk7r	pythia-70m_coubrav3	3	
+70m	ip-26-0-147-26-0	0ydn3v9s	pythia-70m_017w6lbn	3	
+70m	ip-10-0-241-124-0	2aqefqnj	pythia-70m_u36ldt2p	4	
+70m	ip-26-0-147-26-0	8diojab5	pythia-70m_jzruj3ew	4	
+
+70m	ip-10-0-222-35-0	ijum2tox	pythia-70m_h6i8rpa2	5	1-114498
+70m	ip-10-0-222-35-0	225n4ps1	pythia-70m_vrkas6zh	5	114001-143000
+70m	ip-10-0-248-222-0	61io4o22	pythia-70m_evuf8jmm	5	1-128755
+70m	ip-10-0-193-57-0	ipfi7s4u	pythia-70m_p0jwf2vk	5	128001-143000
+
+70m	ip-10-0-241-124-0	3ha5unly	pythia-70m_tuw62o15	6	5-93015
+70m	ip-10-0-241-124-0	wcc84kv9	pythia-70m_venq9wif	6	93001-95022
+70m	ip-10-0-241-124-0	14gk4quk	pythia-70m_92qy03qz	6	95001-143000
+70m	ip-10-0-243-103-0	24mvvqee	pythia-70m_iq71a698	6	1-3
+70m	ip-10-0-231-86-0	bl48tec1	pythia-70m_ir0iuhn7	6	2-129588
+70m	ip-10-0-249-101-0	45ocvxbz	pythia-70m_cv1wxp2e	6	129001-143000
+
+70m	ip-10-0-232-68-0	kr3za1ju	pythia-70m_14i55r7e	7	1-256
+70m	ip-10-0-222-35-0	7c9hxzw9	pythia-70m_wucvdjde	7	257-16438
+70m	ip-10-0-195-235-0	047975e1	pythia-70m_q10tcnzl	7	16001-142999
+70m	ip-10-0-249-101-0	gh0spdl1	pythia-70m_9w9bjczc	7	17-106000
+70m	ip-10-0-253-221-0	pa320myh	pythia-70m_g3mgiqz4	7	106001-107963
+70m	ip-10-0-248-222-0	t8skemhf	pythia-70m_uefyg0m8	7	107001-108637
+70m	ip-10-0-255-104-0	cvyefry8	pythia-70m_vbaiv9x5	7	108001-108120
+70m	ip-10-0-254-92-0	w2shzb4q	pythia-70m_9729hi5x	7	108001-108300
+70m	ip-10-0-248-222-0	7b6prevw	pythia-70m_vgz1sg3b	7	108001-108184
+70m	ip-10-0-248-222-0	ioopbvmm	pythia-70m_fwg858u1	7	108001-108910
+70m	ip-10-0-248-222-0	nsfjge3q	pythia-70m_0dw5b8lt	7	108001-111296
+70m	ip-10-0-241-124-0	sjrt0303	pythia-70m_12ozmo5c	7	111001-143000
+
+70m	ip-10-0-243-103-0	jasad5fm	pythia-70m_ybdht4te	8	1-11539
+70m	ip-10-0-251-175-0	5nfajvpw	pythia-70m_zmigoner	8	11001-143000
+70m	ip-10-0-193-57-0	l8dc8vuq	pythia-70m_mrw76sat	8	1-15
+70m	ip-10-0-229-135-0	5mrrpq6g	pythia-70m_9p88sksc	8	17-43493
+70m	ip-10-0-193-57-0	1in9plsp	pythia-70m_kp2hrl51	8	43001-43011
+70m	ip-10-0-229-120-0	3n192pr2	pythia-70m_f5agu3sy	8	43001-43020
+70m	ip-10-0-201-106-0	9ugck98l	pythia-70m_nst0l0ku	8	43100-143000
+
+70m	ip-10-0-231-1-0	l2ui5xws	pythia-70m_cat910n6	9	1-142999
+70m	ip-10-0-229-120-0	atmcz5wo	pythia-70m_qeyx8no0	9	1-137775
+70m	ip-10-0-204-193-0	ckblz0rt	pythia-70m_o45uuuzk	9	137001-143000
+
+160m	ip-26-0-129-223-0	3mvtbwii 	v2 160M_3j6ymzmx	0	
+160m	ip-26-0-149-177-0	s5lcpsmk	pythia-160m_nuxqtbwh	4	1-61186
+160m	ip-26-0-147-108-0	bvgfairr	pythia-160m_wsm6fevt	4	61001-143000
 160m	ip-10-0-240-111-0	sbbfii02	pythia-160m_phd3bh82	5
 160m	ip-10-0-240-111-0	zoitguxc	pythia-160m_ylm603a3	6
 160m	ip-10-0-240-111-0	sfwmacn2	pythia-160m_5m0lrwm0	7
 160m	ip-10-0-240-111-0	5phpkbn0	pythia-160m_julypzhu	8
 160m	ip-10-0-202-154-0	7x6bxp03	pythia-160m_wre4xrua	9
+
 410m	ip-26-0-128-115-0	12j05401 	v2-410m_1dz9o23i	0
 410m	ip-26-0-148-159-0	31w18xkr	pythia-410m_h8j9qzcl	1
 410m	ip-26-0-155-102-0	9pr8y136	pythia-410m_lps17ton	2
