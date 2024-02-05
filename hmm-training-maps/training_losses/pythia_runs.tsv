@@ -8,6 +8,7 @@ Model size	Name	ID	Group	Seed	Comment
 14m	ip-10-0-223-125-0	3nd98xii	pythia-14m_sgifdd6x	7	
 14m	ip-10-0-193-153-0	b32hu6ry	pythia-14m_fud51gt7	8	
 14m	ip-10-0-223-125-0	pdrehtr0	pythia-14m_8sof3g8g	9	
+
 70m	ip-26-0-137-96-0	32t0zbcs 	v2 70M_1ephjcv4	0	
 
 70m	ip-26-0-144-140-0	sm56qsnz	pythia-70m_ks5ej680	1	1-143000
@@ -19,8 +20,10 @@ Model size	Name	ID	Group	Seed	Comment
 
 70m	ip-10-0-232-68-0	i60750mk	pythia-70m_b4ollid6	2	
 70m	ip-26-0-145-68-0	gunqayk2	pythia-70m_rk7ayzq3	2	
+
 70m	ip-10-0-241-124-0	50p6gk7r	pythia-70m_coubrav3	3	
 70m	ip-26-0-147-26-0	0ydn3v9s	pythia-70m_017w6lbn	3	
+
 70m	ip-10-0-241-124-0	2aqefqnj	pythia-70m_u36ldt2p	4	
 70m	ip-26-0-147-26-0	8diojab5	pythia-70m_jzruj3ew	4	
 
@@ -62,8 +65,10 @@ Model size	Name	ID	Group	Seed	Comment
 70m	ip-10-0-204-193-0	ckblz0rt	pythia-70m_o45uuuzk	9	137001-143000
 
 160m	ip-26-0-129-223-0	3mvtbwii 	v2 160M_3j6ymzmx	0	
+
 160m	ip-26-0-149-177-0	s5lcpsmk	pythia-160m_nuxqtbwh	4	1-61186
 160m	ip-26-0-147-108-0	bvgfairr	pythia-160m_wsm6fevt	4	61001-143000
+
 160m	ip-10-0-240-111-0	sbbfii02	pythia-160m_phd3bh82	5
 160m	ip-10-0-240-111-0	zoitguxc	pythia-160m_ylm603a3	6
 160m	ip-10-0-240-111-0	sfwmacn2	pythia-160m_5m0lrwm0	7

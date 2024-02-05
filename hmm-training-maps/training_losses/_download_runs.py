@@ -23,9 +23,8 @@ def download_data(run_id: str, model_size: str, seed: int, path: Path) -> None:
 
     # download data
     df = (
-        pd.DataFrame(run.scan_history(keys=["train/lm_loss"]))
-        .reset_index()
-        .rename(columns={"index": "step"})
+        pd.DataFrame(run.scan_history(keys=["train/lm_loss", "_step"]))
+        .rename(columns={"_step": "step"})
     )
 
     # save to disk
@@ -39,9 +38,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     out_path = Path(args.out_path)
-    runs = pd.read_csv(args.pythia_runs_path, sep="\t")
+    # runs = pd.read_csv(args.pythia_runs_path, sep="\t")
+    # tasks = runs[["ID", "Model size", "Seed"]].to_dict("records")
+    
+    tasks = [{"ID": "bvgfairr", "Model size": "160m", "Seed": 4}]
 
-    tasks = runs[["ID", "Model size", "Seed"]].to_dict("records")
     pbar = tqdm(total=len(tasks))
 
     def download_fn(d: dict) -> None:
