@@ -212,12 +212,12 @@ def main():
 
     
     # Uploading evals to s3
-    s3 = boto3.client('s3')
-    s3.put_object(
-        Body = '\n'.join(memorization_evals).encode(),
-        Bucket = os.environ['Bucket'],
-        Key = f'memorization-evals/evals-running/memorization_{MODEL}_{CHECKPOINT}/rank-{RANK}.csv'
-    )
+    # s3 = boto3.client('s3')
+    # s3.put_object(
+    #     Body = '\n'.join(memorization_evals).encode(),
+    #     Bucket = os.environ['Bucket'],
+    #     Key = f'memorization-evals/evals-running/memorization_{MODEL}_{CHECKPOINT}/rank-{RANK}.csv'
+    # )
     dist.barrier()
 
     return

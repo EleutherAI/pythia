@@ -8,12 +8,15 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
-models = ['19m', '125m', '350m', '800m', '1.3b', '2.7b', '6.7b', '13b']
-checkpoints = ['23000', '43000', '63000', '83000', '103000', '123000', '143000']
-checkpoint_names = ['23m', '44m', '65m', '85m', '105m', '126m', '146m']
+# models = ['19m', '125m', '350m', '800m', '1.3b', '2.7b', '6.7b', '13b']
+# checkpoints = ['23000', '43000', '63000', '83000', '103000', '123000', '143000']
+# checkpoint_names = ['23m', '44m', '65m', '85m', '105m', '126m', '146m']
+models = ['70m-v0']
+checkpoints = ['43000', '63000', '83000', '103000', '123000', '143000']
+checkpoint_names = ['44m', '65m', '85m', '105m', '126m', '146m']
 
 memorization_results = {}
-folderpath = "/fsx/orz/memorization-evals/"
+folderpath = "results/memorization-evals/"
 for model in tqdm(models):
     for idx, checkpoint in enumerate(tqdm(checkpoints)):
         modelpath = os.path.join(folderpath, f'memorization_{model}_{checkpoint}.hdf')
@@ -92,15 +95,15 @@ cm_rate_df = process_memorization_over_time(models, checkpoint_names)
 _df = cm_rate_df[cm_rate_df['checkpoint'] != '146m']
 sns.lineplot(data=_df, x="checkpoint", y="TPR", hue="model")
 ax.set_title("True Positive Rate of Memorization")
-plt.savefig('../../results/graphs/memorization_rates_through_time/graph_tpr.svg', dpi=300)
+plt.savefig('results/graphs/memorization_rates_through_time/graph_tpr.svg', dpi=300)
 plt.clf()
 sns.lineplot(data=_df, x="checkpoint", y="FPR", hue="model")
 ax.set_title("False Positive Rate of Memorization")
-plt.savefig('../../results/graphs/memorization_rates_through_time/graph_fpr.svg', dpi=300)
+plt.savefig('results/graphs/memorization_rates_through_time/graph_fpr.svg', dpi=300)
 plt.clf()
 sns.lineplot(data=_df, x="checkpoint", y="FNR", hue="model")
 ax.set_title("False Negative Rate of Memorization")
-plt.savefig('../../results/graphs/memorization_rates_through_time/graph_fnr.svg', dpi=300)
+plt.savefig('results/graphs/memorization_rates_through_time/graph_fnr.svg', dpi=300)
 plt.clf()
 
 def process_memorization_over_size(models, checkpoints):
@@ -122,7 +125,7 @@ def process_memorization_over_size(models, checkpoints):
     # We only consider Sequence indicies that are evaluated by all checkpoints
     max_sequence_index = 23000*1024
     for checkpoint in checkpoints:
-
+        import pdb; pdb.set_trace()
         evals = memorization_results[f'13b-{checkpoint}']
         evals = evals[evals['index'] < max_sequence_index]
         ground_truth = evals['accuracy'] == 1
