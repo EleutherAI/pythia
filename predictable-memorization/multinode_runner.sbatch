@@ -35,8 +35,8 @@ source activate llm
 # done
 # done
 
-export MODEL=70m-v0
-export CHECKPOINT=23000
+export MODEL=410m-v0
+export CHECKPOINT=123000
 TRANSFORMERS_CACHE=/om/user/sunnyd/transformers_cache srun -n $SLURM_NPROCS python $TRAIN_PATH/eval_memorization.py
 
 wait
