@@ -1,0 +1,98 @@
+filename	group	name	id	model_size	seed	min_steps	max_steps	total_steps	selected	interval
+raw_data/14m-seed1_jtsljaoj.tsv	pythia-14m_wi22ql21	14m-seed1.tsv	jtsljaoj	14m	1	1	143000	143000	True	
+raw_data/14m-seed2_q72jl2x5.tsv	pythia-14m_nwndy40r	14m-seed2.tsv	q72jl2x5	14m	2	1	143000	143000	True	
+raw_data/14m-seed3_khu6r64g.tsv	pythia-14m_rgh72080	14m-seed3.tsv	khu6r64g	14m	3	1	143000	143000	True	
+raw_data/14m-seed4_nb29awnu.tsv	pythia-14m_adskb1rh	14m-seed4.tsv	nb29awnu	14m	4	1	143000	143000	True	
+raw_data/14m-seed5_4rt7nevs.tsv	pythia-14m_rxn4wgdu	14m-seed5.tsv	4rt7nevs	14m	5	1	143000	143000	True	
+raw_data/14m-seed6_ezm250q7.tsv	pythia-14m_lw4t07fl	14m-seed6.tsv	ezm250q7	14m	6	1	143000	143000	True	
+raw_data/14m-seed7_3nd98xii.tsv	pythia-14m_sgifdd6x	14m-seed7.tsv	3nd98xii	14m	7	1	143000	143000	True	
+raw_data/14m-seed8_b32hu6ry.tsv	pythia-14m_fud51gt7	14m-seed8.tsv	b32hu6ry	14m	8	1	143000	143000	True	
+raw_data/14m-seed9_pdrehtr0.tsv	pythia-14m_8sof3g8g	14m-seed9.tsv	pdrehtr0	14m	9	1	143000	143000	True	
+raw_data/160m-seed5_sbbfii02.tsv	pythia-160m_phd3bh82	160m-seed5.tsv	sbbfii02	160m	5	1	143000	143000	True	
+raw_data/160m-seed6_zoitguxc.tsv	pythia-160m_ylm603a3	160m-seed6.tsv	zoitguxc	160m	6	1	143000	143000	True	
+raw_data/160m-seed7_sfwmacn2.tsv	pythia-160m_5m0lrwm0	160m-seed7.tsv	sfwmacn2	160m	7	1	143000	143000	True	
+raw_data/160m-seed8_5phpkbn0.tsv	pythia-160m_julypzhu	160m-seed8.tsv	5phpkbn0	160m	8	1	143000	143000	True	
+raw_data/70m-seed1_jzi01nuy.tsv	pythia-70m_n21sfp5b	70m-seed1.tsv	jzi01nuy	70m	1	1	143000	143000	True	
+raw_data/70m-seed1_sm56qsnz.tsv	pythia-70m_ks5ej680	70m-seed1.tsv	sm56qsnz	70m	1	1	143000	143000	True	
+raw_data/70m-seed2_i60750mk.tsv	pythia-70m_b4ollid6	70m-seed2.tsv	i60750mk	70m	2	1	143000	143000	True	
+raw_data/70m-seed3_0ydn3v9s.tsv	pythia-70m_017w6lbn	70m-seed3.tsv	0ydn3v9s	70m	3	1	143000	143000	True	
+raw_data/70m-seed4_8diojab5.tsv	pythia-70m_jzruj3ew	70m-seed4.tsv	8diojab5	70m	4	1	143000	143000	True	
+raw_data/70m-seed9_l2ui5xws.tsv	pythia-70m_cat910n6	70m-seed9.tsv	l2ui5xws	70m	9	1	143000	143000	True	
+raw_data/160m-seed4_s5lcpsmk.tsv	pythia-160m_nuxqtbwh	ip-26-0-149-177-0	s5lcpsmk	160m	4	1	61185	61185	False	1-61185
+raw_data/160m-seed4_pxnucujw.tsv	pythia-160m_thztpfqh	ip-26-0-149-177-0	pxnucujw	160m	4	61001	61150	150	False	61001-61150
+raw_data/160m-seed4_bvgfairr.tsv	pythia-160m_wsm6fevt	ip-26-0-147-108-0	bvgfairr	160m	4	61001	143000	82000	False	61001-143000
+raw_data/410m-seed4_nktat4z3.tsv	pythia-410m_ipm3txgx	ip-26-0-155-102-0	nktat4z3	410m	4	1	7000	7000	False	1-7000
+raw_data/410m-seed4_cn24vtl8.tsv	pythia-410m_mct62mnu	ip-26-0-146-54-0	cn24vtl8	410m	4	7001	55841	48841	False	7001-55841
+raw_data/410m-seed4_8cqlckny.tsv	pythia-410m_qzom9vqa	ip-26-0-144-9-0	8cqlckny	410m	4	55001	104000	49000	False	55001-104000
+raw_data/410m-seed4_mjr8166t.tsv	pythia-410m_bzfd1s4r	ip-26-0-144-9-0	mjr8166t	410m	4	104001	121000	17000	False	104001-121000
+raw_data/410m-seed4_vj2l1j5m.tsv	pythia-410m_k24ucvjg	ip-26-0-149-177-0	vj2l1j5m	410m	4	121001	122000	1000	False	121001-122000
+raw_data/410m-seed4_zfe18b3d.tsv	pythia-410m_bpu0qb3s	ip-10-0-208-50-0	zfe18b3d	410m	4	122001	122049	49	False	122001-122049
+raw_data/410m-seed4_3gnddce8.tsv	pythia-410m_m5kk3yzi	ip-10-0-194-0-0	3gnddce8	410m	4	122001	143000	21000	False	122001-143000
+raw_data/160m-seed9_tgxpz5vf.tsv	pythia-160m_gt0pvdfi	ip-10-0-240-111-0	tgxpz5vf	160m	9	1	22623	22623	False	1-22623
+raw_data/160m-seed9_ltth4fo7.tsv	pythia-160m_sbbrjma2	ip-10-0-234-247-0	ltth4fo7	160m	9	22001	22008	8	False	22001-22008
+raw_data/160m-seed9_jx20g49d.tsv	pythia-160m_7mcfiiny	ip-10-0-209-150-0	jx20g49d	160m	9	22001	31647	9647	False	22001-31647
+raw_data/160m-seed9_7x6bxp03.tsv	pythia-160m_wre4xrua	ip-10-0-202-154-0	7x6bxp03	160m	9	31001	143000	112000	False	31001-143000
+raw_data/410m-seed9_ld5fn3cu.tsv	pythia-410m_ig3o9b3y	ip-10-0-213-18-0	ld5fn3cu	410m	9	1	2551	2551	False	1-2551
+raw_data/410m-seed9_vrqk1cm7.tsv	pythia-410m_dbpph7ip	ip-10-0-203-111-0	vrqk1cm7	410m	9	2001	6024	4024	False	2001-6024
+raw_data/410m-seed9_vfcvm1fv.tsv	pythia-410m_kwvwush6	ip-10-0-214-225-0	vfcvm1fv	410m	9	6001	29139	23139	False	6001-29139
+raw_data/410m-seed9_wotpq6i9.tsv	pythia-410m_fwn8xhfz	ip-10-0-242-122-0	wotpq6i9	410m	9	29001	39999	10999	False	29001-39999
+raw_data/410m-seed9_lpe52cjt.tsv	pythia-410m_cwy1esxy	ip-10-0-202-154-0	lpe52cjt	410m	9	40001	73047	33047	False	40001-73047
+raw_data/410m-seed9_sh27r6kv.tsv	pythia-410m_626qa1ay	ip-10-0-209-150-0	sh27r6kv	410m	9	73001	92813	19813	False	73001-92813
+raw_data/410m-seed9_yhyt1uap.tsv	pythia-410m_243g6pf6	ip-10-0-248-222-0	yhyt1uap	410m	9	92001	143000	51000	False	92001-143000
+raw_data/410m-seed1_19q117bl.tsv	pythia-410m_ro9x1raa	ip-26-0-145-217-0	19q117bl	410m	1	1	10000	10000	False	1-10000
+raw_data/410m-seed1_27b33l1z.tsv	pythia-410m_h1l7wvtu	ip-26-0-153-16-0	27b33l1z	410m	1	10001	29000	19000	False	10001-29000
+raw_data/410m-seed1_orszntfg.tsv	pythia-410m_mhaeuarh	ip-26-0-153-16-0	orszntfg	410m	1	29001	30000	1000	False	29001-30000
+raw_data/410m-seed1_blj1r3f6.tsv	pythia-410m_fov11z4i	ip-26-0-147-227-0	blj1r3f6	410m	1	30001	32000	2000	False	30001-32000
+raw_data/410m-seed1_kmcc8qij.tsv	pythia-410m_5drww1kq	ip-26-0-144-52-0	kmcc8qij	410m	1	32001	41000	9000	False	32001-41000
+raw_data/410m-seed1_uh6g3j75.tsv	pythia-410m_at4vr57z	ip-26-0-144-52-0	uh6g3j75	410m	1	41001	105000	64000	False	41001-105000
+raw_data/410m-seed1_musv09z2.tsv	pythia-410m_dfvtt9ae	ip-26-0-144-52-0	musv09z2	410m	1	105001	116000	11000	False	105001-116000
+raw_data/410m-seed1_31w18xkr.tsv	pythia-410m_h8j9qzcl	ip-26-0-148-159-0	31w18xkr	410m	1	116001	143000	27000	False	116001-143000
+raw_data/410m-seed2_ag3olz7e.tsv	pythia-410m_m4gqxy7p	ip-26-0-144-140-0	ag3olz7e	410m	2	1	3000	3000	False	1-3000
+raw_data/410m-seed2_xhk9jiyh.tsv	pythia-410m_muoy3bvl	ip-26-0-157-51-0	xhk9jiyh	410m	2	3001	4000	1000	False	3001-4000
+raw_data/410m-seed2_sh1dh1gw.tsv	pythia-410m_yrbmyi1m	ip-26-0-144-150-0	sh1dh1gw	410m	2	4001	29000	25000	False	4001-29000
+raw_data/410m-seed2_kyvvp4l5.tsv	pythia-410m_urmcdaui	ip-26-0-144-150-0	kyvvp4l5	410m	2	29001	50000	21000	False	29001-50000
+raw_data/410m-seed2_8xfhg0co.tsv	pythia-410m_4uahrxjx	ip-26-0-144-81-0	8xfhg0co	410m	2	50001	88000	38000	False	50001-88000
+raw_data/410m-seed2_9pr8y136.tsv	pythia-410m_lps17ton	ip-26-0-155-102-0	9pr8y136	410m	2	88001	143000	55000	False	88001-143000
+raw_data/410m-seed3_3d86u6la.tsv	pythia-410m_qi8uil1z	ip-26-0-146-54-0	3d86u6la	410m	3	1	7000	7000	False	1-7000
+raw_data/410m-seed3_zaczgm7q.tsv	pythia-410m_6t3bbgql	ip-26-0-148-159-0	zaczgm7q	410m	3	7001	15000	8000	False	7001-15000
+raw_data/410m-seed3_zbquxlqe.tsv	pythia-410m_4o6f2epv	ip-26-0-149-75-0	zbquxlqe	410m	3	15001	16000	1000	False	15001-16000
+raw_data/410m-seed3_ctqz85vg.tsv	pythia-410m_jhra64hp	ip-26-0-147-8-0	ctqz85vg	410m	3	16001	17000	1000	False	16001-17000
+raw_data/410m-seed3_70zffmsd.tsv	pythia-410m_oj38ir4y	ip-26-0-147-8-0	70zffmsd	410m	3	17001	34000	17000	False	17001-34000
+raw_data/410m-seed3_snwxqveu.tsv	pythia-410m_z1xur729	ip-26-0-149-246-0	snwxqveu	410m	3	34001	43000	9000	False	34001-43000
+raw_data/410m-seed3_zg6u0tka.tsv	pythia-410m_io3n2sjy	ip-26-0-149-246-0	zg6u0tka	410m	3	43001	60000	17000	False	43001-60000
+raw_data/410m-seed3_a8qrvr2t.tsv	pythia-410m_y1v3a7ph	ip-26-0-149-246-0	a8qrvr2t	410m	3	60001	73000	13000	False	60001-73000
+raw_data/410m-seed3_vu7z4k7s.tsv	pythia-410m_464nqlaq	ip-26-0-149-246-0	vu7z4k7s	410m	3	73001	75000	2000	False	73001-75000
+raw_data/410m-seed3_vjl8rypi.tsv	pythia-410m_xhekvdjj	ip-10-0-193-153-0	vjl8rypi	410m	3	75001	143000	68000	False	75001-143000
+raw_data/410m-seed5_4cpv52gc.tsv	pythia-410m_yi17yd9u	ip-10-0-222-192-0	4cpv52gc	410m	5	1	81715	81715	False	1-81715
+raw_data/410m-seed5_i8jjatq1.tsv	pythia-410m_fp827q50	ip-10-0-213-18-0	i8jjatq1	410m	5	81001	83463	2463	False	81001-83463
+raw_data/410m-seed5_ysfkd7cp.tsv	pythia-410m_olyi86h8	ip-10-0-213-18-0	ysfkd7cp	410m	5	83001	95416	12416	False	83001-95416
+raw_data/410m-seed5_575t9gox.tsv	pythia-410m_txyxsntp	ip-10-0-242-2-0	575t9gox	410m	5	95001	95427	427	False	95001-95427
+raw_data/410m-seed5_nydkf34i.tsv	pythia-410m_s5kn0ogv	ip-10-0-224-187-0	nydkf34i	410m	5	95001	124741	29741	False	95001-124741
+raw_data/410m-seed5_b8w88qc3.tsv	pythia-410m_4inggsh2	ip-10-0-203-50-0	b8w88qc3	410m	5	124001	127586	3586	False	124001-127586
+raw_data/410m-seed5_8d1l24i0.tsv	pythia-410m_fppvk4ox	ip-10-0-203-214-0	8d1l24i0	410m	5	127001	137727	10727	False	127001-137727
+raw_data/410m-seed5_tc9idv7l.tsv	pythia-410m_1yy3ibo9	ip-10-0-203-111-0	tc9idv7l	410m	5	137001	143000	6000	False	137001-143000
+raw_data/410m-seed6_3k4l9m1v.tsv	pythia-410m_w7pzqh65	ip-10-0-194-0-0	3k4l9m1v	410m	6	1	61003	61003	False	1-61003
+raw_data/410m-seed6_2dslw9fi.tsv	pythia-410m_rx08xt9c	ip-10-0-214-225-0	2dslw9fi	410m	6	61001	63474	2474	False	61001-63474
+raw_data/410m-seed6_yarlh2xi.tsv	pythia-410m_a1w24wox	ip-10-0-214-225-0	yarlh2xi	410m	6	63001	75835	12835	False	63001-75835
+raw_data/410m-seed6_tkac5o5c.tsv	pythia-410m_efe52snc	ip-10-0-209-77-0	tkac5o5c	410m	6	75001	104892	29892	False	75001-104892
+raw_data/410m-seed6_on4ltenu.tsv	pythia-410m_sq338hax	ip-10-0-193-57-0	on4ltenu	410m	6	104001	143000	39000	False	104001-143000
+raw_data/410m-seed7_y5vynjt0.tsv	pythia-410m_77h7lh43	ip-10-0-213-18-0	y5vynjt0	410m	7	1	399	399	False	1-399
+raw_data/410m-seed7_g69xbvy2.tsv	pythia-410m_nv5mgqdk	ip-10-0-221-148-0	g69xbvy2	410m	7	1	18000	18000	False	1-18000
+raw_data/410m-seed7_gmag46lz.tsv	pythia-410m_1ffzgnos	ip-10-0-228-32-0	gmag46lz	410m	7	257	381	125	False	257-381
+raw_data/410m-seed7_c18g72d5.tsv	pythia-410m_9nj2qkzo	ip-10-0-204-193-0	c18g72d5	410m	7	257	44907	44651	False	257-44907
+raw_data/410m-seed7_5emwru4k.tsv	pythia-410m_riis14yf	ip-10-0-200-113-0	5emwru4k	410m	7	44001	53341	9341	False	44001-53341
+raw_data/410m-seed7_g31me0z9.tsv	pythia-410m_729tui03	ip-10-0-208-50-0	g31me0z9	410m	7	53001	53038	38	False	53001-53038
+raw_data/410m-seed7_upbii6sg.tsv	pythia-410m_osb1h0sz	ip-10-0-216-85-0	upbii6sg	410m	7	53001	58108	5108	False	53001-58108
+raw_data/410m-seed7_t7s3iq72.tsv	pythia-410m_89eclonb	ip-10-0-237-85-0	t7s3iq72	410m	7	58001	90000	32000	False	58001-90000
+raw_data/410m-seed7_fkq04ewa.tsv	pythia-410m_3ouhhmcv	ip-10-0-203-50-0	fkq04ewa	410m	7	90001	143000	53000	False	90001-143000
+raw_data/410m-seed8_nxi1if4p.tsv	pythia-410m_s594sz6z	ip-10-0-209-77-0	nxi1if4p	410m	8	1	666	666	False	1-666
+raw_data/410m-seed8_9wj4fjhn.tsv	pythia-410m_ptkhtjwt	ip-10-0-194-0-0	9wj4fjhn	410m	8	513	1666	1154	False	513-1666
+raw_data/410m-seed8_xz4kp9er.tsv	pythia-410m_pzg73g03	ip-10-0-224-187-0	xz4kp9er	410m	8	1001	2252	1252	False	1001-2252
+raw_data/410m-seed8_pwxct54i.tsv	pythia-410m_ki54mu0y	ip-10-0-193-57-0	pwxct54i	410m	8	2001	23026	21026	False	2001-23026
+raw_data/410m-seed8_uo9m88ad.tsv	pythia-410m_ppqcf1ek	ip-10-0-203-111-0	uo9m88ad	410m	8	23001	29392	6392	False	23001-29392
+raw_data/410m-seed8_t7rz7cxy.tsv	pythia-410m_3mvy44xs	ip-10-0-214-225-0	t7rz7cxy	410m	8	29001	29376	376	False	29001-29376
+raw_data/410m-seed8_zye74do4.tsv	pythia-410m_gyi4vcy4	ip-10-0-243-103-0	zye74do4	410m	8	29001	39344	10344	False	29001-39344
+raw_data/410m-seed8_tmcz2ibi.tsv	pythia-410m_z53tlacc	ip-10-0-247-109-0	tmcz2ibi	410m	8	39001	74999	35999	False	39001-74999
+raw_data/410m-seed8_5tksbvsg.tsv	pythia-410m_0l31bi26	ip-10-0-243-136-0	5tksbvsg	410m	8	75001	75078	78	False	75001-75078
+raw_data/410m-seed8_qzbgnom2.tsv	pythia-410m_aqzw48o3	ip-10-0-193-57-0	qzbgnom2	410m	8	75001	90380	15380	False	75001-90380
+raw_data/410m-seed8_fv6vcsru.tsv	pythia-410m_q92u8nuk	ip-10-0-217-169-0	fv6vcsru	410m	8	90001	143000	53000	False	90001-143000
