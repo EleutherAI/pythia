@@ -80,7 +80,6 @@ def download_data(api: wandb.Api, entity: str, project: str, run_id: str) -> pd.
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    # parser.add_argument("--pythia_runs_path", type=str, default="./pythia_runs.tsv")
     parser.add_argument("--entity", type=str, default="eleutherai")
     parser.add_argument("--project", type=str, default="pythia-extra-seeds")
     parser.add_argument("--out_path", type=str, default="./raw_data")
