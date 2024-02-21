@@ -4,9 +4,6 @@ from tqdm.auto import tqdm
 from pathlib import Path
 from argparse import ArgumentParser
 
-ENTITY = "eleutherai"
-PROJECTS = ["pythia", "pythia-extra-seeds"]
-
 
 def get_runs_info(api: wandb.Api, entity: str, project: str) -> pd.DataFrame:
     runs = api.runs(f"{entity}/{project}")
