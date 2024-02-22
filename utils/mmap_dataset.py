@@ -43,6 +43,11 @@ def index_file_path(prefix_path):
 def data_file_path(prefix_path):
     return prefix_path + ".bin"
 
+def _warmup_mmap_file(path):
+    with open(path, "rb") as stream:
+        while stream.read(100 * 1024 * 1024):
+            pass
+
 class MMapIndexedDataset(torch.utils.data.Dataset):
     class Index(object):
         _HDR_MAGIC = b"MMIDIDX\x00\x00"
