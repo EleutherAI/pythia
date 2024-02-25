@@ -67,7 +67,7 @@ def generate_dataset(batch_size, start_seq_idx, end_seq_idx, mp_queue,
         else:
             data = mmap_ds[i:i+batch_size]
         context_tokens.extend(data[:, :32].tolist())
-        true_continuation.extend(data[:,32:64].tolist())
+        true_continuation.extend(data[:,32:288].tolist())
         i += len(context_tokens)
 
         if len(context_tokens) == batch_size:
@@ -108,15 +108,20 @@ def score(model, context_tokens, true_continuation):
         context_tokens = torch.tensor(context_tokens).to('cuda')
         true_continuation = torch.tensor(true_continuation).to('cuda')
 
-        generations = model.generate(context_tokens, temperature = 0.0, top_k = 0, top_p = 0, max_length = 64, min_length = 64)
+        generations = model.generate(context_tokens, temperature = 0.0, top_k = 0, top_p = 0, max_length = 288, min_length = 288)
 
 
-        accuracies = (true_continuation == generations[:,32:64]).float().mean(axis=-1)
-        return accuracies.cpu()
+        accuracies = []
+        for i in range(9):
+            s1 = slice(32, 32 + 2 ** i)
+            s2 = slice(0, 2 ** i)
+            accuracies.append((true_continuation[:, s2]  == generations[:,s1]).all(axis=-1))
+        all = torch.stack(accuracies, axis=1)
+        return all.cpu()
 
 def main():
     # Extracting environment variables and miscellaneous initializations
-    BATCH_SIZE = 1024
+    BATCH_SIZE = 256
     LOG_INTERVAL = 100 # Log every nth batch evals
 
     # Distributed variables
@@ -157,7 +162,17 @@ def main():
     # Calculate start and end sequence indicies
     total_num_sequences = CHECKPOINT*1024
     num_sequences_per_proc = total_num_sequences//NUM_PROCS
-    start_idx = num_sequences_per_proc*RANK
+    filename = f'results/memorization-dyn/evals-running/memorization_{MODEL}_{CHECKPOINT}/rank-{RANK}.csv'
+
+    try:  # catch OSError in case of a one line file 
+        with open(filename, 'rb') as f:
+            f.seek(-2, os.SEEK_END)
+            while f.read(1) != b'\n':
+                f.seek(-2, os.SEEK_CUR)
+            last_line = f.readline().decode()
+            start_idx = int(last_line.split(',')[0])
+    except OSError:
+        start_idx = num_sequences_per_proc*RANK
     end_idx = num_sequences_per_proc*(RANK+1) - 1
     if RANK == (NUM_PROCS -1):
         end_idx = total_num_sequences - 1
@@ -181,33 +196,32 @@ def main():
     # Run generations
     memorization_evals = []
     iters = 0
-    while(True):
-        try:
-            t = time.time()
-            idx, context, true_continuation = mp_queue.get()
-            if idx is None:
-                mp_queue.close()
-                break
-
-            idx = idx
-            logging.info(f"Loading data took {time.time() - t:.3}s")
-            t = time.time()
-            accuracies = score(model, context, true_continuation)
-
-            for acc in accuracies:
-                memorization_evals.append(f'{idx},{acc}')
-                idx += 1
-            logging.info(f"Generation uptil {idx} took {time.time() - t:.3}s")
-            dist.barrier()
-            iters += 1
-        except StopIteration:
-            break
-    
-    ds_process.join()
-    filename = f'results/memorization-evals/evals-running/memorization_{MODEL}_{CHECKPOINT}/rank-{RANK}.csv'
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     with open(filename, 'w') as f:
-        f.write('\n'.join(memorization_evals))
+        while(True):
+            try:
+                t = time.time()
+                idx, context, true_continuation = mp_queue.get()
+                if idx is None:
+                    mp_queue.close()
+                    break
+
+                idx = idx
+                logging.info(f"Loading data took {time.time() - t:.3}s")
+                t = time.time()
+                accuracies = score(model, context, true_continuation)
+
+                for acc in accuracies:
+                    vals = ','.join([str(j) for j in acc.int().tolist()])
+                    f.write(f'{idx},{vals}\n')
+                    idx += 1
+                logging.info(f"Generation uptil {idx} took {time.time() - t:.3}s")
+                dist.barrier()
+                iters += 1
+            except StopIteration:
+                break
+    
+    ds_process.join()
     
 
     

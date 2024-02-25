@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH --gres=gpu:a100:8
+#SBATCH --gres=gpu:a100:4
 #SBATCH -N 1
-#SBATCH -n 8
-##SBATCH -p fiete
+#SBATCH -n 4
+#SBATCH -p fiete
 ##SBATCH -p multi-gpu
 #SBATCH -t 48:00:00
 #SBATCH --hint=nomultithread        
@@ -35,8 +35,8 @@ source activate llm
 # done
 # done
 
-export MODEL=410m-v0
-export CHECKPOINT=123000
+export MODEL=70m-v0
+export CHECKPOINT="$@"
 TRANSFORMERS_CACHE=/om/user/sunnyd/transformers_cache srun -n $SLURM_NPROCS python $TRAIN_PATH/eval_memorization.py
 
 wait
