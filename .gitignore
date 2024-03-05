@@ -138,3 +138,6 @@ utils/token_indicies/*
 
 # Any output files
 *.out
+
+# any megatron generated files
+*.mds

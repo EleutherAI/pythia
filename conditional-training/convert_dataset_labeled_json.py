@@ -79,8 +79,10 @@ class ConcatLabeledTokensDataset(ConcatTokensDataset):
     def __init__(self, *args, **kwargs):
 
         assert "score_to_label" in kwargs and callable(kwargs["score_to_label"])
+        assert "label_prob" in kwargs
 
         self.score_to_label = kwargs.pop("score_to_label")
+        self.label_prob = kwargs.pop("label_prob")
 
         super().__init__(*args, **kwargs)
 
@@ -90,22 +92,19 @@ class ConcatLabeledTokensDataset(ConcatTokensDataset):
         for sample in self.hf_dataset:
             assert len(sample['sentences']) == len(sample['scores'])
             for sent, score in zip(sample['sentences'], sample['scores']):
-                print(sent, score)
                 encoded = self.tokenizer(sent,
                                         truncation=False,
                                         padding=False)
-                label_token = self.score_to_label(score, tokenizer)
+                label_token = self.score_to_label(score)
 
-                if np.random.uniform() < label_prob:
+                if np.random.uniform() < self.label_prob:
                     iids = [label_token] + encoded['input_ids']
                 else:
                     iids = encoded['input_ids']
-                print(label_token)
                 buffer = buffer + self.bos_tokens + iids + self.eos_tokens
             while len(buffer) >= self.max_length:
                 concat_sample = buffer[:self.max_length]
                 buffer = buffer[self.max_length:] if self.should_wrap else []
-                print(concat_sample)
                 yield {
                     # convert to bytes to store in MDS binary format
                     'tokens': np.asarray(concat_sample).tobytes()
@@ -224,16 +223,18 @@ def main(args: Namespace) -> None:
         columns = {'text': 'str'}
 
     # add special tokens to tokenizer, and save it
-    for x in range(0, args.num_sentinels):
-        tokenizer.add_special_tokens({"additional_special_tokens": [f"<|val{x}|>"]})
+    
+    tokenizer.add_special_tokens(
+        {"additional_special_tokens": [f"<|val{x}|>" for x in range(0, args.num_sentinels)]}
+    )
         
-        print(tokenizer.all_special_ids, tokenizer.all_special_tokens)
+    print(tokenizer.all_special_ids, tokenizer.all_special_tokens)
     print(tokenizer.decode([50277, 50278]))
 
     tokenizer.save_pretrained(f"./{args.tokenizer.replace('/', '_')}-{args.num_sentinels}-special-tokens")
 
     # define score_to_label fn
-    def score_to_label(score: float, tokenizer: PreTrainedTokenizerBase) -> int:
+    def score_to_label(score: float) -> int:
         def score_to_bucket(score: float) -> int:
             # simple bucketing -- bucket scores greater than cutoff into bucket1, lower into bucket0
             if score < 5.6e-4:
