@@ -55,6 +55,12 @@ class JsonlLoader(ABC):
         """Utility function that counts number of documents in a jsonl file
         
         Refer to https://stackoverflow.com/a/850962 for more info on why it's efficient
+
+        Args:
+            filename (str): Path to a file
+        
+        Returns:
+            (int) Number of Lines (documents) in the given jsonl file
         """
         f = open(filename)
         lines = 0
@@ -75,12 +81,13 @@ class JsonlLoader(ABC):
 class LocalJsonlLoader(JsonlLoader):
     """Loads a jsonl file from local directory"""
     
-    def load(self, load_path, save_dir):
-        os.makedirs(save_dir, exist_ok = True)
-        save_path = os.path.join(save_dir, f"{self.curr_rank}.jsonl")
+    def load(self, load_path, save_dir=None):
+        self.loader = jsonlines.open(load_path, mode='r')
 
-        self.loader = jsonlines.open(load_path)
-        self.writer = open(save_path, mode = "wb") 
+        if save_dir is not None and save_dir != '':
+            os.makedirs(save_dir, exist_ok = True)
+            save_path = os.path.join(save_dir, f"{self.curr_rank}.jsonl")
+            self.writer = open(save_path, mode = "wb") 
 
         # Note that this is an approximate length. 
         self.reader_length = self.count_lines(load_path) // self.world_size
@@ -111,7 +118,8 @@ class LocalJsonlLoader(JsonlLoader):
     
     def close(self):
         self.loader.close()
-        self.writer.close()
+        if hasattr(self, 'writer'):
+            self.writer.close()
     
     def __len__(self):
         return self.reader_length
