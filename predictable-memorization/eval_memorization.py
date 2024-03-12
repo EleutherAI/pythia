@@ -19,8 +19,9 @@ import transformers.utils as transformer_utils
 import multiprocessing as mp
 import time
 from tqdm import trange
+import pandas as pd
 
-def generate_dataset(batch_size, start_seq_idx, end_seq_idx, mp_queue, 
+def generate_dataset(batch_size, start_seq_idx, end_seq_idx, 
     using_s3 = False, 
     prefetch_max = 128
 ):
@@ -72,25 +73,19 @@ def generate_dataset(batch_size, start_seq_idx, end_seq_idx, mp_queue,
 
         if len(context_tokens) == batch_size:
             # (start index of batch, context tokens, true continuation)
-            mp_queue.put((
+            yield (
                 i - len(context_tokens), 
-                context_tokens, true_continuation))
+                context_tokens, true_continuation)
             context_tokens = []
             true_continuation = []
-            while mp_queue.qsize() > prefetch_max:
-                time.sleep(0.05)
 
     if len(context_tokens) > 0:
-        mp_queue.put((i - len(context_tokens) + 1, context_tokens, true_continuation))
+        yield (i - len(context_tokens) + 1, context_tokens, true_continuation)
         context_tokens = []
         true_continuation = []
     
-    mp_queue.put((None, None, None))
+    yield (None, None, None)
     
-    
-
-
-
 def score(model, context_tokens, true_continuation):
     """Calculate memorization score from context tokens and true continuation
 
@@ -110,24 +105,33 @@ def score(model, context_tokens, true_continuation):
 
         generations = model.generate(context_tokens, temperature = 0.0, top_k = 0, top_p = 0, max_length = 288, min_length = 288)
 
+        accuracies = np.argmin((true_continuation[:, :256] - generations[:, 32:288] == 0).detach().cpu().numpy(), axis=1)
+        overlap = np.sum((true_continuation[:, :256] - generations[:, 32:288] == 0).detach().cpu().numpy(), axis=1)
+        return accuracies, overlap
 
-        accuracies = []
-        for i in range(9):
-            s1 = slice(32, 32 + 2 ** i)
-            s2 = slice(0, 2 ** i)
-            accuracies.append((true_continuation[:, s2]  == generations[:,s1]).all(axis=-1))
-        all = torch.stack(accuracies, axis=1)
-        return all.cpu()
+def find_missing_blocks(numbers):
+    numbers = sorted(numbers)
+    missing_blocks = []
+    start = numbers[0]
+    for i in range(numbers[0], numbers[-1]):
+        if i not in numbers and start is not None:
+            missing_blocks.append((start, i - 1))
+            start = None
+        elif i in numbers and start is None:
+            start = i
+        
+    missing_blocks.append((start, i - 1))
+    return missing_blocks
 
 def main():
     # Extracting environment variables and miscellaneous initializations
-    BATCH_SIZE = 256
+    BATCH_SIZE = 128
     LOG_INTERVAL = 100 # Log every nth batch evals
 
     # Distributed variables
-    RANK = int(os.environ['SLURM_PROCID'])
-    LOCAL_RANK = int(os.environ['SLURM_LOCALID'])
-    NUM_PROCS = int(os.environ['SLURM_NPROCS'])
+    RANK = int(os.environ['JOB_ID'])
+    # NUM_PROCS = int(os.environ['SLURM_NPROCS'])
+    NUM_PROCS = int(os.environ['NUM_BLOCKS'])
 
     #RANK = int(os.environ['RANK'])
     #LOCAL_RANK = RANK
@@ -138,49 +142,58 @@ def main():
     CHECKPOINT = int(os.environ['CHECKPOINT'])
 
     # Distributed initializations
-    os.environ['MASTER_ADDR'] = os.environ['SLURM_LAUNCH_NODE_IPADDR']
-    os.environ['MASTER_PORT'] = '12128'
+    # os.environ['MASTER_ADDR'] = os.environ['SLURM_LAUNCH_NODE_IPADDR']
+    # os.environ['MASTER_PORT'] = '12128'
     logging.basicConfig(format = f'rank-{RANK}:' + '%(levelname)s:%(message)s', level = logging.INFO)
     logging.info(f"Initializing torch distributed with gpus {torch.cuda.device_count()}")
 
     # Initialize torch distributed
-    torch.cuda.set_device(RANK)
-    # torch.cuda.set_device(0)
-    dist.init_process_group(
-        "nccl",
-        world_size = NUM_PROCS,
-        rank = RANK
-    )
-    store = dist.TCPStore(os.environ['MASTER_ADDR'], port = 12125, 
-        world_size = NUM_PROCS, is_master = RANK == 0, timeout = datetime.timedelta(hours=3))
+    # torch.cuda.set_device(RANK)
+    # torch.cuda.set_device(RANK%2)
+    torch.cuda.set_device(0)
+    # dist.init_process_group(
+    #     "nccl",
+    #     world_size = NUM_PROCS,
+    #     rank = RANK
+    # )
+    # store = dist.TCPStore(os.environ['MASTER_ADDR'], port = 12125, 
+    #     world_size = NUM_PROCS, is_master = RANK == 0, timeout = datetime.timedelta(hours=3))
 
-    dist.barrier()
+    # dist.barrier()
+    print("PROCS", NUM_PROCS, "RANK", RANK)
 
     # Model initialization
     transformer_utils.logging.set_verbosity_error()
 
     # Calculate start and end sequence indicies
-    total_num_sequences = CHECKPOINT*1024
+    # total_num_sequences = CHECKPOINT*1024
+    total_num_sequences = 1000*1024
     num_sequences_per_proc = total_num_sequences//NUM_PROCS
-    filename = f'results/memorization-dyn/evals-running/memorization_{MODEL}_{CHECKPOINT}/rank-{RANK}.csv'
+    base_path = f'results/memorization-dyn-count/evals-running/memorization_{MODEL}_{CHECKPOINT}'
+    filename = f'{base_path}/rank-{RANK}.csv'
+    # Create directory if it doesn't exist
 
-    try:  # catch OSError in case of a one line file 
-        with open(filename, 'rb') as f:
-            f.seek(-2, os.SEEK_END)
-            while f.read(1) != b'\n':
-                f.seek(-2, os.SEEK_CUR)
-            last_line = f.readline().decode()
-            start_idx = int(last_line.split(',')[0])
-    except OSError:
-        start_idx = num_sequences_per_proc*RANK
-    end_idx = num_sequences_per_proc*(RANK+1) - 1
-    if RANK == (NUM_PROCS -1):
-        end_idx = total_num_sequences - 1
+    # try:  # catch OSError in case of a one line file 
+    #     with open(filename, 'rb') as f:
+    #         f.seek(-2, os.SEEK_END)
+    #         while f.read(1) != b'\n':
+    #             f.seek(-2, os.SEEK_CUR)
+    #         last_line = f.readline().decode()
+    #         start_idx = int(last_line.split(',')[0])
+    # except OSError:
+    #     start_idx = num_sequences_per_proc*RANK
 
-    # Dataset Initialization
-    mp_queue = mp.Queue()
-    ds_process = mp.Process(target = generate_dataset, args=(BATCH_SIZE, start_idx, end_idx, mp_queue))
-    ds_process.start()
+    indices = set()
+    if os.path.exists(filename) and os.path.getsize(filename) > 0:
+        df = pd.read_csv(filename, index_col=0)
+        indices = indices.union(set(df.index.to_list()))
+
+        missing_idx = set(range(num_sequences_per_proc*RANK,  min(num_sequences_per_proc *(RANK+1)-1, total_num_sequences-1))).difference(indices)
+        print(len(missing_idx))
+        blocks = find_missing_blocks(missing_idx)
+    else:
+        blocks = [(num_sequences_per_proc*RANK, min(num_sequences_per_proc *(RANK+1)-1, total_num_sequences-1))]
+    print("Processing: ", blocks)
 
     # Model initialization
     model = GPTNeoXForCausalLM.from_pretrained(
@@ -190,38 +203,38 @@ def main():
         cache_dir=f"/om/user/sunnyd/transformers_cache/"
     ).half().eval().cuda()
     
-    dist.barrier()
+    # dist.barrier()
     logging.info("Loaded Model")
 
     # Run generations
-    memorization_evals = []
     iters = 0
     os.makedirs(os.path.dirname(filename), exist_ok=True)
-    with open(filename, 'w') as f:
-        while(True):
-            try:
-                t = time.time()
-                idx, context, true_continuation = mp_queue.get()
-                if idx is None:
-                    mp_queue.close()
+    for start_idx, end_idx in blocks:
+        ds = generate_dataset(BATCH_SIZE, start_idx, end_idx)
+        with open(filename, 'a') as f:
+            while(True):
+                try:
+                    t = time.time()
+                    idx, context, true_continuation = next(ds)
+                    if idx is None:
+                        break
+
+                    idx = idx
+                    logging.info(f"Loading data took {time.time() - t:.3}s")
+                    t = time.time()
+                    accuracies, overlap = score(model, context, true_continuation)
+
+                    for acc, over in zip(accuracies, overlap):
+                        # vals = ','.join([str(j) for j in acc.int().tolist()])
+                        f.write(f'{idx},{acc},{over}\n')
+                        idx += 1
+                    f.flush()
+                    logging.info(f"Generation uptil {idx} took {time.time() - t:.3}s")
+                    # dist.barrier()
+                    iters += 1
+                except StopIteration:
                     break
-
-                idx = idx
-                logging.info(f"Loading data took {time.time() - t:.3}s")
-                t = time.time()
-                accuracies = score(model, context, true_continuation)
-
-                for acc in accuracies:
-                    vals = ','.join([str(j) for j in acc.int().tolist()])
-                    f.write(f'{idx},{vals}\n')
-                    idx += 1
-                logging.info(f"Generation uptil {idx} took {time.time() - t:.3}s")
-                dist.barrier()
-                iters += 1
-            except StopIteration:
-                break
     
-    ds_process.join()
     
 
     
@@ -232,18 +245,8 @@ def main():
     #     Bucket = os.environ['Bucket'],
     #     Key = f'memorization-evals/evals-running/memorization_{MODEL}_{CHECKPOINT}/rank-{RANK}.csv'
     # )
-    dist.barrier()
+    # dist.barrier()
 
     return
 if __name__ == '__main__':
-    mp.set_start_method('spawn')
-    try:
-        main()
-    except RuntimeError as err:
-        import requests
-        import datetime
-        import socket
-        ts = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')+'UTC'
-        resp = requests.get('http://169.254.169.254/latest/meta-data/instance-id')
-        print(f'ERROR for {socket.gethostname()} at {ts} on {resp.text} device: {type(err).__name__}: {err}', flush=True)
-        raise err
+    main()

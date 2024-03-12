@@ -1,15 +1,17 @@
 #!/bin/bash
-#SBATCH --gres=gpu:a100:4
-#SBATCH -N 1
 #SBATCH -n 4
-#SBATCH -p fiete
-##SBATCH -p multi-gpu
+#SBATCH -N 2
 #SBATCH -t 48:00:00
 #SBATCH --hint=nomultithread        
 #SBATCH --cpus-per-task=6
 #SBATCH --output=logs/%j.out  # Set this dir where you want slurm outs to go
 #SBATCH --error=logs/%j.out # Set this dir where you want slurm outs to go
 #SBATCH --comment=neox
+#SBATCH --gres=gpu:a100:2
+##SBATCH --gpus-per-node=1
+##SBATCH -N 1
+##SBATCH -p fiete
+##SBATCH -p multi-gpu
 ##SBATCH --exclusive
 
 module load openmpi
