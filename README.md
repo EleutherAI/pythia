@@ -201,7 +201,7 @@ Next, we must download the appropriate dataset. We provide preshuffled versions 
 - To download the deduped version, use
   ```py
   from huggingface_hub import hf_hub_download
-  hf_hub_download(repo_id="EleutherAI/pile-standard-pythia-preshuffled", repo_type="dataset", cache_dir="path/to/local/folder")
+  hf_hub_download(repo_id="EleutherAI/pile-deduped-pythia-preshuffled", repo_type="dataset", cache_dir="path/to/local/folder")
   ```
 
 You can now merge the files by using the script `utils/unshard_mmap.py` : 
