@@ -7,6 +7,7 @@
 #SBATCH --output=logs/%j.out  # Set this dir where you want slurm outs to go
 #SBATCH --error=logs/%j.out # Set this dir where you want slurm outs to go
 #SBATCH --gres=gpu:a100:1
+##SBATCH --gres=gpu:GEFORCEGTX1080TI:1
 #SBATCH -p normal
 
 TRAIN_PATH=/om/user/sunnyd/workspace/pythia/predictable-memorization
