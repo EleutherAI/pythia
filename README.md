@@ -266,11 +266,11 @@ Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https:/
 
 # Research Building on Pythia
 
-Our primary goal with the Pythia project is to enable research on interpretability and learning dynamics at EleutherAI and in the community writ large. Here we document select papers using our models, focusing on work that is uniquely empowered by the Pythia suite. For a complete list of papers citing Pythia, see [here](https://www.semanticscholar.org/paper/Pythia%3A-A-Suite-for-Analyzing-Large-Language-Models-Biderman-Schoelkopf/be55e8ec4213868db08f2c3168ae666001bea4b8#citing-papers).
+Our primary goal with the Pythia project is to enable research on interpretability and learning dynamics at EleutherAI and in the community writ large. Here we document select papers using our models, focusing on work that is uniquely empowered by the Pythia suite and would be less feasible or infeasible with models released by other organizations. For a larger list of papers citing Pythia, see [here](https://www.semanticscholar.org/paper/Pythia%3A-A-Suite-for-Analyzing-Large-Language-Models-Biderman-Schoelkopf/be55e8ec4213868db08f2c3168ae666001bea4b8#citing-papers).
 
 ## Language Model Internals
 
-- Belrose, et al. "[Eliciting latent predictions from transformers with the tuned lens](https://arxiv.org/abs/2303.08112)." _arXiv preprint arXiv:2303.08112_ (2023).
+- Belrose, et al. "[Eliciting latent predictions from transformers with the tuned lens](https://arxiv.org/abs/2303.08112)." _arXiv preprint arXiv:2303.08112_ (2023). **EleutherAI Paper**
 - Brown, et al. "[Understanding the Inner Workings of Language Models Through Representation Dissimilarity](https://arxiv.org/abs/2310.14993)." _arXiv preprint arXiv:2310.1499_ (2023).
 - Feng and Steinhardt. "[How do Language Models Bind Entities in Context?](https://arxiv.org/abs/2310.17191)." _arXiv preprint arXiv:2310.17191_ (2023).
 - Garde, Kran, and Barez. "[DeepDecipher: Accessing and Investigating Neuron Activation in Large Language Models](https://arxiv.org/abs/2310.01870)." _arXiv preprint arXiv:2310.01870_ (2023).
@@ -284,15 +284,19 @@ Our primary goal with the Pythia project is to enable research on interpretabili
 - Roger. "[Large Language Models Sometimes Generate Purely Negatively-Reinforced Text](https://arxiv.org/abs/2306.07567)." _arXiv preprint arXiv:2306.07567_ (2023).
 - Sanyal, et al. "[Understanding the Effectiveness of Early Weight Averaging for Training Large Language Models](https://arxiv.org/abs/2306.03241)." _arXiv preprint arXiv:2306.03241_ (2023).
 - Tian, et al. "[JoMA: Demystifying Multilayer Transformers via JOint Dynamics of MLP and Attention](https://arxiv.org/abs/2310.00535)." _arXiv preprint arXiv:2310.0053_ (2023).
+- Belrose, et al. "[Neural Networks Learn Statistics of Increasing Complexity](https://arxiv.org/abs/2402.04362)." arXiv preprint arXiv:2402.04362 (2024). **EleutherAI Paper**
+- Oh et al. "[Frequency Explains the Inverse Correlation of Large Language Models’ Size, Training Data Amount, and Surprisal’s Fit to Reading Times](https://arxiv.org/abs/2402.02255)." _arXiv preprint arXiv:2402.02255_ (2024).
+- Liu et al. "[On Training Data Influence of GPT Models](https://arxiv.org/abs/2404.07840)." _arXiv preprint arXiv:2404.07840_ (2024).
+- Godey et al. "[Why do small language models underperform? Studying Language Model Saturation via the Softmax Bottleneck](https://arxiv.org/abs/2404.07647)." _arXiv preprint arXiv:2404.07647_ (2024).
 
-## Ethics and Transparency Research
+## Ethics, Security, and Transparency Research
 
-- Biderman, et al. "[Emergent and predictable memorization in large language models.](https://arxiv.org/abs/2304.11158)" _NeurIPS_ (2023).
+- Biderman, et al. "[Emergent and predictable memorization in large language models.](https://arxiv.org/abs/2304.11158)" _NeurIPS_ (2023). **EleutherAI Paper**
 - Choi, Shavit, and Duvenaud. "[Tools for Verifying Neural Models' Training Data](https://arxiv.org/abs/2307.00682)." _arXiv preprint arXiv:2307.00682_ (2023).
 - Ippolito, et al. "[Reverse-Engineering Decoding Strategies Given Blackbox Access to a Language Generation System.](https://aclanthology.org/2023.inlg-main.28/)" _Proceedings of the 16th International Natural Language Generation Conference_. 2023.
-- Li et al. "[MoPe: Model Perturbation-based Privacy Attacks on Language Models](https://arxiv.org/abs/2310.14369)." _Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing_ (2023).
-- Min et al. "[SILO Language Models: Isolating Legal Risk In a Nonparametric Datastore](https://arxiv.org/abs/2308.04430)." _arXiv preprint arXiv:2308.0443_ (2023).
-
+- Li, et al. "[MoPe: Model Perturbation-based Privacy Attacks on Language Models](https://arxiv.org/abs/2310.14369)." _Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing_ (2023).
+- Min, et al. "[SILO Language Models: Isolating Legal Risk In a Nonparametric Datastore](https://arxiv.org/abs/2308.04430)." _arXiv preprint arXiv:2308.0443_ (2023).
+- Wen, et al. "Privacy Backdoors: Enhancing Membership Inference through Poisoning Pre-trained Models." _arXiv preprint arXiv:2404.01231_ (2024).
 
 ## Other Notable Research
 
