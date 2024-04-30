@@ -169,7 +169,8 @@ def main():
     # total_num_sequences = CHECKPOINT*1024
     total_num_sequences = 1000*1024
     num_sequences_per_proc = total_num_sequences//NUM_PROCS
-    base_path = f'results/memorization-dyn-count/evals-running/memorization_{MODEL}_{CHECKPOINT}'
+    OFFSET = 10000 * 1024
+    base_path = f'results/memorization-dyn-count/evals-running/memorization_{MODEL}_{CHECKPOINT}_{OFFSET}'
     filename = f'{base_path}/rank-{RANK}.csv'
     # Create directory if it doesn't exist
 
@@ -188,11 +189,11 @@ def main():
         df = pd.read_csv(filename, index_col=0)
         indices = indices.union(set(df.index.to_list()))
 
-        missing_idx = set(range(num_sequences_per_proc*RANK,  min(num_sequences_per_proc *(RANK+1)-1, total_num_sequences-1))).difference(indices)
+        missing_idx = set(range(OFFSET + num_sequences_per_proc*RANK,  min(OFFSET + num_sequences_per_proc *(RANK+1)-1, OFFSET + total_num_sequences-1))).difference(indices)
         print(len(missing_idx))
         blocks = find_missing_blocks(missing_idx)
     else:
-        blocks = [(num_sequences_per_proc*RANK, min(num_sequences_per_proc *(RANK+1)-1, total_num_sequences-1))]
+        blocks = [(OFFSET + num_sequences_per_proc*RANK, min(OFFSET + num_sequences_per_proc *(RANK+1)-1, OFFSET + total_num_sequences-1))]
     print("Processing: ", blocks)
 
     # Model initialization

@@ -75,7 +75,7 @@ def main():
     cluster = SLURMCluster(cores=8,
                         processes=4,
                         memory="32GB",
-                        walltime="48:00:00",
+                        walltime="12:00:00",
                         # project="fiete",
                         queue="normal",
                         job_extra_directives=["--output=logs/%j.out", "--error=logs/%j.out"]
@@ -90,12 +90,12 @@ def main():
     job_size = 50000
     #for j in range(total_size // job_size):
     for i in tqdm(range(total_size // job_size)): 
-        res_path = f"/om/tmp/memorization/matches-count-a2a-opt/{i}"
+        res_path = f"/om/tmp/memorization/matches-count-a2a-opt-10k/{i}"
         if os.path.exists(res_path):
             print("skipping "+ res_path)
             continue
-        x1 = mmap_dask_array(20000, 0, 1000 * 1024)
-        x2 = mmap_dask_array(1000, i * job_size, (i+1) * job_size)
+        x1 = mmap_dask_array(20000, 10000 * 1024, 11000 * 1024)
+        x2 = mmap_dask_array(1000, 10000 * 1024 + i * job_size, 10000 * 1024 + (i+1) * job_size)
         da.to_npy_stack(
             res_path,
     	    da.blockwise(match, 'ijab', x1[0::20, 32:288],
