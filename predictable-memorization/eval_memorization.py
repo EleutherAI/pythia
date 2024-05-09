@@ -20,6 +20,7 @@ import multiprocessing as mp
 import time
 from tqdm import trange
 import pandas as pd
+from numba import guvectorize
 
 def generate_dataset(batch_size, start_seq_idx, end_seq_idx, 
     using_s3 = False, 
@@ -107,7 +108,28 @@ def score(model, context_tokens, true_continuation):
 
         accuracies = np.argmin((true_continuation[:, :256] - generations[:, 32:288] == 0).detach().cpu().numpy(), axis=1)
         overlap = np.sum((true_continuation[:, :256] - generations[:, 32:288] == 0).detach().cpu().numpy(), axis=1)
-        return accuracies, overlap
+        dist = levenshtein_distance(true_continuation[:, :256].detach().cpu().numpy(), generations[:, 32:288].detach().cpu().numpy())
+        return accuracies, overlap, dist 
+
+@guvectorize(["void(int64[:,:], int64[:,:], int64[:])"],
+             "(n,i),(n,j)->(n)")
+def levenshtein_distance(a, b, result):
+    d = np.zeros((a.shape[0], a.shape[1]+1, 2))
+    for i in range(0, a.shape[1]+1):
+        d[:, i, 0] = i
+    for j in range(1, b.shape[1]+1):
+        d[:, 0, j % 2] = j
+        for i in range(1, a.shape[1]+1):
+            substitution_cost = (a[:, i-1] != b[:, j-1])
+            for k in range(a.shape[0]):
+                d[k, i, j % 2] = min(
+                        (d[k, i-1, j % 2] + 1,
+                         d[k, i, (j-1) % 2] + 1,
+                         d[k, i-1, (j-1) % 2] + substitution_cost[k]
+                        )
+                )
+    result[:] = d[:, -1, (b.shape[-1]) % 2]
+
 
 def find_missing_blocks(numbers):
     numbers = sorted(numbers)
@@ -119,7 +141,6 @@ def find_missing_blocks(numbers):
             start = None
         elif i in numbers and start is None:
             start = i
-        
     missing_blocks.append((start, i - 1))
     return missing_blocks
 
@@ -140,6 +161,10 @@ def main():
     # Eval configuration variables
     MODEL = os.environ['MODEL']
     CHECKPOINT = int(os.environ['CHECKPOINT'])
+    if 'SUFFIX' in os.environ:
+        SUFFIX = os.environ['SUFFIX']
+    else:
+        SUFFIX = ''
 
     # Distributed initializations
     # os.environ['MASTER_ADDR'] = os.environ['SLURM_LAUNCH_NODE_IPADDR']
@@ -170,7 +195,8 @@ def main():
     total_num_sequences = 1000*1024
     num_sequences_per_proc = total_num_sequences//NUM_PROCS
     OFFSET = 10000 * 1024
-    base_path = f'results/memorization-dyn-count/evals-running/memorization_{MODEL}_{CHECKPOINT}_{OFFSET}'
+    # OFFSET = 0
+    base_path = f'results/memorization-dyn-count/evals-running/memorization_{MODEL}_{CHECKPOINT}_{OFFSET}{SUFFIX}'
     filename = f'{base_path}/rank-{RANK}.csv'
     # Create directory if it doesn't exist
 
@@ -197,12 +223,22 @@ def main():
     print("Processing: ", blocks)
 
     # Model initialization
-    model = GPTNeoXForCausalLM.from_pretrained(
-        f"EleutherAI/pythia-{MODEL}",
-        use_cache=False,
-        revision = f'step{CHECKPOINT}',
-        cache_dir=f"/om/user/sunnyd/transformers_cache/"
-    ).half().eval().cuda()
+
+    if 'MODEL_PATH' in os.environ:
+        MODEL_PATH = os.environ['MODEL_PATH']
+        model = GPTNeoXForCausalLM.from_pretrained(
+            MODEL_PATH,
+            # "/om/user/abiyer/llm_pruning/sparsegpt/pythia/160m/dataset=wikitext/sparsity=0.25/tokens287.3098B",
+            # use_cache=False,
+            # revision = f'step{CHECKPOINT}',
+            cache_dir=f"/om/user/sunnyd/transformers_cache/"
+        ).half().eval().cuda()
+    else:
+        model = GPTNeoXForCausalLM.from_pretrained(
+            f"EleutherAI/pythia-{MODEL}",
+            revision = f'step{CHECKPOINT}',
+            cache_dir=f"/om/user/sunnyd/transformers_cache/"
+        ).half().eval().cuda()
     
     # dist.barrier()
     logging.info("Loaded Model")
@@ -223,11 +259,11 @@ def main():
                     idx = idx
                     logging.info(f"Loading data took {time.time() - t:.3}s")
                     t = time.time()
-                    accuracies, overlap = score(model, context, true_continuation)
+                    accuracies, overlap, dist = score(model, context, true_continuation)
 
-                    for acc, over in zip(accuracies, overlap):
+                    for acc, over, dist in zip(accuracies, overlap, dist):
                         # vals = ','.join([str(j) for j in acc.int().tolist()])
-                        f.write(f'{idx},{acc},{over}\n')
+                        f.write(f'{idx},{acc},{over},{dist}\n')
                         idx += 1
                     f.flush()
                     logging.info(f"Generation uptil {idx} took {time.time() - t:.3}s")

@@ -70,6 +70,28 @@ def match_fn(a, b, result):
 def match(a, b):
     return np.expand_dims(np.expand_dims(match_fn(a, b), -1), -1)
     
+@guvectorize(["void(int64[:,:], int64[:,:], int64[:,:])"],
+             "(n,i),(m,j)->(n,m)")
+def levenshtein_distance(a, b, result):
+    d = np.zeros((a.shape[0], b.shape[0], a.shape[1]+1, 2))
+    for i in range(0, a.shape[1]+1):
+        d[:, :, i, 0] = i
+    for j in range(1, b.shape[1]+1):
+        d[:, :, 0, j % 2] = j
+        for i in range(1, a.shape[1]+1):
+            substitution_cost = (a[:, None, i-1] != b[:, j-1])
+            for k in range(a.shape[0]):
+                for l in range(b.shape[0]):
+                    d[k, l, i, j % 2] = min(
+                            (d[k, l, i-1, j % 2] + 1,
+                             d[k, l, i, (j-1) % 2] + 1,
+                             d[k, l, i-1, (j-1) % 2] + substitution_cost[k, l]
+                            )
+                    )
+    result[:] = d[:, :, -1, (b.shape[-1]) % 2]
+
+def lev_all(a, b):
+    return np.expand_dims(np.expand_dims(levenshtein_distance(a, b), -1), -1)
 
 def main():
     cluster = SLURMCluster(cores=8,
@@ -87,10 +109,13 @@ def main():
 
 
     total_size = 10000 * 1024
-    job_size = 50000
+    job_size = 10000
     #for j in range(total_size // job_size):
+    base_path = "/om/tmp/memorization/matches-count-a2a-opt-10k-lev/"
+    os.makedirs(base_path, exist_ok=True)
+
     for i in tqdm(range(total_size // job_size)): 
-        res_path = f"/om/tmp/memorization/matches-count-a2a-opt-10k/{i}"
+        res_path = f"{base_path}{i}"
         if os.path.exists(res_path):
             print("skipping "+ res_path)
             continue
@@ -98,7 +123,7 @@ def main():
         x2 = mmap_dask_array(1000, 10000 * 1024 + i * job_size, 10000 * 1024 + (i+1) * job_size)
         da.to_npy_stack(
             res_path,
-    	    da.blockwise(match, 'ijab', x1[0::20, 32:288],
+    	    da.blockwise(lev_all, 'ijab', x1[0::20, 32:96],
                 'ia', x2, 'jb', dtype=int, adjust_chunks={'a': 1, 'b': 1}).squeeze(), 
                 axis=1)
 
