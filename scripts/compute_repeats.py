@@ -1,56 +1,20 @@
 import numpy as np
 
 # add parent directory to path
-import os, sys
-sys.path.append('..')
+import functools
+import click
+import os
 
 from utils.mmap_dataset import MMapIndexedDataset
-import dask
 import dask.array as da
-from transformers import GPTNeoXForCausalLM, AutoTokenizer
-import matplotlib.pyplot as plt
-from dask.diagnostics import ProgressBar
-from dask.distributed import Lock
 from tqdm import tqdm
-from dask.diagnostics import ProgressBar
 from numpy.lib.stride_tricks import sliding_window_view
 from dask.distributed import Client
 from numba import guvectorize
+from utils.dask import mmap_dask_array
 
 from dask_jobqueue import SLURMCluster
 
-dataset = MMapIndexedDataset('/om/user/sunnyd/data/datasets--EleutherAI--pile-standard-pythia-preshuffled-merged/document', skip_warmup = True)
-@dask.delayed
-def load_chunk(path, ptr, total_size, dtype):
-    bin_buffer_mmap = np.memmap(path, mode="r", order="C")
-    bin_buffer = memoryview(bin_buffer_mmap)
-    data = np.frombuffer(bin_buffer, 
-                         dtype=dtype, 
-                         count=total_size, 
-                         offset=ptr).reshape(-1, 2049)
-    return data
-    
-
-def mmap_dask_array(blocksize=1000, offset=0, max=50000):
-    load = dask.delayed(load_chunk)
-    chunks = []
-    max_idx = min(max, len(dataset))
-    for index in tqdm(range(offset, max_idx, blocksize)):
-        chunk_size = min(blocksize, max_idx - index)
-        path = '/om/user/sunnyd/data/datasets--EleutherAI--pile-standard-pythia-preshuffled-merged/document.bin'
-        ptr = dataset._index._pointers[index]
-        dtype = dataset._index.dtype
-        count = np.sum(dataset._index._sizes[index:index+chunk_size])
-        # Truncate the last chunk if necessary
-        chunk = dask.array.from_delayed(
-            load(path, ptr, count, dtype),
-            shape=(chunk_size, 2049),
-            dtype=dataset[0].dtype
-        )
-        chunks.append(chunk)
-    return da.concatenate(chunks, axis=0)
-
-    
 @guvectorize(["void(int64[:,:], int64[:,:], int64[:,:])"],
              "(n,i),(m,j)->(n,m)")
 def match_fn(a, b, result):
@@ -70,34 +34,37 @@ def match_fn(a, b, result):
 def match(a, b):
     return np.expand_dims(np.expand_dims(match_fn(a, b), -1), -1)
     
-
-def main():
+@click.command()
+@click.option('--indices', type=str, default="../results/mem_once/indices.npy")
+@click.option('--output', type=str, default="/om/tmp/memorization/mem_once")
+@click.option('--job-size', type=int, default=200000)
+@click.option('--offset', type=int, default=10000 * 1024)
+@click.option('--total-size', type=int, default=10000 * 1024)
+@click.option('--block_size', type=int, default=1000)
+def main(indices, output, job_size, offset, total_size, block_size):
     cluster = SLURMCluster(cores=8,
                         processes=4,
                         memory="32GB",
                         walltime="12:00:00",
                         # project="fiete",
                         queue="normal",
-                        job_extra_directives=["--output=logs/%j.out", "--error=logs/%j.out"]
+                        job_extra_directives=["--output=../logs/%j.out", "--error=../logs/%j.out"]
                         )
     cluster.scale(jobs=64)
     print("Dashboard: ", cluster.dashboard_link)
+    dataset = MMapIndexedDataset('/om/user/sunnyd/data/datasets--EleutherAI--pile-standard-pythia-preshuffled-merged/document', skip_warmup = True)
+    mda = functools.partial(mmap_dask_array, dataset)
 
     client = Client(cluster)
-
-
-    indices = np.load('0_1.npz.npy')
+    indices = np.load(indices)
     x1 = da.from_array(np.array([dataset[idx.astype(np.int32).item()] for idx in indices]))
-    total_size = 10000 * 1024
-    job_size = 200000
-    #for j in range(total_size // job_size):
+    os.makedirs(output, exist_ok=True)
     for i in tqdm(range(total_size // job_size)): 
-        res_path = f"/om/tmp/memorization/matches-count-a2a-opt-10k-01/{i}"
+        res_path = f"{output}/{i}"
         if os.path.exists(res_path):
             print("skipping "+ res_path)
             continue
-        # x1 = mmap_dask_array(20000, 10000 * 1024, 11000 * 1024)
-        x2 = mmap_dask_array(1000, 10000 * 1024 + i * job_size, 10000 * 1024 + (i+1) * job_size)
+        x2 = mda(block_size, offset + i * job_size, offset + (i+1) * job_size)
         da.to_npy_stack(
             res_path,
     	    da.blockwise(match, 'ijab', x1[:, 32:96],
