@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
 setup(
-    name = 'your_package_name',
+    name = 'latent_memorization',
     packages = find_packages(),
 )
