@@ -7,6 +7,8 @@ The Pythia suite was developed with the explicit purpose of enabling research in
 2. All models feature 154 checkpoints saved throughout training, enabling the study of learning dynamics of LLMs.
 3. All models were trained on the same data in the same order, enabling researchers to explore causal interventions on the training process.
 
+At time of release, Pythia was the only model suite in the world to meet these desiderata. In fact, the 154 checkpoints we released for our 12B parameter models represented more partially trained checkpoints for each model than the rest of the world had ever released for all 12B+ models combined. Our work has inspired several others to create similar projects, including LLM360's [Amber](https://www.llm360.ai/paper.pdf) and [K2-65B](https://www.llm360.ai/paper2.pdf), AI2's [OLMo](https://arxiv.org/abs/2402.00838), and Zyphra's [BlackMamba](https://arxiv.org/abs/2402.01771).
+
 Aside from the Pythia suite itself, this repository also acts as a hub containing information, code, and reproducibility instructions for the following papers:
 * Emergent and Predictable Memorization in Large Language Models [code](/predictable-memorization/README.md) [paper](https://arxiv.org/abs/2304.11158)
 
@@ -31,6 +33,10 @@ Aside from the Pythia suite itself, this repository also acts as a hub containin
 
 ## Models
 
+We train and release a suite of 8 model sizes on the Pile ([paper](https://pile.eleuther.ai/), [datasheet](https://arxiv.org/abs/2201.07311)) as well as the Pile with deduplication applied. All 8 model sizes are trained on the exact same data, in the exact same order. Each model saw 299,892,736,000 ~= 300B tokens during training. This corresponds to just under 1 epoch on the Pile for "standard" models, and ~= 1.5 epochs on the deduped Pile (which contains 207B tokens in 1 epoch). All models are trained with mixed precision, using fp16 for all models except `EleutherAI/pythia-1b` which trained with bf16, because in fp16 the model experienced an irreconcilable loss spike late in training.
+
+After our initial release, we trained 14M and 31M parameter models at the request of alignment researchers interested in 
+
 | Params | n_layers | d_model | n_heads | d_head | Batch Size | Learning Rate | Hugging Face Checkpoints                                                |
 | ------ | -------- | ------- | ------- | ------ | ---------- | ------------- | ---------------------------------------------------------- |
 | 14M    | 6        | 128     | 4       | 32     | 2M         | 1.0e-3          | [Standard](https://huggingface.co/EleutherAI/pythia-14m)  |
@@ -44,15 +50,14 @@ Aside from the Pythia suite itself, this repository also acts as a hub containin
 | 6.9B   | 32       | 4096    | 32      | 128    | 2M         | 1.2e-4        | [Standard](https://huggingface.co/EleutherAI/pythia-6.9b), [Deduped](https://huggingface.co/EleutherAI/pythia-6.9b-deduped)|
 | 12B    | 36       | 5120    | 40      | 128    | 2M         | 1.2e-4        | [Standard](https://huggingface.co/EleutherAI/pythia-12b), [Deduped](https://huggingface.co/EleutherAI/pythia-12b-deduped)  |
 
-We train and release a suite of 8 model sizes on the Pile ([paper](https://pile.eleuther.ai/), [datasheet](https://arxiv.org/abs/2201.07311)) as well as the Pile with deduplication applied. All 8 model sizes are trained on the exact same data, in the exact same order. Each model saw 299,892,736,000 ~= 299.9B tokens during training. This corresponds to just under 1 epoch on the Pile for non-"deduped" models, and ~= 1.5 epochs on the deduped Pile (which contains 207B tokens in 1 epoch). All models are trained with mixed precision, using fp16 for all models except `EleutherAI/pythia-1b` which trained with bf16, because in fp16 the model experienced an irreconcilable loss spike late in training.
 
-To promote research on the learning dynamics of LLMs we make 154 checkpoints available for each model, representing steps 0 (initialization), 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1000, and then every 1,000 subsequent steps.
+To promote research on the learning dynamics of LLMs we make 154 checkpoints available for each model, representing steps 0 (initialization), 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1000, and then every 1,000 subsequent steps. We also upload the pre-tokenized data files and a script to reconstruct the dataloader as seen during training for all models. See [Reproducing Training](#reproducing-training) section for more details.
 
 Config files used to train these models with the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox) can be found at the `models/` directory within this repository, as well as in the GPT-NeoX library itself.
 
-We also upload the pre-tokenized data files and a script to reconstruct the dataloader as seen during training for all models. See [Reproducing Training](#reproducing-training) section for more details.
-
 ## Changelog
+
+[July 9, 2024] Substantially revamped the readme, including better historical contextualization and promoting lots of cool research people have done with Pythia.
 
 [November 2, 2023] We have added 14M and 31M models at the request of some researchers. We plan on training deduped versions of these models in the future.
 
@@ -268,41 +273,41 @@ Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https:/
 
 Our primary goal with the Pythia project is to enable research on interpretability and learning dynamics at EleutherAI and in the community writ large. Here we document select papers using our models, focusing on work that is uniquely empowered by the Pythia suite and would be less feasible or infeasible with models released by other organizations. For a larger list of papers citing Pythia, see [here](https://www.semanticscholar.org/paper/Pythia%3A-A-Suite-for-Analyzing-Large-Language-Models-Biderman-Schoelkopf/be55e8ec4213868db08f2c3168ae666001bea4b8#citing-papers).
 
-## Language Model Internals
+## Language model internals
 
 - Belrose, et al. "[Eliciting latent predictions from transformers with the tuned lens](https://arxiv.org/abs/2303.08112)." _arXiv preprint arXiv:2303.08112_ (2023). **EleutherAI Paper**
-- Brown, et al. "[Understanding the Inner Workings of Language Models Through Representation Dissimilarity](https://arxiv.org/abs/2310.14993)." _arXiv preprint arXiv:2310.1499_ (2023).
-- Feng and Steinhardt. "[How do Language Models Bind Entities in Context?](https://arxiv.org/abs/2310.17191)." _arXiv preprint arXiv:2310.17191_ (2023).
+- Brown, et al. "[Understanding the Inner Workings of Language Models Through Representation Dissimilarity](https://arxiv.org/abs/2310.14993)." _Conference on Empirical Methods in Natural Language Processing_ (2023).
+- Feng and Steinhardt. "[How do Language Models Bind Entities in Context?](https://arxiv.org/abs/2310.17191)." _International Conference on Learning Representations_ (2023).
 - Garde, Kran, and Barez. "[DeepDecipher: Accessing and Investigating Neuron Activation in Large Language Models](https://arxiv.org/abs/2310.01870)." _arXiv preprint arXiv:2310.01870_ (2023).
-- Gurnee, et al. "[Finding Neurons in a Haystack: Case Studies with Sparse Probing](https://arxiv.org/abs/2305.01610)." _arXiv preprint arXiv:2305.01610_ (2023).
-- Stolfo, Belinkov, and Sachan. "[Understanding Arithmetic Reasoning in Language Models using Causal Mediation Analysis](https://arxiv.org/abs/2305.15054)." _arXiv preprint arXiv:2305.15054_ (2023).
+- Gurnee, et al. "[Finding Neurons in a Haystack: Case Studies with Sparse Probing](https://arxiv.org/abs/2305.01610)." _Transactions of Machine Learning Research_ (2023).
+- Stolfo, Belinkov, and Sachan. "[Understanding Arithmetic Reasoning in Language Models using Causal Mediation Analysis](https://arxiv.org/abs/2305.15054)." _Conference on Empirical Methods in Natural Language Processing_ (2023).
 
-## Learning Dynamics
+## Learning dynamics
 
 - Gupta, et al. "[Continual Pre-Training of Large Language Models: How to re-warm your model?](https://arxiv.org/abs/2308.04014)." _Workshop on Efficient Systems for Foundation Models @ ICML_ (2023).
-- Michaelov and Bergen. "[Emergent inabilities? Inverse scaling over the course of pretraining](https://arxiv.org/abs/2305.14681)." _arXiv preprint arXiv:2305.14681_ (2023).
-- Roger. "[Large Language Models Sometimes Generate Purely Negatively-Reinforced Text](https://arxiv.org/abs/2306.07567)." _arXiv preprint arXiv:2306.07567_ (2023).
+- Michaelov and Bergen. "[Emergent inabilities? Inverse scaling over the course of pretraining](https://arxiv.org/abs/2305.14681)." _Findings of the Association for Computational Linguistics: EMNLP_ (2023).
 - Sanyal, et al. "[Understanding the Effectiveness of Early Weight Averaging for Training Large Language Models](https://arxiv.org/abs/2306.03241)." _arXiv preprint arXiv:2306.03241_ (2023).
 - Tian, et al. "[JoMA: Demystifying Multilayer Transformers via JOint Dynamics of MLP and Attention](https://arxiv.org/abs/2310.00535)." _arXiv preprint arXiv:2310.0053_ (2023).
-- Belrose, et al. "[Neural Networks Learn Statistics of Increasing Complexity](https://arxiv.org/abs/2402.04362)." arXiv preprint arXiv:2402.04362 (2024). **EleutherAI Paper**
-- Oh et al. "[Frequency Explains the Inverse Correlation of Large Language Models’ Size, Training Data Amount, and Surprisal’s Fit to Reading Times](https://arxiv.org/abs/2402.02255)." _arXiv preprint arXiv:2402.02255_ (2024).
-- Liu et al. "[On Training Data Influence of GPT Models](https://arxiv.org/abs/2404.07840)." _arXiv preprint arXiv:2404.07840_ (2024).
+- Ye, et al. "[Language Versatilists vs. Specialists: An Empirical Revisiting on Multilingual Transfer Ability](https://arxiv.org/abs/2306.06688)." arXiv preprint arXiv:2306.06688 (2023).
+- Belrose, et al. "[Neural Networks Learn Statistics of Increasing Complexity](https://arxiv.org/abs/2402.04362)." _International Conference on Learning Representations_ (2024). **EleutherAI Paper**
 - Godey et al. "[Why do small language models underperform? Studying Language Model Saturation via the Softmax Bottleneck](https://arxiv.org/abs/2404.07647)." _arXiv preprint arXiv:2404.07647_ (2024).
 
-## Ethics, Security, and Transparency Research
+## How training data determines model behavior
 
-- Biderman, et al. "[Emergent and predictable memorization in large language models.](https://arxiv.org/abs/2304.11158)" _NeurIPS_ (2023). **EleutherAI Paper**
-- Choi, Shavit, and Duvenaud. "[Tools for Verifying Neural Models' Training Data](https://arxiv.org/abs/2307.00682)." _arXiv preprint arXiv:2307.00682_ (2023).
-- Ippolito, et al. "[Reverse-Engineering Decoding Strategies Given Blackbox Access to a Language Generation System.](https://aclanthology.org/2023.inlg-main.28/)" _Proceedings of the 16th International Natural Language Generation Conference_. 2023.
-- Li, et al. "[MoPe: Model Perturbation-based Privacy Attacks on Language Models](https://arxiv.org/abs/2310.14369)." _Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing_ (2023).
-- Min, et al. "[SILO Language Models: Isolating Legal Risk In a Nonparametric Datastore](https://arxiv.org/abs/2308.04430)." _arXiv preprint arXiv:2308.0443_ (2023).
+- Biderman, et al. "[Emergent and predictable memorization in large language models.](https://arxiv.org/abs/2304.11158)" _Neural Information Processing Systems_ (2023). **EleutherAI Paper**
+- Roger. "[Large Language Models Sometimes Generate Purely Negatively-Reinforced Text](https://arxiv.org/abs/2306.07567)." _arXiv preprint arXiv:2306.07567_ (2023).
+- Oh et al. "[Frequency Explains the Inverse Correlation of Large Language Models’ Size, Training Data Amount, and Surprisal’s Fit to Reading Times](https://arxiv.org/abs/2402.02255)." _arXiv preprint arXiv:2402.02255_ (2024).
+- Liu et al. "[On Training Data Influence of GPT Models](https://arxiv.org/abs/2404.07840)." _arXiv preprint arXiv:2404.07840_ (2024).
+
+## Security, auditing, and compliance research
+
+- Choi, Shavit, and Duvenaud. "[Tools for Verifying Neural Models' Training Data](https://arxiv.org/abs/2307.00682)." _Neural Information Processing Systems_ (2023).
+- Ippolito, et al. "[Reverse-Engineering Decoding Strategies Given Blackbox Access to a Language Generation System.](https://aclanthology.org/2023.inlg-main.28/)" _International Natural Language Generation Conference_. 2023.
+- Li, et al. "[MoPe: Model Perturbation-based Privacy Attacks on Language Models](https://arxiv.org/abs/2310.14369)." _Conference on Empirical Methods in Natural Language Processing_ (2023).
 - Wen, et al. "Privacy Backdoors: Enhancing Membership Inference through Poisoning Pre-trained Models." _arXiv preprint arXiv:2404.01231_ (2024).
-
-## Other Notable Research
-
-- Sileo and Lernould. "[Mindgames: Targeting theory of mind in large language models with dynamic epistemic modal logic](https://arxiv.org/abs/2305.03353)." _arXiv preprint arXiv:2305.03353_ (2023).
-- Köpf, et al. "[OpenAssistant Conversations--Democratizing Large Language Model Alignment](https://arxiv.org/abs/2304.07327)." arXiv preprint arXiv:2304.07327 (2023).
-- Ye, et al. "[Language Versatilists vs. Specialists: An Empirical Revisiting on Multilingual Transfer Ability](https://arxiv.org/abs/2306.06688)." arXiv preprint arXiv:2306.06688 (2023).
+- Min, et al. "[SILO Language Models: Isolating Legal Risk In a Nonparametric Datastore](https://arxiv.org/abs/2308.04430)." _International Conference on Learning Representations_ (2024).
+- Pawelczyk, et al. "[Machine Unlearning Fails to Remove Data Poisoning Attacks](https://arxiv.org/abs/2406.17216)." _arXiv preprint arXiv:2406.17216_ (2024).
+- Prashanth, et al. "[Recite, Reconstruct, Recollect: Memorization in LMs as a Multifaceted Phenomenon](https://arxiv.org/abs/2406.17746)." _arXiv preprint arXiv:2406.17746_ (2024).
 
 # Citation Details
 
