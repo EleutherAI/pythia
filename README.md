@@ -262,7 +262,7 @@ Note that documents are concatenated and saperated by an `EOD` token. Thus, each
 
 We provide further information for those interested in replicating the case studies performed in the Pythia suite paper in the `case-studies/` folder of this repository.
 
-## Benchmark Scores
+### Benchmark Scores
 
 We also provide benchmark 0-shot and 5-shot results on a variety of NLP datasets:
 
