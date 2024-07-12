@@ -10,7 +10,7 @@ The Pythia suite was developed with the explicit purpose of enabling research in
 At time of release, Pythia was the only model suite in the world to meet these desiderata. In fact, the 154 checkpoints we released for our 12B parameter models represented more partially trained checkpoints for each model than the rest of the world had ever released for all 12B+ models combined. Our work has inspired several others to create similar projects, including LLM360's [Amber](https://www.llm360.ai/paper.pdf) and [K2-65B](https://www.llm360.ai/paper2.pdf), AI2's [OLMo](https://arxiv.org/abs/2402.00838), and Zyphra's [BlackMamba](https://arxiv.org/abs/2402.01771).
 
 Aside from the Pythia suite itself, this repository also acts as a hub containing information, code, and reproducibility instructions for the following papers:
-* Emergent and Predictable Memorization in Large Language Models [code](/predictable-memorization/README.md) [paper](https://arxiv.org/abs/2304.11158)
+* Emergent and Predictable Memorization in Large Language Models [[code](/predictable-memorization/README.md)] [[paper](https://arxiv.org/abs/2304.11158)]
 
 ## Contents
 
