@@ -13,7 +13,6 @@ TRAIN_PATH=/om/user/sunnyd/workspace/pythia/predictable-memorization
 source activate pythia
 
 export WORKER_ID=$1
-export SUFFIX=_control
 
 TRANSFORMERS_CACHE=/om/user/sunnyd/transformers_cache python perturbation.py
 
