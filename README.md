@@ -12,10 +12,20 @@ At time of release, Pythia was the only model suite in the world to meet these d
 Aside from the Pythia suite itself, this repository also acts as a hub containing information, code, and reproducibility instructions for the following papers:
 * Emergent and Predictable Memorization in Large Language Models [[code](/predictable-memorization/README.md)] [[paper](https://arxiv.org/abs/2304.11158)]
 
-## Contents
+## Changelog
 
-- [Pythia: Interpreting Transformers Across Time and Scale](#pythia--interpreting-transformers-across-time-and-scale)
-  * [Models](#models)
+[July 9, 2024] Substantially revamped the readme, including better historical contextualization and promoting lots of cool research people have done with Pythia. Also added links to subsequently trained models.
+
+[November 2, 2023] We have added 14M and 31M models at the request of some researchers. We plan on training deduped versions of these models in the future.
+
+[April 3, 2023] We have released a new version of all Pythia models, fixing various inconsistencies in the original suite. Please see Appendix B in [the Pythia paper](https://arxiv.org/abs/2304.01373) for details on the changes. The old models ("v0") remain available [here](https://huggingface.co/models?other=pythia_v0) and may be useful for ablation studies.
+
+[January 20, 2023] On January 20, 2023, we chose to rename the Pythia model suite to include both embedding layer and unembedding layer parameters in our total parameter counts, in line with many other model suites and because we believe this convention better reflects the on-device memory usage of these models. We also discovered that due to a typo one of our models was smaller than we thought, and replaced it with a model of the intended size. See [here](https://huggingface.co/EleutherAI/pythia-410m-deduped#naming-convention-and-parameter-count) for more details.
+
+## Table of contents
+
+- [Models](#models)
+  * [Multiple random seeds](#multiple-random-seeds)
   * [Changelog](#changelog)
 - [Using Pythia](#using-pythia)
   * [Quickstart](#quickstart)
@@ -24,10 +34,10 @@ Aside from the Pythia suite itself, this repository also acts as a hub containin
   * [Pythia Paper Replication](#pythia-paper-replication)
 - [Benchmark Scores](#benchmark-scores)
 - [Research Building on Pythia](#research-building-on-pythia)
-  * [Interpretability Research](#language-model-internals)
-  * [Learning Dynamics Research](#learning-dynamics)
-  * [Ethics and Transparency Research](#ethics-and-transparency-research)
-  * [Other Notable Research](#other-notable-research)
+  * [Language model internals](#language-model-internals)
+  * [Learning dynamics](#learning-dynamics)
+  * [How training data determines model behavior](#how-training-data-determines-model-behavior)
+  * [Security, auditing, and compliance research](#security-auditing-and-compliance-research)
 - [Citation Details](#citation-details)
 - [License](#license)
 
@@ -35,7 +45,7 @@ Aside from the Pythia suite itself, this repository also acts as a hub containin
 
 We train and release a suite of 8 model sizes on the Pile ([paper](https://pile.eleuther.ai/), [datasheet](https://arxiv.org/abs/2201.07311)) as well as the Pile with deduplication applied. All 8 model sizes are trained on the exact same data, in the exact same order. Each model saw 299,892,736,000 ~= 300B tokens during training. This corresponds to just under 1 epoch on the Pile for "standard" models, and ~= 1.5 epochs on the deduped Pile (which contains 207B tokens in 1 epoch). All models are trained with mixed precision, using fp16 for all models except `EleutherAI/pythia-1b` which trained with bf16, because in fp16 the model experienced an irreconcilable loss spike late in training.
 
-After our initial release, we trained 14M and 31M parameter models at the request of alignment researchers interested in 
+After our initial release, we trained 14M and 31M parameter models at the request of alignment researchers interested in scaling sparse autoencoders.
 
 | Params | n_layers | d_model | n_heads | d_head | Batch Size | Learning Rate | Hugging Face Checkpoints                                                |
 | ------ | -------- | ------- | ------- | ------ | ---------- | ------------- | ---------------------------------------------------------- |
@@ -55,19 +65,23 @@ To promote research on the learning dynamics of LLMs we make 154 checkpoints ava
 
 Config files used to train these models with the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox) can be found at the `models/` directory within this repository, as well as in the GPT-NeoX library itself.
 
-## Changelog
+We made a mistake while originally training these models resulting in some inconsistencies across runs. We reran the entire model suite with these inconsistencies fixed and the originl runs are available under the name `EleutherAI/pythia-160m-v0`. See the Pythia paper for further details on how the v0 models differ from the main suite.
 
-[July 9, 2024] Substantially revamped the readme, including better historical contextualization and promoting lots of cool research people have done with Pythia.
+### Multiple random seeds
 
-[November 2, 2023] We have added 14M and 31M models at the request of some researchers. We plan on training deduped versions of these models in the future.
+The random seed used to train the Pythia models is the GPT-NeoX default: 1234. To enable research into how randomness effects model behavior, we have been training more models with different random seeds. We have currently trained and released the following models using each random seed from 1 to 9.
 
-[April 3, 2023] We have released a new version of all Pythia models, fixing various inconsistencies in the original suite. Please see our [paper]((https://arxiv.org/abs/2304.01373) appendix B for details on the changes. The old models ("v0") remain available [here](https://huggingface.co/models?other=pythia_v0) and may be useful for ablation studies.
+- Pythia 14M
+- Pythia 31M
+- Pythia 70M
+- Pythia 160M
+- Pythia 410M
 
-[January 20, 2023] On January 20, 2023, we chose to rename the Pythia model suite to include both embedding layer and unembedding layer parameters in our total parameter counts, in line with many other model suites and because we believe this convention better reflects the on-device memory usage of these models. We also discovered that due to a typo one of our models was smaller than we thought, and replaced it with a model of the intended size. See [here](https://huggingface.co/EleutherAI/pythia-410m-deduped#naming-convention-and-parameter-count) for more details.
+All of these models are the _standard_ Pythia models, not the ones trained on the deduplicated Pile. Combined with the originally released models they represent ten otherwise identical variants using different random seeds.
 
-# Using Pythia
+## Using Pythia
 
-## Quickstart
+### Quickstart
 
 All Pythia models are hosted on [the Huggingface hub](https://huggingface.co/EleutherAI). They can be loaded and used via the following code (shown for the 3000-step `pythia-70M-deduped` model checkpoint):
 
@@ -97,7 +111,7 @@ We additionally have all model checkpoints in the format accepted by the [GPT-Ne
 
 > ❗ `pythia-{size}-v0` models on Huggingface of sizes `160m, 410m, 1.4b` were trained with a batch size of 4M tokens across 71500 steps and checkpointed every 500 steps. The step names on Huggingface for these v0 models are renamed for consistency with all 2M batch models so the model checkpointed labeled `step1000` of `pythia-1.4b-v0` was actually step 500, but has seen the same number of tokens as the other step1000 checkpoints.
 
-## Reproducing Training
+### Reproducing Training
 
 _(Expanded reproduction instructions provided by @BaruchG )._
 
@@ -181,7 +195,7 @@ as outlined in the Harness repository. You should then be able to run the benchm
 python3 main.py --model hf-causal-experimental  --model_args pretrained=../gpt-neox/output/ --tasks lambada_openai,piqa,winogrande,arc_easy,sciq,wikitext --device cuda:0
 ```
 
-## Exploring the Dataset
+### Exploring the Dataset
 
 We provide a tool to view particular portions of the training dataloader used by all models during training, at `utils/batch_viewer.py`.
 
@@ -244,36 +258,33 @@ indicies = np.load("path/to/save/folder/indicies.npy")
 These indicies contain tokenized sequences of integers of size (None, 2049), where an integer corresponds to a unique token index.
 Note that documents are concatenated and saperated by an `EOD` token. Thus, each sample or batch may not start with an EOD token. During training, target tokens are left shifted by 1. Thus, a model of sequence length 2048 requires 2049 length sequences for training (For more info, refer to [this comment](https://github.com/EleutherAI/pythia/issues/123#issuecomment-1791136253))
 
-## Pythia Paper Replication
+### Pythia Paper Replication
 
-We provide further information for those interested in replicating our case studies performed in the Pythia suite paper in the `case-studies/` folder of this repository, being
-* Memorization density over training
-* Intervention on pronoun frequencies in pretraining
-* Term frequency effects over training
+We provide further information for those interested in replicating the case studies performed in the Pythia suite paper in the `case-studies/` folder of this repository.
 
-# Benchmark Scores
+## Benchmark Scores
 
 We also provide benchmark 0-shot and 5-shot results on a variety of NLP datasets:
 
-- Lambada (`lambada_openai`)
-- Wikitext (`wikitext`)
-- PiQA (`piqa`)
-- SciQ (`sciq`)
-- WSC (`wsc`)
-- Winogrande (`winogrande`)
 - ARC-challenge (`arc_challenge`)
 - ARC-easy (`arc_easy`)
-- LogiQA (`logiqa`)
 - BLiMP (`blimp_*`)
+- Lambada (`lambada_openai`)
+- LogiQA (`logiqa`)
 - MMLU (`hendrycksTest*`)
+- PiQA (`piqa`)
+- SciQ (`sciq`)
+- Wikitext (`wikitext`)
+- Winogrande (`winogrande`)
+- WSC (`wsc`)
 
-Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness), and are viewable by model and step at `evals/pythia-v1/*/*` in this repository.
+Evaluations were performed in GPT-NeoX using the [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) and are viewable by model and step at `evals/pythia-v1/*/*` in this repository. **Warning:** All evaluations were run using the **to-do** commit of the language model evaluation harness almost years ago and may not be reproducible by the current version.
 
-# Research Building on Pythia
+## Research Building on Pythia
 
-Our primary goal with the Pythia project is to enable research on interpretability and learning dynamics at EleutherAI and in the community writ large. Here we document select papers using our models, focusing on work that is uniquely empowered by the Pythia suite and would be less feasible or infeasible with models released by other organizations. For a larger list of papers citing Pythia, see [here](https://www.semanticscholar.org/paper/Pythia%3A-A-Suite-for-Analyzing-Large-Language-Models-Biderman-Schoelkopf/be55e8ec4213868db08f2c3168ae666001bea4b8#citing-papers).
+Our primary goal with the Pythia project is to enable research on topics including interpretability and learning dynamics at EleutherAI and in the community writ large. Here we document select papers using our models, focusing on work that is uniquely empowered by the Pythia suite and would be less feasible or infeasible with models released by other organizations. For a larger list of papers citing Pythia, see [here](https://www.semanticscholar.org/paper/Pythia%3A-A-Suite-for-Analyzing-Large-Language-Models-Biderman-Schoelkopf/be55e8ec4213868db08f2c3168ae666001bea4b8#citing-papers).
 
-## Language model internals
+### Language model internals
 
 - Belrose, et al. "[Eliciting latent predictions from transformers with the tuned lens](https://arxiv.org/abs/2303.08112)." _arXiv preprint arXiv:2303.08112_ (2023). **EleutherAI Paper**
 - Brown, et al. "[Understanding the Inner Workings of Language Models Through Representation Dissimilarity](https://arxiv.org/abs/2310.14993)." _Conference on Empirical Methods in Natural Language Processing_ (2023).
@@ -282,7 +293,7 @@ Our primary goal with the Pythia project is to enable research on interpretabili
 - Gurnee, et al. "[Finding Neurons in a Haystack: Case Studies with Sparse Probing](https://arxiv.org/abs/2305.01610)." _Transactions of Machine Learning Research_ (2023).
 - Stolfo, Belinkov, and Sachan. "[Understanding Arithmetic Reasoning in Language Models using Causal Mediation Analysis](https://arxiv.org/abs/2305.15054)." _Conference on Empirical Methods in Natural Language Processing_ (2023).
 
-## Learning dynamics
+### Learning dynamics
 
 - Gupta, et al. "[Continual Pre-Training of Large Language Models: How to re-warm your model?](https://arxiv.org/abs/2308.04014)." _Workshop on Efficient Systems for Foundation Models @ ICML_ (2023).
 - Michaelov and Bergen. "[Emergent inabilities? Inverse scaling over the course of pretraining](https://arxiv.org/abs/2305.14681)." _Findings of the Association for Computational Linguistics: EMNLP_ (2023).
@@ -291,25 +302,29 @@ Our primary goal with the Pythia project is to enable research on interpretabili
 - Ye, et al. "[Language Versatilists vs. Specialists: An Empirical Revisiting on Multilingual Transfer Ability](https://arxiv.org/abs/2306.06688)." arXiv preprint arXiv:2306.06688 (2023).
 - Belrose, et al. "[Neural Networks Learn Statistics of Increasing Complexity](https://arxiv.org/abs/2402.04362)." _International Conference on Learning Representations_ (2024). **EleutherAI Paper**
 - Godey et al. "[Why do small language models underperform? Studying Language Model Saturation via the Softmax Bottleneck](https://arxiv.org/abs/2404.07647)." _arXiv preprint arXiv:2404.07647_ (2024).
+- Singh, et al. "[Hallmarks of Optimization Trajectories in Neural Networks: Directional Exploration and Redundancy](https://arxiv.org/abs/2403.07379)." _arXiv preprint arXiv:2403.07379_ (2024).
+- Tigges, et al. "[Stability and Generalizability of Language Model Mechanisms Across Training and Scale](https://openreview.net/forum?id=1WeLXvaNJP)." _Mechanistic Interpretability Workshop @ ICML_ (2024). **EleutherAI Paper**
 
-## How training data determines model behavior
+### How training data determines model behavior
 
-- Biderman, et al. "[Emergent and predictable memorization in large language models.](https://arxiv.org/abs/2304.11158)" _Neural Information Processing Systems_ (2023). **EleutherAI Paper**
 - Roger. "[Large Language Models Sometimes Generate Purely Negatively-Reinforced Text](https://arxiv.org/abs/2306.07567)." _arXiv preprint arXiv:2306.07567_ (2023).
-- Oh et al. "[Frequency Explains the Inverse Correlation of Large Language Models’ Size, Training Data Amount, and Surprisal’s Fit to Reading Times](https://arxiv.org/abs/2402.02255)." _arXiv preprint arXiv:2402.02255_ (2024).
-- Liu et al. "[On Training Data Influence of GPT Models](https://arxiv.org/abs/2404.07840)." _arXiv preprint arXiv:2404.07840_ (2024).
+- Oh, et al. "[Frequency Explains the Inverse Correlation of Large Language Models’ Size, Training Data Amount, and Surprisal’s Fit to Reading Times](https://arxiv.org/abs/2402.02255)." _arXiv preprint arXiv:2402.02255_ (2024).
+- Liu, et al. "[On Training Data Influence of GPT Models](https://arxiv.org/abs/2404.07840)." _arXiv preprint arXiv:2404.07840_ (2024).
+- Lesci, et al. "[Causal Estimation of Memorisation Profiles](https://arxiv.org/abs/2406.04327)." _Association for Computational Linguistics_ (2024).
 
-## Security, auditing, and compliance research
+### Security, auditing, and compliance research
 
-- Choi, Shavit, and Duvenaud. "[Tools for Verifying Neural Models' Training Data](https://arxiv.org/abs/2307.00682)." _Neural Information Processing Systems_ (2023).
 - Ippolito, et al. "[Reverse-Engineering Decoding Strategies Given Blackbox Access to a Language Generation System.](https://aclanthology.org/2023.inlg-main.28/)" _International Natural Language Generation Conference_. 2023.
+- Biderman, et al. "[Emergent and predictable memorization in large language models.](https://arxiv.org/abs/2304.11158)" _Neural Information Processing Systems_ (2023). **EleutherAI Paper**
+- Choi, Shavit, and Duvenaud. "[Tools for Verifying Neural Models' Training Data](https://arxiv.org/abs/2307.00682)." _Neural Information Processing Systems_ (2023).
 - Li, et al. "[MoPe: Model Perturbation-based Privacy Attacks on Language Models](https://arxiv.org/abs/2310.14369)." _Conference on Empirical Methods in Natural Language Processing_ (2023).
-- Wen, et al. "Privacy Backdoors: Enhancing Membership Inference through Poisoning Pre-trained Models." _arXiv preprint arXiv:2404.01231_ (2024).
 - Min, et al. "[SILO Language Models: Isolating Legal Risk In a Nonparametric Datastore](https://arxiv.org/abs/2308.04430)." _International Conference on Learning Representations_ (2024).
 - Pawelczyk, et al. "[Machine Unlearning Fails to Remove Data Poisoning Attacks](https://arxiv.org/abs/2406.17216)." _arXiv preprint arXiv:2406.17216_ (2024).
-- Prashanth, et al. "[Recite, Reconstruct, Recollect: Memorization in LMs as a Multifaceted Phenomenon](https://arxiv.org/abs/2406.17746)." _arXiv preprint arXiv:2406.17746_ (2024).
+- Prashanth, et al. "[Recite, Reconstruct, Recollect: Memorization in LMs as a Multifaceted Phenomenon](https://arxiv.org/abs/2406.17746)." _arXiv preprint arXiv:2406.17746_ (2024). **EleutherAI Paper**
+- Duan, et al. "[Do Membership Inference Attacks Work on Large Language Models?](https://arxiv.org/abs/2402.07841)." _Conference on Language Modeling_ (2024).
 
-# Citation Details
+
+## Citation Details
 
 If you use the Pythia models in your research, please cite our paper via:
 
@@ -370,11 +385,11 @@ If you are interested in citing our training data, training library, or evaluati
 }
 ```
 
-# License
+## License
 The following license applies to all code in this GitHub repo, as well as the Pythia models and any other copyrightable artifacts contained in this repository.
 
 ```
-   Copyright 2023 EleutherAI
+   Copyright 2024 EleutherAI
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
