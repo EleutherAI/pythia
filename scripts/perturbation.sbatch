@@ -14,6 +14,6 @@ source activate pythia
 
 export WORKER_ID=$1
 
-TRANSFORMERS_CACHE=/om/user/sunnyd/transformers_cache python perturbation.py
+TRANSFORMERS_CACHE=/om/user/sunnyd/transformers_cache python perturbation.py --checkpoint 19000
 
 wait

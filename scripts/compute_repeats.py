@@ -12,27 +12,11 @@ from numpy.lib.stride_tricks import sliding_window_view
 from dask.distributed import Client
 from numba import guvectorize
 from utils.dask import mmap_dask_array
+from utils.distances import match
 
 from dask_jobqueue import SLURMCluster
 
-@guvectorize(["void(int64[:,:], int64[:,:], int64[:,:])"],
-             "(n,i),(m,j)->(n,m)")
-def match_fn(a, b, result):
-    for i in range(a.shape[0]):
-        for j in range(b.shape[0]):
-            maxval = 0
-            for k in range(b.shape[1]):
-                curval = 0
-                for l in range(min(a.shape[1], b.shape[1]-k)):
-                    if a[i, l] == b[j, k+l]:
-                        curval += 1
-                    else:
-                        break
-                maxval = max(maxval, curval)
-            result[i, j] = maxval
 
-def match(a, b):
-    return np.expand_dims(np.expand_dims(match_fn(a, b), -1), -1)
     
 @click.command()
 @click.option('--indices', type=str, default="../results/mem_once/indices.npy")

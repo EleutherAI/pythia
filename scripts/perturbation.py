@@ -31,7 +31,6 @@ WORKER_ID = int(os.environ['WORKER_ID'])
 def main(input_dir, indices, output, num_perturb, model_id, checkpoint):
     os.makedirs(f'{output}/perturb/', exist_ok=True)
     output_fname = f'{output}/perturb/{checkpoint}_{WORKER_ID}'
-    df = pd.read_parquet(f'{input_dir}/analysis.parquet.gzip')  
     indices = np.load(indices)
 
     # maxvals = df.groupby(df.index.get_level_values(0)).transform('max') 
