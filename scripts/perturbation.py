@@ -57,7 +57,7 @@ def main(input_dir, indices, output, num_perturb, model_id, checkpoint):
         cache_dir=f"/om/user/sunnyd/transformers_cache/"
     ).half().eval().cuda()
 
-    batch_indices = np.split(indices, np.arange(0, len(indices), len(indices)//16))[WORKER_ID]
+    batch_indices = np.split(indices, np.arange(0, len(indices), len(indices)//16 + 1)[1:])[WORKER_ID]
     data = np.array([dataset[idx.astype(np.int32).item()] for idx in batch_indices])
     context_tokens = torch.tensor(data[:, :32].astype(np.int32)).to('cuda')
     with torch.no_grad():

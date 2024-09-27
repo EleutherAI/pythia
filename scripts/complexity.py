@@ -33,7 +33,7 @@ def main(indices, output):
     dataset = MMapIndexedDataset('/om/user/sunnyd/data/datasets--EleutherAI--pile-standard-pythia-preshuffled-merged/document', skip_warmup = True)
     indices = np.load(indices)
     x1 = da.from_array(np.array([dataset[idx.astype(np.int32).item()] for idx in indices]))
-    ex = x1[:, 32:96].compute()
+    ex = x1[:, 32:288].compute()
 
     tokenizer = AutoTokenizer.from_pretrained(
         "EleutherAI/pythia-70m-deduped",
