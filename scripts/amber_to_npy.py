@@ -3,13 +3,12 @@ import numpy as np
 from datasets import load_dataset
 from tqdm import tqdm
 
-for i in tqdm(range(100, 120)):
+for i in tqdm(range(100, 360)):
     if os.path.exists(f"/om/tmp/amber_data/{i:03}.npy"):
         continue
     dataset = load_dataset(
         "LLM360/AmberDatasets",
-        data_files=f"train/train_{i:03}.jsonl",
-        cache_dir="/om/tmp/amber",
+        data_files=f"/om/tmp/amber_data/train_{i:03}.jsonl",
         split=None,
     )
     tot_rows = dataset["train"].num_rows

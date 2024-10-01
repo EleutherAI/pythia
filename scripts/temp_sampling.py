@@ -29,8 +29,8 @@ WORKER_ID = int(os.environ['WORKER_ID'])
 @click.option('--model_id', type=str, default='1b-deduped')
 @click.option('--checkpoint', type=int, default=10000)
 def main(input_dir, indices, output, num_perturb, model_id, checkpoint):
-    os.makedirs(f'{output}/sample_0_1/', exist_ok=True)
-    output_fname = f'{output}/sample_0_1/{checkpoint}_{WORKER_ID}'
+    os.makedirs(f'{output}/sample_2_0/', exist_ok=True)
+    output_fname = f'{output}/sample_2_0/{checkpoint}_{WORKER_ID}'
     indices = np.load(indices)
 
     # maxvals = df.groupby(df.index.get_level_values(0)).transform('max') 
@@ -67,7 +67,7 @@ def main(input_dir, indices, output, num_perturb, model_id, checkpoint):
     gens = []
     for i in tqdm(range(num_perturb)):
         with torch.no_grad():
-            gen = model.generate(context_tokens.cuda(), do_sample=True, temperature = 0.1, max_length = 96, min_length = 96)
+            gen = model.generate(context_tokens.cuda(), do_sample=True, temperature = 2.0, max_length = 96, min_length = 96)
             gens.append(gen.detach().cpu().numpy())
 
     results = np.stack(gens)
