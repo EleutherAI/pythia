@@ -13,7 +13,7 @@ if __name__ == '__main__':
         "--start_iteration",
         type=int,
         default=0,
-        help="What train step to start logging"
+        help="What train step to start logging (exclusive)"
     )
     parser.add_argument(
         "--end_iteration",
