@@ -67,6 +67,8 @@ Config files used to train these models with the [GPT-NeoX library](https://gith
 
 We made a mistake while originally training these models resulting in some inconsistencies across runs. We reran the entire model suite with these inconsistencies fixed and the original runs are available under the name `EleutherAI/pythia-160m-v0`. See the Pythia paper for further details on how the v0 models differ from the main suite.
 
+The loss curves for all models are contained in our (messy!) wandb project at: https://github.com/EleutherAI/pythia.git
+
 ### Multiple random seeds
 
 The random seed used to train the Pythia models is the GPT-NeoX default: 1234. To enable research into how randomness effects model behavior, we have been training more models with different random seeds. We have currently trained and released the following models using each random seed from 1 to 9.
