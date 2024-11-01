@@ -123,6 +123,7 @@ git lfs clone https://huggingface.co/datasets/EleutherAI/pythia_deduped_pile_idx
 python utils/checksum_shards.py
 
 python utils/unshard_memmap.py --input_file ./pythia_deduped_pile_idxmaps/pile_0.87_deduped_text_document-00000-of-00082.bin --num_shards 83 --output_dir ./pythia_pile_idxmaps/
+cp ./pythia_deduped_pile_idxmaps/pile_0.87_deduped_text_document.idx ./pythia_pile_idxmaps/
 
 # The correct sha256 for the full file is 0cd548efd15974d5cca78f9baddbd59220ca675535dcfc0c350087c79f504693
 # This can be checked with sha256sum ./pythia_pile_idxmaps/*
@@ -134,21 +135,22 @@ Next you will need to set up the training environment:
 git clone https://github.com/EleutherAI/gpt-neox.git
 cd gpt-neox
 git checkout v1.0
-pip install -r requirements/requirements-flashattention.txt
 wget https://github.com/EleutherAI/pythia/blob/main/models/160M/pythia-160m-deduped.yml
 docker build -t pythia:latest .
 ```
 After the container finishes building, run the container using the following command (from the root of the GPT-NeoX repo with your pythia yaml accessible from within that folder):
 ```
 docker run --runtime=nvidia --rm -it -e NVIDIA_VISIBLE_DEVICES=0,1,2,3 --shm-size=1g --ulimit memlock=-1 --mount type=bind,src=$PWD,dst=/gpt-neox -v $(pwd):/workspace/ pythia:latest bash
+# another option:
+docker run --gpus '"device=0,1,2,3"' --rm -it --shm-size=1g --ulimit memlock=-1 --mount type=bind,src=$PWD,dst=/gpt-neox -v $(pwd):/workspace/ pythia:latest bash
 ```
 You can use the -v argument to add more connected volumes for the dataset and the Yaml file if is not accessible from within the docker container.
 
 Change the lines of the data paths and tokenizer paths as follows:
 ```
-  "train-data-paths": ["/fsx/pile/pile_20B_tokenizer_text_document"], #point this to your folder which was generated in step 1 containing the .bin and .idx file
-  "valid-data-paths": ["/fsx/pile/pile_20B_tokenizer_text_document"], #point this to your folder which was generated in step 1 containing the .bin and .idx file
-  "test-data-paths": ["/fsx/pile/pile_20B_tokenizer_text_document"], #point this to your folder which was generated in step 1 containing the .bin and .idx file
+  "train-data-paths": ["/fsx/pile/pythia_pile_idxmaps/pile_0.87_deduped_text_document"], #point this to your folder which was generated in step 1 containing the .bin and .idx file (the prefix)
+  "valid-data-paths": ["/fsx/pile/pythia_pile_idxmaps/pile_0.87_deduped_text_document"], #point this to your folder which was generated in step 1 containing the .bin and .idx file (the prefix)
+  "test-data-paths": ["/fsx/pile/pythia_pile_idxmaps/pile_0.87_deduped_text_document"], #point this to your folder which was generated in step 1 containing the .bin and .idx file (the prefix)
 
   "tokenizer-type": "HFTokenizer",
   "vocab-file": "/fsx/pile/20B_tokenizer.json", # point this to the tokenizer retrieved in step 2
@@ -172,6 +174,7 @@ Make sure the paths are the paths from inside your docker container and if you w
 
 You should now be able to start training your model by running:
 ```
+pip install -r requirements/requirements-flashattention.txt
 python deepy.py train.py pythia-160m-deduped.yml  2>&1 | tee output.txt
 ```
 the output will be saved to output.txt, if you don’t want that just delete the end.
