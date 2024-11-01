@@ -223,10 +223,10 @@ Next, we must download the appropriate dataset. We provide preshuffled versions 
   hf_hub_download(repo_id="EleutherAI/pile-deduped-pythia-preshuffled", repo_type="dataset", cache_dir="path/to/local/folder")
   ```
 
-You can now merge the files by using the script `utils/unshard_mmap.py` : 
+You can now merge the files by using the script `utils/unshard_memmap.py` : 
 
 ```sh
-python3 utils/unshard_mmap.py --input_file "path/to/local/folder/document-00000-of-00020.bin" --num_shards 21 --output_dir "path/to/merged/folder/"
+python3 utils/unshard_memmap.py --input_file "path/to/local/folder/document-00000-of-00020.bin" --num_shards 21 --output_dir "path/to/merged/folder/"
 ```
 
 Make sure to also copy index file to the merged folder, using the command
