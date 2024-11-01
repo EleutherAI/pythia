@@ -65,7 +65,7 @@ To promote research on the learning dynamics of LLMs we make 154 checkpoints ava
 
 Config files used to train these models with the [GPT-NeoX library](https://github.com/EleutherAI/gpt-neox) can be found at the `models/` directory within this repository, as well as in the GPT-NeoX library itself.
 
-We made a mistake while originally training these models resulting in some inconsistencies across runs. We reran the entire model suite with these inconsistencies fixed and the originl runs are available under the name `EleutherAI/pythia-160m-v0`. See the Pythia paper for further details on how the v0 models differ from the main suite.
+We made a mistake while originally training these models resulting in some inconsistencies across runs. We reran the entire model suite with these inconsistencies fixed and the original runs are available under the name `EleutherAI/pythia-160m-v0`. See the Pythia paper for further details on how the v0 models differ from the main suite.
 
 ### Multiple random seeds
 
