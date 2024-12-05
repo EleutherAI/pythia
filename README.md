@@ -67,7 +67,18 @@ Config files used to train these models with the [GPT-NeoX library](https://gith
 
 We made a mistake while originally training these models resulting in some inconsistencies across runs. We reran the entire model suite with these inconsistencies fixed and the original runs are available under the name `EleutherAI/pythia-160m-v0`. See the Pythia paper for further details on how the v0 models differ from the main suite.
 
-The loss curves for all models are contained in our (messy!) wandb project at: https://github.com/EleutherAI/pythia.git
+The loss curves for all models are contained in our (messy!) wandb project at: https://wandb.ai/eleutherai/pythia
+
+A rough and partial correspondence between models and wandb runs is given by:
+| Model | Wandb |
+| --------- | --------- |
+| Pythia-2.8b | [Link](https://wandb.ai/eleutherai/pythia/groups/2.7B%20New_36751euw?workspace=user-schoelkopf) |
+| Pythia-2.8b-deduped | [Link](https://wandb.ai/eleutherai/pythia/groups/2.7B%20Deduped%20New_1ygfbs9n?workspace=user-schoelkopf) |
+| Pythia-1b | [Link](https://wandb.ai/eleutherai/pythia/groups/800M%20Pythia_1zw5etef/workspace) |
+| Pythia-1.4b | [Link](https://wandb.ai/eleutherai/pythia/groups/Pythia%201.3B_lepj8rtx/workspace?workspace=user-schoelkopf) |
+| Pythia-1.4b-deduped | [Link](https://wandb.ai/eleutherai/pythia/groups/1.3B%20Dedup_10v5wko4/workspace?workspace=user-schoelkopf) |
+| Pythia-160m | [Link](https://wandb.ai/eleutherai/pythia/groups/Pythia%20125M_1mpgqyzx/workspace?workspace=user-schoelkopf) |
+| Pythia-160m-deduped | [Link](https://wandb.ai/eleutherai/pythia/groups/125M%20Dedup_ym78zh5k/workspace?workspace=user-schoelkopf) |
 
 ### Multiple random seeds
 
@@ -80,6 +91,8 @@ The random seed used to train the Pythia models is the GPT-NeoX default: 1234. T
 - Pythia 410M
 
 All of these models are the _standard_ Pythia models, not the ones trained on the deduplicated Pile. Combined with the originally released models they represent ten otherwise identical variants using different random seeds.
+
+Runs replicating the smaller Pythia models across multiple seeds are at: https://wandb.ai/eleutherai/pythia-extra-seeds
 
 ## Using Pythia
 
