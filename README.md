@@ -10,9 +10,12 @@ The Pythia suite was developed with the explicit purpose of enabling research in
 At time of release, Pythia was the only model suite in the world to meet these desiderata. In fact, the 154 checkpoints we released for our 12B parameter models represented more partially trained checkpoints for each model than the rest of the world had ever released for all 12B+ models combined. Our work has inspired several others to create similar projects, including LLM360's [Amber](https://www.llm360.ai/paper.pdf) and [K2-65B](https://www.llm360.ai/paper2.pdf), AI2's [OLMo](https://arxiv.org/abs/2402.00838), and Zyphra's [BlackMamba](https://arxiv.org/abs/2402.01771).
 
 Aside from the Pythia suite itself, this repository also acts as a hub containing information, code, and reproducibility instructions for the following papers:
-* Emergent and Predictable Memorization in Large Language Models [[code](/predictable-memorization/README.md)] [[paper](https://arxiv.org/abs/2304.11158)]
+* Emergent and Predictable Memorization in Large Language Models [[code](/predictable-memorization)] [[paper](https://arxiv.org/abs/2304.11158)]
+* PolyPythias: Stability and Outliers across Fifty Language Model Pre-Training Runs [[code](/polypythias)] [[paper](https://openreview.net/forum?id=bmrYu2Ekdz)]
 
 ## Changelog
+
+[March 10, 2025] Added info for the PolyPythias paper.
 
 [July 9, 2024] Substantially revamped the readme, including better historical contextualization and promoting lots of cool research people have done with Pythia. Also added links to subsequently trained models.
 
@@ -67,7 +70,7 @@ Config files used to train these models with the [GPT-NeoX library](https://gith
 
 We made a mistake while originally training these models resulting in some inconsistencies across runs. We reran the entire model suite with these inconsistencies fixed and the original runs are available under the name `EleutherAI/pythia-160m-v0`. See the Pythia paper for further details on how the v0 models differ from the main suite.
 
-The loss curves for all models are contained in our (messy!) wandb project at: https://wandb.ai/eleutherai/pythia
+The loss curves for all models are contained in our (messy!) wandb project [here](https://wandb.ai/eleutherai/pythia).
 
 A rough and partial correspondence between models and wandb runs is given by:
 | Model | Wandb |
@@ -90,7 +93,7 @@ The random seed used to train the Pythia models is the GPT-NeoX default: 1234. T
 - Pythia 160M
 - Pythia 410M
 
-All of these models are the _standard_ Pythia models, not the ones trained on the deduplicated Pile. Combined with the originally released models they represent ten otherwise identical variants using different random seeds.
+All of these models are the _standard_ Pythia models, not the ones trained on the deduplicated Pile. Combined with the originally released models they represent ten otherwise identical variants using different random seeds. They can be found on HuggingFace using the naming pattern `https://huggingface.co/EleutherAI/pythia-[size]-seed[num]`. For example, `https://huggingface.co/EleutherAI/pythia-160m-seed7`. Note that the models trained with seed 1234 do not have a seed specified in their url.
 
 Runs replicating the smaller Pythia models across multiple seeds are at: https://wandb.ai/eleutherai/pythia-extra-seeds
 
@@ -358,11 +361,18 @@ If you use data or results from other papers found in this repository, please ci
 @inproceedings{biderman2023emergent,
       title={Emergent and Predictable Memorization in Large Language Models}, 
       author={Biderman, Stella and Prashanth, USVSN Sai and Sutawika, Lintang and Schoelkopf, Hailey and Anthony, Quentin and Purohit, Shivanshu and Raff, Edward},
-      journal={Advances in Neural Information Processing Systems},
+      booktitle={Advances in Neural Information Processing Systems},
       year={2023}
 }
+
+@inproceedings{van2025polypythias,
+      title={PolyPythias: Stability and Outliers across Fifty Language Model Pre-Training Runs},
+      author={van der Wal, Oskar and Lesci, Pietro and M{\"u}ller-Eberstein, Max and Saphra, Naomi and Schoelkopf, Hailey and Zuidema, Willem and Biderman, Stella},
+      booktitle={{The Thirteenth International Conference on Learning Representations}},
+      year={2025}
 ```
 If you are interested in citing our training data, training library, or evaluation library you can do so with the following:
+
 ```
 @article{gao2020pile,
   title={The pile: An 800gb dataset of diverse text for language modeling},
