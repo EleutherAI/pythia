@@ -1,0 +1,12 @@
+lm-checkpoints == 0.1.9
+pandas
+hmmlearn
+ray
+tqdm == 4.66.1
+argparse
+tabulate
+graphviz
+altair
+statsmodels
+concept-erasure
+matplotlib
