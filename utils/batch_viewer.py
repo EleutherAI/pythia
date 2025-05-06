@@ -39,6 +39,6 @@ if __name__ == '__main__':
     filename = os.path.join(args.save_path, "indicies.npy")
 
     dataset = MMapIndexedDataset(args.load_path, skip_warmup = True)
-    indicies = dataset[args.start_iteration*1024: args.end_iteration*1024 + 1]
+    indicies = dataset[args.start_iteration*1024: (args.end_iteration+1)*1024]
     np.save(filename, indicies)
 
