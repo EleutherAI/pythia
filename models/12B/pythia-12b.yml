@@ -4,7 +4,7 @@
    "model-parallel-size": 4,
 
    # model settings
-   "num-layers": 40,
+   "num-layers": 36,
    "hidden-size": 5120,
    "num-attention-heads": 40,
    "seq-length": 2048,
@@ -16,7 +16,7 @@
    "gpt_j_residual": true,
    "output_layer_parallelism": "column",
    
-   "attention-config": [[["flash"], 40]]
+   "attention-config": [[["flash"], 36]]
 
    "scaled-upper-triang-masked-softmax-fusion": true,
    "bias-gelu-fusion": true,
