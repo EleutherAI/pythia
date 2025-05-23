@@ -97,6 +97,10 @@ All of these models are the _standard_ Pythia models, not the ones trained on th
 
 Runs replicating the smaller Pythia models across multiple seeds are at: https://wandb.ai/eleutherai/pythia-extra-seeds
 
+#### Erata
+
+As noted [in this issue](https://github.com/EleutherAI/pythia/issues/135) the 6.9B and 12B models accidentially used a different initializaiton due to not having the initialization value specified in the config file.
+
 ## Using Pythia
 
 ### Quickstart
