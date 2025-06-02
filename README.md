@@ -326,6 +326,7 @@ Our primary goal with the Pythia project is to enable research on topics includi
 - Godey et al. "[Why do small language models underperform? Studying Language Model Saturation via the Softmax Bottleneck](https://arxiv.org/abs/2404.07647)." _arXiv preprint arXiv:2404.07647_ (2024).
 - Singh, et al. "[Hallmarks of Optimization Trajectories in Neural Networks: Directional Exploration and Redundancy](https://arxiv.org/abs/2403.07379)." _arXiv preprint arXiv:2403.07379_ (2024).
 - Tigges, et al. "[Stability and Generalizability of Language Model Mechanisms Across Training and Scale](https://openreview.net/forum?id=1WeLXvaNJP)." _Mechanistic Interpretability Workshop @ ICML_ (2024). **EleutherAI Paper**
+- Diehl Martinez, et al. "[Tending Towards Stability: Convergence Challenges in Small Language Models](https://aclanthology.org/2024.findings-emnlp.187/) " _Findings of the Association for Computational Linguistics: EMNLP_ (2024).
 
 ### How training data determines model behavior
 
@@ -344,7 +345,6 @@ Our primary goal with the Pythia project is to enable research on topics includi
 - Pawelczyk, et al. "[Machine Unlearning Fails to Remove Data Poisoning Attacks](https://arxiv.org/abs/2406.17216)." _arXiv preprint arXiv:2406.17216_ (2024).
 - Prashanth, et al. "[Recite, Reconstruct, Recollect: Memorization in LMs as a Multifaceted Phenomenon](https://arxiv.org/abs/2406.17746)." _arXiv preprint arXiv:2406.17746_ (2024). **EleutherAI Paper**
 - Duan, et al. "[Do Membership Inference Attacks Work on Large Language Models?](https://arxiv.org/abs/2402.07841)." _Conference on Language Modeling_ (2024).
-
 
 ## Citation Details
 
