@@ -124,7 +124,7 @@ tokenizer = AutoTokenizer.from_pretrained(
 
 inputs = tokenizer("Hello, I am", return_tensors="pt")
 tokens = model.generate(**inputs)
-tokenizer.decode(tokens[0])
+print(tokenizer.decode(tokens[0]))
 ```
 
 All models were trained for the equivalent of 143000 steps at a batch size of 2,097,152 tokens. Revision/branch `step143000` corresponds exactly to the model checkpoint on the `main` branch of each model.
