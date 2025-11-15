@@ -17,10 +17,8 @@
 #   the dataset are always of sequence length 2049
 
 import os
-import shutil
 import struct
 from functools import lru_cache
-from itertools import accumulate
 
 import numpy as np
 import torch
@@ -223,8 +221,7 @@ class MMapIndexedDataset(torch.utils.data.Dataset):
                 raise ValueError("Slices into indexed_dataset must be contiguous")
             ptr = self._index._pointers[start]
             sizes = self._index._sizes[idx]
-            offsets = list(accumulate(sizes))
-            total_size = sum(sizes)
+            total_size = sizes.sum(dtype=np.int64)
             np_array = np.frombuffer(
                 self._bin_buffer, dtype=self._index.dtype, count=total_size, offset=ptr
             )
